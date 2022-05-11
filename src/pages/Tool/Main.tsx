@@ -22,10 +22,10 @@ const Main = () => {
         <div className="w-full h-full flex flex-col">
           <ProjectMain />
           <div className="w-full flex md:flex-col">
-            <div className="w-3/5 h-[450px] p-2 md:w-full sm:p-1">
+            <div className="w-3/5 h-[450px] p-2 md:w-full md:h-[300px] sm:p-1">
               <ProjectAnnouncement />
             </div>
-            <div className="w-2/5 min-w-max h-[450px] p-2 md:w-full sm:p-1">
+            <div className="w-2/5 min-w-max h-[450px] p-2 md:w-full md:h-full sm:h-[280px] sm:p-1">
               <CalendarEL />
             </div>
           </div>
