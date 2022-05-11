@@ -2,8 +2,7 @@ name: CI/CD
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
 
 jobs:
   build:
@@ -16,13 +15,13 @@ jobs:
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: ${{ runner.OS }}-master-build-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.OS }}-master-build-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
 
       - name: Install Dependencies
-        run: yarn
+        run: npm install
 
       - name: Setting .env
         run: |
@@ -34,7 +33,7 @@ jobs:
       - name: Build
         env:
           CI: ""
-        run: yarn build
+        run: npm run build
 
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
