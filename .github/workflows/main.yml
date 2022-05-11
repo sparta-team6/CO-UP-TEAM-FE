@@ -2,7 +2,8 @@ name: CI/CD
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
   build:
@@ -22,6 +23,13 @@ jobs:
 
       - name: Install Dependencies
         run: yarn
+
+      - name: Setting .env
+        run: |
+          echo "REACT_APP_API_URL=${{secrets.REACT_APP_API_URL}}" >> .env
+          echo "REACT_APP_REDIRECT_URI=${{secrets.REACT_APP_REDIRECT_URI}}" >> .env
+          echo "REACT_APP_CLIENT_ID=${{secrets.REACT_APP_CLIENT_ID}}" >> .env
+          cat .env
 
       - name: Build
         env:
