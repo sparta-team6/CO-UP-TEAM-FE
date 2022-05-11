@@ -1,0 +1,96 @@
+/* Calendar */
+.react-calendar {
+  width: 330px;
+  max-width: 100%;
+  border: none;
+  border-radius: 0.8em;
+  padding: 40px 0;
+}
+.react-calendar__navigation button {
+  color: #6f48eb;
+  min-width: 44px;
+  background: none;
+  font-size: 20px;
+  margin-top: 8px;
+}
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #f8f8fa;
+}
+.react-calendar__navigation button[disabled] {
+  background-color: #f0f0f0;
+}
+abbr[title] {
+  text-decoration: none;
+  cursor: auto;
+}
+.react-calendar__month-view__days__day {
+  padding: 15px 0;
+}
+.react-calendar__month-view__days__day--weekend {
+  color: #d10000;
+}
+.react-calendar__month-view__weekdays__weekday {
+  padding: 10px 6px;
+}
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background: #f8f8fa;
+  color: #6f48eb;
+  border-radius: 30px;
+}
+.react-calendar__tile--now {
+  background: #6f48eb33;
+  border-radius: 30px;
+  font-weight: bold;
+  color: #6f48eb;
+}
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #6f48eb33;
+  border-radius: 30px;
+  font-weight: bold;
+  color: #6f48eb;
+}
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+  background: #f8f8fa;
+}
+.react-calendar__tile--active {
+  background: #6f48eb;
+  border-radius: 30px;
+  font-weight: bold;
+  color: white;
+}
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #6f48eb;
+  color: white;
+}
+
+@media screen and (max-width: 1300px) {
+  .react-calendar {
+    width: 100%;
+    max-width: 300px;
+    padding: 0;
+  }
+  .react-calendar__navigation {
+    margin-bottom: 0;
+  }
+  .react-calendar__month-view__days__day {
+    padding: 13px 0;
+  }
+  .react-calendar__month-view__weekdays__weekday {
+    padding: 5px 3px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .react-calendar {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 0.8em;
+  }
+  .react-calendar__month-view__days__day {
+    padding: 9px 0;
+  }
+}
