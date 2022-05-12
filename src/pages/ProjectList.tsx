@@ -14,9 +14,9 @@ const ProjectList = () => {
             <ProjectOpen />
           </nav>
         </div>
-        <div className="w-[1300px] flex flex-wrap justify-start md:w-[90%]">
+        <div className="w-[1300px] flex flex-wrap justify-start sm:justify-center md:w-[90%] sm:space-y-4">
           <ProjectData />
-          <div className="w-[300px] h-[300px] rounded-lg border-[1px] border-solid flex justify-center items-center mr-6">
+          <div className="w-[300px] h-[300px] rounded-lg border-[1px] border-solid flex justify-center items-center mr-6 sm:m-0">
             <ProjectMake />
           </div>
         </div>

@@ -15,7 +15,7 @@ const ProjectData = () => {
         return (
           <div
             key={index}
-            className="relative w-[300px] h-[300px] bg-slate-100 rounded-lg flex flex-col justify-center items-center mb-4 mr-6"
+            className="relative w-[300px] h-[300px] bg-slate-100 rounded-lg flex flex-col justify-center items-center mb-4 mr-6 sm:m-0"
           >
             <div onClick={() => onClick(room.id)} className="w-full h-full">
               <div className="w-full h-1/2 flex justify-center items-center">
