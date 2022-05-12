@@ -21,7 +21,7 @@ const ViewDoc = () => {
     });
   };
   return (
-    <div className="w-[calc(100%-41rem)] h-full flex flex-col md:w-[calc(100%-21rem)]">
+    <div className="w-full">
       {result ? (
         <div className="p-4 mt-4">
           <div className="text-2xl font-bold">{result.title}</div>
@@ -44,14 +44,14 @@ const ViewDoc = () => {
           <button onClick={onDelete}>삭제</button>
         </div>
       ) : (
-        <div className=" w-full h-full flex flex-col justify-center items-center">
+        <div className=" w-full h-full flex flex-col justify-center items-center text-center">
           <div className="font-bold text-2xl m-4">
             새로운 문서를 추가해 보세요
           </div>
           <div>
             미팅 노트, 제품 요구사항, 결정 사항 또는 기타 콘텐츠를 만들어
+            팀원들과 공유해보세요
           </div>
-          <div>팀원들과 공유해보세요</div>
           <button className="border-none m-4 px-4 py-3 rounded-3xl bg-slate-400 font-bold">
             <Link to="/tool/1/document/add">첫 페이지 만들기</Link>
           </button>

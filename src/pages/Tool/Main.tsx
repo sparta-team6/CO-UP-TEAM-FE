@@ -4,7 +4,7 @@ import MemberChart from "../../Components/ToolMain/MemberChart";
 import ProjectAnnouncement from "../../elements/ToolMain/ProjectAnnouncement";
 import ProjectMain from "../../Components/ToolMain/ProjectMain";
 import { useState } from "react";
-import SlidingSide from "../../Components/ToolMain/SlidingSide";
+import SlidingMain from "../../Components/ToolMain/SlidingMain";
 
 const Main = () => {
   const [open, setOpen] = useState(false);
@@ -17,7 +17,7 @@ const Main = () => {
       onClick={handleToggle}
       className="w-full h-screen bg-slate-200 flex justify-between relative pt-12 md:h-full md:justify-start"
     >
-      <SlidingSide open={open} setOpen={setOpen} />
+      <SlidingMain open={open} setOpen={setOpen} />
       <div className="w-[calc(100%-41rem)] h-full flex flex-col ml-[336px] p-4 md:w-[calc(100%-21rem)] sm:w-full sm:p-2 sm:m-0">
         <div className="w-full h-full flex flex-col">
           <ProjectMain />
