@@ -105,7 +105,7 @@ const ProjectAnnouncement = () => {
               </select>
             </div>
             <textarea
-              className="w-full outline-none border-none overflow-y-auto"
+              className="w-full outline-none border-none resize-none overflow-y-auto"
               rows={14}
               {...register("content", { required: true })}
               placeholder="내용을 입력해주세요"
@@ -135,7 +135,7 @@ const ProjectAnnouncement = () => {
                       {data.name}
                     </div>
                   </div>
-                  <EditAnnouncement dataID={data.id} />
+                  <EditAnnouncement {...data} />
                 </div>
               </div>
             </div>
