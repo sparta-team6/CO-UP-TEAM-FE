@@ -54,13 +54,31 @@ const DocEditor = () => {
   return (
     <React.Fragment>
       <form onSubmit={handleSubmit(onValid)}>
+        <div className="hidden sm:flex justify-between items-center border-b-2 border-solid border-slate-400 pb-2">
+          <span>문서</span>
+          <div>
+            <button
+              className="border-none px-3 py-2 rounded-md text-white bg-slate-600"
+              type="submit"
+            >
+              등록
+            </button>
+            <button
+              type="button"
+              className="border-none ml-2 px-3 py-2 rounded-md bg-slate-400"
+              onClick={() => navigate("/tool/1/document")}
+            >
+              닫기
+            </button>
+          </div>
+        </div>
         <div className="flex items-center justify-between p-4 mt-4">
           <input
-            className="text-2xl font-bold border-none outline-none bg-transparent placeholder:text-black"
+            className="text-2xl font-bold border-none outline-none bg-transparent placeholder:text-black sm:text-3xl sm:w-full sm:text-center"
             {...register("title")}
             placeholder="제목을 적어보세요 :)"
           />
-          <div>
+          <div className="sm:hidden">
             <button
               className="border-none p-[10px] rounded-md text-white bg-slate-600"
               type="submit"
