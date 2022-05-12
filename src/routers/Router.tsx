@@ -5,6 +5,7 @@ const Header = lazy(() => import("./Header"));
 const IntroHome = lazy(() => import("../pages/IntroHome"));
 const Profile = lazy(() => import("../pages/Profile"));
 const ToolMain = lazy(() => import("../pages/Tool/Main"));
+const MobileChat = lazy(() => import("../pages/Tool/MobileChat"));
 const ToolDocument = lazy(() => import("../pages/Tool/DocumentList"));
 const ToolBoard = lazy(() => import("../pages/Tool/Board"));
 const AddDocs = lazy(() => import("../pages/Tool/AddDocs"));
@@ -21,6 +22,7 @@ const Router = () => {
         <Route path="/projectList" element={<ProjectList />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/tool/:id" element={<ToolMain />} />
+        <Route path="/tool/:id/chat" element={<MobileChat/>}/>
         <Route path="/tool/:id/document" element={<ToolDocument />} />
         <Route path="/tool/:id/document/:postId" element={<ToolDocument />} />
         <Route path="/tool/:id/document/:postId/edit" element={<EditDocs />} />
