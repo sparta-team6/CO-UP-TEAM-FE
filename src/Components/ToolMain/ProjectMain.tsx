@@ -10,7 +10,7 @@ const ProjectMain = () => {
   const roomData = data?.data.find((r) => r.id === Number(id));
 
   return (
-    <div className="flex p-2 sm:p-1">
+    <div className="flex p-2 sm:p-1 items-center">
       <ProjectSummary
         ProjectImg={roomData?.img}
         ProjectTitle={roomData?.title}
