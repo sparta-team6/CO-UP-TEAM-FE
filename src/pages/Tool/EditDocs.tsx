@@ -1,14 +1,18 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { Folders } from "../../api/DocumentQuery";
 import EditDocEditor from "../../Components/ToolEdit/EditDocEditor";
 import Chat from "../../layout/Chat";
 import DocumentList from "../../layout/DocumentList";
 import MyProjectList from "../../layout/MyProjectList";
 
-const EditDocs = () => {
-  const location = useLocation();
-  const result: any = location?.state;
+type ILocation = {
+  state: Folders;
+};
 
+const EditDocs = () => {
+  const location = useLocation() as ILocation;
+  const result = location?.state;
   return (
     <div className="w-full h-[calc(100vh-3rem)] bg-slate-300 flex absolute bottom-0">
       <MyProjectList />
