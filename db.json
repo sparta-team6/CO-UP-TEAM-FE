@@ -141,16 +141,18 @@
   "announcement": [
     {
       "id": 1652075350728,
-      "title": "수정완료"
-    },
-    {
-      "id": 1652075354268,
-      "title": "수정완료"
+      "title": "수정완료zz",
+      "content": "zz",
+      "name": "rrr"
     },
     {
       "id": 1652291128008,
-      "title": "zz",
-      "content": "zz",
+      "title": "수정완료"
+    },
+    {
+      "id": 1652319348427,
+      "title": "ㅁㄴㅇㅁㄴㅇ",
+      "content": "ㅁㄴㅁㄴㅁ",
       "name": "rrr"
     }
   ],
