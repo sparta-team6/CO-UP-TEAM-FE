@@ -15,7 +15,7 @@ import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import { createRef } from "react";
 
-import { useGetOneFolder, useUpdateFolder } from "../../api/DocumentQuery";
+import { Folders, useUpdateFolder } from "../../api/DocumentQuery";
 import { queryClient } from "../../index";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -24,16 +24,8 @@ type IForm = {
   title: string;
 };
 
-interface propsType {
-  id?: number;
-  title?: string;
-  contents?: string;
-}
-
-const DocEditor = (props: propsType) => {
-  const { mutateAsync: UpdateFolder } = useUpdateFolder(Number(props.id));
-  const { data } = useGetOneFolder(Number(props.id));
-  console.log(data?.data);
+const DocEditor = ({ id, title, contents }: Folders) => {
+  const { mutateAsync: UpdateFolder } = useUpdateFolder(id);
   const navigate = useNavigate();
   const editorRef = createRef<any>();
   const { register, handleSubmit } = useForm<IForm>();
@@ -48,13 +40,13 @@ const DocEditor = (props: propsType) => {
     }
 
     UpdateFolder({
-      id: props.id,
+      id: id,
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
     }).then(() => {
       queryClient.invalidateQueries("getFolders");
     });
-    navigate(`/tool/1/document/${props.id}`);
+    navigate(`/tool/1/document/${id}`);
   };
 
   return (
@@ -65,7 +57,7 @@ const DocEditor = (props: propsType) => {
             className="text-2xl font-bold border-none outline-none bg-transparent placeholder:text-black"
             {...register("title")}
             placeholder="제목을 적어보세요 :)"
-            value={data?.data.title || ""}
+            defaultValue={title}
           />
           <div>
             <button
@@ -91,7 +83,7 @@ const DocEditor = (props: propsType) => {
         useCommandShortcut={true}
         previewHighlight={false}
         ref={editorRef}
-        initialValue={props ? props.contents : ""}
+        initialValue={contents ? contents : ""}
         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
       />
     </React.Fragment>
