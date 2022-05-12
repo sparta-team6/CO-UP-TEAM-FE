@@ -8,7 +8,7 @@ const ProjectList = () => {
       <div className="w-full h-full flex flex-col items-center mt-20">
         <div className=" w-[1300px] h-10 flex justify-between items-center md:w-[90%]">
           <div>
-            <span className="font-semibold text-2xl">팀 리스트</span>
+            <span className="font-semibold text-2xl">팀 리스트!</span>
           </div>
           <nav className="space-x-4 flex mr-6">
             <ProjectOpen />
