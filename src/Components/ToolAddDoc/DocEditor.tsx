@@ -40,6 +40,7 @@ const DocEditor = () => {
     }
 
     const folder = {
+      id: Date.now(),
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
     };

@@ -4,7 +4,7 @@ import { useMutation, useQuery } from "react-query";
 export interface Folders {
   title: string;
   contents: string;
-  id?: number;
+  id: number;
 }
 
 export interface IFolders {
