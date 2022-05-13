@@ -2,13 +2,13 @@ import Chat from "../../../layout/Chat";
 import DocumentList from "../../../layout/DocumentList";
 import MyProjectList from "../../../layout/MyProjectList";
 import ViewDoc from "../../../Components/ToolDocument/ViewDoc";
-import { useGetFolders } from "../../../api/DocumentQuery";
+import { useGetOneFolder } from "../../../api/DocumentQuery";
 import { useParams } from "react-router-dom";
 
 const DocumentDetail = () => {
   const { postId } = useParams();
-  const { data } = useGetFolders();
-  const folderData = data?.data.find((f) => f.id === Number(postId));
+  const { data, isLoading } = useGetOneFolder(Number(postId));
+  const folderData = data?.data;
 
   return (
     <div className="w-full  h-[calc(100vh-3rem)] bg-slate-300 flex absolute bottom-0">
@@ -17,7 +17,7 @@ const DocumentDetail = () => {
         <DocumentList />
       </div>
       <div className="w-[calc(100%-41rem)] h-full flex ml-[336px] p-4 md:w-[calc(100%-21rem)] sm:w-full sm:p-2 sm:m-0">
-        <ViewDoc {...folderData} />
+        <ViewDoc {...folderData} isLoading={isLoading} />
       </div>
       <Chat />
     </div>
