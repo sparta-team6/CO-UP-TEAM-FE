@@ -1,4 +1,4 @@
-import { atom  } from "recoil";
+import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 // import { useGetProjectUser } from "../api/UserQuery";
 
@@ -60,6 +60,11 @@ export const MyProfile = atom<IUserState>({
     profile_image: "",
   },
   effects_UNSTABLE: [persistAtom],
+});
+
+export const HandleOpen = atom({
+  key: "handleOpen",
+  default: false,
 });
 
 // export const UserSave = selector({

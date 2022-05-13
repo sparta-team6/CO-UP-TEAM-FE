@@ -3,21 +3,27 @@ import CalendarEL from "../../elements/ToolMain/CalendarEL";
 import MemberChart from "../../Components/ToolMain/MemberChart";
 import ProjectAnnouncement from "../../elements/ToolMain/ProjectAnnouncement";
 import ProjectMain from "../../Components/ToolMain/ProjectMain";
-import { useState } from "react";
 import SlidingMain from "../../Components/ToolMain/SlidingMain";
+import { useRecoilState } from "recoil";
+import { HandleOpen } from "../../recoil/Atoms";
+import { useEffect } from "react";
 
 const Main = () => {
-  const [open, setOpen] = useState(false);
-  const handleToggle = () => {
-    if (open) setOpen(false);
+  const [open, setOpen] = useRecoilState(HandleOpen);
+  const onClick = () => {
+    setOpen(!open);
   };
+
+  useEffect(() => {
+    setOpen(false);
+  }, []);
 
   return (
     <div
-      onClick={handleToggle}
+      onClick={onClick}
       className="w-full h-screen flex justify-between relative pt-12 md:h-full md:justify-start"
     >
-      <SlidingMain open={open} setOpen={setOpen} />
+      <SlidingMain open={open} />
       <div className="w-[calc(100%-41rem)] h-full flex flex-col ml-[336px] p-4 md:w-[calc(100%-21rem)] sm:w-full sm:p-2 sm:m-0">
         <div className="w-full h-full flex flex-col">
           <ProjectMain />
