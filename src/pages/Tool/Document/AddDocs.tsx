@@ -1,7 +1,7 @@
-import Chat from "../../layout/Chat";
-import DocEditor from "../../Components/ToolAddDoc/DocEditor";
-import MyProjectList from "../../layout/MyProjectList";
-import DocumentList from "../../layout/DocumentList";
+import Chat from "../../../layout/Chat";
+import DocEditor from "../../../Components/ToolAddDoc/DocEditor";
+import MyProjectList from "../../../layout/MyProjectList";
+import DocumentList from "../../../layout/DocumentList";
 
 const AddDocs = () => {
   return (

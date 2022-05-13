@@ -45,7 +45,7 @@ const DocEditor = ({ id, title, contents }: Folders) => {
       contents: editorRef.current.getInstance().getMarkdown(),
     }).then(() => {
       queryClient.invalidateQueries("getFolders");
-      navigate(-1);
+      navigate("/tool/1/document");
     });
   };
 
