@@ -2,9 +2,9 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { useMutation, useQuery } from "react-query";
 
 export interface Folders {
-  title: string;
-  contents: string;
-  id: number;
+  title?: string;
+  contents?: string;
+  id?: number;
 }
 
 export interface IFolders {
