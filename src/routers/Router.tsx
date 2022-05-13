@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 const Header = lazy(() => import("./Header"));
 const IntroHome = lazy(() => import("../pages/IntroHome"));
 const Profile = lazy(() => import("../pages/Profile"));
+const Login = lazy(() => import("../pages/Mobile/Login"));
 const ToolMain = lazy(() => import("../pages/Tool/Main"));
 const MobileChat = lazy(() => import("../pages/Mobile/Chat"));
 const ToolDocument = lazy(() => import("../pages/Tool/DocumentList"));
@@ -21,8 +22,9 @@ const Router = () => {
         <Route path="/" element={<IntroHome />} />
         <Route path="/projectList" element={<ProjectList />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/tool/:id" element={<ToolMain />} />
-        <Route path="/tool/:id/chat" element={<MobileChat/>}/>
+        <Route path="/tool/:id/chat" element={<MobileChat />} />
         <Route path="/tool/:id/document" element={<ToolDocument />} />
         <Route path="/tool/:id/document/:postId" element={<ToolDocument />} />
         <Route path="/tool/:id/document/:postId/edit" element={<EditDocs />} />
