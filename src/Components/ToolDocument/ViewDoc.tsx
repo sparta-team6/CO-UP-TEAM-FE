@@ -17,7 +17,8 @@ const ViewDoc = () => {
   const onDelete = () => {
     DelFolder().then(() => {
       queryClient.invalidateQueries("getFolders");
-      navigate("/tool/1/document");
+      if (window.innerWidth > 768) navigate("/tool/1/document");
+      else navigate("/tool/1/document/m");
     });
   };
   return (
