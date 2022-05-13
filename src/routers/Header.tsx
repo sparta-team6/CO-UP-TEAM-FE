@@ -6,6 +6,7 @@ import Footer from "./Footer";
 const Header = () => {
   /* 프로젝트 정보는 리코일에 */
   const location = useLocation();
+  console.log();
   return (
     <React.Fragment>
       {location.pathname.includes("tool") ? (
@@ -34,7 +35,7 @@ const Header = () => {
             </nav>
           </div>
         </React.Fragment>
-      ) : (
+      ) : location.pathname.includes("projectList") ? (
         <div className="w-full h-10 bg-yellow-200 flex justify-between items-center">
           <Link to="/">로고</Link>
           <nav className="w-72 flex justify-around">
@@ -42,7 +43,7 @@ const Header = () => {
             <ProfileMenu />
           </nav>
         </div>
-      )}
+      ) : null}
     </React.Fragment>
   );
 };

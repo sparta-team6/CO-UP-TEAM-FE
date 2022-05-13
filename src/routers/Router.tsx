@@ -5,7 +5,7 @@ const Header = lazy(() => import("./Header"));
 const IntroHome = lazy(() => import("../pages/IntroHome"));
 const Profile = lazy(() => import("../pages/Profile"));
 const ToolMain = lazy(() => import("../pages/Tool/Main"));
-const MobileChat = lazy(() => import("../pages/Tool/MobileChat"));
+const MobileChat = lazy(() => import("../pages/Mobile/Chat"));
 const ToolDocument = lazy(() => import("../pages/Tool/DocumentList"));
 const ToolBoard = lazy(() => import("../pages/Tool/Board"));
 const AddDocs = lazy(() => import("../pages/Tool/AddDocs"));

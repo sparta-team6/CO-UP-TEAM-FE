@@ -67,7 +67,7 @@ const DraggableCard = ({
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style} className="w-[690px] h-[370px] rounded-xl">
+            <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
               <span>{toDoText}</span>
               <span>{toDoName}</span>
               <span>{toDoComment}</span>

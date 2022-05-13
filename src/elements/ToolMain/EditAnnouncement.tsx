@@ -70,7 +70,7 @@ const EditAnnouncement = ({ id, title, content, name }: Announcement) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="w-[690px] h-[370px] rounded-xl">
+        <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
           <form
             className="w-full h-full relative space-y-4"
             onSubmit={handleSubmit(onSubmit)}

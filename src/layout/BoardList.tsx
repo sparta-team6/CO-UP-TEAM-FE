@@ -49,7 +49,7 @@ const BoardList = () => {
       <div className="w-full h-full flex justify-center items-center relative">
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="w-full h-full flex">
-            <div className="flex justify-around items-start w-full gap-2">
+            <div className="flex justify-around items-start w-full gap-2 sm:justify-start">
               {Object.keys(toDos).map((bucketId) => (
                 <Bucket
                   bucketId={bucketId}
