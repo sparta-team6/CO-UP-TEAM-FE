@@ -121,6 +121,9 @@ const EditProfile = () => {
             {...register("about_me")}
           />
           <div className="text-right">
+            <button className="p-2 bg-slate-300 rounded-xl w-32">
+              로그아웃
+            </button>
             <button className="p-2 bg-slate-300 rounded-xl w-32" type="submit">
               수정하기
             </button>

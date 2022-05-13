@@ -8,24 +8,24 @@ const MemberChart = () => {
   const { data } = useGetProjectUser();
   const toDolen =
     toDos["to_do"].length + toDos["doing"].length + toDos["done"].length;
-  const dange = Math.round((toDos["to_do"].length / toDolen) * 100);
-  const warning = Math.round((toDos["doing"].length / toDolen) * 100);
-  const success = Math.round((toDos["done"].length / toDolen) * 100);
+  const dange = Math.round((toDos["to_do"].length / toDolen) * 1000) / 10;
+  const warning = Math.round((toDos["doing"].length / toDolen) * 1000) / 10;
+  const success = Math.round((toDos["done"].length / toDolen) * 1000) / 10;
   return (
     <div className="w-full h-full p-4">
       <div className="flex justify-between items-center pb-2">
         <span className="text-2xl font-semibold sm:text-lg">팀 상태 개요</span>
         <div className="w-[200px] h-full flex justify-between items-center sm:w-[150px]">
           <section className="flex items-center space-x-2 sm:space-x-1">
-            <div className="w-2 h-2 rounded-full bg-red-600" />
+            <div className="w-2 h-2 rounded-full bg-1" />
             <span>대기</span>
           </section>
           <section className="flex items-center space-x-2 sm:space-x-1">
-            <div className="w-2 h-2 rounded-full bg-yellow-400" />
+            <div className="w-2 h-2 rounded-full bg-2" />
             <span>진행중</span>
           </section>
           <section className="flex items-center space-x-2 sm:space-x-1">
-            <div className="w-2 h-2 rounded-full bg-green-600" />
+            <div className="w-2 h-2 rounded-full bg-3" />
             <span>완료</span>
           </section>
         </div>
@@ -39,9 +39,9 @@ const MemberChart = () => {
                 <div>{`${dange}/${warning}/${success}`}</div>
               </div>
               <ProgressBar className="w-full">
-                <ProgressBar variant="danger" now={dange} />
-                <ProgressBar variant="warning" now={warning} />
-                <ProgressBar variant="success" now={success} />
+                <ProgressBar className="bg-1" now={dange} />
+                <ProgressBar className="bg-2" now={warning} />
+                <ProgressBar className="bg-3" now={success} />
               </ProgressBar>
             </div>
           );

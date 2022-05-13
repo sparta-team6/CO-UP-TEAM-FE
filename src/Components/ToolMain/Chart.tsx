@@ -23,16 +23,16 @@ const Chart = () => {
           ]}
           options={{
             labels: ["대기중", "진행중", "완료"],
-            colors: ["#c0392b", "#f1c40f", "#2ecc71"],
+            colors: ["#FF7637", "#FFD33C", "#5F99FF"],
             chart: {
               type: "donut",
               height: 400,
             },
             plotOptions: {
               pie: {
-                customScale: 1,
+                customScale: 1.1,
                 donut: {
-                  size: "80%",
+                  size: "75%",
                 },
               },
             },

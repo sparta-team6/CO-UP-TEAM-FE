@@ -4,6 +4,7 @@ import Modal from "@mui/material/Modal";
 import KakaoLogin from "../../elements/IntroHome/KakaoLogin";
 import GoogleLogin from "../../elements/IntroHome/GoogleLogin";
 import NaverLogin from "../../elements/IntroHome/NaverLogin";
+import { Link } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -23,7 +24,13 @@ export default function LoginModal() {
 
   return (
     <div>
-      <button className="w-40 p-3 font-extrabold" onClick={handleOpen}>
+      <Link className="hidden w-40 p-3 font-extrabold sm:block" to="/login">
+        CO-UP 시작하기
+      </Link>
+      <button
+        className="w-40 p-3 font-extrabold sm:hidden"
+        onClick={handleOpen}
+      >
         CO-UP 시작하기
       </button>
       <Modal
@@ -35,7 +42,7 @@ export default function LoginModal() {
         <Box sx={style} className="w-[500px] h-[370px] rounded-xl">
           <div className="flex flex-col items-center space-y-4">
             <span className="font-bold text-xl p-8">
-              로그인을 해주세요:&#41;
+              {`로그인을 해주세요:)`}
             </span>
             <KakaoLogin />
             <GoogleLogin />
