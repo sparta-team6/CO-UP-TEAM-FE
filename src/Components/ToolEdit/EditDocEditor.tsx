@@ -25,7 +25,7 @@ type IForm = {
 };
 
 const DocEditor = ({ id, title, contents }: Folders) => {
-  const { mutateAsync: UpdateFolder } = useUpdateFolder(id);
+  const { mutateAsync: UpdateFolder } = useUpdateFolder(Number(id));
   const navigate = useNavigate();
   const editorRef = createRef<any>();
   const { register, handleSubmit } = useForm<IForm>();
@@ -45,7 +45,7 @@ const DocEditor = ({ id, title, contents }: Folders) => {
       contents: editorRef.current.getInstance().getMarkdown(),
     }).then(() => {
       queryClient.invalidateQueries("getFolders");
-      navigate("/tool/1/document");
+      navigate(`/tool/1/document/${id}`);
     });
   };
 
