@@ -1,6 +1,5 @@
 import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DocumentDetail from "../pages/Tool/Document/DocumentDetail";
 
 const Header = lazy(() => import("./Header"));
 const IntroHome = lazy(() => import("../pages/IntroHome"));
@@ -9,6 +8,7 @@ const Login = lazy(() => import("../pages/Mobile/Login"));
 const ToolMain = lazy(() => import("../pages/Tool/Main"));
 const MobileChat = lazy(() => import("../pages/Mobile/Chat"));
 const ToolDocument = lazy(() => import("../pages/Tool/Document/DocumentList"));
+const DocumentDetail = lazy(() => import("../pages/Tool/Document/DocumentDetail"));
 const ToolBoard = lazy(() => import("../pages/Tool/Board"));
 const AddDocs = lazy(() => import("../pages/Tool/Document/AddDocs"));
 const ProjectList = lazy(() => import("../pages/ProjectList"));
