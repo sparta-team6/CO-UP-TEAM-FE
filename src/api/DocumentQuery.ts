@@ -5,6 +5,7 @@ export interface Folders {
   title?: string;
   contents?: string;
   id?: number;
+  isLoading?: boolean;
 }
 
 export interface IFolders {
@@ -23,7 +24,7 @@ export const useGetFolders = () => {
 
 export const useGetOneFolder = (id: number) => {
   return useQuery<AxiosResponse, AxiosError, IFolderDetail>(
-    "getOneFolder",
+    ["getOneFolder", id],
     () => {
       return axios.get(`http://localhost:4000/folders/${id}`);
     }
