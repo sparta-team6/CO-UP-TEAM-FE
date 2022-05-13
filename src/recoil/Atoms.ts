@@ -1,6 +1,5 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
-// import { useGetProjectUser } from "../api/UserQuery";
 
 const { persistAtom } = recoilPersist();
 
@@ -61,17 +60,7 @@ export const MyProfile = atom<IUserState>({
   },
   effects_UNSTABLE: [persistAtom],
 });
-
 export const HandleOpen = atom({
   key: "handleOpen",
   default: false,
 });
-
-// export const UserSave = selector({
-//   key: "userBox",
-//   get: async () => {
-//     const { data } = await useGetProjectUser();
-//     console.log(data);
-//     return data?.data;
-//   },
-// });

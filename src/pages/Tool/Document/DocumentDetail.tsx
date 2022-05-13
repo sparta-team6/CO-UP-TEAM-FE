@@ -9,7 +9,6 @@ const DocumentDetail = () => {
   const { postId } = useParams();
   const { data, isLoading } = useGetOneFolder(Number(postId));
   const folderData = data?.data;
-
   return (
     <div className="w-full  h-[calc(100vh-3rem)] bg-slate-300 flex absolute bottom-0">
       <div className="flex fixed top-0 left-0 mt-12 h-full sm:hidden">

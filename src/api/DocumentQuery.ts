@@ -23,12 +23,9 @@ export const useGetFolders = () => {
 };
 
 export const useGetOneFolder = (id: number) => {
-  return useQuery<AxiosResponse, AxiosError, IFolderDetail>(
-    ["getOneFolder", id],
-    () => {
-      return axios.get(`http://localhost:4000/folders/${id}`);
-    }
-  );
+  return useQuery<AxiosResponse, AxiosError, IFolderDetail>(["getOneFolder", id], () => {
+    return axios.get(`http://localhost:4000/folders/${id}`);
+  });
 };
 
 export const useAddFolder = () => {
