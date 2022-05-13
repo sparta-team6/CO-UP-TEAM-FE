@@ -9,7 +9,7 @@ const MyProjectList = () => {
   };
 
   return (
-    <div className="w-12 h-full flex flex-col justify-start items-center space-y-5 bg-slate-500 sm:h-screen">
+    <div className="w-12 h-full flex flex-col justify-start items-center space-y-5 bg-slate-500 sm:h-[calc(100vh-80px)] sm:pt-12">
       <div>
         {data?.data.map((room, index) => (
           <div onClick={() => onClick(room.id)} key={index}>

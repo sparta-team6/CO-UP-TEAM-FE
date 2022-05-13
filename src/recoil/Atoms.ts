@@ -60,3 +60,7 @@ export const MyProfile = atom<IUserState>({
   },
   effects_UNSTABLE: [persistAtom],
 });
+export const HandleOpen = atom({
+  key: "handleOpen",
+  default: false,
+});

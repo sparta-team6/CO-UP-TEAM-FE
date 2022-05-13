@@ -24,7 +24,7 @@ const DocumentList = () => {
     setAnchorEl(null);
   };
   return (
-    <div className="w-72 h-full bg-orange-300 sm:w-[calc(100%-3rem)]">
+    <div className="w-72 h-full bg-orange-300 sm:w-full">
       <div className="flex justify-between items-center pt-5 px-4 sm:pt-4">
         <div className="font-bold text-xl">문서목록</div>
         <nav className="w-8 font-bold text-2xl flex justify-center items-center">
@@ -60,9 +60,7 @@ const DocumentList = () => {
               },
             }}
           >
-            <MenuItem onClick={() => navigate(`/tool/${id}/document/add`)}>
-              문서 생성하기
-            </MenuItem>
+            <MenuItem onClick={() => navigate(`/tool/${id}/document/add`)}>문서 생성하기</MenuItem>
             <MenuItem>폴더 이름 바꾸기</MenuItem>
             <MenuItem>폴더 지우기</MenuItem>
           </Menu>

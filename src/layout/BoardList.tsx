@@ -45,17 +45,13 @@ const BoardList = () => {
     }
   };
   return (
-    <div className="w-[calc(100%-23rem)] h-full bg-slate-200 overflow-auto md:w-[calc(100%-3rem)]">
+    <div className="w-full h-full bg-slate-200 overflow-auto">
       <div className="w-full h-full flex justify-center items-center relative">
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="w-full h-full flex">
-            <div className="flex justify-around items-start w-full gap-2 sm:justify-start">
+            <div className="flex justify-around items-start w-full gap-2 md:justify-start">
               {Object.keys(toDos).map((bucketId) => (
-                <Bucket
-                  bucketId={bucketId}
-                  key={bucketId}
-                  toDos={toDos[bucketId]}
-                />
+                <Bucket bucketId={bucketId} key={bucketId} toDos={toDos[bucketId]} />
               ))}
             </div>
           </div>
@@ -63,9 +59,7 @@ const BoardList = () => {
         {notToDos ? (
           <div className="w-full h-[80%] absolute flex justify-center items-center">
             <div className="w-full h-32 space-y-5">
-              <p className="text-center font-bold text-3xl">
-                새로운 보드를 추가해 보세요
-              </p>
+              <p className="text-center font-bold text-3xl">새로운 보드를 추가해 보세요</p>
               <p className="text-center text-gray-600">
                 보드를 사용하여 팀원들과 현재 대기중인, 진행중인,
                 <br />
