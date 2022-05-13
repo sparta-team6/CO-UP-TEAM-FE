@@ -47,8 +47,9 @@ const DocEditor = () => {
 
     mutateAsync(folder).then(() => {
       queryClient.invalidateQueries("getFolders");
+      if (window.innerWidth > 768) navigate("/tool/1/document");
+      else navigate("/tool/1/document/m");
     });
-    navigate("/tool/1/document");
   };
 
   return (
@@ -66,7 +67,7 @@ const DocEditor = () => {
             <button
               type="button"
               className="border-none ml-2 px-3 py-2 rounded-md bg-slate-400"
-              onClick={() => navigate("/tool/1/document")}
+              onClick={() => navigate("/tool/1/document/m")}
             >
               닫기
             </button>

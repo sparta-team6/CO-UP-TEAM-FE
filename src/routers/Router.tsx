@@ -7,6 +7,7 @@ const Profile = lazy(() => import("../pages/Profile"));
 const Login = lazy(() => import("../pages/Mobile/Login"));
 const ToolMain = lazy(() => import("../pages/Tool/Main"));
 const MobileChat = lazy(() => import("../pages/Mobile/Chat"));
+const MobileDocument = lazy(() => import("../pages/Mobile/DocumentList"));
 const ToolDocument = lazy(() => import("../pages/Tool/DocumentList"));
 const ToolBoard = lazy(() => import("../pages/Tool/Board"));
 const AddDocs = lazy(() => import("../pages/Tool/AddDocs"));
@@ -28,6 +29,7 @@ const Router = () => {
         <Route path="/tool/:id/document" element={<ToolDocument />} />
         <Route path="/tool/:id/document/:postId" element={<ToolDocument />} />
         <Route path="/tool/:id/document/:postId/edit" element={<EditDocs />} />
+        <Route path="/tool/:id/document/m" element={<MobileDocument />} />
         <Route path="/tool/:id/document/add" element={<AddDocs />} />
         <Route path="/tool/:id/board" element={<ToolBoard />} />
         <Route path="/user/kakao/callback/*" element={<Kakao />} />

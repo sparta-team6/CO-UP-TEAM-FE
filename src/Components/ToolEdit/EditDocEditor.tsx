@@ -46,7 +46,8 @@ const DocEditor = ({ id, title, contents }: Folders) => {
     }).then(() => {
       queryClient.invalidateQueries("getFolders");
     });
-    navigate(`/tool/1/document/${id}`);
+    if (window.innerWidth > 768) navigate("/tool/1/document");
+    else navigate("/tool/1/document/m");
   };
 
   return (

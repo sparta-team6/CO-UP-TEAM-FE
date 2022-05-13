@@ -24,8 +24,8 @@ const DocumentList = () => {
     setAnchorEl(null);
   };
   return (
-    <div className="w-72 h-full bg-orange-300 sm:h-screen">
-      <div className="flex justify-between items-center pt-5 px-4 sm:mt-12">
+    <div className="w-72 h-full bg-orange-300 sm:w-full">
+      <div className="flex justify-between items-center pt-5 px-4 sm:pt-4">
         <div className="font-bold text-xl">문서목록</div>
         <nav className="w-8 font-bold text-2xl flex justify-center items-center">
           <Link to="/tool/1/document/add">+</Link>

@@ -18,8 +18,11 @@ const Header = () => {
               <div className="relative">
                 <Link to="/tool/1">메인</Link>
               </div>
-              <div className="relative">
+              <div className="relative sm:hidden">
                 <Link to="/tool/1/document">문서</Link>
+              </div>
+              <div className="hidden relative sm:block">
+                <Link to="/tool/1/document/m">문서</Link>
               </div>
               <div className="relative">
                 <Link to="/tool/1/board">보드</Link>
