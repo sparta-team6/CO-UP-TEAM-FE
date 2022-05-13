@@ -6,7 +6,6 @@ import Footer from "./Footer";
 const Header = () => {
   /* 프로젝트 정보는 리코일에 */
   const location = useLocation();
-  console.log();
   return (
     <React.Fragment>
       {location.pathname.includes("tool") ? (
@@ -20,8 +19,11 @@ const Header = () => {
               <div className="relative">
                 <Link to="/tool/1">메인</Link>
               </div>
-              <div className="relative">
+              <div className="relative sm:hidden">
                 <Link to="/tool/1/document">문서</Link>
+              </div>
+              <div className="hidden relative sm:block">
+                <Link to="/tool/1/document/m">문서</Link>
               </div>
               <div className="relative">
                 <Link to="/tool/1/board">보드</Link>
