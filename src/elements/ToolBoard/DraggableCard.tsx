@@ -48,10 +48,10 @@ const DraggableCard = ({
             <div
               className={`w-2 h-full ${
                 bucketId === "to_do"
-                  ? "bg-red-600"
+                  ? "bg-1"
                   : bucketId === "doing"
-                  ? "bg-yellow-400"
-                  : "bg-green-600"
+                  ? "bg-2"
+                  : "bg-3"
               }  absolute top-0`}
             />
             <div className="absolute top-2 right-2 cursor-pointer">X</div>
@@ -67,7 +67,10 @@ const DraggableCard = ({
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
+            <Box
+              sx={style}
+              className="w-[690px] h-[370px] rounded-xl sm:w-full"
+            >
               <span>{toDoText}</span>
               <span>{toDoName}</span>
               <span>{toDoComment}</span>
