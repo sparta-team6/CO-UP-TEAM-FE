@@ -21,7 +21,7 @@ const ViewDoc = () => {
     });
   };
   return (
-    <div className="w-[calc(100%-41rem)] h-full flex flex-col md:w-[calc(100%-21rem)] sm:w-full">
+    <div className="w-full h-full flex flex-col">
       {result ? (
         <div className="p-4 mt-4">
           <div className="text-2xl font-bold">{result.title}</div>
