@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { usePostOpenRoom } from "../../api/ProjectQuery";
 
 type IForm = {
-  inviteCode?: number;
+  inviteCode?: string;
 };
 
 const ProjectOpenForm = () => {
@@ -12,9 +12,15 @@ const ProjectOpenForm = () => {
   const { mutateAsync } = usePostOpenRoom();
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<IForm> = (data) => {
-    mutateAsync(Number(data.inviteCode)).then(() => {
-      navigate(`/tool/${data.inviteCode}`);
-    });
+    console.log(data.inviteCode);
+    mutateAsync(String(data.inviteCode))
+      .then((res) => {
+        console.log(res);
+        navigate(`/tool/${data.inviteCode}`);
+      })
+      .catch((err) => {
+        alert(err.response.data);
+      });
   };
   return (
     <React.Fragment>
