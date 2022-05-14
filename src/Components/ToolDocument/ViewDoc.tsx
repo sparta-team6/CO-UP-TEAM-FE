@@ -6,7 +6,7 @@ import { queryClient } from "../..";
 
 const ViewDoc = ({ title, contents, id, isLoading, docId }: Docs) => {
   const navigate = useNavigate();
-  const { mutateAsync: DelDoc } = useDelDoc(Number(docId));
+  const { mutateAsync: DelDoc } = useDelDoc(Number(id));
 
   const onDelete = () => {
     DelDoc().then(() => {
