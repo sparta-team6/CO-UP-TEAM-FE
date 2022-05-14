@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useGetFolders } from "../api/DocumentQuery";
+import { useGetDocs } from "../api/DocumentQuery";
 
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -12,7 +12,7 @@ const ITEM_HEIGHT = 48;
 const DocumentList = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const { data } = useGetFolders();
+  const { data } = useGetDocs();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -67,18 +67,19 @@ const DocumentList = () => {
         </div>
       </div>
       <div className="flex flex-col ml-10 mt-2">
-        {data?.data?.map((folder) => (
-          <div className="flex items-center" key={folder.id}>
+        {data?.data?.map((doc) => (
+          <div className="flex items-center" key={doc.id}>
             <div className="text-base m-1 cursor-pointer">
               <Link
-                to={`/tool/1/document/${folder.id}`}
+                to={`/tool/1/document/${doc.id}`}
                 state={{
-                  id: folder.id,
-                  title: folder.title,
-                  contents: folder.contents,
+                  id: doc.id,
+                  title: doc.title,
+                  contents: doc.contents,
+                  docId: doc.docId,
                 }}
               >
-                {folder.title}
+                {doc.title}
               </Link>
             </div>
           </div>

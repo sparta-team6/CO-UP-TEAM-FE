@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import SlidingPanel from "react-sliding-side-panel";
 import "react-sliding-side-panel/lib/index.css";
 import { useRecoilState } from "recoil";
-import { useGetFolders } from "../../../api/DocumentQuery";
+import { useGetDocs } from "../../../api/DocumentQuery";
 import ViewDoc from "../../../Components/ToolDocument/ViewDoc";
 import Chat from "../../../layout/Chat";
 import DocumentList from "../../../layout/DocumentList";
@@ -10,7 +10,7 @@ import MyProjectList from "../../../layout/MyProjectList";
 import { HandleOpen } from "../../../recoil/Atoms";
 
 const Document = () => {
-  const { data } = useGetFolders();
+  const { data } = useGetDocs();
   const [open, setOpen] = useRecoilState(HandleOpen);
   const onClick = () => {
     setOpen(!open);

@@ -15,7 +15,7 @@ import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import { createRef } from "react";
 
-import { useAddFolder } from "../../api/DocumentQuery";
+import { useAddDoc } from "../../api/DocumentQuery";
 import { queryClient } from "../../index";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -27,7 +27,7 @@ type IForm = {
 const DocEditor = () => {
   const navigate = useNavigate();
   const editorRef = createRef<any>();
-  const { mutateAsync } = useAddFolder();
+  const { mutateAsync } = useAddDoc();
   const { register, handleSubmit } = useForm<IForm>();
   const onValid: SubmitHandler<IForm> = (data) => {
     if (!data.title) {
@@ -39,14 +39,14 @@ const DocEditor = () => {
       return;
     }
 
-    const folder = {
-      id: Date.now(),
+    const doc = {
+      docId: Date.now(),
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
     };
 
-    mutateAsync(folder).then(() => {
-      queryClient.invalidateQueries("getFolders");
+    mutateAsync(doc).then(() => {
+      queryClient.invalidateQueries("getDocs");
       navigate("/tool/1/document");
     });
   };
