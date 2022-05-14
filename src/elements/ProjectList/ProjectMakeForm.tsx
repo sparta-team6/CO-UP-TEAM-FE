@@ -11,8 +11,7 @@ import { resizeFile } from "../../servers/resize";
 type IForm = {
   title: string;
   summary: string;
-  img?: string;
-  id?: number;
+  thumbnail: string;
 };
 
 interface IProp {
@@ -30,11 +29,11 @@ const ProjectMakeForm = ({ open }: IProp) => {
     const size = fileInput.current.files[0];
     if (size === undefined) {
       mutateAsync({
+        pjId: Date.now(),
         title: data.title,
         summary: data.summary,
-        img: user.profile_image,
-        name: user.nickname,
-        id: Date.now(),
+        thumbnail: user.profile_image,
+        inviteCode: Date.now(),
       }).then(() => {
         queryClient.invalidateQueries("getProject");
         open(false);
@@ -42,11 +41,11 @@ const ProjectMakeForm = ({ open }: IProp) => {
     } else {
       const image = await resizeFile(size);
       mutateAsync({
+        pjId: Date.now(),
         title: data.title,
         summary: data.summary,
-        img: String(image),
-        name: user.nickname,
-        id: Date.now(),
+        thumbnail: String(image),
+        inviteCode: Date.now(),
       }).then(() => {
         queryClient.invalidateQueries("getProject");
         open(false);
@@ -69,12 +68,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
   };
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <img
-        width="100px"
-        height="100px"
-        alt=""
-        src={imgBase64 ? imgBase64 : user.profile_image}
-      />
+      <img width="100px" height="100px" alt="" src={imgBase64 ? imgBase64 : user.profile_image} />
       <label htmlFor="icon-button-file">
         <input
           type="file"
@@ -84,23 +78,16 @@ const ProjectMakeForm = ({ open }: IProp) => {
           ref={fileInput}
           name={imgFile}
         />
-        <IconButton
-          color="primary"
-          aria-label="upload picture"
-          component="span"
-        >
+        <IconButton color="primary" aria-label="upload picture" component="span">
           <PhotoCamera fontSize="small" />
         </IconButton>
       </label>
-      <form
-        className="w-[70%] h-full flex flex-col space-y-4 "
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <input placeholder="팀 이름" {...register("title")} />
+      <form className="w-[70%] h-full flex flex-col space-y-4 " onSubmit={handleSubmit(onSubmit)}>
+        <input placeholder="프로젝트제목" {...register("title")} />
         <textarea
           rows={4}
           className="outline-none resize-none"
-          placeholder="소개"
+          placeholder="프로젝트개요"
           {...register("summary")}
         />
         <button className="w-[100px]" type="submit">

@@ -16,8 +16,8 @@ const MyProjectList = () => {
     <div className="w-12 h-full flex flex-col justify-between items-center bg-slate-500 sm:h-[calc(100vh-80px)] sm:pt-12">
       <div>
         {data?.data.map((room, index) => (
-          <div onClick={() => onClick(room.id)} key={index}>
-            <img className="w-10 h-10 rounded-lg mt-2" src={room.img} alt="" />
+          <div onClick={() => onClick(room.pjId)} key={index}>
+            <img className="w-10 h-10 rounded-lg mt-2" src={room.thumbnail} alt="" />
           </div>
         ))}
       </div>

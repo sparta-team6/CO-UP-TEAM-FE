@@ -2,10 +2,8 @@ import { PhotoCamera } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
 import { useUpdateRoom } from "../../api/ProjectQuery";
-import { MyProfile } from "../../recoil/Atoms";
 import { resizeFile } from "../../servers/resize";
 
 type IForm = {
@@ -18,24 +16,17 @@ type IForm = {
 
 type IProps = {
   setUpOpen: Dispatch<SetStateAction<boolean>>;
-  roomID: number;
+  roomID?: number;
   roomImg: string;
   roomTitle: string;
   roomSummary: string;
 };
 
-const ProjectUpdateForm = ({
-  setUpOpen,
-  roomID,
-  roomImg,
-  roomTitle,
-  roomSummary,
-}: IProps) => {
-  const user = useRecoilValue(MyProfile);
+const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary }: IProps) => {
   const [imgBase64, setImgBase64] = useState<string>(roomImg);
   const [imgFile, setImgFile] = useState();
   const fileInput = useRef<any>();
-  const { mutateAsync } = useUpdateRoom(roomID);
+  const { mutateAsync } = useUpdateRoom(Number(roomID));
   const { register, handleSubmit } = useForm<IForm>();
   const onSubmit: SubmitHandler<IForm> = async (data) => {
     const size = fileInput.current.files[0];
@@ -43,9 +34,8 @@ const ProjectUpdateForm = ({
       mutateAsync({
         title: data.title,
         summary: data.summary,
-        img: roomImg,
-        name: user.nickname,
-        id: Date.now(),
+        thumbnail: roomImg,
+        pjId: Date.now(),
       }).then(() => {
         queryClient.invalidateQueries("getProject");
         setUpOpen(false);
@@ -55,9 +45,8 @@ const ProjectUpdateForm = ({
       mutateAsync({
         title: data.title,
         summary: data.summary,
-        img: String(image),
-        name: user.nickname,
-        id: Date.now(),
+        thumbnail: String(image),
+        pjId: Date.now(),
       }).then(() => {
         queryClient.invalidateQueries("getProject");
         setUpOpen(false);
@@ -99,18 +88,11 @@ const ProjectUpdateForm = ({
           ref={fileInput}
           name={imgFile}
         />
-        <IconButton
-          color="primary"
-          aria-label="upload picture"
-          component="span"
-        >
+        <IconButton color="primary" aria-label="upload picture" component="span">
           <PhotoCamera fontSize="small" />
         </IconButton>
       </label>
-      <form
-        className="w-[70%] h-full flex flex-col space-y-4"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="w-[70%] h-full flex flex-col space-y-4" onSubmit={handleSubmit(onSubmit)}>
         <input defaultValue={roomTitle} {...register("title")} />
         <textarea
           rows={4}

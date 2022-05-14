@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Cookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { MyProfile } from "../recoil/Atoms";
@@ -9,15 +10,29 @@ const Kakao = () => {
   const navigate = useNavigate();
   const code = new URL(window.location.href).searchParams.get("code");
   console.log(typeof code);
+  const cookies = new Cookies();
+  const now = new Date();
+  const accessTime = new Date();
+  const refreshTime = new Date();
+  accessTime.setMinutes(now.getMinutes() + 5);
+  refreshTime.setMinutes(now.getMinutes() + 15);
   useEffect(() => {
     const Kakao = async (code: string) => {
       return await instance
-        .post(`/auth/kakao?code=${code}`)
+        .post(`/auth/kakao?code=${code}`, {
+          withCredentials: true,
+        })
         .then((res) => {
-          const result = res?.data;
-          console.log(result);
-          user(result);
-          navigate("/projectlist");
+          console.log(res);
+          cookies.set("accessToken", String(res.data.accessToken), {
+            path: "/",
+            expires: accessTime,
+          });
+          cookies.set("refreshToken", String(res.data.refreshToken), {
+            path: "/",
+            expires: refreshTime,
+          });
+          navigate("/projectList");
         })
         .catch((err) => {
           console.log(err);
