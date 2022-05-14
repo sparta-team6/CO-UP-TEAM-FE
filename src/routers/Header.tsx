@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { ProjectKey } from "../recoil/Atoms";
 import Footer from "./Footer";
 
 const Header = () => {
-  /* 프로젝트 정보는 리코일에 */
   const location = useLocation();
+  const project = useRecoilValue(ProjectKey);
   return (
     <React.Fragment>
       {location.pathname.includes("tool") ? (
@@ -16,17 +18,17 @@ const Header = () => {
             </div>
             <nav className="w-[calc(100%-37rem)] flex  space-x-20 text-base pl-5 sm:w-full">
               <div className="relative">
-                <Link to="/tool/1">메인</Link>
+                <Link to={`/tool/${project.pjId}`}>메인</Link>
               </div>
               <div className="relative">
-                <Link to="/tool/1/document">문서</Link>
+                <Link to={`/tool/${project.pjId}/document`}>문서</Link>
               </div>
               <div className="relative">
-                <Link to="/tool/1/board">보드</Link>
+                <Link to={`/tool/${project.pjId}/board`}>보드</Link>
               </div>
             </nav>
             <nav className="w-64 h-full flex justify-around items-center">
-              <Link to="/tool/1/chat" className="hidden md:block">
+              <Link to={`/tool/${project.pjId}/chat`} className="hidden md:block">
                 채팅
               </Link>
               <Link to="/profile" className="md:hidden">
@@ -38,8 +40,7 @@ const Header = () => {
             </nav>
           </div>
         </React.Fragment>
-      ) : location.pathname.includes("projectList") ||
-        location.pathname.includes("profile") ? (
+      ) : location.pathname.includes("projectList") || location.pathname.includes("profile") ? (
         <div className="w-full h-10 bg-4 flex justify-between items-center">
           <Link to="/">로고</Link>
           <nav className="w-72 flex justify-around">

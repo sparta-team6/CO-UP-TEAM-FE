@@ -7,7 +7,7 @@ const MyProjectList = () => {
   const setOpen = useSetRecoilState(HandleOpen);
   const navigate = useNavigate();
   const { data } = useGetRoom();
-  const onClick = (roomID: number) => {
+  const onClick = (roomID?: string) => {
     navigate(`/tool/${roomID}`);
     setOpen(false);
   };

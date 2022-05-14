@@ -29,11 +29,9 @@ const ProjectMakeForm = ({ open }: IProp) => {
     const size = fileInput.current.files[0];
     if (size === undefined) {
       mutateAsync({
-        pjId: Date.now(),
         title: data.title,
         summary: data.summary,
         thumbnail: user.profile_image,
-        inviteCode: Date.now(),
       }).then(() => {
         queryClient.invalidateQueries("getProject");
         open(false);
@@ -41,11 +39,9 @@ const ProjectMakeForm = ({ open }: IProp) => {
     } else {
       const image = await resizeFile(size);
       mutateAsync({
-        pjId: Date.now(),
         title: data.title,
         summary: data.summary,
         thumbnail: String(image),
-        inviteCode: Date.now(),
       }).then(() => {
         queryClient.invalidateQueries("getProject");
         open(false);

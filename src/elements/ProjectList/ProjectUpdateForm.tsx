@@ -16,7 +16,7 @@ type IForm = {
 
 type IProps = {
   setUpOpen: Dispatch<SetStateAction<boolean>>;
-  roomID?: number;
+  roomID?: string;
   roomImg: string;
   roomTitle: string;
   roomSummary: string;
@@ -26,7 +26,7 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
   const [imgBase64, setImgBase64] = useState<string>(roomImg);
   const [imgFile, setImgFile] = useState();
   const fileInput = useRef<any>();
-  const { mutateAsync } = useUpdateRoom(Number(roomID));
+  const { mutateAsync } = useUpdateRoom(String(roomID));
   const { register, handleSubmit } = useForm<IForm>();
   const onSubmit: SubmitHandler<IForm> = async (data) => {
     const size = fileInput.current.files[0];
@@ -35,7 +35,7 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
         title: data.title,
         summary: data.summary,
         thumbnail: roomImg,
-        pjId: Date.now(),
+        pjId: roomID,
       }).then(() => {
         queryClient.invalidateQueries("getProject");
         setUpOpen(false);
@@ -46,7 +46,7 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
         title: data.title,
         summary: data.summary,
         thumbnail: String(image),
-        pjId: Date.now(),
+        pjId: roomID,
       }).then(() => {
         queryClient.invalidateQueries("getProject");
         setUpOpen(false);

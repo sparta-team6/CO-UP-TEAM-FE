@@ -1,13 +1,17 @@
 import { useEffect } from "react";
 import SlidingPanel from "react-sliding-side-panel";
 import "react-sliding-side-panel/lib/index.css";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { useGetBoard } from "../../api/BoardQuery";
 import BoardList from "../../layout/BoardList";
 import Chat from "../../layout/Chat";
 import MyProjectList from "../../layout/MyProjectList";
-import { HandleOpen } from "../../recoil/Atoms";
+import { HandleOpen, ProjectKey } from "../../recoil/Atoms";
 
 const Board = () => {
+  const { pjId } = useRecoilValue(ProjectKey);
+  const { data } = useGetBoard(String(pjId));
+  console.log(data);
   const [open, setOpen] = useRecoilState(HandleOpen);
   const onClick = () => {
     setOpen(!open);

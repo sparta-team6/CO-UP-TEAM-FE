@@ -13,7 +13,7 @@ import ProjectUpdateForm from "./ProjectUpdateForm";
 const ITEM_HEIGHT = 48;
 
 type IProps = {
-  roomID ?: number;
+  roomID?: string;
   roomImg: string;
   roomTitle: string;
   roomSummary: string;
