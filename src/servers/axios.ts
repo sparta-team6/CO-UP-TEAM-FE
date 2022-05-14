@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  withCredentials: true,
+  baseURL: "http://formsg.shop:8080/",
   headers: {
     "content-type": "application/json;charset=UTF-8",
-    accept: "*/*",
+    accept: "application/json,",
     "Access-Control-Allow-Origin": "*",
-    "X-Requested-With": "XMLHttpRequest",
   },
 });
 
