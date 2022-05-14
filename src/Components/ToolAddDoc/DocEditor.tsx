@@ -47,8 +47,7 @@ const DocEditor = () => {
 
     mutateAsync(folder).then(() => {
       queryClient.invalidateQueries("getFolders");
-      if (window.innerWidth > 768) navigate("/tool/1/document");
-      else navigate("/tool/1/document/m");
+      navigate("/tool/1/document");
     });
   };
 

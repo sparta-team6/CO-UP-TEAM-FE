@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import SlidingPanel from "react-sliding-side-panel";
+import "react-sliding-side-panel/lib/index.css";
 import { useRecoilState } from "recoil";
 import { useGetFolders } from "../../../api/DocumentQuery";
 import ViewDoc from "../../../Components/ToolDocument/ViewDoc";
@@ -11,6 +12,9 @@ import { HandleOpen } from "../../../recoil/Atoms";
 const Document = () => {
   const { data } = useGetFolders();
   const [open, setOpen] = useRecoilState(HandleOpen);
+  const onClick = () => {
+    setOpen(!open);
+  };
 
   useEffect(() => {
     setOpen(false);
@@ -28,7 +32,9 @@ const Document = () => {
           </div>
           <div className="hidden sm:block sm:w-full">
             <SlidingPanel type={"left"} isOpen={open} size={100}>
-              <MyProjectList />
+              <div onClick={onClick} className="flex">
+                <MyProjectList />
+              </div>
             </SlidingPanel>
             <DocumentList />
           </div>

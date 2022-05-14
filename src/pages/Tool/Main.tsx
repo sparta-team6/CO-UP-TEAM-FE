@@ -4,26 +4,18 @@ import MemberChart from "../../Components/ToolMain/MemberChart";
 import ProjectAnnouncement from "../../elements/ToolMain/ProjectAnnouncement";
 import ProjectMain from "../../Components/ToolMain/ProjectMain";
 import SlidingMain from "../../Components/ToolMain/SlidingMain";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { HandleOpen } from "../../recoil/Atoms";
 import { useEffect } from "react";
 
 const Main = () => {
-  const [open, setOpen] = useRecoilState(HandleOpen);
-  const onClick = () => {
-    setOpen(!open);
-  };
-
+  const setOpen = useSetRecoilState(HandleOpen);
   useEffect(() => {
     setOpen(false);
   }, []);
-
   return (
-    <div
-      onClick={onClick}
-      className="w-full h-screen flex justify-between relative pt-12 md:h-full md:justify-start"
-    >
-      <SlidingMain open={open} />
+    <div className="w-full h-screen flex justify-between relative pt-12 md:h-full md:justify-start">
+      <SlidingMain />
       <div className="w-[calc(100%-41rem)] h-full flex flex-col ml-[336px] p-4 md:w-[calc(100%-21rem)] sm:w-full sm:p-2 sm:m-0">
         <div className="w-full h-full flex flex-col">
           <ProjectMain />
