@@ -1,18 +1,8 @@
-import axios from "axios";
-import { useMutation } from "react-query";
+import { useQuery } from "react-query";
+import { instance } from "../servers/axios";
 
-interface Board {
-  pjId: string;
-  title: string;
-  position: number;
-}
-
-// interface IBoard {
-//   data: Board[];
-// }
-
-export const useGetBoard = () => {
-  return useMutation("getBoard", (post: Board) => {
-    return axios.post("http://3.36.77.250/api/buckets/", post);
+export const useGetBoard = (pjId: string) => {
+  return useQuery("getBoard", () => {
+    return instance.get(`/api/buckets/?pjId=${pjId}`);
   });
 };
