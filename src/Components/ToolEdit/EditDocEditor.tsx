@@ -24,8 +24,8 @@ type IForm = {
   title: string;
 };
 
-const DocEditor = ({ id, title, contents, docId }: Docs) => {
-  const { mutateAsync: UpdateDoc } = useUpdateDoc(Number(id));
+const DocEditor = ({ title, contents, docId }: Docs) => {
+  const { mutateAsync: UpdateDoc } = useUpdateDoc(String(docId));
   const navigate = useNavigate();
   const editorRef = createRef<any>();
   const { register, handleSubmit } = useForm<IForm>();
@@ -41,12 +41,11 @@ const DocEditor = ({ id, title, contents, docId }: Docs) => {
 
     UpdateDoc({
       docId,
-      id,
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
     }).then(() => {
       queryClient.invalidateQueries("getDocs");
-      navigate(`/tool/1/document/${id}`);
+      navigate(`/tool/1/document/${docId}`);
     });
   };
 

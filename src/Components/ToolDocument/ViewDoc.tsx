@@ -4,9 +4,9 @@ import { Docs, useDelDoc } from "../../api/DocumentQuery";
 import "../../styles/ViewDoc.css";
 import { queryClient } from "../..";
 
-const ViewDoc = ({ title, contents, id, isLoading, docId }: Docs) => {
+const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
   const navigate = useNavigate();
-  const { mutateAsync: DelDoc } = useDelDoc(Number(id));
+  const { mutateAsync: DelDoc } = useDelDoc(String(docId));
 
   const onDelete = () => {
     DelDoc().then(() => {
@@ -24,7 +24,7 @@ const ViewDoc = ({ title, contents, id, isLoading, docId }: Docs) => {
               <div className="text-xl mt-5">
                 <MarkdownPreview className="whitespace-pre-wrap break-all" source={contents} />
               </div>
-              <Link
+              {/* <Link
                 to={`/tool/1/document/${id}/edit`}
                 state={{
                   id,
@@ -34,7 +34,7 @@ const ViewDoc = ({ title, contents, id, isLoading, docId }: Docs) => {
                 }}
               >
                 수정
-              </Link>
+              </Link> */}
               <button onClick={onDelete}>삭제</button>
             </div>
           ) : (

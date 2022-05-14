@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import SlidingPanel from "react-sliding-side-panel";
 import "react-sliding-side-panel/lib/index.css";
-import { useRecoilState } from "recoil";
-import { useGetDocs } from "../../../api/DocumentQuery";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { useGetFolders } from "../../../api/FolderQuery";
 import ViewDoc from "../../../Components/ToolDocument/ViewDoc";
 import Chat from "../../../layout/Chat";
 import DocumentList from "../../../layout/DocumentList";
 import MyProjectList from "../../../layout/MyProjectList";
-import { HandleOpen } from "../../../recoil/Atoms";
+import { HandleOpen, ProjectKey } from "../../../recoil/Atoms";
 
 const Document = () => {
-  const { data } = useGetDocs();
+  const { pjId } = useRecoilValue(ProjectKey);
+  const { data } = useGetFolders(String(pjId));
   const [open, setOpen] = useRecoilState(HandleOpen);
   const onClick = () => {
     setOpen(!open);
