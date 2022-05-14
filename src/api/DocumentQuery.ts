@@ -1,12 +1,12 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { useMutation, useQuery } from "react-query";
+import { instance } from "../servers/axios";
 
 export interface Docs {
   title?: string;
   contents?: string;
-  id?: number;
   isLoading?: boolean;
-  docId?: number;
+  docId?: string;
 }
 
 export interface IDocs {
@@ -19,30 +19,30 @@ export interface IDocDetail {
 
 export const useGetDocs = () => {
   return useQuery<IDocs, AxiosError>("getDocs", () => {
-    return axios.get("http://localhost:4000/docs");
+    return instance.get("api/folders/docs");
   });
 };
 
-export const useGetOneDoc = (id: number) => {
-  return useQuery<AxiosResponse, AxiosError, IDocDetail>(["getOneDoc", id], () => {
-    return axios.get(`http://localhost:4000/docs/${id}`);
+export const useGetOneDoc = (docId: string) => {
+  return useQuery<AxiosResponse, AxiosError, IDocDetail>(["getOneDoc", docId], () => {
+    return instance.get(`api/folders/docs/${docId}`);
   });
 };
 
 export const useAddDoc = () => {
   return useMutation(async (Doc: Docs) => {
-    await axios.post("http://localhost:4000/docs", Doc);
+    await instance.post("api/folders/docs", Doc);
   });
 };
 
-export const useDelDoc = (docId: number) => {
+export const useDelDoc = (docId: string) => {
   return useMutation(async () => {
-    await axios.delete(`http://localhost:4000/docs/${docId}`);
+    await instance.delete(`api/folders/docs/${docId}`);
   });
 };
 
-export const useUpdateDoc = (docId: number) => {
-  return useMutation(async (doc: Docs) => {
-    await axios.put(`http://localhost:4000/docs/${docId}`, doc);
+export const useUpdateDoc = (docId: string) => {
+  return useMutation(async (Doc: Docs) => {
+    await instance.put(`api/folders/docs/${docId}`, Doc);
   });
 };
