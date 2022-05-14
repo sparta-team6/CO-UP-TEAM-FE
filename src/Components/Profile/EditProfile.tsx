@@ -90,19 +90,12 @@ const EditProfile = () => {
               ref={fileInput}
               name={imgFile}
             />
-            <IconButton
-              color="primary"
-              aria-label="upload picture"
-              component="span"
-            >
+            <IconButton color="primary" aria-label="upload picture" component="span">
               <PhotoCamera fontSize="small" />
             </IconButton>
           </label>
         </div>
-        <form
-          className="flex flex-col space-y-6 mt-14 w-96"
-          onSubmit={handleSubmit(onSubmit)}
-        >
+        <form className="flex flex-col space-y-6 mt-14 w-96" onSubmit={handleSubmit(onSubmit)}>
           <input
             className="text-center p-2 rounded-md border-none"
             placeholder="닉네임"
@@ -121,9 +114,6 @@ const EditProfile = () => {
             {...register("about_me")}
           />
           <div className="text-right">
-            <button className="p-2 bg-slate-300 rounded-xl w-32">
-              로그아웃
-            </button>
             <button className="p-2 bg-slate-300 rounded-xl w-32" type="submit">
               수정하기
             </button>
