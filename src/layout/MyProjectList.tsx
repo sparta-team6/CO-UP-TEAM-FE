@@ -1,15 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { useGetRoom } from "../api/ProjectQuery";
-import { HandleOpen } from "../recoil/Atoms";
+import { HandleOpen, ProjectKey } from "../recoil/Atoms";
 
 const MyProjectList = () => {
   const setOpen = useSetRecoilState(HandleOpen);
+  const setProject = useSetRecoilState(ProjectKey);
   const navigate = useNavigate();
   const { data } = useGetRoom();
   const onClick = (roomID?: string) => {
     navigate(`/tool/${roomID}`);
     setOpen(false);
+    const roomData = data?.data.find((r) => r.pjId === roomID);
+    setProject({
+      pjId: roomData?.pjId,
+      thumbnail: String(roomData?.thumbnail),
+      title: String(roomData?.title),
+      summary: String(roomData?.summary),
+      inviteCode: roomData?.inviteCode,
+    });
   };
 
   return (
