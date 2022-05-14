@@ -1,15 +1,13 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { useMutation, useQuery } from "react-query";
 import { instance } from "../servers/axios";
-// import { instance } from "../servers/axios";
 
 export interface Room {
-  pjId: number;
+  pjId?: string;
   thumbnail: string;
   title: string;
   summary: string;
-  inviteCode?: number;
-  id?: number;
+  inviteCode?: string;
 }
 
 export interface IRoom {
@@ -21,37 +19,37 @@ export interface IRoomDetail {
 }
 
 export const useGetRoom = () => {
-  return useQuery<IRoom, AxiosError>("getProject", () => {
-    return axios.get("http://localhost:4000/projects");
+  return useQuery<IRoom, AxiosError, IRoom>("getProject", () => {
+    return instance.get("api/projects/");
   });
 };
 
-export const useGetRoomDetail = (postId: number) => {
+export const useGetRoomDetail = (postId: string) => {
   return useQuery<AxiosResponse, AxiosError, IRoomDetail>("getProjectDetail", () => {
-    return axios.get(`http://localhost:4000/projects/${postId}`);
+    return instance.get(`api/projects/${postId}`);
   });
 };
 
 export const usePostRoom = () => {
   return useMutation(async (post: Room) => {
-    await axios.post("http://localhost:4000/projects", post);
+    await instance.post("api/projects/", post);
   });
 };
 
 export const usePostOpenRoom = () => {
-  return useMutation(async (RoomId: number) => {
-    await instance.post("/api/projects/invite", RoomId);
+  return useMutation(async (RoomId: string) => {
+    await instance.post(`/api/projects/invite?inviteCode=${RoomId}`, RoomId);
   });
 };
 
 export const useDelRoom = (postId: string) => {
   return useMutation(async () => {
-    await axios.delete(`http://localhost:4000/projects/${postId}`);
+    await instance.delete(`api/projects/${postId}`);
   });
 };
 
-export const useUpdateRoom = (postId: number) => {
+export const useUpdateRoom = (postId: string) => {
   return useMutation(async (post: Room) => {
-    await axios.put(`http://localhost:4000/projects/${postId}`, post);
+    await instance.patch(`api/projects/${postId}`, post);
   });
 };
