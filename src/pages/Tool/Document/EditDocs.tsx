@@ -1,13 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Folders } from "../../../api/DocumentQuery";
+import { Docs } from "../../../api/DocumentQuery";
 import EditDocEditor from "../../../Components/ToolEdit/EditDocEditor";
 import Chat from "../../../layout/Chat";
 import DocumentList from "../../../layout/DocumentList";
 import MyProjectList from "../../../layout/MyProjectList";
 
 type ILocation = {
-  state: Folders;
+  state: Docs;
 };
 
 const EditDocs = () => {

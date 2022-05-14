@@ -1,47 +1,48 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { useMutation, useQuery } from "react-query";
 
-export interface Folders {
+export interface Docs {
   title?: string;
   contents?: string;
   id?: number;
   isLoading?: boolean;
+  docId?: number;
 }
 
-export interface IFolders {
-  data: Folders[];
+export interface IDocs {
+  data: Docs[];
 }
 
-export interface IFolderDetail {
-  data: Folders;
+export interface IDocDetail {
+  data: Docs;
 }
 
-export const useGetFolders = () => {
-  return useQuery<IFolders, AxiosError>("getFolders", () => {
-    return axios.get("http://localhost:4000/folders");
+export const useGetDocs = () => {
+  return useQuery<IDocs, AxiosError>("getDocs", () => {
+    return axios.get("http://localhost:4000/Docs");
   });
 };
 
-export const useGetOneFolder = (id: number) => {
-  return useQuery<AxiosResponse, AxiosError, IFolderDetail>(["getOneFolder", id], () => {
-    return axios.get(`http://localhost:4000/folders/${id}`);
+export const useGetOneDoc = (id: number) => {
+  return useQuery<AxiosResponse, AxiosError, IDocDetail>(["getOneDoc", id], () => {
+    return axios.get(`http://localhost:4000/Docs/${id}`);
   });
 };
 
-export const useAddFolder = () => {
-  return useMutation(async (folder: Folders) => {
-    await axios.post("http://localhost:4000/folders", folder);
+export const useAddDoc = () => {
+  return useMutation(async (Doc: Docs) => {
+    await axios.post("http://localhost:4000/Docs", Doc);
   });
 };
 
-export const useDelFolder = (postId: number) => {
+export const useDelDoc = (docId: number) => {
   return useMutation(async () => {
-    await axios.delete(`http://localhost:4000/folders/${postId}`);
+    await axios.delete(`http://localhost:4000/Docs/${docId}`);
   });
 };
 
-export const useUpdateFolder = (postId: number) => {
-  return useMutation(async (post: Folders) => {
-    await axios.put(`http://localhost:4000/folders/${postId}`, post);
+export const useUpdateDoc = (docId: number) => {
+  return useMutation(async (doc: Docs) => {
+    await axios.put(`http://localhost:4000/Docs/${docId}`, doc);
   });
 };
