@@ -19,30 +19,30 @@ export interface IDocDetail {
 
 export const useGetDocs = () => {
   return useQuery<IDocs, AxiosError>("getDocs", () => {
-    return axios.get("http://localhost:4000/Docs");
+    return axios.get("http://localhost:4000/docs");
   });
 };
 
 export const useGetOneDoc = (id: number) => {
   return useQuery<AxiosResponse, AxiosError, IDocDetail>(["getOneDoc", id], () => {
-    return axios.get(`http://localhost:4000/Docs/${id}`);
+    return axios.get(`http://localhost:4000/docs/${id}`);
   });
 };
 
 export const useAddDoc = () => {
   return useMutation(async (Doc: Docs) => {
-    await axios.post("http://localhost:4000/Docs", Doc);
+    await axios.post("http://localhost:4000/docs", Doc);
   });
 };
 
 export const useDelDoc = (docId: number) => {
   return useMutation(async () => {
-    await axios.delete(`http://localhost:4000/Docs/${docId}`);
+    await axios.delete(`http://localhost:4000/docs/${docId}`);
   });
 };
 
 export const useUpdateDoc = (docId: number) => {
   return useMutation(async (doc: Docs) => {
-    await axios.put(`http://localhost:4000/Docs/${docId}`, doc);
+    await axios.put(`http://localhost:4000/docs/${docId}`, doc);
   });
 };
