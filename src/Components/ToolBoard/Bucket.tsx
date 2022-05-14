@@ -1,11 +1,13 @@
 import { Droppable } from "react-beautiful-dnd";
 import { useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
-import { ITodo, toDoState } from "../../recoil/Atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { ITodo, ProjectKey, toDoState } from "../../recoil/Atoms";
 import DraggableCard from "../../elements/ToolBoard/DraggableCard";
 import { useState } from "react";
 import { Box, Modal } from "@mui/material";
 import { useGetProjectUser } from "../../api/UserQuery";
+import { usePostBoard } from "../../api/BoardQuery";
+import { queryClient } from "../..";
 
 const style = {
   position: "absolute",
@@ -28,6 +30,7 @@ interface IForm {
 }
 
 const Bucket = ({ toDos, bucketId }: IBoardProps) => {
+  const { pjId } = useRecoilValue(ProjectKey);
   const { data } = useGetProjectUser();
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
@@ -35,6 +38,21 @@ const Bucket = ({ toDos, bucketId }: IBoardProps) => {
   const handleClose = () => setOpen(false);
   const setToDos = useSetRecoilState(toDoState);
   const { register, setValue, handleSubmit } = useForm<IForm>();
+  const { mutateAsync } = usePostBoard();
+  const onClick = () => {
+    mutateAsync({
+      pjId: String(pjId),
+      title: "rrrr",
+      position: 1,
+    })
+      .then((res) => {
+        queryClient.invalidateQueries("getProject");
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const onValid = ({ toDo, toDoComment }: IForm) => {
     if (name === "") {
       alert("담당자 선택해주세요");
@@ -62,6 +80,7 @@ const Bucket = ({ toDos, bucketId }: IBoardProps) => {
   };
   return (
     <div className="w-72 rounded-md min-h-[800px] flex flex-col">
+      <div onClick={onClick}>???????????????????????</div>
       <div className="w-full h-6 mt-10 flex justify-between">
         <h2 className="text-center font-semibold text-lg">{bucketId}</h2>
         <button
@@ -78,10 +97,7 @@ const Bucket = ({ toDos, bucketId }: IBoardProps) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
-          <form
-            className="w-full h-full relative space-y-4"
-            onSubmit={handleSubmit(onValid)}
-          >
+          <form className="w-full h-full relative space-y-4" onSubmit={handleSubmit(onValid)}>
             <input
               className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold font-semibold"
               {...register("toDo")}
@@ -113,10 +129,7 @@ const Bucket = ({ toDos, bucketId }: IBoardProps) => {
               type="text"
               placeholder="내용입력"
             />
-            <button
-              className="w-[150px] absolute bottom-0 right-0"
-              type="submit"
-            >
+            <button className="w-[150px] absolute bottom-0 right-0" type="submit">
               등록하기
             </button>
           </form>

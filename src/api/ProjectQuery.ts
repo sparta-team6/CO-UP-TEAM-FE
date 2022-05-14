@@ -38,7 +38,7 @@ export const usePostRoom = () => {
 
 export const usePostOpenRoom = () => {
   return useMutation(async (RoomId: string) => {
-    await instance.post(`/api/projects/invite?inviteCode=${RoomId}`, RoomId);
+    await instance.post(`api/projects/invite?inviteCode=${RoomId}`, RoomId);
   });
 };
 
