@@ -1,5 +1,6 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
+import { Room } from "../api/ProjectQuery";
 
 const { persistAtom } = recoilPersist();
 
@@ -60,7 +61,20 @@ export const MyProfile = atom<IUserState>({
   },
   effects_UNSTABLE: [persistAtom],
 });
+
 export const HandleOpen = atom({
   key: "handleOpen",
   default: false,
+});
+
+export const ProjectKey = atom<Room>({
+  key: "projectKey",
+  default: {
+    pjId: "",
+    inviteCode: "",
+    thumbnail: "",
+    title: "",
+    summary: "",
+  },
+  effects_UNSTABLE: [persistAtom],
 });
