@@ -19,11 +19,8 @@ const Kakao = () => {
   useEffect(() => {
     const Kakao = async (code: string) => {
       return await instance
-        .post(`/auth/kakao?code=${code}`, {
-          withCredentials: true,
-        })
+        .post(`/auth/kakao?code=${code}`)
         .then((res) => {
-          console.log(res);
           cookies.set("accessToken", String(res.data.accessToken), {
             path: "/",
             expires: accessTime,
