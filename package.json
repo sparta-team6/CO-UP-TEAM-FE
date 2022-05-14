@@ -18,6 +18,7 @@
     "@types/jest": "^27.5.0",
     "@types/node": "^16.11.33",
     "@types/react": "^18.0.9",
+    "@types/react-cookies": "^0.1.0",
     "@types/react-dom": "^18.0.3",
     "@uiw/react-markdown-preview": "^4.0.8",
     "apexcharts": "^3.35.1",
