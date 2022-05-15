@@ -1,6 +1,5 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
-import { Room } from "../api/ProjectQuery";
 import { User } from "../api/UserQuery";
 import IMG from "../images/DuckProfile.jpg";
 
@@ -64,7 +63,15 @@ export const HandleOpen = atom({
   default: false,
 });
 
-export const ProjectKey = atom<Room>({
+export interface ProjectRoom {
+  pjId: string;
+  thumbnail: string;
+  title: string;
+  summary: string;
+  inviteCode: string;
+}
+
+export const ProjectKey = atom<ProjectRoom>({
   key: "projectKey",
   default: {
     pjId: "",
