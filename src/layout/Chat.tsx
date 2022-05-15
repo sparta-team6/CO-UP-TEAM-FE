@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "..";
@@ -14,6 +14,15 @@ const Chat = () => {
   const { mutateAsync } = useAddChatComment();
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const user = useRecoilValue(MyProfile);
+  const messageBoxRef = useRef<any>();
+  const scrollToBottom = () => {
+    if (messageBoxRef.current) {
+      messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
+    }
+  };
+  useEffect(() => {
+    scrollToBottom();
+  }, [data]);
   const handleonEnter: SubmitHandler<IForm> = ({ text }) => {
     mutateAsync({
       createAt: Date.now(),
@@ -36,8 +45,8 @@ const Chat = () => {
   };
 
   return (
-    <div className="w-80  h-[calc(100%-7rem)] bg-slate-400 flex flex-col justify-end absolute top-12 right-0 md:hidden">
-      <div className="w-full h-full space-y-2 overflow-y-auto">
+    <div className="w-80  h-[calc(100%-10rem)] bg-slate-400 flex flex-col justify-end absolute top-12 right-0 md:hidden">
+      <div ref={messageBoxRef} className="w-full h-full space-y-2 overflow-y-auto">
         {data?.data?.map((box, index) => {
           return (
             <div className="w-full min-h-10 p-1 flex items-center" key={index}>
