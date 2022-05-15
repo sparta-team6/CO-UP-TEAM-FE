@@ -17,7 +17,7 @@ const ProjectData = () => {
       thumbnail: String(roomData?.thumbnail),
       title: String(roomData?.title),
       summary: String(roomData?.summary),
-      inviteCode: roomData?.inviteCode,
+      inviteCode: String(roomData?.inviteCode),
     });
   };
   return (

@@ -14,11 +14,11 @@ const MyProjectList = () => {
     setOpen(false);
     const roomData = data?.data.find((r) => r.pjId === roomID);
     setProject({
-      pjId: roomData?.pjId,
+      pjId: String(roomData?.pjId),
       thumbnail: String(roomData?.thumbnail),
       title: String(roomData?.title),
       summary: String(roomData?.summary),
-      inviteCode: roomData?.inviteCode,
+      inviteCode: String(roomData?.inviteCode),
     });
   };
   const { mutateAsync } = useLogOut();
