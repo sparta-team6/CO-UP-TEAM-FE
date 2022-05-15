@@ -20,6 +20,13 @@ export interface IDocs {
   contents?: string;
 }
 
+/* 여기 스프레드 api 확인 */
+export interface Test {
+  pjId: string;
+  title: string;
+  position: number;
+}
+
 export const useGetFolders = (pjId: string) => {
   return useQuery<IFolders, AxiosError>("getFolders", () => {
     return instance.get(`api/folders/?pjId=${pjId}`);
@@ -27,8 +34,10 @@ export const useGetFolders = (pjId: string) => {
 };
 
 export const useAddFolder = () => {
-  return useMutation(async (Folder: Folders) => {
-    await instance.post("api/folders/", Folder);
+  return useMutation(async (Folder: Test) => {
+    await instance.post("api/folders/", Folder).then((res) => {
+      console.log(res);
+    });
   });
 };
 
