@@ -18,7 +18,7 @@ const Chat = () => {
     mutateAsync({
       createAt: Date.now(),
       name: user.nickname,
-      profile: user.profile_image,
+      profile: user.profileImage,
       comment: text,
     }).then(() => {
       queryClient.invalidateQueries("getChat");
@@ -36,7 +36,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="w-80  h-[calc(100%-7rem)] bg-slate-400 flex flex-col justify-end absolute right-0 md:hidden">
+    <div className="w-80  h-[calc(100%-7rem)] bg-slate-400 flex flex-col justify-end absolute top-12 right-0 md:hidden">
       <div className="w-full h-full space-y-2 overflow-y-auto">
         {data?.data?.map((box, index) => {
           return (
