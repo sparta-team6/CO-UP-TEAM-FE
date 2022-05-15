@@ -14,24 +14,24 @@ export interface IAnnouncement {
 
 export const useGetAnnouncement = () => {
   return useQuery<IAnnouncement, AxiosError>("getAnnouncement", () => {
-    return axios.get("http://localhost:4000/announcement");
+    return axios.get("https://627f98ccb1cc1b126257d400.mockapi.io/api/announcement");
   });
 };
 
 export const usePostAnnouncement = () => {
   return useMutation(async (post: Announcement) => {
-    await axios.post("http://localhost:4000/announcement", post);
+    await axios.post("https://627f98ccb1cc1b126257d400.mockapi.io/api/announcement", post);
   });
 };
 
 export const useDelAnnouncement = (postId: number) => {
   return useMutation(async () => {
-    await axios.delete(`http://localhost:4000/announcement/${postId}`);
+    await axios.delete(`https://627f98ccb1cc1b126257d400.mockapi.io/api/announcement/${postId}`);
   });
 };
 
 export const useUpdateAnnouncement = (postId: number) => {
   return useMutation(async (post: Announcement) => {
-    await axios.put(`http://localhost:4000/announcement/${postId}`, post);
+    await axios.put(`https://627f98ccb1cc1b126257d400.mockapi.io/api/announcement/${postId}`, post);
   });
 };
