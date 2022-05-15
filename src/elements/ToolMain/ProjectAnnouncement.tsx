@@ -1,12 +1,11 @@
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
-import {
-  useGetAnnouncement,
-  usePostAnnouncement,
-} from "../../api/AnnouncementQuery";
+import { useGetAnnouncement, usePostAnnouncement } from "../../api/AnnouncementQuery";
 import { useGetProjectUser } from "../../api/UserQuery";
+import { MyProfile, ProjectKey } from "../../recoil/Atoms";
 import EditAnnouncement from "./EditAnnouncement";
 
 const style = {
@@ -27,6 +26,8 @@ type IForm = {
 };
 
 const ProjectAnnouncement = () => {
+  const { pjId } = useRecoilValue(ProjectKey);
+  const { nickname } = useRecoilValue(MyProfile);
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
 
@@ -34,7 +35,7 @@ const ProjectAnnouncement = () => {
   const handleClose = () => setOpen(false);
 
   const { data } = useGetAnnouncement();
-  const { data: user } = useGetProjectUser();
+  const { data: user } = useGetProjectUser(String(pjId));
   const { mutateAsync: postAn } = usePostAnnouncement();
   const { register, handleSubmit, setValue } = useForm<IForm>();
 
@@ -78,10 +79,7 @@ const ProjectAnnouncement = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
-          <form
-            className="w-full h-full relative space-y-4"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form className="w-full h-full relative space-y-4" onSubmit={handleSubmit(onSubmit)}>
             <input
               className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold font-semibold"
               {...register("title", { required: true })}
@@ -97,11 +95,12 @@ const ProjectAnnouncement = () => {
                 <option defaultValue="none">=== 선택 ===</option>
                 {user?.data?.map((member, index) => {
                   return (
-                    <option key={index} value={member.name}>
-                      {member.name}
+                    <option key={index} value={member.nickname}>
+                      {member.nickname}
                     </option>
                   );
                 })}
+                <option value={nickname}>{nickname}</option>
               </select>
             </div>
             <textarea
@@ -119,21 +118,14 @@ const ProjectAnnouncement = () => {
       <div className="w-full h-full space-y-2 overflow-y-auto">
         {data?.data?.map((data, index) => {
           return (
-            <div
-              key={index}
-              className="w-full h-16 bg-slate-100 rounded-lg overflow-hidden flex"
-            >
+            <div key={index} className="w-full h-16 bg-slate-100 rounded-lg overflow-hidden flex">
               <div className="w-2 h-full bg-violet-500 " />
               <div className="w-full h-full mx-3 flex flex-col justify-around">
                 <div className="w-full font-semibold">{data.title}</div>
                 <div className="flex justify-between">
                   <div className="flex space-x-5">
-                    <div className=" font-normal text-xs text-gray-400">
-                      {data.id}
-                    </div>
-                    <div className="font-normal text-xs text-gray-400">
-                      {data.name}
-                    </div>
+                    <div className=" font-normal text-xs text-gray-400">{data.id}</div>
+                    <div className="font-normal text-xs text-gray-400">{data.name}</div>
                   </div>
                   <EditAnnouncement {...data} />
                 </div>

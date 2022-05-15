@@ -13,9 +13,10 @@ export const useGetBoard = (pjId: string) => {
   });
 };
 
-export const usePostBoard = () => {
+export const usePostCard = () => {
   return useMutation(async (post: Board) => {
-    await instance.post("api/buckets/", post);
-    console.log(post);
+    await instance.post("api/buckets/", post).then((res) => {
+      console.log(res);
+    });
   });
 };

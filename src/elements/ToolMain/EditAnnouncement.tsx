@@ -1,13 +1,14 @@
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
 import {
   Announcement,
   useDelAnnouncement,
   useUpdateAnnouncement,
 } from "../../api/AnnouncementQuery";
-import { useGetProjectUser } from "../../api/UserQuery";
+import { MyProfile } from "../../recoil/Atoms";
 
 const style = {
   position: "absolute",
@@ -24,14 +25,13 @@ type IProp = {
   content: string;
 };
 
-const EditAnnouncement = ({ id, title, content, name }: Announcement) => {
+const EditAnnouncement = ({ id, title, content }: Announcement) => {
   const [open, setOpen] = useState(false);
-  const [nickname, setNickname] = useState(name);
+  const { nickname } = useRecoilValue(MyProfile);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const { data: user } = useGetProjectUser();
   const { mutateAsync: DELAN } = useDelAnnouncement(Number(id));
   const { mutateAsync: UpdateAN } = useUpdateAnnouncement(Number(id));
   const { register, handleSubmit } = useForm<IProp>();
@@ -54,10 +54,6 @@ const EditAnnouncement = ({ id, title, content, name }: Announcement) => {
     });
   };
 
-  const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setNickname(e.target.value);
-  };
-
   return (
     <>
       <div>
@@ -71,10 +67,7 @@ const EditAnnouncement = ({ id, title, content, name }: Announcement) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
-          <form
-            className="w-full h-full relative space-y-4"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form className="w-full h-full relative space-y-4" onSubmit={handleSubmit(onSubmit)}>
             <input
               className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold font-semibold"
               {...register("title", { required: true })}
@@ -82,22 +75,6 @@ const EditAnnouncement = ({ id, title, content, name }: Announcement) => {
               placeholder="제목을 입력해주세요"
               defaultValue={title}
             />
-            <div className="w-full flex items-center space-x-4">
-              <select
-                className="outline-none bg-slate-200 border-0"
-                value={nickname}
-                onChange={onChange}
-              >
-                <option defaultValue="">=== 선택 ===</option>
-                {user?.data?.map((member, index) => {
-                  return (
-                    <option key={index} value={member.name}>
-                      {member.name}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
             <textarea
               className="w-full outline-none border-none resize-none overflow-y-auto"
               rows={14}

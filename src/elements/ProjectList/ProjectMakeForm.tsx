@@ -31,8 +31,9 @@ const ProjectMakeForm = ({ open }: IProp) => {
       mutateAsync({
         title: data.title,
         summary: data.summary,
-        thumbnail: user.profile_image,
-      }).then(() => {
+        thumbnail: user.profileImage,
+      }).then((res) => {
+        console.log(res);
         queryClient.invalidateQueries("getProject");
         open(false);
       });
@@ -42,7 +43,8 @@ const ProjectMakeForm = ({ open }: IProp) => {
         title: data.title,
         summary: data.summary,
         thumbnail: String(image),
-      }).then(() => {
+      }).then((res) => {
+        console.log(res);
         queryClient.invalidateQueries("getProject");
         open(false);
       });
@@ -64,7 +66,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
   };
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <img width="100px" height="100px" alt="" src={imgBase64 ? imgBase64 : user.profile_image} />
+      <img width="100px" height="100px" alt="" src={imgBase64 ? imgBase64 : user.profileImage} />
       <label htmlFor="icon-button-file">
         <input
           type="file"

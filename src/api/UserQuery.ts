@@ -1,26 +1,42 @@
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
+import { instance } from "../servers/axios";
 
 export interface User {
-  id: number;
-  name: string;
-  profile: string;
-  URL: string;
-  comment: string;
+  loginId: string;
+  social?: string;
+  profileImage: string;
+  url: string;
+  nickname: string;
+  aboutMe: string;
 }
 
 export interface IUser {
   data: User[];
 }
 
-export const useGetProjectUser = () => {
+export const useGetProjectUser = (pjId: string) => {
   return useQuery<IUser, AxiosError>("getUser", () => {
-    return axios.get("http://localhost:4000/user");
+    return instance.get(`api/users/projects?pjId=${pjId}`);
   });
 };
 
-export const useAddUser = () => {
+export const useUpdateUser = () => {
   return useMutation(async (post: User) => {
-    await axios.post("http://localhost:4000/user", post);
+    await instance.put("api/users/update/", post).then((res) => {
+      console.log(res);
+    });
+  });
+};
+
+export const useMyInfo = () => {
+  return useQuery("getMyInfo", () => {
+    return instance.get("api/users/myInfo/");
+  });
+};
+
+export const useLogOut = () => {
+  return useMutation(async () => {
+    await instance.delete("api/users/logout/");
   });
 };

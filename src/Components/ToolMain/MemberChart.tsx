@@ -1,13 +1,14 @@
 import { ProgressBar } from "react-bootstrap";
 import { useRecoilValue } from "recoil";
-import { useGetProjectUser } from "../../api/UserQuery";
-import { toDoState } from "../../recoil/Atoms";
+// import { useGetProjectUser } from "../../api/UserQuery";
+import { MyProfile, toDoState } from "../../recoil/Atoms";
 
 const MemberChart = () => {
+  // const { pjId } = useRecoilValue(ProjectKey);
   const toDos = useRecoilValue(toDoState);
-  const { data } = useGetProjectUser();
-  const toDolen =
-    toDos["to_do"].length + toDos["doing"].length + toDos["done"].length;
+  // const { data } = useGetProjectUser(String(pjId));
+  const data = useRecoilValue(MyProfile);
+  const toDolen = toDos["to_do"].length + toDos["doing"].length + toDos["done"].length;
   const dange = Math.round((toDos["to_do"].length / toDolen) * 1000) / 10;
   const warning = Math.round((toDos["doing"].length / toDolen) * 1000) / 10;
   const success = Math.round((toDos["done"].length / toDolen) * 1000) / 10;
@@ -31,11 +32,11 @@ const MemberChart = () => {
         </div>
       </div>
       <div className="overflow-y-auto h-48">
-        {data?.data?.map((data, index) => {
+        {/* {data?.data?.map((data, index) => {
           return (
             <div key={index} className="flex flex-col items-center mb-3">
               <div className="w-full flex justify-between items-center">
-                <span className="text-xl font-semibold">{data.name}</span>
+                <span className="text-xl font-semibold">{data.nickname}</span>
                 <div>{`${dange}/${warning}/${success}`}</div>
               </div>
               <ProgressBar className="w-full">
@@ -45,7 +46,18 @@ const MemberChart = () => {
               </ProgressBar>
             </div>
           );
-        })}
+        })} */}
+        <div className="flex flex-col items-center mb-3">
+          <div className="w-full flex justify-between items-center">
+            <span className="text-xl font-semibold">{data.nickname}</span>
+            <div>{`${dange}/${warning}/${success}`}</div>
+          </div>
+          <ProgressBar className="w-full">
+            <ProgressBar className="bg-1" now={dange} />
+            <ProgressBar className="bg-2" now={warning} />
+            <ProgressBar className="bg-3" now={success} />
+          </ProgressBar>
+        </div>
       </div>
     </div>
   );

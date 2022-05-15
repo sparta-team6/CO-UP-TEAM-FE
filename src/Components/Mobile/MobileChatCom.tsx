@@ -31,7 +31,7 @@ const MobileChatCom = () => {
     mutateAsync({
       createAt: Date.now(),
       name: user.nickname,
-      profile: user.profile_image,
+      profile: user.profileImage,
       comment: text,
     }).then(() => {
       queryClient.invalidateQueries("getChat");
