@@ -17,15 +17,15 @@ type IForm = {
 
 const EditProfile = () => {
   const [user, setUser] = useRecoilState(MyProfile);
-  console.log(user);
   const [imgBase64, setImgBase64] = useState<string>("");
   const [imgFile, setImgFile] = useState();
-  const fileInput = useRef<any>();
+  const fileInput = useRef<HTMLInputElement>(null);
   const { register, handleSubmit } = useForm<IForm>();
   const { mutateAsync } = useUpdateUser();
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<IForm> = async (data) => {
-    const size = fileInput.current.files[0];
+    if (fileInput?.current?.files === null) return;
+    const size = fileInput?.current?.files[0];
     const profile = {
       loginId: user.loginId,
       nickname: data.nickName,
