@@ -1,6 +1,8 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 import { Room } from "../api/ProjectQuery";
+import { User } from "../api/UserQuery";
+import IMG from "../images/DuckProfile.jpg";
 
 const { persistAtom } = recoilPersist();
 
@@ -44,20 +46,15 @@ export const toDoState = atom<IToDoState>({
   effects_UNSTABLE: [persistAtom],
 });
 
-interface IUserState {
-  email: string;
-  id: number;
-  nickname: string;
-  profile_image: string;
-}
-
-export const MyProfile = atom<IUserState>({
+export const MyProfile = atom<User>({
   key: "myProfile",
   default: {
-    email: "",
-    id: 0,
-    nickname: "",
-    profile_image: "",
+    loginId: "email",
+    social: "KAKAO",
+    profileImage: IMG,
+    url: "www~~~",
+    nickname: "JIHO",
+    aboutMe: "안녕하세여",
   },
   effects_UNSTABLE: [persistAtom],
 });
