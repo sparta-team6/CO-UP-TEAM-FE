@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { useGetRoom } from "../api/ProjectQuery";
+import { useLogOut } from "../api/UserQuery";
 import { HandleOpen, ProjectKey } from "../recoil/Atoms";
 
 const MyProjectList = () => {
@@ -20,7 +21,10 @@ const MyProjectList = () => {
       inviteCode: roomData?.inviteCode,
     });
   };
-
+  const { mutateAsync } = useLogOut();
+  const onLouout = () => {
+    mutateAsync().then((res) => console.log(res));
+  };
   return (
     <div className="w-12 h-full flex flex-col justify-between items-center bg-slate-500 sm:h-[calc(100vh-80px)] sm:pt-12">
       <div>
@@ -33,7 +37,7 @@ const MyProjectList = () => {
       <div className="w-12 h-24">
         <span>다크모드</span>
         <span>나가기</span>
-        <span>로그아웃</span>
+        <span onClick={onLouout}>로그아웃</span>
       </div>
     </div>
   );

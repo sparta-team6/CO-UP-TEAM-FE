@@ -1,51 +1,54 @@
 import { PhotoCamera } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { useAddUser } from "../../api/UserQuery";
+import { useRecoilState } from "recoil";
+import { useUpdateUser } from "../../api/UserQuery";
 import { MyProfile } from "../../recoil/Atoms";
 import { resizeFile } from "../../servers/resize";
 
 type IForm = {
-  id?: number;
+  id?: string;
   nickName: string;
   url: string;
   about_me: string;
 };
 
 const EditProfile = () => {
-  const user = useRecoilValue(MyProfile);
+  const [user, setUser] = useRecoilState(MyProfile);
+  console.log(user);
   const [imgBase64, setImgBase64] = useState<string>("");
   const [imgFile, setImgFile] = useState();
   const fileInput = useRef<any>();
   const { register, handleSubmit } = useForm<IForm>();
-  const { mutateAsync } = useAddUser();
+  const { mutateAsync } = useUpdateUser();
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<IForm> = async (data) => {
     const size = fileInput.current.files[0];
+    const profile = {
+      loginId: user.loginId,
+      nickname: data.nickName,
+      profileImage: user.profileImage,
+      url: data.url,
+      aboutMe: data.about_me,
+    };
     if (size === undefined) {
-      mutateAsync({
-        id: user.id,
-        name: data.nickName,
-        profile: user.profile_image,
-        URL: data.url,
-        comment: data.about_me,
-      }).then(() => {
-        alert("수정완료");
+      mutateAsync(profile).then(() => {
+        setUser(profile);
         navigate(-1);
       });
     } else {
       const image = await resizeFile(size);
-      mutateAsync({
-        id: user.id,
-        name: data.nickName,
-        profile: String(image),
-        URL: data.url,
-        comment: data.about_me,
-      }).then(() => {
-        alert("수정완료");
+      const Eprofile = {
+        loginId: user.loginId,
+        nickname: data.nickName,
+        profileImage: String(image),
+        url: data.url,
+        aboutMe: data.about_me,
+      };
+      mutateAsync(Eprofile).then(() => {
+        setUser(Eprofile);
         navigate(-1);
       });
     }
@@ -76,7 +79,7 @@ const EditProfile = () => {
             width="250px"
             height="250px"
             alt=""
-            src={imgBase64 ? imgBase64 : user.profile_image}
+            src={imgBase64 ? imgBase64 : user.profileImage}
           />
           <label
             className="text-right absolute w-9 h-9 rounded-full bg-white right-20 bottom-1"
@@ -105,12 +108,14 @@ const EditProfile = () => {
           <input
             className="text-center p-2 rounded-md border-none"
             placeholder="URL"
+            defaultValue={user.url}
             {...register("url")}
           />
           <textarea
             className="text-center p-2 rounded-md border-none resize-none"
             rows={5}
             placeholder="자기소개"
+            defaultValue={user.aboutMe}
             {...register("about_me")}
           />
           <div className="text-right">

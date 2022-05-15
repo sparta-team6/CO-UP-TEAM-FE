@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -32,13 +32,13 @@ const DocumentList = () => {
 
   const onClick = () => {
     const folder = {
-      pjId,
+      pjId: String(pjId),
       title: "폴더 1",
       position: 1,
     };
     mutateAsync(folder)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        console.log(folder);
         queryClient.invalidateQueries("getFolders");
       })
       .catch((err) => console.log(err));

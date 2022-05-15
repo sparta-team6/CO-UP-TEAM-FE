@@ -1,12 +1,12 @@
 import { Droppable } from "react-beautiful-dnd";
 import { useForm } from "react-hook-form";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { ITodo, ProjectKey, toDoState } from "../../recoil/Atoms";
+import { ITodo, MyProfile, ProjectKey, toDoState } from "../../recoil/Atoms";
 import DraggableCard from "../../elements/ToolBoard/DraggableCard";
 import { useState } from "react";
 import { Box, Modal } from "@mui/material";
 import { useGetProjectUser } from "../../api/UserQuery";
-import { usePostBoard } from "../../api/BoardQuery";
+import { useGetBoard, usePostCard } from "../../api/BoardQuery";
 import { queryClient } from "../..";
 
 const style = {
@@ -31,23 +31,27 @@ interface IForm {
 
 const Bucket = ({ toDos, bucketId }: IBoardProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
-  const { data } = useGetProjectUser();
+  const { nickname } = useRecoilValue(MyProfile);
+  const { data: user } = useGetProjectUser(String(pjId));
+  const { data: board } = useGetBoard(String(pjId));
+  console.log(board);
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const setToDos = useSetRecoilState(toDoState);
   const { register, setValue, handleSubmit } = useForm<IForm>();
-  const { mutateAsync } = usePostBoard();
+  const { mutateAsync } = usePostCard();
   const onClick = () => {
-    mutateAsync({
+    const bucket = {
       pjId: String(pjId),
-      title: "rrrr",
-      position: 1,
-    })
-      .then((res) => {
-        queryClient.invalidateQueries("getProject");
-        console.log(res);
+      title: "rr",
+      position: 3,
+    };
+    mutateAsync(bucket)
+      .then(() => {
+        console.log(bucket);
+        queryClient.invalidateQueries("getBoard");
       })
       .catch((err) => {
         console.log(err);
@@ -80,7 +84,7 @@ const Bucket = ({ toDos, bucketId }: IBoardProps) => {
   };
   return (
     <div className="w-72 rounded-md min-h-[800px] flex flex-col">
-      <div onClick={onClick}>???????????????????????</div>
+      <div onClick={onClick}>테스트 보내기</div>
       <div className="w-full h-6 mt-10 flex justify-between">
         <h2 className="text-center font-semibold text-lg">{bucketId}</h2>
         <button
@@ -114,13 +118,14 @@ const Bucket = ({ toDos, bucketId }: IBoardProps) => {
                 onChange={onChange}
               >
                 <option defaultValue="none">=== 선택 ===</option>
-                {data?.data?.map((member, index) => {
+                {user?.data?.map((member, index) => {
                   return (
-                    <option key={index} value={member.name}>
-                      {member.name}
+                    <option key={index} value={member.nickname}>
+                      {member.nickname}
                     </option>
                   );
                 })}
+                <option value={nickname}>{nickname}</option>
               </select>
             </div>
             <input
