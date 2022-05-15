@@ -6,7 +6,7 @@ import DraggableCard from "../../elements/ToolBoard/DraggableCard";
 import { useState } from "react";
 import { Box, Modal } from "@mui/material";
 import { useGetProjectUser } from "../../api/UserQuery";
-import { useGetBoard, usePostCard } from "../../api/BoardQuery";
+import { usePostCard } from "../../api/BoardQuery";
 import { queryClient } from "../..";
 
 const style = {
@@ -33,8 +33,7 @@ const Bucket = ({ toDos, bucketId }: IBoardProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { nickname } = useRecoilValue(MyProfile);
   const { data: user } = useGetProjectUser(String(pjId));
-  const { data: board } = useGetBoard(String(pjId));
-  console.log(board);
+  // const { data: board } = useGetBoard(String(pjId));
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const handleOpen = () => setOpen(true);

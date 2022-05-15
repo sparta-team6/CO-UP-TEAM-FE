@@ -16,11 +16,10 @@ const DocumentList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const { data } = useGetFolders(String(pjId));
+  const { data } = useGetFolders(pjId);
   const { mutateAsync } = useAddFolder();
   const { id } = useParams();
   const navigate = useNavigate();
-  console.log(data);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);

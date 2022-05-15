@@ -6,7 +6,6 @@ const Member = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data } = useGetProjectUser(String(pjId));
   const user = useRecoilValue(MyProfile);
-  console.log(data);
   return (
     <div className="w-full h-full">
       <h3 className="text-base font-bold">팀원</h3>
