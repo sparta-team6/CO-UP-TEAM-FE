@@ -21,7 +21,6 @@ export interface IFolders {
   data: Folders[];
 }
 
-/* 여기 스프레드 api 확인 */
 export interface Folder {
   pjId: string;
   title: string;

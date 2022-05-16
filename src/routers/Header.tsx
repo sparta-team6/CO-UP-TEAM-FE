@@ -11,7 +11,7 @@ const Header = () => {
     <React.Fragment>
       {location.pathname.includes("tool") ? (
         <React.Fragment>
-          <div className="w-full h-12 bg-4 flex justify-between items-center fixed z-50 shadow-md md:bottom-0 sm:h-20">
+          <div className="w-full h-12 bg-4 flex justify-between items-center fixed z-50 shadow-md sm:bottom-0 sm:h-20">
             <Footer />
             <div className="w-[21rem] md:hidden">
               <Link to="/">로고</Link>

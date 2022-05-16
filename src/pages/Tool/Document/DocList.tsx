@@ -5,11 +5,11 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { useGetFolders } from "../../../api/FolderQuery";
 import ViewDoc from "../../../Components/ToolDocument/ViewDoc";
 import Chat from "../../../layout/Chat";
-import DocumentList from "../../../layout/DocumentList";
+import FolderList from "../../../layout/FolderList";
 import MyProjectList from "../../../layout/MyProjectList";
 import { HandleOpen, ProjectKey } from "../../../recoil/Atoms";
 
-const Document = () => {
+const DocList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data } = useGetFolders(String(pjId));
   const [open, setOpen] = useRecoilState(HandleOpen);
@@ -37,10 +37,10 @@ const Document = () => {
                 <MyProjectList />
               </div>
             </SlidingPanel>
-            <DocumentList />
+            <FolderList />
           </div>
           <div className="sm:hidden">
-            <DocumentList />
+            <FolderList />
           </div>
         </div>
         <div
@@ -58,4 +58,4 @@ const Document = () => {
   );
 };
 
-export default Document;
+export default DocList;

@@ -12,7 +12,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="hidden w-full h-12 bg-green-300 fixed top-0 md:flex justify-between items-center">
+    <div className="hidden w-full h-12 bg-green-300 fixed top-0 sm:flex justify-between items-center">
       <div className="cursor-pointer">
         <MenuIcon onClick={onClick} sx={style} />
       </div>

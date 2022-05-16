@@ -1,11 +1,11 @@
 import Chat from "../../../layout/Chat";
-import DocumentList from "../../../layout/DocumentList";
+import DocumentList from "../../../layout/FolderList";
 import MyProjectList from "../../../layout/MyProjectList";
 import ViewDoc from "../../../Components/ToolDocument/ViewDoc";
 import { useGetOneDoc } from "../../../api/DocumentQuery";
 import { useParams } from "react-router-dom";
 
-const DocumentDetail = () => {
+const DetailDocs = () => {
   const { postId } = useParams();
   const { data, isLoading } = useGetOneDoc(String(postId));
   const DocData = data?.data;
@@ -23,4 +23,4 @@ const DocumentDetail = () => {
   );
 };
 
-export default DocumentDetail;
+export default DetailDocs;

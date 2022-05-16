@@ -40,17 +40,13 @@ const ProjectAnnouncement = () => {
   const { register, handleSubmit, setValue } = useForm<IForm>();
 
   const onSubmit: SubmitHandler<IForm> = (data) => {
-    postAn(
-      {
-        id: Date.now(),
-        title: data.title,
-        content: data.content,
-        name,
-      },
-      {
-        onSettled: () => queryClient.invalidateQueries("getAnnouncement"),
-      }
-    );
+    const post = {
+      id: Date.now(),
+      title: data.title,
+      content: data.content,
+      name,
+    };
+    postAn(post).then(() => queryClient.invalidateQueries("getAnnouncement"));
     setValue("title", "");
     setValue("content", "");
     setOpen(false);

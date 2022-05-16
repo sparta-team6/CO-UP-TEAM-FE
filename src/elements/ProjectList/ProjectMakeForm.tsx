@@ -21,12 +21,12 @@ interface IProp {
 const ProjectMakeForm = ({ open }: IProp) => {
   const user = useRecoilValue(MyProfile);
   const [imgBase64, setImgBase64] = useState<string>("");
-  const [imgFile, setImgFile] = useState();
-  const fileInput = useRef<any>();
+  const fileInput = useRef<HTMLInputElement>(null);
   const { mutateAsync } = usePostRoom();
   const { register, handleSubmit } = useForm<IForm>();
   const onSubmit: SubmitHandler<IForm> = async (data) => {
-    const size = fileInput.current.files[0];
+    if (fileInput.current?.files === null) return;
+    const size = fileInput?.current?.files[0];
     if (size === undefined) {
       mutateAsync({
         title: data.title,
@@ -50,7 +50,8 @@ const ProjectMakeForm = ({ open }: IProp) => {
       });
     }
   };
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files === null) return;
     const reader = new FileReader();
     reader.onloadend = () => {
       const base64 = reader.result;
@@ -61,7 +62,6 @@ const ProjectMakeForm = ({ open }: IProp) => {
     const files = e.target.files[0];
     if (files) {
       reader.readAsDataURL(files);
-      setImgFile(files);
     }
   };
   return (
@@ -74,7 +74,6 @@ const ProjectMakeForm = ({ open }: IProp) => {
           className="hidden"
           onChange={onChange}
           ref={fileInput}
-          name={imgFile}
         />
         <IconButton color="primary" aria-label="upload picture" component="span">
           <PhotoCamera fontSize="small" />

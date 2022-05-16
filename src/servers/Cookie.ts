@@ -19,5 +19,6 @@ export const getFreshTokenFromCookie = () => {
 };
 
 export const removeTokenFromCookie = () => {
-  cookies.remove("token");
+  cookies.remove("accessToken");
+  cookies.remove("refreshToken");
 };

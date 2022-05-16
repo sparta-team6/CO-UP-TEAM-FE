@@ -37,12 +37,13 @@ const EditAnnouncement = ({ id, title, content }: Announcement) => {
   const { register, handleSubmit } = useForm<IProp>();
 
   const onSubmit: SubmitHandler<IProp> = (data) => {
-    UpdateAN({
+    const Update = {
       id: Number(id),
       title: data.title,
       content: data.content,
       name: nickname,
-    }).then(() => {
+    };
+    UpdateAN(Update).then(() => {
       queryClient.invalidateQueries("getAnnouncement");
     });
     setOpen(false);

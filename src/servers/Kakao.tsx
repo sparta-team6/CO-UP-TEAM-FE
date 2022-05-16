@@ -9,7 +9,6 @@ const Kakao = () => {
   const user = useSetRecoilState(MyProfile);
   const navigate = useNavigate();
   const code = new URL(window.location.href).searchParams.get("code");
-  console.log(typeof code);
   const cookies = new Cookies();
   const now = new Date();
   const accessTime = new Date();

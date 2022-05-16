@@ -16,11 +16,13 @@ const BoardList = () => {
   const onDragEnd = ({ destination, source }: DropResult) => {
     if (!destination) return;
     if (destination?.droppableId === source.droppableId) {
+      console.log(destination, source);
       // same board movement.
       setTest((allBoards: any) => {
         const boardCopy = [...allBoards[Number(source.droppableId)].cards];
         const ThisKbbId = allBoards[Number(source.droppableId)].kbbId;
         const taskObj = boardCopy[source.index];
+        console.log(taskObj);
         boardCopy.splice(Number(source.index), 1);
         boardCopy.splice(destination?.index, 0, taskObj);
         console.log(ThisKbbId);
@@ -35,6 +37,7 @@ const BoardList = () => {
     }
     /* 다른 버킷으로 이동 */
     if (destination.droppableId !== source.droppableId) {
+      console.log(destination, source);
       // cross board movement
       setTest((allBoards: any) => {
         const sourceBoard = [...allBoards[Number(source.droppableId)].cards];
