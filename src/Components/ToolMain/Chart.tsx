@@ -1,12 +1,15 @@
 import ReactApexChart from "react-apexcharts";
 import { useRecoilValue } from "recoil";
-import { toDoState } from "../../recoil/Atoms";
+import { BoardState } from "../../recoil/Atoms";
 
 const Chart = () => {
-  const toDos = useRecoilValue(toDoState);
-  const toDolen =
-    toDos["to_do"].length + toDos["doing"].length + toDos["done"].length;
-  const success = Math.round((toDos["done"].length / toDolen) * 1000) / 10;
+  const toDos = useRecoilValue(BoardState);
+  // const { data } = useGetBoard();
+  console.log(toDos);
+
+  // console.log(data?.data);
+  const toDolen = toDos[0]?.cards.length + toDos[1]?.cards.length + toDos[2]?.cards.length;
+  const success = Math.round((toDos[2]?.cards.length / toDolen) * 1000) / 10;
   return (
     <div className="w-full h-full flex justify-center">
       <div className="w-full h-[280px] flex items-center relative">
@@ -16,11 +19,7 @@ const Chart = () => {
         </div>
         <ReactApexChart
           type="donut"
-          series={[
-            toDos["to_do"].length,
-            toDos["doing"].length,
-            toDos["done"].length,
-          ]}
+          series={[toDos[0]?.cards.length, toDos[1]?.cards.length, toDos[2]?.cards.length]}
           options={{
             labels: ["대기중", "진행중", "완료"],
             colors: ["#FF7637", "#FFD33C", "#5F99FF"],
