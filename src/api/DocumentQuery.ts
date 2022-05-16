@@ -7,25 +7,16 @@ export interface Docs {
   contents?: string;
   isLoading?: boolean;
   docId?: string;
-}
-
-export interface IDocs {
-  data: Docs[];
+  position?: number;
 }
 
 export interface IDocDetail {
   data: Docs;
 }
 
-export const useGetDocs = () => {
-  return useQuery<IDocs, AxiosError>("getDocs", () => {
-    return instance.get("api/folders/docs");
-  });
-};
-
 export const useGetOneDoc = (docId: string) => {
   return useQuery<AxiosResponse, AxiosError, IDocDetail>(["getOneDoc", docId], () => {
-    return instance.get(`api/folders/docs/${docId}`);
+    return instance.get(`api/folders/docs/?docId=${docId}`);
   });
 };
 
@@ -37,12 +28,12 @@ export const useAddDoc = () => {
 
 export const useDelDoc = (docId: string) => {
   return useMutation(async () => {
-    await instance.delete(`api/folders/docs/${docId}`);
+    await instance.delete(`api/folders/docs/?docId=${docId}`);
   });
 };
 
 export const useUpdateDoc = (docId: string) => {
   return useMutation(async (Doc: Docs) => {
-    await instance.put(`api/folders/docs/${docId}`, Doc);
+    await instance.patch(`api/folders/docs/?docId=${docId}`, Doc);
   });
 };

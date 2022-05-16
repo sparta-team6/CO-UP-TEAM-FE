@@ -7,21 +7,22 @@ export interface Folders {
   isLoading?: boolean;
   dfId?: string;
   position?: number;
-  docs?: [];
+  docs?: [
+    {
+      title: string;
+      contents: string;
+      docId: string;
+      position: number;
+    }
+  ];
 }
 
 export interface IFolders {
   data: Folders[];
 }
 
-export interface IDocs {
-  docId?: string;
-  title?: string;
-  contents?: string;
-}
-
 /* 여기 스프레드 api 확인 */
-export interface Test {
+export interface Folder {
   pjId: string;
   title: string;
   position: number;
@@ -34,21 +35,19 @@ export const useGetFolders = (pjId: string) => {
 };
 
 export const useAddFolder = () => {
-  return useMutation(async (Folder: Test) => {
-    await instance.post("api/folders/", Folder).then((res) => {
-      console.log(res);
-    });
+  return useMutation(async (Folder: Folder) => {
+    await instance.post("api/folders/", Folder);
   });
 };
 
 export const useDelFolder = (dfId: string) => {
   return useMutation(async () => {
-    await instance.delete(`api/folders/${dfId}`);
+    await instance.delete(`api/folders/?dfId=${dfId}`);
   });
 };
 
 export const useUpdateFolder = (dfId: string) => {
   return useMutation(async (Folder: Folders) => {
-    await instance.put(`api/folders/${dfId}`, Folder);
+    await instance.patch(`api/folders/?dfId=${dfId}`, Folder);
   });
 };
