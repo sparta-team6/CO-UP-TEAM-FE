@@ -1,20 +1,14 @@
 import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
 import { instance } from "../servers/axios";
+import { Docs } from "./DocumentQuery";
 
 export interface Folders {
   title?: string;
   isLoading?: boolean;
   dfId?: string;
   position?: number;
-  docs?: [
-    {
-      title: string;
-      contents: string;
-      docId: string;
-      position: number;
-    }
-  ];
+  docs?: Docs[];
 }
 
 export interface IFolders {
