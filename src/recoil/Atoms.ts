@@ -1,5 +1,6 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
+import { Board } from "../api/BoardQuery";
 import { User } from "../api/UserQuery";
 import IMG from "../images/DuckProfile.jpg";
 
@@ -43,6 +44,34 @@ export const toDoState = atom<IToDoState>({
     done: [],
   },
   effects_UNSTABLE: [persistAtom],
+});
+
+interface IBucketState {
+  [key: number]: Board;
+}
+
+export const BoardState = atom<IBucketState>({
+  key: "buckets",
+  default: {
+    0: {
+      kbbId: "0",
+      position: 0,
+      title: "to_do",
+      cards: [],
+    },
+    1: {
+      kbbId: "0",
+      position: 0,
+      title: "doing",
+      cards: [],
+    },
+    2: {
+      kbbId: "0",
+      position: 0,
+      title: "done",
+      cards: [],
+    },
+  },
 });
 
 export const MyProfile = atom<User>({

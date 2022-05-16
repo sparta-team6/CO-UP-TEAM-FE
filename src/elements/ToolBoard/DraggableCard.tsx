@@ -15,7 +15,7 @@ const style = {
 interface IDragabbleCardProps {
   bucketId: string;
   toDoName: string;
-  toDoId: number;
+  toDoId: string;
   toDoText: string;
   toDoComment: string;
   index: number;
@@ -30,10 +30,12 @@ const DraggableCard = ({
   index,
 }: IDragabbleCardProps) => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
   return (
-    <Draggable draggableId={toDoId + ""} index={index}>
+    <Draggable draggableId={toDoId} index={index}>
       {(magic, info) => (
         <React.Fragment>
           <div
@@ -47,11 +49,7 @@ const DraggableCard = ({
           >
             <div
               className={`w-2 h-full ${
-                bucketId === "to_do"
-                  ? "bg-1"
-                  : bucketId === "doing"
-                  ? "bg-2"
-                  : "bg-3"
+                bucketId === "to_do" ? "bg-1" : bucketId === "doing" ? "bg-2" : "bg-3"
               }  absolute top-0`}
             />
             <div className="absolute top-2 right-2 cursor-pointer">X</div>
@@ -67,10 +65,7 @@ const DraggableCard = ({
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box
-              sx={style}
-              className="w-[690px] h-[370px] rounded-xl sm:w-full"
-            >
+            <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
               <span>{toDoText}</span>
               <span>{toDoName}</span>
               <span>{toDoComment}</span>

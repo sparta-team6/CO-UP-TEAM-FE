@@ -1,12 +1,11 @@
 import { Droppable } from "react-beautiful-dnd";
 import { useForm } from "react-hook-form";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { ITodo, MyProfile, ProjectKey, toDoState } from "../../recoil/Atoms";
+import { useRecoilValue } from "recoil";
+import { MyProfile } from "../../recoil/Atoms";
 import DraggableCard from "../../elements/ToolBoard/DraggableCard";
 import { useState } from "react";
 import { Box, Modal } from "@mui/material";
-import { useGetBoard, usePostCard } from "../../api/BoardQuery";
-import { queryClient } from "../..";
+import { Cards, usePostCards } from "../../api/BoardQuery";
 
 const style = {
   position: "absolute",
@@ -19,8 +18,10 @@ const style = {
 };
 
 interface IBoardProps {
-  toDos: ITodo[];
+  toDos: Cards[];
   bucketId: string;
+  kbbId: string;
+  index: number;
 }
 
 interface IForm {
@@ -28,49 +29,46 @@ interface IForm {
   toDoComment: string;
 }
 
-const Bucket = ({ toDos, bucketId }: IBoardProps) => {
-  const { pjId } = useRecoilValue(ProjectKey);
+const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
   const { nickname } = useRecoilValue(MyProfile);
-  const { data: board } = useGetBoard(String(pjId));
-  console.log(board);
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const setToDos = useSetRecoilState(toDoState);
   const { register, setValue, handleSubmit } = useForm<IForm>();
-  const { mutateAsync } = usePostCard();
-  const onClick = () => {
-    const bucket = {
-      pjId: String(pjId),
-      title: "rr",
-      position: 3,
-    };
-    mutateAsync(bucket)
-      .then(() => {
-        console.log(bucket);
-        queryClient.invalidateQueries("getBoard");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  const { mutateAsync } = usePostCards();
+  console.log();
+  // 테스트 버킷 생성
+  // const { mutateAsync } = usePostCard();
+  // const onClick = () => {
+  //   const bucket = {
+  //     pjId: String(pjId),
+  //     title: "done",
+  //     position: 3,
+  //   };
+  //   mutateAsync(bucket)
+  //     .then(() => {
+  //       console.log(bucket);
+  //       queryClient.invalidateQueries("getBoard");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
   const onValid = ({ toDo, toDoComment }: IForm) => {
     if (name === "") {
       alert("담당자 선택해주세요");
       return;
     }
     const newToDo = {
-      id: Date.now(),
-      text: toDo,
-      comment: toDoComment,
-      name: name,
+      kbbId,
+      title: toDo,
+      contents: toDoComment,
+      manager: name,
+      position: 0,
     };
-    setToDos((allBoards) => {
-      return {
-        ...allBoards,
-        [bucketId]: [newToDo, ...allBoards[bucketId]],
-      };
+    mutateAsync(newToDo).then(() => {
+      console.log(newToDo);
     });
     setValue("toDo", "");
     setValue("toDoComment", "");
@@ -82,7 +80,7 @@ const Bucket = ({ toDos, bucketId }: IBoardProps) => {
   };
   return (
     <div className="w-72 rounded-md min-h-[800px] flex flex-col">
-      <div onClick={onClick}>테스트 보내기</div>
+      {/* <div onClick={onClick}>테스트 보내기</div> */}
       <div className="w-full h-6 mt-10 flex justify-between">
         <h2 className="text-center font-semibold text-lg">{bucketId}</h2>
         <button
@@ -147,7 +145,7 @@ const Bucket = ({ toDos, bucketId }: IBoardProps) => {
           </form>
         </Box>
       </Modal>
-      <Droppable droppableId={bucketId}>
+      <Droppable droppableId={String(index)}>
         {(magic, info) => (
           <div
             className={`${
@@ -161,14 +159,13 @@ const Bucket = ({ toDos, bucketId }: IBoardProps) => {
             {...magic.droppableProps}
           >
             {toDos.map((toDo, index) => (
-              /* dnd는 key draggableId가 같아야함 */
               <DraggableCard
-                key={toDo.id}
+                key={toDo.kbcId}
                 index={index}
-                toDoId={toDo.id}
-                toDoText={toDo.text}
-                toDoName={toDo.name}
-                toDoComment={toDo.comment}
+                toDoId={toDo.kbcId}
+                toDoText={toDo.contents}
+                toDoName={toDo.manager}
+                toDoComment={toDo.title}
                 bucketId={bucketId}
               />
             ))}
