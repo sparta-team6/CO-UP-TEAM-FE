@@ -19,8 +19,14 @@ export const useGetBoard = (pjId: string) => {
   });
 };
 
+interface TestBoard {
+  pjId: string;
+  title: string;
+  position: number;
+}
+
 export const usePostBoard = () => {
-  return useMutation(async (post: Board) => {
+  return useMutation(async (post: TestBoard) => {
     await instance.post("api/buckets/", post).then((res) => {
       console.log(res);
     });
@@ -28,12 +34,22 @@ export const usePostBoard = () => {
 };
 
 export interface ICards {
-  kbbId: string;
-  manager: string;
+  kbbId?: string;
+  manager?: string;
   title: string;
-  contents: string;
+  contents?: string;
   position: number;
 }
+
+// export const useUpdateCards = (kbbId: string) => {
+//   return useMutation(async (post: Cards) => {
+//     await instance.patch("api/buckets/cards", post).then((res) => {
+//       alert(res);
+//     });
+//   });
+// };
+
+// 버킷 생성 테스트 공간
 
 export interface Cards {
   kbcId: string;
@@ -45,16 +61,8 @@ export interface Cards {
 
 export const usePostCards = () => {
   return useMutation(async (post: ICards) => {
-    await instance.post("api/buckets/cards", post).then((res) => {
+    await instance.post("api/buckets/cards/", post).then((res) => {
       alert(res);
     });
   });
 };
-
-// export const useUpdateCards = (kbbId: string) => {
-//   return useMutation(async (post: Cards) => {
-//     await instance.patch("api/buckets/cards", post).then((res) => {
-//       alert(res);
-//     });
-//   });
-// };
