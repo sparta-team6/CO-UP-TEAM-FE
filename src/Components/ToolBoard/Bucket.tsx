@@ -39,22 +39,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
   const { mutateAsync } = usePostCards();
   console.log();
   // 테스트 버킷 생성
-  // const { mutateAsync } = usePostCard();
-  // const onClick = () => {
-  //   const bucket = {
-  //     pjId: String(pjId),
-  //     title: "done",
-  //     position: 3,
-  //   };
-  //   mutateAsync(bucket)
-  //     .then(() => {
-  //       console.log(bucket);
-  //       queryClient.invalidateQueries("getBoard");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+
   const onValid = ({ toDo, toDoComment }: IForm) => {
     if (name === "") {
       alert("담당자 선택해주세요");
@@ -80,7 +65,6 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
   };
   return (
     <div className="w-72 rounded-md min-h-[800px] flex flex-col">
-      {/* <div onClick={onClick}>테스트 보내기</div> */}
       <div className="w-full h-6 mt-10 flex justify-between">
         <h2 className="text-center font-semibold text-lg">{bucketId}</h2>
         <button
