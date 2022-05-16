@@ -13,8 +13,8 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
 
   const onDelete = () => {
     DelDoc().then(() => {
-      queryClient.invalidateQueries("getDocs");
-      navigate("/tool/1/document");
+      queryClient.invalidateQueries("getFolders");
+      navigate(`/tool/${id}/document`);
     });
   };
 

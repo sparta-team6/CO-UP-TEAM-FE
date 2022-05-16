@@ -52,7 +52,7 @@ const DocEditor = () => {
     };
 
     mutateAsync(doc).then(() => {
-      queryClient.invalidateQueries("getDocs");
+      queryClient.invalidateQueries("getFolders");
       navigate(`/tool/${pjId}/document/`);
     });
   };
@@ -72,7 +72,7 @@ const DocEditor = () => {
             <button
               type="button"
               className="border-none ml-2 px-3 py-2 rounded-md bg-slate-400"
-              onClick={() => navigate("/tool/1/document/m")}
+              onClick={() => navigate(`/tool/${pjId}/document/m`)}
             >
               닫기
             </button>
@@ -94,7 +94,7 @@ const DocEditor = () => {
             <button
               type="button"
               className="border-none ml-4 p-[10px] rounded-md bg-slate-400"
-              onClick={() => navigate("/tool/1/document")}
+              onClick={() => navigate(`/tool/${pjId}/document`)}
             >
               닫기
             </button>

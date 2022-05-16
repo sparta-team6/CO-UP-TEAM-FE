@@ -6,11 +6,6 @@ import { ProjectKey } from "../recoil/Atoms";
 import { useAddFolder, useGetFolders, useUpdateFolder } from "../api/FolderQuery";
 import { queryClient } from "..";
 import FolderFixed from "../Components/ToolDocument/FolderFixed";
-import { SubmitHandler, useForm } from "react-hook-form";
-
-type IForm = {
-  title: string;
-};
 
 const DocumentList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
@@ -19,19 +14,18 @@ const DocumentList = () => {
   const navigate = useNavigate();
   const [editTitle, setEditTitle] = useState(false);
   const [dfId, setDfId] = useState("");
-  const { register, handleSubmit, setValue } = useForm<IForm>();
+  const [title, setTitle] = useState("");
   const { mutateAsync: UpdateFol } = useUpdateFolder(dfId);
 
-  const onSubmit: SubmitHandler<IForm> = (value) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const folder = {
       dfId,
-      title: value.title,
-      position: 1,
+      title: title,
     };
     UpdateFol(folder).then(() => {
       queryClient.invalidateQueries("getFolders");
       setEditTitle(false);
-      setValue("title", "");
     });
   };
 
@@ -46,6 +40,10 @@ const DocumentList = () => {
     });
   };
 
+  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setTitle(e.currentTarget.value);
+  };
+
   return (
     <div className="w-72 h-full bg-orange-300 sm:w-full">
       <div className="flex justify-between items-center pt-5 px-4 sm:pt-4">
@@ -58,7 +56,7 @@ const DocumentList = () => {
       {data?.data?.map((folder) => {
         return (
           <div key={folder.dfId}>
-            <div className={`flex justify-between items-center px-4`}>
+            <div className="flex justify-between items-center px-4">
               <div
                 className={`font-bold text-lg ${
                   editTitle && dfId === folder.dfId ? "hidden" : "block"
@@ -66,20 +64,15 @@ const DocumentList = () => {
               >
                 {folder.title}
               </div>
-              <div className={`${editTitle && dfId === folder.dfId ? "hidden" : "block"}`}>
-                <FolderFixed dfId={folder.dfId} setEditTitle={setEditTitle} setDfId={setDfId} />
-              </div>
               <form
                 className={`w-full font-bold text-lg items-center justify-between ${
                   editTitle && dfId === folder.dfId ? "flex" : "hidden"
                 }`}
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={onSubmit}
               >
-                <label>
-                  <input defaultValue={folder.title} {...register("title")} />
-                </label>
-                <FolderFixed dfId={folder.dfId} setEditTitle={setEditTitle} setDfId={setDfId} />
+                <input defaultValue={folder.title} onChange={onChange} />
               </form>
+              <FolderFixed dfId={folder.dfId} setEditTitle={setEditTitle} setDfId={setDfId} />
             </div>
             <div className="flex flex-col ml-10 mt-2">
               <div className="flex items-center">
