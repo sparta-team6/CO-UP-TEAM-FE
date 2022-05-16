@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { Board, useGetBoard } from "../api/BoardQuery";
+import { queryClient } from "..";
+import { Board, useGetBoard, usePostBoard } from "../api/BoardQuery";
 import Bucket from "../Components/ToolBoard/Bucket";
 import { BoardState, ProjectKey } from "../recoil/Atoms";
 
@@ -9,6 +10,7 @@ const BoardList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data: board } = useGetBoard(String(pjId));
   const [test, setTest] = useRecoilState(BoardState);
+  const { mutateAsync } = usePostBoard();
   useEffect(() => {
     setTest(board?.data);
   }, [board]);
@@ -37,11 +39,28 @@ const BoardList = () => {
         const destinationBoard = [...allBoards[Number(destination.droppableId)].cards];
         sourceBoard.splice(source.index, 1);
         destinationBoard.splice(destination?.index, 0, taskObj);
+        console.log({
+          // ...allBoards,
+          // [source.droppableId]: sourceBoard,
+          [destination.droppableId]: destinationBoard,
+        });
+        mutateAsync({
+          ...allBoards,
+          [source.droppableId]: sourceBoard,
+          [destination.droppableId]: destinationBoard,
+        }).then(() => {
+          queryClient.invalidateQueries("getBoard");
+        });
         return {
           ...allBoards,
           [source.droppableId]: sourceBoard,
           [destination.droppableId]: destinationBoard,
         };
+        // return {
+        //   ...allBoards,
+        //   [source.droppableId]: sourceBoard,
+        //   [destination.droppableId]: destinationBoard,
+        // };
       });
     }
   };
