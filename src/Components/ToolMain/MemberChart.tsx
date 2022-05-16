@@ -1,17 +1,12 @@
-import { ProgressBar } from "react-bootstrap";
-import { useRecoilValue } from "recoil";
-// import { useGetProjectUser } from "../../api/UserQuery";
-import { MyProfile, toDoState } from "../../recoil/Atoms";
-
 const MemberChart = () => {
-  // const { pjId } = useRecoilValue(ProjectKey);
-  const toDos = useRecoilValue(toDoState);
-  // const { data } = useGetProjectUser(String(pjId));
-  const data = useRecoilValue(MyProfile);
-  const toDolen = toDos["to_do"].length + toDos["doing"].length + toDos["done"].length;
-  const dange = Math.round((toDos["to_do"].length / toDolen) * 1000) / 10;
-  const warning = Math.round((toDos["doing"].length / toDolen) * 1000) / 10;
-  const success = Math.round((toDos["done"].length / toDolen) * 1000) / 10;
+  // // const { pjId } = useRecoilValue(ProjectKey);
+  // const toDos = useRecoilValue(toDoState);
+  // // const { data } = useGetProjectUser(String(pjId));
+  // const data = useRecoilValue(MyProfile);
+  // const toDolen = toDos["to_do"].length + toDos["doing"].length + toDos["done"].length;
+  // const dange = Math.round((toDos["to_do"].length / toDolen) * 1000) / 10;
+  // const warning = Math.round((toDos["doing"].length / toDolen) * 1000) / 10;
+  // const success = Math.round((toDos["done"].length / toDolen) * 1000) / 10;
   return (
     <div className="w-full h-full p-4">
       <div className="flex justify-between items-center pb-2">
@@ -47,7 +42,7 @@ const MemberChart = () => {
             </div>
           );
         })} */}
-        <div className="flex flex-col items-center mb-3">
+        {/* <div className="flex flex-col items-center mb-3">
           <div className="w-full flex justify-between items-center">
             <span className="text-xl font-semibold">{data.nickname}</span>
             <div>{`${dange}/${warning}/${success}`}</div>
@@ -57,7 +52,7 @@ const MemberChart = () => {
             <ProgressBar className="bg-2" now={warning} />
             <ProgressBar className="bg-3" now={success} />
           </ProgressBar>
-        </div>
+        </div> */}
       </div>
     </div>
   );
