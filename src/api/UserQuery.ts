@@ -17,15 +17,18 @@ export interface IUser {
 
 export const useGetProjectUser = (pjId: string) => {
   return useQuery<IUser, AxiosError>("getUser", () => {
-    return instance.get(`api/users/projects?pjId=${pjId}`);
+    return instance.get(`api/users/projects/?pjId=${pjId}`);
   });
 };
 
 export const useUpdateUser = () => {
   return useMutation(async (post: User) => {
-    await instance.put("api/users/update/", post).then((res) => {
-      console.log(res);
-    });
+    await instance
+      .put("api/users/update/", post)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
   });
 };
 

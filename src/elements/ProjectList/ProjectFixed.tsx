@@ -50,6 +50,7 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
     mutateAsync().then(() => {
       alert("방 삭제했어");
       queryClient.invalidateQueries("getProject");
+      setAnchorEl(null);
     });
   };
   return (

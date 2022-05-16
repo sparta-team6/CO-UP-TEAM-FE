@@ -14,7 +14,7 @@ const Chat = () => {
   const { mutateAsync } = useAddChatComment();
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const user = useRecoilValue(MyProfile);
-  const messageBoxRef = useRef<any>();
+  const messageBoxRef = useRef<HTMLDivElement>(null);
   const scrollToBottom = () => {
     if (messageBoxRef.current) {
       messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;

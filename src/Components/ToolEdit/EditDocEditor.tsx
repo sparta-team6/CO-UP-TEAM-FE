@@ -28,9 +28,10 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
   const { id } = useParams();
   const { mutateAsync: UpdateDoc } = useUpdateDoc(String(docId));
   const navigate = useNavigate();
-  const editorRef = createRef<any>();
+  const editorRef = createRef<Editor>();
   const { register, handleSubmit } = useForm<IForm>();
   const onValid: SubmitHandler<IForm> = (data) => {
+    if (editorRef.current === null) return;
     if (!data.title) {
       alert("제목을 입력해주세요!");
       return;

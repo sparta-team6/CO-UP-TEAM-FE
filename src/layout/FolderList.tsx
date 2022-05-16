@@ -7,7 +7,7 @@ import { useAddFolder, useGetFolders, useUpdateFolder } from "../api/FolderQuery
 import { queryClient } from "..";
 import FolderFixed from "../Components/ToolDocument/FolderFixed";
 
-const DocumentList = () => {
+const FolderList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data } = useGetFolders(pjId);
   const { mutateAsync: AddFol } = useAddFolder();
@@ -96,4 +96,4 @@ const DocumentList = () => {
   );
 };
 
-export default React.memo(DocumentList);
+export default React.memo(FolderList);

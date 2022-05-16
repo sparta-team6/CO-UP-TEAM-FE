@@ -7,8 +7,8 @@ const Profile = lazy(() => import("../pages/Profile"));
 const Login = lazy(() => import("../pages/Mobile/Login"));
 const ToolMain = lazy(() => import("../pages/Tool/Main"));
 const MobileChat = lazy(() => import("../pages/Mobile/Chat"));
-const ToolDocument = lazy(() => import("../pages/Tool/Document/DocumentList"));
-const DocumentDetail = lazy(() => import("../pages/Tool/Document/DocumentDetail"));
+const DocList = lazy(() => import("../pages/Tool/Document/DocList"));
+const DetailDocs = lazy(() => import("../pages/Tool/Document/DetailDocs"));
 const ToolBoard = lazy(() => import("../pages/Tool/Board"));
 const AddDocs = lazy(() => import("../pages/Tool/Document/AddDocs"));
 const ProjectList = lazy(() => import("../pages/ProjectList"));
@@ -26,8 +26,8 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/tool/:id" element={<ToolMain />} />
         <Route path="/tool/:id/chat" element={<MobileChat />} />
-        <Route path="/tool/:id/document" element={<ToolDocument />} />
-        <Route path="/tool/:id/document/:postId" element={<DocumentDetail />} />
+        <Route path="/tool/:id/document" element={<DocList />} />
+        <Route path="/tool/:id/document/:postId" element={<DetailDocs />} />
         <Route path="/tool/:id/document/:postId/edit" element={<EditDocs />} />
         <Route path="/tool/:id/document/add" element={<AddDocs />} />
         <Route path="/tool/:id/board" element={<ToolBoard />} />

@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Docs } from "../../../api/DocumentQuery";
 import EditDocEditor from "../../../Components/ToolEdit/EditDocEditor";
 import Chat from "../../../layout/Chat";
-import DocumentList from "../../../layout/DocumentList";
+import DocumentList from "../../../layout/FolderList";
 import MyProjectList from "../../../layout/MyProjectList";
 
 type ILocation = {

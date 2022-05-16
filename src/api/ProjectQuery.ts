@@ -30,7 +30,6 @@ export const useGetRoomDetail = (postId: string) => {
   });
 };
 
-/* 하나만 옵셔널 바꾸는거 찾기 */
 export const usePostRoom = () => {
   return useMutation(async (post: Room) => {
     await instance.post("api/projects/", post).then((res) => {

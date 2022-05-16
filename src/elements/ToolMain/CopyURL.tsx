@@ -4,9 +4,10 @@ import { ProjectKey } from "../../recoil/Atoms";
 
 const CopyURL = () => {
   const { inviteCode } = useRecoilValue(ProjectKey);
-  const textInput = useRef<any>();
+  const textInput = useRef<HTMLInputElement>(null);
   const copy = () => {
     const el = textInput.current;
+    if (el === null) return;
     el.select();
     document.execCommand("copy");
   };

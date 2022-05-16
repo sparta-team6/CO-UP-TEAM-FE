@@ -28,7 +28,7 @@ const ProjectData = () => {
             key={index}
             className="relative w-[300px] h-[300px] bg-slate-100 rounded-lg flex flex-col justify-center items-center mb-4 mr-6 sm:m-0"
           >
-            <div onClick={() => onClick(room?.pjId)} className="w-full h-full">
+            <div onClick={() => onClick(room.pjId)} className="w-full h-full">
               <div className="w-full h-1/2 flex justify-center items-center">
                 <img className="rounded-full w-[100px] h-[100px]" src={room.thumbnail} alt="" />
               </div>
@@ -41,7 +41,6 @@ const ProjectData = () => {
               </div>
             </div>
             <div className="absolute top-0 right-0">
-              {/* 현재 pjID를 id로 받아왔음 */}
               <ProjectFixed
                 roomID={room.pjId}
                 roomImg={room.thumbnail}

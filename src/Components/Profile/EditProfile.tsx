@@ -18,7 +18,6 @@ type IForm = {
 const EditProfile = () => {
   const [user, setUser] = useRecoilState(MyProfile);
   const [imgBase64, setImgBase64] = useState<string>("");
-  const [imgFile, setImgFile] = useState();
   const fileInput = useRef<HTMLInputElement>(null);
   const { register, handleSubmit } = useForm<IForm>();
   const { mutateAsync } = useUpdateUser();
@@ -53,7 +52,8 @@ const EditProfile = () => {
       });
     }
   };
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files === null) return;
     const reader = new FileReader();
     reader.onloadend = () => {
       const base64 = reader.result;
@@ -64,7 +64,6 @@ const EditProfile = () => {
     const files = e.target.files[0];
     if (files) {
       reader.readAsDataURL(files);
-      setImgFile(files);
     }
   };
   return (
@@ -91,7 +90,6 @@ const EditProfile = () => {
               className="hidden"
               onChange={onChange}
               ref={fileInput}
-              name={imgFile}
             />
             <IconButton color="primary" aria-label="upload picture" component="span">
               <PhotoCamera fontSize="small" />

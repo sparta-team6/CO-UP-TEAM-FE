@@ -1,10 +1,11 @@
 import { useRecoilValue } from "recoil";
-import { useGetProjectUser } from "../../api/UserQuery";
-import { MyProfile, ProjectKey } from "../../recoil/Atoms";
+// import { useGetProjectUser } from "../../api/UserQuery";
+import { MyProfile  } from "../../recoil/Atoms";
 
 const Member = () => {
-  const { pjId } = useRecoilValue(ProjectKey);
-  const { data } = useGetProjectUser(String(pjId));
+  // 값 아직 안가져옴
+  // const { pjId } = useRecoilValue(ProjectKey);
+  // const { data } = useGetProjectUser(String(pjId));
   const user = useRecoilValue(MyProfile);
   return (
     <div className="w-full h-full">
@@ -18,7 +19,7 @@ const Member = () => {
           <div>{user.aboutMe}</div>
         </div>
       </div>
-      {data?.data?.map((box, index) => {
+      {/* {data?.data?.map((box, index) => {
         return (
           <div key={index} className="group w-full h-14 relative flex items-center space-x-2">
             <img
@@ -42,7 +43,7 @@ const Member = () => {
             </div>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 };
