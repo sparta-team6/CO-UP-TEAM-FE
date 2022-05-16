@@ -17,7 +17,7 @@ import { createRef } from "react";
 
 import { useAddDoc } from "../../api/DocumentQuery";
 import { queryClient } from "../../index";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/Atoms";
@@ -27,6 +27,7 @@ type IForm = {
 };
 
 const DocEditor = () => {
+  const { state } = useLocation();
   const { pjId } = useRecoilValue(ProjectKey);
   const navigate = useNavigate();
   const editorRef = createRef<Editor>();
@@ -43,15 +44,16 @@ const DocEditor = () => {
       return;
     }
 
-    const folder = {
-      pjId,
+    const doc = {
+      dfId: state,
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
+      position: 1,
     };
 
-    mutateAsync(folder).then(() => {
-      queryClient.invalidateQueries("getFolders");
-      navigate(`/tool/${pjId}/document`);
+    mutateAsync(doc).then(() => {
+      queryClient.invalidateQueries("getDocs");
+      navigate(`/tool/${pjId}/document/`);
     });
   };
 

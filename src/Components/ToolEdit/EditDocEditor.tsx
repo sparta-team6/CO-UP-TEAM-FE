@@ -17,7 +17,7 @@ import { createRef } from "react";
 
 import { Docs, useUpdateDoc } from "../../api/DocumentQuery";
 import { queryClient } from "../../index";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type IForm = {
@@ -25,6 +25,7 @@ type IForm = {
 };
 
 const DocEditor = ({ title, contents, docId }: Docs) => {
+  const { id } = useParams();
   const { mutateAsync: UpdateDoc } = useUpdateDoc(String(docId));
   const navigate = useNavigate();
   const editorRef = createRef<any>();
@@ -39,13 +40,15 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
       return;
     }
 
-    UpdateDoc({
+    const doc = {
       docId,
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
-    }).then(() => {
-      queryClient.invalidateQueries("getDocs");
-      navigate(`/tool/1/document/${docId}`);
+      position: 1,
+    };
+    UpdateDoc(doc).then(() => {
+      queryClient.invalidateQueries("getFolders");
+      navigate(`/tool/${id}/document/${docId}`);
     });
   };
 

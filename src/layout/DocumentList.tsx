@@ -1,113 +1,103 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../recoil/Atoms";
-import { useAddFolder, useGetFolders } from "../api/FolderQuery";
+import { useAddFolder, useGetFolders, useUpdateFolder } from "../api/FolderQuery";
 import { queryClient } from "..";
+import FolderFixed from "../Components/ToolDocument/FolderFixed";
+import { SubmitHandler, useForm } from "react-hook-form";
 
-const ITEM_HEIGHT = 48;
+type IForm = {
+  title: string;
+};
 
 const DocumentList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
   const { data } = useGetFolders(pjId);
-  const { mutateAsync } = useAddFolder();
-  const { id } = useParams();
+  const { mutateAsync: AddFol } = useAddFolder();
   const navigate = useNavigate();
+  const [editTitle, setEditTitle] = useState(false);
+  const [dfId, setDfId] = useState("");
+  const { register, handleSubmit, setValue } = useForm<IForm>();
+  const { mutateAsync: UpdateFol } = useUpdateFolder(dfId);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const onClick = () => {
+  const onSubmit: SubmitHandler<IForm> = (value) => {
     const folder = {
-      pjId: String(pjId),
+      dfId,
+      title: value.title,
+      position: 1,
+    };
+    UpdateFol(folder).then(() => {
+      queryClient.invalidateQueries("getFolders");
+      setEditTitle(false);
+      setValue("title", "");
+    });
+  };
+
+  const AddFolder = () => {
+    const folder = {
+      pjId,
       title: "폴더 1",
       position: 1,
     };
-    mutateAsync(folder)
-      .then(() => {
-        console.log(folder);
-        queryClient.invalidateQueries("getFolders");
-      })
-      .catch((err) => console.log(err));
+    AddFol(folder).then(() => {
+      queryClient.invalidateQueries("getFolders");
+    });
   };
+
   return (
     <div className="w-72 h-full bg-orange-300 sm:w-full">
       <div className="flex justify-between items-center pt-5 px-4 sm:pt-4">
         <div className="font-bold text-xl">문서목록</div>
         <nav className="w-8 font-bold text-2xl flex justify-center items-center">
-          <div onClick={onClick}>+</div>
+          <div onClick={AddFolder}>+</div>
         </nav>
       </div>
       <hr />
-      {data?.data?.map((folder) => (
-        <>
-          <div className="flex justify-between items-center px-4" key={folder.dfId}>
-            <div className="font-bold text-lg">{folder.title}</div>
-            <div className="group relative">
-              <IconButton
-                aria-label="more"
-                id="long-button"
-                aria-controls={open ? "long-menu" : undefined}
-                aria-expanded={open ? "true" : undefined}
-                aria-haspopup="true"
-                onClick={handleClick}
+      {data?.data?.map((folder) => {
+        return (
+          <div key={folder.dfId}>
+            <div className={`flex justify-between items-center px-4`}>
+              <div
+                className={`font-bold text-lg ${
+                  editTitle && dfId === folder.dfId ? "hidden" : "block"
+                }`}
               >
-                <MoreHorizIcon />
-              </IconButton>
-              <Menu
-                id="long-menu"
-                MenuListProps={{
-                  "aria-labelledby": "long-button",
-                }}
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                PaperProps={{
-                  style: {
-                    maxHeight: ITEM_HEIGHT * 4.5,
-                    width: "16ch",
-                  },
-                }}
+                {folder.title}
+              </div>
+              <div className={`${editTitle && dfId === folder.dfId ? "hidden" : "block"}`}>
+                <FolderFixed dfId={folder.dfId} setEditTitle={setEditTitle} setDfId={setDfId} />
+              </div>
+              <form
+                className={`w-full font-bold text-lg items-center justify-between ${
+                  editTitle && dfId === folder.dfId ? "flex" : "hidden"
+                }`}
+                onSubmit={handleSubmit(onSubmit)}
               >
-                <MenuItem onClick={() => navigate(`/tool/${id}/document/add`)}>
-                  문서 생성하기
-                </MenuItem>
-                <MenuItem>폴더 이름 바꾸기</MenuItem>
-                <MenuItem>폴더 지우기</MenuItem>
-              </Menu>
+                <label>
+                  <input defaultValue={folder.title} {...register("title")} />
+                </label>
+                <FolderFixed dfId={folder.dfId} setEditTitle={setEditTitle} setDfId={setDfId} />
+              </form>
             </div>
-          </div>
-          <div className="flex flex-col ml-10 mt-2">
-            <div className="flex items-center">
-              <div className="text-base m-1 cursor-pointer">
-                {/* <Link
-                  to={`/tool/1/document/${doc.id}`}
-                  state={{
-                    id: doc.id,
-                    title: doc.title,
-                    contents: doc.contents,
-                    docId: doc.docId,
-                  }}
-                >
-                  {doc.title}
-                </Link> */}
+            <div className="flex flex-col ml-10 mt-2">
+              <div className="flex items-center">
+                <div className="text-base m-1 cursor-pointer">
+                  {folder.docs?.map((doc) => (
+                    <div
+                      onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}
+                      key={doc.docId}
+                    >
+                      {doc.title}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </>
-      ))}
+        );
+      })}
       <hr />
     </div>
   );
