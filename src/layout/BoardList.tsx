@@ -6,6 +6,7 @@ import { toDoState } from "../recoil/Atoms";
 
 const BoardList = () => {
   const [toDos, setToDos] = useRecoilState(toDoState);
+  console.log(toDos);
   const [notToDos, setNotToDos] = useState(false);
   useEffect(() => {
     const NotTodo = toDos["to_do"].length;
