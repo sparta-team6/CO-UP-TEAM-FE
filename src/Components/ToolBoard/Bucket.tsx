@@ -5,8 +5,7 @@ import { ITodo, MyProfile, ProjectKey, toDoState } from "../../recoil/Atoms";
 import DraggableCard from "../../elements/ToolBoard/DraggableCard";
 import { useState } from "react";
 import { Box, Modal } from "@mui/material";
-import { useGetProjectUser } from "../../api/UserQuery";
-import { usePostCard } from "../../api/BoardQuery";
+import { useGetBoard, usePostCard } from "../../api/BoardQuery";
 import { queryClient } from "../..";
 
 const style = {
@@ -32,8 +31,8 @@ interface IForm {
 const Bucket = ({ toDos, bucketId }: IBoardProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { nickname } = useRecoilValue(MyProfile);
-  const { data: user } = useGetProjectUser(String(pjId));
-  // const { data: board } = useGetBoard(String(pjId));
+  const { data: board } = useGetBoard(String(pjId));
+  console.log(board);
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const handleOpen = () => setOpen(true);
@@ -111,7 +110,7 @@ const Bucket = ({ toDos, bucketId }: IBoardProps) => {
               <div className="w-14 bg-slate-200 text-base font-semibold">
                 <p className="text-center">{bucketId}</p>
               </div>
-              <select
+              {/* <select
                 className="outline-none bg-slate-200 border-0"
                 value={name}
                 onChange={onChange}
@@ -124,6 +123,15 @@ const Bucket = ({ toDos, bucketId }: IBoardProps) => {
                     </option>
                   );
                 })}
+                <option value={nickname}>{nickname}</option>
+              </select> */}
+              <select
+                className="outline-none bg-slate-200 border-0"
+                value={name}
+                onChange={onChange}
+              >
+                <option defaultValue="none">=== 선택 ===</option>
+                <option value={nickname}>{nickname}</option>
                 <option value={nickname}>{nickname}</option>
               </select>
             </div>

@@ -29,10 +29,11 @@ type IForm = {
 const DocEditor = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const navigate = useNavigate();
-  const editorRef = createRef<any>();
+  const editorRef = createRef<Editor>();
   const { mutateAsync } = useAddDoc();
   const { register, handleSubmit } = useForm<IForm>();
   const onValid: SubmitHandler<IForm> = (data) => {
+    if (editorRef.current === null) return;
     if (!data.title) {
       alert("제목을 입력해주세요!");
       return;
