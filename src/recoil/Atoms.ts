@@ -61,3 +61,9 @@ export const ProjectKey = atom<ProjectRoom>({
   },
   effects_UNSTABLE: [persistAtom],
 });
+
+export const ChartLength = atom<number[]>({
+  key: "chartLength",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});

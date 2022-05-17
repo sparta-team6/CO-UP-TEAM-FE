@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
 // import { useGetProjectUser } from "../../api/UserQuery";
-import { MyProfile  } from "../../recoil/Atoms";
+import { MyProfile } from "../../recoil/Atoms";
 
 const Member = () => {
   // 값 아직 안가져옴
@@ -13,10 +13,23 @@ const Member = () => {
       <div className="group w-full h-14 relative flex items-center space-x-2">
         <img className="rounded-full" width="40px" height="40px" src={user.profileImage} alt="" />
         <span className="font-semibold">{user.nickname}</span>
-        <div className="hidden w-[250px] bg-gray-500  group-hover:flex flex-col items-center sm:group-focus:block absolute right-[-270px]">
-          <img className="rounded-full" width="80px" height="80px" src={user.profileImage} alt="" />
-          <div>{user.nickname}</div>
-          <div>{user.aboutMe}</div>
+        <div className="hidden w-[350px] h-36 bg-gray-200  group-hover:flex  sm:group-focus:block absolute right-[-350px] top-0">
+          <div className="w-full h-full p-3 flex flex-col">
+            <div className="w-full flex items-center space-x-5">
+              <img
+                className="rounded-full"
+                width="60px"
+                height="60px"
+                src={user.profileImage}
+                alt=""
+              />
+              <div>{user.nickname}</div>
+            </div>
+            <div className="text-center mt-1">
+              <div>{user.aboutMe}</div>
+              <div>{user.url}</div>
+            </div>
+          </div>
         </div>
       </div>
       {/* {data?.data?.map((box, index) => {

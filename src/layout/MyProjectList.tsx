@@ -26,15 +26,15 @@ const MyProjectList = () => {
     mutateAsync().then((res) => console.log(res));
   };
   return (
-    <div className="w-12 h-full flex flex-col justify-between items-center bg-slate-500 sm:h-[calc(100vh-80px)] sm:pt-12">
-      <div>
+    <div className="w-[74px] h-full bg-zinc-300 flex flex-col justify-between items-center sm:h-[calc(100vh-80px)] sm:pt-12">
+      <div className="mt-2">
         {data?.data.map((room, index) => (
           <div onClick={() => onClick(room.pjId)} key={index}>
-            <img className="w-10 h-10 rounded-lg mt-2" src={room.thumbnail} alt="" />
+            <img className="w-[46px] h-[46px] rounded-lg mt-2" src={room.thumbnail} alt="" />
           </div>
         ))}
       </div>
-      <div className="w-12 h-24">
+      <div className="w-12 h-36 flex flex-col justify-between">
         <span>다크모드</span>
         <span>나가기</span>
         <span onClick={onLouout}>로그아웃</span>

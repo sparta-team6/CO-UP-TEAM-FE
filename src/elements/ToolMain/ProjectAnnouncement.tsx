@@ -115,7 +115,7 @@ const ProjectAnnouncement = () => {
         {data?.data?.map((data, index) => {
           return (
             <div key={index} className="w-full h-16 bg-slate-100 rounded-lg overflow-hidden flex">
-              <div className="w-2 h-full bg-violet-500 " />
+              <div className="w-2 h-full bg-3" />
               <div className="w-full h-full mx-3 flex flex-col justify-around">
                 <div className="w-full font-semibold">{data.title}</div>
                 <div className="flex justify-between">

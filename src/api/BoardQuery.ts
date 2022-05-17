@@ -10,11 +10,11 @@ export interface Board {
 }
 
 export interface IBoard {
-  data: Board[] | any;
+  data: Board[];
 }
 
 export const useGetBoard = (pjId: string) => {
-  return useQuery<IBoard, AxiosError>("getBoard", () => {
+  return useQuery<IBoard, AxiosError>(["getBoard", pjId], () => {
     return instance.get(`api/buckets/?pjId=${pjId}`);
   });
 };

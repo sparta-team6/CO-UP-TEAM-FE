@@ -79,7 +79,7 @@ const BoardList = () => {
   };
   return (
     <div className="w-full h-full bg-red-200 overflow-auto">
-      <div onClick={onClick}>테스트 보내기</div>
+      {/* <div onClick={onClick}>테스트 보내기</div> */}
       <div className="w-full h-full flex justify-center items-center relative">
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="w-full h-full flex">
