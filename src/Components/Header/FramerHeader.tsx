@@ -20,7 +20,7 @@ const FramerHeader = () => {
             <img className="ml-4 w-10 h-10" src={Logo} alt="Logo"></img>
           </Link>
         </div>
-        <nav className="w-[calc(100%-37rem)] flex  space-x-20 text-base pl-5 sm:w-full">
+        <nav className="w-[calc(100%-37rem)] min-w-max flex  space-x-20 text-base pl-5 sm:w-full">
           <div className="relative">
             <Link to={`/tool/${project.pjId}`}>
               <span className="dark:text-white">메인</span>

@@ -34,7 +34,7 @@ const Chart = () => {
               },
               plotOptions: {
                 pie: {
-                  customScale: 1.1,
+                  customScale: 1.08,
                   donut: {
                     size: "80%",
                   },
@@ -45,7 +45,9 @@ const Chart = () => {
                 fontWeight: 600,
               },
               stroke: {
-                show: false,
+                show: true,
+                lineCap: "round",
+                width: 1,
               },
               dataLabels: {
                 enabled: false,
