@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { useUpdateUser } from "../../api/UserQuery";
+import { SvgEdit } from "../../elements/Icon/SvgEdit";
 import { MyProfile } from "../../recoil/Atoms";
 import { resizeFile } from "../../servers/resize";
 
@@ -68,20 +69,20 @@ const EditProfile = () => {
   };
   return (
     <>
-      <div className="font-bold text-3xl text-left w-full pl-12 pb-12">
+      <div className="font-bold text-4xl text-left w-full pl-12 pb-12">
         <div>내 프로필 설정</div>
       </div>
       <div className="flex flex-col">
         <div className="flex justify-center relative">
           <img
             className="rounded-full"
-            width="250px"
-            height="250px"
+            width="244px"
+            height="244px"
             alt=""
             src={imgBase64 ? imgBase64 : user.profileImage}
           />
           <label
-            className="text-right absolute w-9 h-9 rounded-full bg-white right-20 bottom-1"
+            className="flex justify-center items-center absolute w-12 h-12 rounded-full bg-white right-24 bottom-0"
             htmlFor="icon-button-file"
           >
             <input
@@ -91,34 +92,34 @@ const EditProfile = () => {
               onChange={onChange}
               ref={fileInput}
             />
-            <IconButton color="primary" aria-label="upload picture" component="span">
-              <PhotoCamera fontSize="small" />
+            <IconButton aria-label="upload picture" component="span">
+              {/* <PhotoCamera fontSize="small" /> */}
+              <SvgEdit />
             </IconButton>
           </label>
         </div>
-        <form className="flex flex-col space-y-6 mt-14 w-96" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col space-y-6 mt-14 w-[440px]" onSubmit={handleSubmit(onSubmit)}>
           <input
-            className="text-center p-2 rounded-md border-none"
+            className="text-center text-2xl h-14 rounded-md border-none"
             placeholder="닉네임"
             defaultValue={user.nickname}
             {...register("nickName")}
           />
           <input
-            className="text-center p-2 rounded-md border-none"
+            className="text-center text-2xl h-14 rounded-md border-none"
             placeholder="URL"
             defaultValue={user.url}
             {...register("url")}
           />
           <textarea
-            className="text-center p-2 rounded-md border-none resize-none"
-            rows={5}
+            className="text-center text-2xl h-[150px] rounded-md border-none resize-none"
             placeholder="자기소개"
             defaultValue={user.aboutMe}
             {...register("about_me")}
           />
           <div className="text-right">
             <button className="w-32 h-10 p-2 bg-3 rounded-lg" type="submit">
-              <span className="text-white leading-7">저장하기</span>
+              <span className="text-white text-xl">저장하기</span>
             </button>
           </div>
         </form>
