@@ -49,34 +49,34 @@ const Chat = () => {
       <div ref={messageBoxRef} className="w-full h-full space-y-2 overflow-y-auto">
         {data?.data?.map((box, index) => {
           return (
-            <div className="w-full min-h-10 p-1 flex items-center" key={index}>
-              <img width="30px" height="30px" src={box.profile} alt="" />
-              <span>{box.name}</span>
-              <span className="whitespace-pre-wrap break-all">{box.comment}</span>
-              <span className="text-xs">{box.createAt}</span>
+            <div className="w-full min-h-10 pl-8 flex items-start" key={index}>
+              <img className="w-[40px] h-[40px] rounded-full" src={box.profile} alt="" />
+              <div className="flex flex-col pl-2 pt-1 pb-2">
+                <span className="font-bold text-lg">{box.name}</span>
+                <span className="text-[#AAA] text-xs">{box.createAt}</span>
+                <span className="whitespace-pre-wrap break-all mt-2 leading-5">{box.comment}</span>
+              </div>
             </div>
           );
         })}
       </div>
-      <div className="w-96 h-36 fixed bottom-0">
-        <div className="w-full h-full flex justify-center ">
-          <form
-            className="w-[340px] h-32 bg-slate-200 outline-none flex items-center justify-center rounded-lg"
-            onSubmit={handleSubmit(handleonEnter)}
+      <div className="w-full flex justify-center items-center relative bg-white">
+        <form
+          className="w-[340px] h-32 mb-7 bg-slate-200 outline-none flex items-center justify-center rounded-lg"
+          onSubmit={handleSubmit(handleonEnter)}
+        >
+          <textarea
+            className="w-80 h-28 p-2 outline-none resize-none relative bg-transparent"
+            onKeyDown={onKeyDown}
+            {...(register("text"), { placeholder: "메세지를 입력하세요." })}
+          />
+          <button
+            className="w-12 h-7 absolute right-7 bottom-9 text-white bg-3 rounded-[4px] leading-7"
+            type="submit"
           >
-            <textarea
-              className="w-80 h-28 outline-none resize-none relative bg-transparent"
-              onKeyDown={onKeyDown}
-              {...(register("text"), { placeholder: "메세지를 입력하세요." })}
-            />
-            <button
-              className="w-12 h-7 fixed bottom-6 right-10  text-white bg-3 rounded-[4px] leading-7"
-              type="submit"
-            >
-              전송
-            </button>
-          </form>
-        </div>
+            전송
+          </button>
+        </form>
       </div>
     </div>
   );
