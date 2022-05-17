@@ -36,7 +36,7 @@ const Chart = () => {
                 pie: {
                   customScale: 1.1,
                   donut: {
-                    size: "75%",
+                    size: "80%",
                   },
                 },
               },

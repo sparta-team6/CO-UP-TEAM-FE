@@ -15,7 +15,7 @@ const FramerHeader = () => {
     <React.Fragment>
       <div className="w-full h-12 flex justify-between items-center fixed z-50 shadow-md sm:bottom-0 sm:h-20 dark:bg-gray-800">
         <Footer />
-        <div className="w-[21rem] md:hidden">
+        <div className="w-[25rem] md:hidden">
           <Link to="/">
             <img className="ml-4 w-10 h-10" src={Logo} alt="Logo"></img>
           </Link>
@@ -58,7 +58,7 @@ const FramerHeader = () => {
             )}
           </div>
         </nav>
-        <nav className="w-64 h-full flex justify-around items-center">
+        <nav className="w-56 h-full flex justify-around items-center">
           <Link to={`/tool/${project.pjId}/chat`} className="hidden md:block">
             <span className="dark:text-white">채팅</span>
           </Link>
