@@ -1,3 +1,5 @@
+import { ProgressBar } from "react-bootstrap";
+
 const MemberChart = () => {
   // // const { pjId } = useRecoilValue(ProjectKey);
   // const toDos = useRecoilValue(toDoState);
@@ -26,7 +28,7 @@ const MemberChart = () => {
           </section>
         </div>
       </div>
-      <div className="overflow-y-auto h-48">
+      <div className="overflow-y-auto h-72">
         {/* {data?.data?.map((data, index) => {
           return (
             <div key={index} className="flex flex-col items-center mb-3">
@@ -42,17 +44,39 @@ const MemberChart = () => {
             </div>
           );
         })} */}
-        {/* <div className="flex flex-col items-center mb-3">
+        <div className="flex flex-col items-center mb-3">
           <div className="w-full flex justify-between items-center">
-            <span className="text-xl font-semibold">{data.nickname}</span>
-            <div>{`${dange}/${warning}/${success}`}</div>
+            <span className="text-xl font-semibold">{`JIHO`}</span>
+            <div>{`10/25/65`}</div>
           </div>
           <ProgressBar className="w-full">
-            <ProgressBar className="bg-1" now={dange} />
-            <ProgressBar className="bg-2" now={warning} />
-            <ProgressBar className="bg-3" now={success} />
+            <ProgressBar className="bg-1" now={10} />
+            <ProgressBar className="bg-2" now={25} />
+            <ProgressBar className="bg-3" now={65} />
           </ProgressBar>
-        </div> */}
+        </div>
+        <div className="flex flex-col items-center mb-3">
+          <div className="w-full flex justify-between items-center">
+            <span className="text-xl font-semibold">{`Charley`}</span>
+            <div>{`15/35/50`}</div>
+          </div>
+          <ProgressBar className="w-full">
+            <ProgressBar className="bg-1" now={15} />
+            <ProgressBar className="bg-2" now={35} />
+            <ProgressBar className="bg-3" now={50} />
+          </ProgressBar>
+        </div>
+        <div className="flex flex-col items-center mb-3">
+          <div className="w-full flex justify-between items-center">
+            <span className="text-xl font-semibold">{`Duck`}</span>
+            <div>{`10/10/80`}</div>
+          </div>
+          <ProgressBar className="w-full">
+            <ProgressBar className="bg-1" now={10} />
+            <ProgressBar className="bg-2" now={10} />
+            <ProgressBar className="bg-3" now={80} />
+          </ProgressBar>
+        </div>
       </div>
     </div>
   );

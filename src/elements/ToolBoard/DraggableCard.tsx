@@ -49,7 +49,7 @@ const DraggableCard = ({
           >
             <div
               className={`w-2 h-full ${
-                bucketId === "to_do" ? "bg-1" : bucketId === "doing" ? "bg-2" : "bg-3"
+                bucketId === "ToDo" ? "bg-1" : bucketId === "Done" ? "bg-3" : "bg-2"
               }  absolute top-0`}
             />
             <div className="absolute top-2 right-2 cursor-pointer">X</div>
