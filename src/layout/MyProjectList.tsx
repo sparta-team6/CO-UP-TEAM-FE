@@ -26,7 +26,7 @@ const MyProjectList = () => {
     mutateAsync().then((res) => console.log(res));
   };
   return (
-    <div className="w-[74px] h-full bg-zinc-300 flex flex-col justify-between items-center sm:h-[calc(100vh-80px)] sm:pt-12">
+    <div className="w-[74px] h-[calc(100%-3rem)] bg-zinc-300 flex flex-col justify-between items-center sm:h-[calc(100vh-80px)] sm:pt-12">
       <div className="mt-2">
         {data?.data.map((room, index) => (
           <div onClick={() => onClick(room.pjId)} key={index}>

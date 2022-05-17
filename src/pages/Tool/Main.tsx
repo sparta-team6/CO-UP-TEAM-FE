@@ -16,7 +16,7 @@ const Main = () => {
   return (
     <div className="w-full h-screen flex justify-between relative pt-12 md:h-full md:justify-start">
       <SlidingMain />
-      <div className="w-[calc(100%-45rem)] h-full bg-slate-100 flex flex-col ml-[336px]  md:w-[calc(100%-21rem)] sm:w-full sm:p-2 sm:m-0">
+      <div className="w-[calc(100%-746px)] h-full bg-slate-100 flex flex-col ml-[362px]  md:w-[calc(100%-21rem)] sm:w-full sm:p-2 sm:m-0">
         <div className="w-full h-full p-4 flex flex-col">
           <ProjectMain />
           <div className="w-full flex md:flex-col">
