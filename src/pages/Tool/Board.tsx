@@ -31,7 +31,7 @@ const Board = () => {
             </SlidingPanel>
             <BoardList />
           </div>
-          <div className="w-[calc(100vw-23rem)] md:w-[calc(100vw-3rem)] sm:hidden">
+          <div className="w-[calc(100vw-29rem)] md:w-[calc(100vw-3rem)] sm:hidden">
             <BoardList />
           </div>
         </div>
