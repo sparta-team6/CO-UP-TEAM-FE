@@ -1,14 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { useGetRoom } from "../api/ProjectQuery";
 import { useLogOut } from "../api/UserQuery";
 import { HandleOpen, ProjectKey, themeState } from "../recoil/Atoms";
 import { motion } from "framer-motion";
+import { Logout } from "../elements/Icon/Logout";
+import { Power } from "../elements/Icon/Power";
+import { Moon } from "../elements/Icon/Moon";
+import { Sun } from "../elements/Icon/Sun";
 
 const MyProjectList = () => {
   const setOpen = useSetRecoilState(HandleOpen);
   const setProject = useSetRecoilState(ProjectKey);
-  const DarkMode = useSetRecoilState(themeState);
+  const [theme, DarkMode] = useRecoilState(themeState);
   const navigate = useNavigate();
   const { data } = useGetRoom();
   const onClick = (roomID?: string) => {
@@ -39,15 +43,15 @@ const MyProjectList = () => {
           </motion.div>
         ))}
       </div>
-      <div className="w-12 h-36 flex flex-col justify-between">
+      <div className="w-[74px] h-32 flex flex-col justify-between items-center mb-4">
         <span className="cursor-pointer" onClick={onDarkMode}>
-          다크모드
+          {theme ? <Moon /> : <Sun />}
         </span>
         <Link className="cursor-pointer" to="/projectList">
-          나가기
+          <Power />
         </Link>
         <span className="cursor-pointer" onClick={onLouout}>
-          로그아웃
+          <Logout />
         </span>
       </div>
     </div>

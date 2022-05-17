@@ -9,10 +9,9 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 448,
   bgcolor: "background.paper",
   boxShadow: 4,
-  p: 4,
 };
 
 export default function ProjectOpen() {
@@ -31,7 +30,7 @@ export default function ProjectOpen() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className="w-[460px] h-52 rounded-md" sx={style}>
+        <Box className="h-[262px] rounded-xl" sx={style}>
           <ProjectOpenForm />
         </Box>
       </Modal>

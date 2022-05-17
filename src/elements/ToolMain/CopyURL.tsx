@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/Atoms";
+import { Share2 } from "../Icon/Share2";
 
 const CopyURL = () => {
   const { inviteCode } = useRecoilValue(ProjectKey);
@@ -19,7 +20,9 @@ const CopyURL = () => {
         ref={textInput}
         readOnly
       />
-      <span onClick={copy}>주소 복사</span>
+      <span onClick={copy}>
+        <Share2 />
+      </span>
     </div>
   );
 };

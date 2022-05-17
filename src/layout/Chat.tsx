@@ -45,11 +45,11 @@ const Chat = () => {
   };
 
   return (
-    <div className="w-96 h-[calc(100%-3rem)] bg-white flex flex-col justify-end absolute top-12 right-0 border-l border-[#C1C1C1] border-solid md:hidden">
+    <div className="w-[432px] h-[calc(100%-3rem)] bg-white flex flex-col justify-end absolute top-12 right-0 border-l border-[#C1C1C1] border-solid md:hidden">
       <div ref={messageBoxRef} className="w-full h-full space-y-2 overflow-y-auto">
         {data?.data?.map((box, index) => {
           return (
-            <div className="w-full min-h-10 pl-8 flex items-start" key={index}>
+            <div className="w-[370px] min-h-10 pl-8 flex items-start" key={index}>
               <img className="w-[40px] h-[40px] rounded-full" src={box.profile} alt="" />
               <div className="flex flex-col pl-2 pt-1 pb-2">
                 <span className="font-bold text-lg">{box.name}</span>
@@ -62,16 +62,16 @@ const Chat = () => {
       </div>
       <div className="w-full flex justify-center items-center relative bg-white">
         <form
-          className="w-[340px] h-32 mb-7 bg-slate-200 outline-none flex items-center justify-center rounded-lg"
+          className="w-[386px] h-[120px] mb-7 bg-slate-200 outline-none flex items-center justify-center rounded-lg"
           onSubmit={handleSubmit(handleonEnter)}
         >
           <textarea
-            className="w-80 h-28 p-2 outline-none resize-none relative bg-transparent"
+            className="w-[380px] h-24 p-2 outline-none resize-none relative bg-transparent"
             onKeyDown={onKeyDown}
             {...(register("text"), { placeholder: "메세지를 입력하세요." })}
           />
           <button
-            className="w-12 h-7 absolute right-7 bottom-9 text-white bg-3 rounded-[4px] leading-7"
+            className="w-12 h-7 absolute right-8 bottom-10 text-white bg-3 rounded-[4px] leading-7"
             type="submit"
           >
             전송
