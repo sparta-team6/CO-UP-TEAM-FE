@@ -19,6 +19,7 @@ const CopyURL = () => {
         ref={textInput}
         readOnly
       />
+
       <span onClick={copy}>코드 복사</span>
     </div>
   );
