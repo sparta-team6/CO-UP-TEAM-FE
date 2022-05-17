@@ -24,7 +24,7 @@ const DocList = () => {
     <>
       <div className="w-full h-[calc(100vh-3rem)] bg-white flex absolute bottom-0">
         <div
-          className={`flex fixed top-0 left-0 mt-12 h-full ${
+          className={`flex fixed top-0 left-0 mt-12 ml-0 h-full ${
             data?.data.length === 0 ? "sm:hidden" : "sm:w-full"
           }`}
         >
@@ -39,15 +39,15 @@ const DocList = () => {
             </SlidingPanel>
             <FolderList />
           </div>
-          <div className="sm:hidden">
+          <div className={`${data?.data.length === 0 ? "hidden" : "block sm:hidden"}`}>
             <FolderList />
           </div>
         </div>
         <div
           className={`${
             data?.data.length === 0
-              ? "w-full h-full flex ml-[362px] p-4 md:justify-center sm:p-2 sm:m-0"
-              : " w-[calc(100%-46rem)] h-full flex ml-[362px] p-4 md:w-[calc(100%-21rem)] md:justify-center sm:hidden sm:p-2 sm:m-0"
+              ? "w-[calc(100%-506px)] h-full flex ml-[74px] p-4 md:justify-center sm:p-2 sm:m-0"
+              : " w-[calc(100%-794px)] h-full flex ml-[362px] p-4 md:w-[calc(100%-21rem)] md:justify-center sm:hidden sm:p-2 sm:m-0"
           }`}
         >
           <ViewDoc />
