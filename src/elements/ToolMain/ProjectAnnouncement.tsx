@@ -62,10 +62,10 @@ const ProjectAnnouncement = () => {
       <div className="w-full h-8 flex items-center justify-between mb-2">
         <span className="font-bold text-lg">공지사항</span>
         <button
-          className="h-full border-none bg-transparent flex items-center"
+          className="h-full border-none bg-transparent flex items-center text-2xl"
           onClick={handleOpen}
         >
-          추가
+          +
         </button>
       </div>
       <Modal
@@ -114,13 +114,16 @@ const ProjectAnnouncement = () => {
       <div className="w-full h-full space-y-2 overflow-y-auto">
         {data?.data?.map((data, index) => {
           return (
-            <div key={index} className="w-full h-16 bg-slate-100 rounded-lg overflow-hidden flex">
+            <div
+              key={index}
+              className="w-full h-16 bg-white border rounded-lg overflow-hidden flex relative"
+            >
               <div className="w-2 h-full bg-3" />
-              <div className="w-full h-full mx-3 flex flex-col justify-around">
-                <div className="w-full font-semibold">{data.title}</div>
-                <div className="flex justify-between">
+              <div className="w-full h-full mx-3 flex flex-col">
+                <div className="w-full font-semibold pt-3">{data.title}</div>
+                <div className="flex justify-between pt-1">
                   <div className="flex space-x-5">
-                    <div className=" font-normal text-xs text-gray-400">{data.id}</div>
+                    <div className="font-normal text-xs text-gray-400">{data.id}</div>
                     <div className="font-normal text-xs text-gray-400">{data.name}</div>
                   </div>
                   <EditAnnouncement {...data} />
