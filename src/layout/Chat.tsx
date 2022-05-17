@@ -45,7 +45,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="w-96 h-[calc(100%-10rem)] bg-slate-50 flex flex-col justify-end absolute top-12 right-0 md:hidden">
+    <div className="w-96 h-[calc(100%-10rem)] flex flex-col justify-end absolute top-12 right-0 md:hidden ">
       <div ref={messageBoxRef} className="w-full h-full space-y-2 overflow-y-auto">
         {data?.data?.map((box, index) => {
           return (
@@ -58,17 +58,25 @@ const Chat = () => {
           );
         })}
       </div>
-      <div className="w-full h-28 fixed bottom-0 bg-gray-300">
-        <form className="w-full h-full outline-none " onSubmit={handleSubmit(handleonEnter)}>
-          <textarea
-            className="w-full h-full outline-none resize-none absolute"
-            onKeyDown={onKeyDown}
-            {...register("text")}
-          />
-          <button className="w-12 h-6 fixed bottom-4 right-2" type="submit">
-            전송
-          </button>
-        </form>
+      <div className="w-96 h-36 fixed bottom-0">
+        <div className="w-full h-full flex justify-center ">
+          <form
+            className="w-[340px] h-32 bg-slate-200 outline-none flex items-center justify-center rounded-lg"
+            onSubmit={handleSubmit(handleonEnter)}
+          >
+            <textarea
+              className="w-80 h-28 outline-none resize-none relative bg-transparent"
+              onKeyDown={onKeyDown}
+              {...(register("text"), { placeholder: "메세지를 입력하세요." })}
+            />
+            <button
+              className="w-12 h-7 fixed bottom-6 right-10  text-white bg-3 rounded-[4px] leading-7"
+              type="submit"
+            >
+              전송
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -42,7 +42,7 @@ const DraggableCard = ({
             onClick={handleOpen}
             className={`relative h-24 overflow-hidden ${
               info.isDragging ? "bg-lime-400 shadow-2xl" : "bg-white"
-            }  w-72 mt-2 rounded-md bg-white`}
+            }  w-80 mt-2 rounded-md bg-white`}
             ref={magic.innerRef}
             {...magic.dragHandleProps}
             {...magic.draggableProps}

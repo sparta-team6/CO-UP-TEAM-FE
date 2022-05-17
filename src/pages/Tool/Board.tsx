@@ -18,7 +18,7 @@ const Board = () => {
   console.log("hi");
   return (
     <>
-      <div className="w-full h-[calc(100vh-3rem)] bg-slate-300 flex absolute bottom-0">
+      <div className="w-full h-[calc(100vh-3rem)] bg-slate-100 flex absolute bottom-0">
         <div className="flex fixed top-0 left-0 mt-12 h-full">
           <div className="sm:hidden">
             <MyProjectList />
