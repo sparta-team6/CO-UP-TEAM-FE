@@ -6,7 +6,7 @@ import { ChartLength, ProjectKey } from "../../recoil/Atoms";
 const Chart = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const chartLength = useRecoilValue(ChartLength);
-  const chartSum = chartLength.reduce((a, b) => a + b);
+  const chartSum = chartLength.reduce((a, b) => a + b, 0);
   const chartSuccess = Math.round((chartLength[2] / chartSum) * 1000) / 10;
   return (
     <div className="w-full h-full flex justify-center">
