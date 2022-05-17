@@ -117,8 +117,8 @@ const EditProfile = () => {
             {...register("about_me")}
           />
           <div className="text-right">
-            <button className="p-2 bg-slate-300 rounded-xl w-32" type="submit">
-              수정하기
+            <button className="w-32 h-10 p-2 bg-3 rounded-lg" type="submit">
+              <span className="text-white leading-7">저장하기</span>
             </button>
           </div>
         </form>

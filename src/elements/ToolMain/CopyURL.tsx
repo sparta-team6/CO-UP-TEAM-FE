@@ -14,13 +14,12 @@ const CopyURL = () => {
   return (
     <div className="w-full h-full flex items-center justify-end space-x-3">
       <input
-        className="w-[100px] pointer-events-none opacity-0"
+        className="w-[100px] opacity-0 pointer-events-none"
         value={inviteCode || ""}
         ref={textInput}
         readOnly
       />
-
-      <span onClick={copy}>코드 복사</span>
+      <span onClick={copy}>주소 복사</span>
     </div>
   );
 };
