@@ -4,13 +4,10 @@ import { useDelRoom } from "../../api/ProjectQuery";
 
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import ProjectUpdateForm from "./ProjectUpdateForm";
-
-const ITEM_HEIGHT = 48;
 
 type IProps = {
   roomID?: string;
@@ -24,7 +21,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 600,
+  width: 630,
   bgcolor: "background.paper",
   boxShadow: 12,
   p: 4,
@@ -63,7 +60,7 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreVertIcon />
+        <MoreHorizIcon />
       </IconButton>
       <Menu
         id="long-menu"
@@ -75,13 +72,23 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
         onClose={handleClose}
         PaperProps={{
           style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: "10ch",
+            width: "120px",
+            height: "65px",
+            marginLeft: "-90px",
+            textAlign: "center",
+            backgroundColor: "#E7EBF2",
+            display: "flex",
+            alignItems: "center",
           },
         }}
       >
-        <MenuItem onClick={handleUpOpen}>수정</MenuItem>
-        <MenuItem onClick={delProject}>삭제</MenuItem>
+        <button className="py-[7px] hover:text-[#2C78FF]" onClick={handleUpOpen}>
+          수정하기
+        </button>
+        <div className="border-t border-solid border-[#D7DCE5]"></div>
+        <button className="py-[7px] mt-[1px] hover:text-[#2C78FF]" onClick={delProject}>
+          삭제하기
+        </button>
       </Menu>
       <Modal
         open={upOpen}

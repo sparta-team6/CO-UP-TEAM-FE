@@ -1,6 +1,5 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 
 import ProjectOpenForm from "../../elements/ProjectList/ProjectOpenForm";
@@ -23,7 +22,9 @@ export default function ProjectOpen() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>초대 코드</Button>
+      <button className="px-[22px] py-[12px] text-white bg-3 rounded-[4px]" onClick={handleOpen}>
+        초대 코드
+      </button>
       <Modal
         open={open}
         onClose={handleClose}

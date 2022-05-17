@@ -1,6 +1,5 @@
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -14,8 +13,6 @@ type IProps = {
   setEditTitle: Dispatch<SetStateAction<boolean>>;
   setDfId: Dispatch<SetStateAction<string>>;
 };
-
-const ITEM_HEIGHT = 48;
 
 const FolderFiexd = ({ dfId, setEditTitle, setDfId }: IProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
@@ -69,14 +66,24 @@ const FolderFiexd = ({ dfId, setEditTitle, setDfId }: IProps) => {
         onClose={handleClose}
         PaperProps={{
           style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: "16ch",
+            width: "180px",
+            height: "130px",
+            display: "flex",
+            alignItems: "center",
+            marginLeft: "40px",
+            marginTop: "-30px",
           },
         }}
       >
-        <MenuItem onClick={onClick}>문서 생성하기</MenuItem>
-        <MenuItem onClick={onEdit}>폴더 이름 바꾸기</MenuItem>
-        <MenuItem onClick={DeleteFolder}>폴더 지우기</MenuItem>
+        <button className="px-4 py-[12px] hover:text-[#2C78FF]" onClick={onClick}>
+          문서 생성하기
+        </button>
+        <button className="px-4 py-[12px] hover:text-[#2C78FF]" onClick={onEdit}>
+          폴더 이름 바꾸기
+        </button>
+        <button className="px-4 py-[12px] hover:text-[#2C78FF]" onClick={DeleteFolder}>
+          폴더 지우기
+        </button>
       </Menu>
     </>
   );

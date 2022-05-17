@@ -79,18 +79,32 @@ const ProjectMakeForm = ({ open }: IProp) => {
           <PhotoCamera fontSize="small" />
         </IconButton>
       </label>
-      <form className="w-[70%] h-full flex flex-col space-y-4 " onSubmit={handleSubmit(onSubmit)}>
-        <input placeholder="프로젝트제목" {...register("title")} />
-        <textarea
-          rows={4}
-          className="outline-none resize-none"
-          placeholder="프로젝트개요"
-          {...register("summary")}
-        />
-        <button className="w-[100px]" type="submit">
-          만들기
-        </button>
-      </form>
+      <div className="w-[418px]">
+        <form className="w-full h-full flex flex-col space-y-4 " onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex items-center">
+            <span className="w-14 mr-5">팀 이름</span>
+            <input
+              className="w-full p-2 rounded-md border-none border border-[#D1D1D1]"
+              placeholder="팀 이름"
+              {...register("title")}
+            />
+          </div>
+          <div className="flex">
+            <span className="w-14 mr-5 mt-2">소개</span>
+            <textarea
+              rows={5}
+              className="w-full outline-none resize-none p-2 rounded-md border-none border border-[#D1D1D1]"
+              placeholder="소개"
+              {...register("summary")}
+            />
+          </div>
+          <div className="flex justify-end">
+            <button className="w-24 px-[18px] py-3 text-white bg-3 rounded-md" type="submit">
+              방 만들기
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

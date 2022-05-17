@@ -9,7 +9,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 600,
+  width: 630,
+  height: 420,
   bgcolor: "background.paper",
   boxShadow: 12,
   p: 4,
@@ -22,8 +23,8 @@ export default function ProjectMake() {
 
   return (
     <>
-      <Button className="w-full h-full bg-slate-100" onClick={handleOpen}>
-        <span className="font-thin text-8xl">+</span>
+      <Button className="w-full h-full bg-slate-100 w-" onClick={handleOpen}>
+        <span className="font-thin text-7xl">+</span>
       </Button>
       <Modal
         open={open}
@@ -32,7 +33,7 @@ export default function ProjectMake() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <ProjectMakeForm open={setOpen}/>
+          <ProjectMakeForm open={setOpen} />
         </Box>
       </Modal>
     </>

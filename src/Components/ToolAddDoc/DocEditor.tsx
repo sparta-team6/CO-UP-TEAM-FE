@@ -85,10 +85,7 @@ const DocEditor = () => {
             placeholder="제목을 적어보세요 :)"
           />
           <div className="sm:hidden">
-            <button
-              className="border-none p-[10px] rounded-md text-white bg-slate-600"
-              type="submit"
-            >
+            <button className="border-none p-[10px] rounded-md text-white bg-3" type="submit">
               등록
             </button>
             <button

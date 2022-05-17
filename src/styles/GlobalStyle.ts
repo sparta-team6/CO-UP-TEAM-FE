@@ -84,4 +84,8 @@ a{
 .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
   background-color: rgba(0, 0, 0, 0.4);
 }
+.css-6hp17o-MuiList-root-MuiMenu-list{
+  padding: 0;
+  width: 100%;
+}
 `;

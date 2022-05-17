@@ -21,7 +21,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
   const AddFolder = () => {
     const folder = {
       pjId: String(id),
-      title: "폴더 1",
+      title: "새 폴더",
       position: 1,
     };
     AddFol(folder).then(() => {

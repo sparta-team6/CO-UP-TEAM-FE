@@ -32,7 +32,7 @@ const FolderList = () => {
   const AddFolder = () => {
     const folder = {
       pjId,
-      title: "폴더 1",
+      title: "새 폴더",
       position: 1,
     };
     AddFol(folder).then(() => {
@@ -45,14 +45,14 @@ const FolderList = () => {
   };
 
   return (
-    <div className="w-72 h-full bg-orange-300 sm:w-full">
+    <div className="w-72 h-full bg-[#F0F3F7] sm:w-full">
       <div className="flex justify-between items-center pt-5 px-4 sm:pt-4">
-        <div className="font-bold text-xl">문서목록</div>
+        <div className="font-bold text-2xl">문서목록</div>
         <nav className="w-8 font-bold text-2xl flex justify-center items-center">
-          <div onClick={AddFolder}>+</div>
+          <button onClick={AddFolder}>+</button>
         </nav>
       </div>
-      <hr />
+      <div className="border border-solid mt-2 mb-3"></div>
       {data?.data?.map((folder) => {
         return (
           <div key={folder.dfId}>
@@ -88,10 +88,10 @@ const FolderList = () => {
                 </div>
               </div>
             </div>
+            <div className="border border-solid mt-2 mb-3"></div>
           </div>
         );
       })}
-      <hr />
     </div>
   );
 };
