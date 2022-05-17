@@ -13,7 +13,7 @@ const FramerHeader = () => {
   const boardMatch = useMatch("/tool/:id/board");
   return (
     <React.Fragment>
-      <div className="w-full h-12 flex justify-between items-center fixed z-50 shadow-md sm:bottom-0 sm:h-20">
+      <div className="w-full h-12 flex justify-between items-center fixed z-50 shadow-md sm:bottom-0 sm:h-20 dark:bg-gray-800">
         <Footer />
         <div className="w-[21rem] md:hidden">
           <Link to="/">
@@ -22,7 +22,9 @@ const FramerHeader = () => {
         </div>
         <nav className="w-[calc(100%-37rem)] flex  space-x-20 text-base pl-5 sm:w-full">
           <div className="relative">
-            <Link to={`/tool/${project.pjId}`}>메인</Link>
+            <Link to={`/tool/${project.pjId}`}>
+              <span className="dark:text-white">메인</span>
+            </Link>
             {mainMatch && (
               <motion.div
                 transition={{ duration: 0.15 }}
@@ -32,7 +34,9 @@ const FramerHeader = () => {
             )}
           </div>
           <div className="relative">
-            <Link to={`/tool/${project.pjId}/document`}>문서</Link>
+            <Link to={`/tool/${project.pjId}/document`}>
+              <span className="dark:text-white">문서</span>
+            </Link>
             {docMatch && (
               <motion.div
                 transition={{ duration: 0.15 }}
@@ -42,7 +46,9 @@ const FramerHeader = () => {
             )}
           </div>
           <div className="relative">
-            <Link to={`/tool/${project.pjId}/board`}>보드</Link>
+            <Link to={`/tool/${project.pjId}/board`}>
+              <span className="dark:text-white">보드</span>
+            </Link>
             {boardMatch && (
               <motion.div
                 transition={{ duration: 0.15 }}
@@ -54,10 +60,10 @@ const FramerHeader = () => {
         </nav>
         <nav className="w-64 h-full flex justify-around items-center">
           <Link to={`/tool/${project.pjId}/chat`} className="hidden md:block">
-            채팅
+            <span className="dark:text-white">채팅</span>
           </Link>
           <Link to="/profile" className="md:hidden">
-            프로필
+            <span className="dark:text-white">프로필</span>
           </Link>
         </nav>
       </div>
