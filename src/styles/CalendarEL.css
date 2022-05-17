@@ -1,10 +1,10 @@
 /* Calendar */
 .react-calendar {
   width: 330px;
+  height: 330px;
   max-width: 100%;
   border: none;
   border-radius: 0.8em;
-  padding: 40px 0;
 }
 .react-calendar__navigation button {
   color: #6f48eb;
