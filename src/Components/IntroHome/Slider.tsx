@@ -14,6 +14,9 @@ const IntroSlider = () => {
   return (
     <Slider {...settings}>
       <img src={slider1} alt="1" />
+      <img src={slider1} alt="2" />
+      <img src={slider1} alt="3" />
+      <img src={slider1} alt="4" />
     </Slider>
   );
 };

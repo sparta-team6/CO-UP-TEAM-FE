@@ -5,12 +5,12 @@ import IntroSlider from "../Components/IntroHome/Slider";
 const IntroHome = () => {
   return (
     <React.Fragment>
-      <div className="w-full flex flex-col items-center">
-        <div className="w-[1180px] h-[540px] sm:w-full sm:mt-10">
+      <div className="w-full h-screen bg-[#F0F3F7] flex flex-col items-center">
+        <div className="w-[1180px] h-[540px] pt-28 sm:w-full sm:mt-10">
           <IntroSlider />
-        </div>
-        <div className="mt-12 flex justify-center items-center bg-gray-400 rounded-lg">
-          <LoginModal />
+          <div className="mt-12 flex justify-center items-center rounded-lg">
+            <LoginModal />
+          </div>
         </div>
       </div>
     </React.Fragment>

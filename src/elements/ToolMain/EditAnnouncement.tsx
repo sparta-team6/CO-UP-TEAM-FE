@@ -9,6 +9,8 @@ import {
   useUpdateAnnouncement,
 } from "../../api/AnnouncementQuery";
 import { MyProfile } from "../../recoil/Atoms";
+import { SvgEdit2 } from "../Icon/SvgEdit2";
+import { Trash2 } from "../Icon/Trash2";
 
 const style = {
   position: "absolute",
@@ -57,9 +59,13 @@ const EditAnnouncement = ({ id, title, content }: Announcement) => {
 
   return (
     <>
-      <div>
-        <button onClick={onDelete}>삭제</button>
-        <button onClick={handleOpen}>수정</button>
+      <div className="absolute top-2 right-1">
+        <button onClick={handleOpen}>
+          <SvgEdit2 />
+        </button>
+        <button onClick={onDelete}>
+          <Trash2 />
+        </button>
       </div>
       <Modal
         open={open}

@@ -12,7 +12,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 784,
+  height: 480,
   bgcolor: "background.paper",
   boxShadow: 12,
   p: 4,
@@ -49,8 +50,8 @@ export default function LoginModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="w-[500px] h-[370px] rounded-xl">
-          <div className="flex flex-col items-center space-y-4">
-            <span className="font-bold text-xl p-8">{`로그인을 해주세요:)`}</span>
+          <div className="flex flex-col items-center">
+            <span className="font-bold text-4xl p-8">{`로그인을 해주세요:)`}</span>
             <KakaoLogin />
             <GoogleLogin />
             <NaverLogin />
