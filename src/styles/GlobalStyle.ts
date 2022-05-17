@@ -52,6 +52,9 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
+textarea {
+  border-width: 0px;
+}
 ol, ul {
 	list-style: none;
 }

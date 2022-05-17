@@ -64,7 +64,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
     setName(e.target.value);
   };
   return (
-    <div className="w-72 rounded-md min-h-[800px] flex flex-col">
+    <div className="w-80 rounded-md min-h-[800px] flex flex-col">
       <div className="w-full h-6 mt-10 flex justify-between">
         <h2 className="text-center font-semibold text-lg">{bucketId}</h2>
         <button
