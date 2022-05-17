@@ -5,16 +5,9 @@ import IMG from "../images/DuckProfile.jpg";
 
 const { persistAtom } = recoilPersist();
 
-/* 다크 모드 토글 구현 */
-export const getTheme = () => {
-  const LIGHT = "1";
-  const DARK = "2";
-  return LIGHT ? DARK : LIGHT;
-};
-
 export const themeState = atom({
   key: "themeMode",
-  default: getTheme(),
+  default: false,
   effects_UNSTABLE: [persistAtom],
 });
 
