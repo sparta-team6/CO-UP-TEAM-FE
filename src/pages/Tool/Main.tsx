@@ -20,10 +20,10 @@ const Main = () => {
         <div className="w-full h-full p-4 flex flex-col">
           <ProjectMain />
           <div className="w-full flex md:flex-col">
-            <div className="w-3/5 h-full p-2 md:w-full md:h-[300px] sm:p-1">
+            <div className="w-full h-full p-2 md:w-full md:h-[300px] sm:p-1">
               <ProjectAnnouncement />
             </div>
-            <div className="w-2/5 min-w-max h-full p-2 md:w-full md:h-full sm:h-[280px] sm:p-1">
+            <div className="min-w-max h-full p-2 md:w-full md:h-full sm:h-[280px] sm:p-1">
               <CalendarEL />
             </div>
           </div>

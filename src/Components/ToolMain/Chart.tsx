@@ -27,7 +27,7 @@ const Chart = () => {
             series={[chartLength[0], chartLength[1], chartLength[2]]}
             options={{
               labels: ["대기중", "진행중", "완료"],
-              colors: ["#FF7637", "#FFD33C", "#5F99FF"],
+              colors: ["#e7ebfe", "#FF7637", "#5F99FF"],
               chart: {
                 type: "donut",
                 height: 400,
@@ -36,7 +36,7 @@ const Chart = () => {
                 pie: {
                   customScale: 1.08,
                   donut: {
-                    size: "80%",
+                    size: "75%",
                   },
                 },
               },
