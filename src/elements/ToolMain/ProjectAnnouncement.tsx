@@ -58,7 +58,7 @@ const ProjectAnnouncement = () => {
   };
 
   return (
-    <div className="w-full h-full bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center sm:p-4">
+    <div className="w-full h-[348px] bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center sm:p-4">
       <div className="w-full h-8 flex items-center justify-between mb-2">
         <span className="font-bold text-lg">공지사항</span>
         <button

@@ -80,7 +80,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
+        <Box sx={style} className="w-[704px] h-[384px] rounded-xl sm:w-full">
           <form className="w-full h-full relative space-y-4" onSubmit={handleSubmit(onValid)}>
             <input
               className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold font-semibold"
@@ -123,8 +123,11 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
               type="text"
               placeholder="내용입력"
             />
-            <button className="w-[150px] absolute bottom-0 right-0" type="submit">
-              등록하기
+            <button
+              className="w-[100px] absolute bottom-0 right-0 rounded-md p-3 font-extrabold bg-3 text-white"
+              type="submit"
+            >
+              등록
             </button>
           </form>
         </Box>
