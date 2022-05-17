@@ -58,7 +58,7 @@ const MobileChatCom = () => {
   };
 
   return (
-    <div className="w-full h-[calc(100%-5.5rem)] bg-slate-400 flex flex-col justify-end absolute top-10 right-0">
+    <div className="w-full h-[calc(100%-5.5rem)] bg-slate-400 flex flex-col justify-end absolute top-10 right-0 -z-20">
       <div className="flex fixed top-0 left-0 mt-12 h-full ">
         <div className="hidden sm:block sm:w-screen ">
           <SlidingPanel type={"left"} isOpen={open} size={100}>
@@ -68,7 +68,7 @@ const MobileChatCom = () => {
           </SlidingPanel>
         </div>
       </div>
-      <div className="w-full  h-[calc(100%-9rem)] flex flex-col justify-end absolute top-0 right-0">
+      <div className="w-full  h-[calc(100%-9rem)] flex flex-col justify-end absolute top-0 right-0 -z-10">
         <div ref={messageBoxRef} className="w-full h-full space-y-2 overflow-y-auto">
           {data?.data?.map((box, index) => {
             return (
