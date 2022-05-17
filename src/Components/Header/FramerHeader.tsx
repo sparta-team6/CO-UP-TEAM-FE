@@ -13,7 +13,7 @@ const FramerHeader = () => {
   const boardMatch = useMatch("/tool/:id/board");
   return (
     <React.Fragment>
-      <div className="w-full h-12 flex justify-between items-center fixed z-50 shadow-md sm:bottom-0 sm:h-20 dark:bg-gray-800">
+      <div className="w-full h-12 flex justify-between items-center fixed z-50 shadow-md sm:bottom-0 sm:h-20 bg-white dark:bg-gray-800">
         <Footer />
         <div className="w-[25rem] md:hidden">
           <Link to="/">

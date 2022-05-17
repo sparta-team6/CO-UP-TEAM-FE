@@ -26,7 +26,7 @@ const ProjectData = () => {
         return (
           <div
             key={index}
-            className="relative w-[280px] h-[320px] bg-white rounded-lg flex flex-col justify-center items-center mb-4 mr-[20px] sm:m-0"
+            className="relative w-[280px] h-[320px] bg-white rounded-lg flex flex-col justify-center items-center mb-4 mr-[20px] sm:w-full sm:m-0"
           >
             <div onClick={() => onClick(room.pjId)} className="w-full h-full">
               <div className="w-full flex flex-col justify-center items-center">

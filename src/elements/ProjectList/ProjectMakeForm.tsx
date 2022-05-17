@@ -99,7 +99,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
             />
           </div>
           <div className="flex justify-end">
-            <button className="w-24 px-[18px] py-3 text-white bg-3 rounded-md" type="submit">
+            <button className="w-24 px-[18px] py-[10px] text-white bg-3 rounded-md" type="submit">
               방 만들기
             </button>
           </div>
