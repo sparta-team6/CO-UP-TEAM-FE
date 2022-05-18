@@ -46,7 +46,7 @@ const DocList = () => {
         <div
           className={`${
             data?.data.length === 0
-              ? "w-[calc(100%-506px)] h-full flex ml-[74px] p-4 md:justify-center sm:p-2 sm:m-0"
+              ? "w-[calc(100%-506px)] h-full flex ml-[74px] p-4 md:w-full md:justify-center sm:p-2 sm:m-0"
               : " w-[calc(100%-794px)] h-full flex ml-[362px] p-4 md:w-[calc(100%-21rem)] md:justify-center sm:hidden sm:p-2 sm:m-0"
           }`}
         >
