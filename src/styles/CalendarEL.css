@@ -13,6 +13,9 @@
   margin-top: 15px;
   font-size: 20px;
 }
+.react-calendar__navigation__label span {
+  color: #c5daff;
+}
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
   background-color: #f8f8fa;
