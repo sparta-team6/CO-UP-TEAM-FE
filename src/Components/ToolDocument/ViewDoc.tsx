@@ -3,13 +3,17 @@ import MarkdownPreview from "@uiw/react-markdown-preview";
 import { Docs, useDelDoc } from "../../api/DocumentQuery";
 import "../../styles/ViewDoc.css";
 import { queryClient } from "../..";
-import { useAddFolder } from "../../api/FolderQuery";
+import { useAddFolder, useGetFolders } from "../../api/FolderQuery";
+import imgFolder2 from "../../images/img_folder2.png";
 
 const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { mutateAsync: DelDoc } = useDelDoc(String(docId));
   const { mutateAsync: AddFol } = useAddFolder();
+  const { data } = useGetFolders(String(id));
+  const folderData = data?.data[data?.data.length - 1];
+  const docData = folderData?.docs?.[folderData?.docs.length - 1];
 
   const onDelete = () => {
     DelDoc().then(() => {
@@ -38,7 +42,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                 <div className="text-2xl font-bold">{title}</div>
                 <div>
                   <button
-                    className="border-none p-[10px] rounded-md text-white bg-slate-600"
+                    className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
                     onClick={() =>
                       navigate(`/tool/${id}/document/${docId}/edit`, {
                         state: { docId, title, contents },
@@ -48,7 +52,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                     수정
                   </button>
                   <button
-                    className="border-none ml-4 p-[10px] rounded-md bg-slate-400"
+                    className="border-none ml-4 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
                     onClick={onDelete}
                   >
                     삭제
@@ -59,8 +63,43 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                 <MarkdownPreview className="whitespace-pre-wrap break-all" source={contents} />
               </div>
             </div>
+          ) : docData ? (
+            <div className="p-4 mt-4">
+              <div className="flex justify-between">
+                <div className="text-2xl font-bold">{docData.title}</div>
+                <div>
+                  <button
+                    className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
+                    onClick={() =>
+                      navigate(`/tool/${id}/document/${docData.docId}/edit`, {
+                        state: {
+                          docId: docData.docId,
+                          title: docData.title,
+                          contents: docData.contents,
+                        },
+                      })
+                    }
+                  >
+                    수정
+                  </button>
+                  <button
+                    className="border-none ml-4 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
+                    onClick={onDelete}
+                  >
+                    삭제
+                  </button>
+                </div>
+              </div>
+              <div className="text-xl p-4 mt-5">
+                <MarkdownPreview
+                  className="whitespace-pre-wrap break-all"
+                  source={docData.contents}
+                />
+              </div>
+            </div>
           ) : (
             <div className=" w-full h-full flex flex-col justify-center items-center">
+              <img src={imgFolder2} alt="" />
               <div className="font-bold text-2xl m-4">
                 새로운 폴더를 만들어 문서를 추가해 보세요
               </div>
@@ -68,10 +107,9 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
               <div>팀원들과 공유해보세요</div>
               <button
                 onClick={AddFolder}
-                className="border-none m-4 px-4 py-3 rounded-3xl bg-slate-400 font-bold"
+                className="border-none m-4 px-8 py-3 rounded-md text-white bg-3 font-bold"
               >
                 새 폴더 만들기
-                {/* <Link to={`/tool/${id}/document/add`}>첫 페이지 만들기</Link> */}
               </button>
             </div>
           )}
