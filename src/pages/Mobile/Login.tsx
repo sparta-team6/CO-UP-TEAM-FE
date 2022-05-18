@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import GoogleLogin from "../../elements/IntroHome/GoogleLogin";
 import KakaoLogin from "../../elements/IntroHome/KakaoLogin";
 import NaverLogin from "../../elements/IntroHome/NaverLogin";
@@ -10,6 +11,12 @@ const Login = () => {
         <KakaoLogin />
         <GoogleLogin />
         <NaverLogin />
+        <Link
+          className="w-[314px] h-[54px] text-white bg-black mt-9 rounded-lg flex justify-center items-center"
+          to="/projectList"
+        >
+          <span>프론트 테스트 접속</span>
+        </Link>
       </div>
     </div>
   );
