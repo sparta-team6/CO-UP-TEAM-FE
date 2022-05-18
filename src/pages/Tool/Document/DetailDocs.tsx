@@ -16,7 +16,7 @@ const DetailDocs = () => {
           <MyProjectList />
           <DocumentList />
         </div>
-        <div className="w-[calc(100%-46rem)] h-full flex ml-[362px] p-4 md:w-[calc(100%-21rem)] sm:w-full sm:p-2 sm:m-0">
+        <div className="w-[calc(100%-794px)] h-full flex ml-[362px] p-4 md:w-[calc(100%-21rem)] sm:w-full sm:p-2 sm:m-0">
           <ViewDoc {...DocData} isLoading={isLoading} />
         </div>
       </div>

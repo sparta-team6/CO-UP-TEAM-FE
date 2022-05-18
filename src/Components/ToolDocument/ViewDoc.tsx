@@ -34,20 +34,30 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
         <div className="w-full h-full flex flex-col">
           {title && contents ? (
             <div className="p-4 mt-4">
-              <div className="text-2xl font-bold">{title}</div>
-              <div className="text-xl mt-5">
+              <div className="flex justify-between">
+                <div className="text-2xl font-bold">{title}</div>
+                <div>
+                  <button
+                    className="border-none p-[10px] rounded-md text-white bg-slate-600"
+                    onClick={() =>
+                      navigate(`/tool/${id}/document/${docId}/edit`, {
+                        state: { docId, title, contents },
+                      })
+                    }
+                  >
+                    수정
+                  </button>
+                  <button
+                    className="border-none ml-4 p-[10px] rounded-md bg-slate-400"
+                    onClick={onDelete}
+                  >
+                    삭제
+                  </button>
+                </div>
+              </div>
+              <div className="text-xl p-4 mt-5">
                 <MarkdownPreview className="whitespace-pre-wrap break-all" source={contents} />
               </div>
-              <button
-                onClick={() =>
-                  navigate(`/tool/${id}/document/${docId}/edit`, {
-                    state: { docId, title, contents },
-                  })
-                }
-              >
-                수정
-              </button>
-              <button onClick={onDelete}>삭제</button>
             </div>
           ) : (
             <div className=" w-full h-full flex flex-col justify-center items-center">
