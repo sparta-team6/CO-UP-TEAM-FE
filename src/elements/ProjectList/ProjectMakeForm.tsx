@@ -65,22 +65,30 @@ const ProjectMakeForm = ({ open }: IProp) => {
   };
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      {imgBase64 ? (
-        <img className="rounded-full mb-4" width="100px" height="100px" alt="" src={imgBase64} />
-      ) : (
-        <label htmlFor="icon-button-file">
-          <input
-            type="file"
-            id="icon-button-file"
-            className="hidden"
-            onChange={onChange}
-            ref={fileInput}
-          />
-          <div className="mb-6 w-[100px] h-[100px] bg-[#D7DCE5] rounded-full flex justify-center items-center">
-            <SvgImage />
-          </div>
-        </label>
-      )}
+      <img
+        className={`${imgBase64 ? "" : "hidden"} rounded-full mb-4`}
+        width="100px"
+        height="100px"
+        alt=""
+        src={imgBase64}
+      />
+      <label htmlFor="icon-button-file">
+        <input
+          type="file"
+          id="icon-button-file"
+          className="hidden"
+          onChange={onChange}
+          ref={fileInput}
+        />
+        <div
+          className={`${
+            imgBase64 ? "hidden" : ""
+          } mb-6 w-[100px] h-[100px] bg-[#D7DCE5] rounded-full flex justify-center items-center`}
+        >
+          <SvgImage />
+        </div>
+      </label>
+
       <div className="w-[418px]">
         <form className="w-full h-full flex flex-col space-y-4 " onSubmit={handleSubmit(onSubmit)}>
           <div className="flex items-center">
