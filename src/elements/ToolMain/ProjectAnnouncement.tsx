@@ -4,8 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
 import { useGetAnnouncement, usePostAnnouncement } from "../../api/AnnouncementQuery";
-import { useGetProjectUser } from "../../api/UserQuery";
-import { MyProfile, ProjectKey } from "../../recoil/Atoms";
+import { MyProfile } from "../../recoil/Atoms";
 import EditAnnouncement from "./EditAnnouncement";
 
 const style = {
@@ -26,16 +25,13 @@ type IForm = {
 };
 
 const ProjectAnnouncement = () => {
-  const { pjId } = useRecoilValue(ProjectKey);
   const { nickname } = useRecoilValue(MyProfile);
   const [open, setOpen] = useState(false);
-  const [name, setName] = useState("");
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const { data } = useGetAnnouncement();
-  const { data: user } = useGetProjectUser(String(pjId));
   const { mutateAsync: postAn } = usePostAnnouncement();
   const { register, handleSubmit, setValue } = useForm<IForm>();
 
@@ -44,17 +40,12 @@ const ProjectAnnouncement = () => {
       id: Date.now(),
       title: data.title,
       content: data.content,
-      name,
+      name: nickname,
     };
     postAn(post).then(() => queryClient.invalidateQueries("getAnnouncement"));
     setValue("title", "");
     setValue("content", "");
     setOpen(false);
-    setName("");
-  };
-
-  const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setName(e.target.value);
   };
 
   return (
@@ -82,23 +73,6 @@ const ProjectAnnouncement = () => {
               type="text"
               placeholder="제목을 입력해주세요"
             />
-            <div className="w-full flex items-center space-x-4">
-              <select
-                className="outline-none bg-slate-200 border-0"
-                value={name}
-                onChange={onChange}
-              >
-                <option defaultValue="none">=== 선택 ===</option>
-                {user?.data?.map((member, index) => {
-                  return (
-                    <option key={index} value={member.nickname}>
-                      {member.nickname}
-                    </option>
-                  );
-                })}
-                <option value={nickname}>{nickname}</option>
-              </select>
-            </div>
             <textarea
               className="w-full outline-none border-none resize-none overflow-y-auto"
               rows={14}
