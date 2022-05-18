@@ -5,6 +5,7 @@ import React from "react";
 import { Link, useMatch } from "react-router-dom";
 import Footer from "../../routers/Footer";
 import { ProjectKey } from "../../recoil/Atoms";
+import { SvgUser } from "../../elements/Icon/SvgUser";
 
 const FramerHeader = () => {
   const project = useRecoilValue(ProjectKey);
@@ -63,7 +64,9 @@ const FramerHeader = () => {
             <span className="dark:text-white">채팅</span>
           </Link>
           <Link to="/profile" className="md:hidden">
-            <span className="dark:text-white">프로필</span>
+            <span className="dark:text-white">
+              <SvgUser />
+            </span>
           </Link>
         </nav>
       </div>

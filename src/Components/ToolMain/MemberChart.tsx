@@ -1,4 +1,7 @@
 import { ProgressBar } from "react-bootstrap";
+import { useRecoilValue } from "recoil";
+import { useGetManagers } from "../../api/ChartQuery";
+import { ProjectKey } from "../../recoil/Atoms";
 
 const MemberChart = () => {
   // // const { pjId } = useRecoilValue(ProjectKey);
@@ -9,6 +12,9 @@ const MemberChart = () => {
   // const dange = Math.round((toDos["to_do"].length / toDolen) * 1000) / 10;
   // const warning = Math.round((toDos["doing"].length / toDolen) * 1000) / 10;
   // const success = Math.round((toDos["done"].length / toDolen) * 1000) / 10;
+  const { pjId } = useRecoilValue(ProjectKey);
+  const { data } = useGetManagers(pjId);
+  console.log(data);
   return (
     <div className="w-full h-full p-4">
       <div className="flex justify-between items-center pb-2">

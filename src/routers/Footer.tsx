@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useRecoilState } from "recoil";
 import { HandleOpen } from "../recoil/Atoms";
+import { SvgUser } from "../elements/Icon/SvgUser";
 
 const style = { width: 40, height: 40, marginLeft: 1 };
 
@@ -17,7 +18,9 @@ const Footer = () => {
         <MenuIcon className="dark:text-white" onClick={onClick} sx={style} />
       </div>
       <Link to="/profile">
-        <span className="dark:text-white">프로필</span>
+        <span className="dark:text-white">
+          <SvgUser />
+        </span>
       </Link>
     </div>
   );
