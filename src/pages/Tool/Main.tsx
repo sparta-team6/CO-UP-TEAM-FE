@@ -8,7 +8,7 @@ import { useSetRecoilState } from "recoil";
 import { HandleOpen } from "../../recoil/Atoms";
 import { useEffect } from "react";
 
-const Main = () => {
+const ToolMain = () => {
   const setOpen = useSetRecoilState(HandleOpen);
   useEffect(() => {
     setOpen(false);
@@ -39,4 +39,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default ToolMain;
