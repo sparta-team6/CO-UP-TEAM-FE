@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useRecoilValue } from "recoil";
-import { queryClient } from "..";
-import { Board, useGetBoard, usePostBoard } from "../api/BoardQuery";
+import { Board, useGetBoard } from "../api/BoardQuery";
 import Bucket from "../Components/ToolBoard/Bucket";
 import { ProjectKey } from "../recoil/Atoms";
 
@@ -59,27 +58,8 @@ const BoardList = () => {
       });
     }
   };
-  console.log(test);
-  // 버킷 생성 테스트 공간
-  const { mutateAsync } = usePostBoard();
-  const onClick = () => {
-    const bucket = {
-      pjId: String(pjId),
-      title: "done",
-      position: 2,
-    };
-    mutateAsync(bucket)
-      .then(() => {
-        console.log(bucket);
-        queryClient.invalidateQueries("getBoard");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
   return (
     <div className="w-full h-full bg-slate-100 overflow-auto">
-      {/* <div onClick={onClick}>테스트 보내기</div> */}
       <div className="w-full h-full flex justify-center items-center relative">
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="w-full h-full flex">

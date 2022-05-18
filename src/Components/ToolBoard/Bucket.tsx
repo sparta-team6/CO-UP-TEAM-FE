@@ -37,8 +37,6 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
   const handleClose = () => setOpen(false);
   const { register, setValue, handleSubmit } = useForm<IForm>();
   const { mutateAsync } = usePostCards();
-  console.log();
-  // 테스트 버킷 생성
 
   const onValid = ({ toDo, toDoComment }: IForm) => {
     if (name === "") {
