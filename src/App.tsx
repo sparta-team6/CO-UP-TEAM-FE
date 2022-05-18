@@ -9,7 +9,6 @@ import { themeState } from "./recoil/Atoms";
 
 const App = () => {
   const theme = useRecoilValue(themeState);
-  console.log(theme);
   return (
     <Suspense fallback={<Spinner />}>
       <div className={`${theme ? "dark" : ""}`}>

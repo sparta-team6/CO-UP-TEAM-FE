@@ -39,17 +39,19 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
   const handleClose = () => setOpen(false);
   const { register, setValue, handleSubmit } = useForm<IForm>();
   const { mutateAsync } = usePostCards();
-
+  // 여기 URL 확인하기
+  // const { data } = useGetProjectUser(pjId);
+  // console.log(data);
   const onValid = ({ toDo, toDoComment }: IForm) => {
-    if (name === "") {
-      alert("담당자 선택해주세요");
-      return;
-    }
+    // if (name === "") {
+    //   alert("담당자 선택해주세요");
+    //   return;
+    // }
     const newToDo = {
       kbbId,
       title: toDo,
       contents: toDoComment,
-      manager: name,
+      manager: "테스트 이름 변경",
       position: 0,
     };
     mutateAsync(newToDo).then(() => {
@@ -114,7 +116,6 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
               >
                 <option defaultValue="none">=== 선택 ===</option>
                 <option value={nickname}>{nickname}</option>
-                <option value={nickname}>{nickname}</option>
               </select>
             </div>
             <input
@@ -152,7 +153,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
                 toDoId={toDo.kbcId}
                 toDoText={toDo.contents}
                 toDoName={toDo.manager}
-                toDoComment={toDo.title}
+                toDoTitle={toDo.title}
                 bucketId={bucketId}
               />
             ))}
