@@ -1,13 +1,16 @@
-import { Link } from "react-router-dom";
+import { GOOGLE_AUTH_URL } from "../../servers/OAuth";
 
 const GoogleLogin = () => {
+  const onClick = () => {
+    window.location.href = GOOGLE_AUTH_URL;
+  };
   return (
-    <Link to="/projectList">
+    <div onClick={onClick}>
       {/* <img src={GoogleImg} alt="구글계정 로그인" /> */}
       <button className="w-[314px] h-[54px] text-white bg-[#5F99FF] mt-9 rounded-lg">
         구글 로그인
       </button>
-    </Link>
+    </div>
   );
 };
 
