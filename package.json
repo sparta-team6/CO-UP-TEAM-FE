@@ -76,6 +76,7 @@
   "devDependencies": {
     "@types/react-beautiful-dnd": "^13.1.2",
     "@types/react-calendar": "^3.5.0",
+    "@types/react-helmet": "^6.1.5",
     "@types/react-slick": "^0.23.8",
     "@types/styled-components": "^5.1.25",
     "tailwindcss": "^3.0.24"
