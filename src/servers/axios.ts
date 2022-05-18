@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: "https://api.cooperate-up.com/",
+  baseURL: process.env.REACT_APP_API_URL,
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json,",
