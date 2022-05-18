@@ -9,8 +9,8 @@ import {
   useUpdateAnnouncement,
 } from "../../api/AnnouncementQuery";
 import { MyProfile } from "../../recoil/Atoms";
-import { SvgEdit2 } from "../Icon/SvgEdit2";
-import { Trash2 } from "../Icon/Trash2";
+import { SvgEdit3 } from "../Icon/SvgEdit3";
+import { Trash } from "../Icon/Trash";
 
 const style = {
   position: "absolute",
@@ -59,12 +59,12 @@ const EditAnnouncement = ({ id, title, content }: Announcement) => {
 
   return (
     <>
-      <div className="absolute top-2 right-1">
+      <div className="flex pt-2">
         <button onClick={handleOpen}>
-          <SvgEdit2 />
+          <SvgEdit3 />
         </button>
         <button onClick={onDelete}>
-          <Trash2 />
+          <Trash />
         </button>
       </div>
       <Modal

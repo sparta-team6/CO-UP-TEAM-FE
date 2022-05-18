@@ -58,7 +58,7 @@ const ProjectAnnouncement = () => {
   };
 
   return (
-    <div className="w-full h-[348px] bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center sm:p-4">
+    <div className="w-full h-[348px] border border-solid bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center sm:p-4">
       <div className="w-full h-8 flex items-center justify-between mb-2">
         <span className="font-bold text-lg">공지사항</span>
         <button
@@ -116,17 +116,19 @@ const ProjectAnnouncement = () => {
           return (
             <div
               key={index}
-              className="w-full h-16 bg-white border rounded-lg overflow-hidden flex relative"
+              className="w-full h-16 bg-white border rounded-lg overflow-hidden flex"
             >
               <div className="w-2 h-full bg-3" />
-              <div className="w-full h-full mx-3 flex flex-col">
-                <div className="w-full font-semibold pt-3">{data.title}</div>
+              <div className="w-full h-full ml-4 mr-2 flex flex-col">
+                <div className="flex">
+                  <div className="w-full font-semibold pt-3">{data.title}</div>
+                  <EditAnnouncement {...data} />
+                </div>
                 <div className="flex justify-between pt-1">
                   <div className="flex space-x-5">
                     <div className="font-normal text-xs text-gray-400">{data.id}</div>
                     <div className="font-normal text-xs text-gray-400">{data.name}</div>
                   </div>
-                  <EditAnnouncement {...data} />
                 </div>
               </div>
             </div>

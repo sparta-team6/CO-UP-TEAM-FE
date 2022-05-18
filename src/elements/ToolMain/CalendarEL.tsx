@@ -6,7 +6,7 @@ import "../../styles/CalendarEL.css";
 const CalendarEL = () => {
   const [value, onChange] = useState(new Date());
   return (
-    <div className="w-[390px] h-[348px] md:w-full md:mt-16 bg-white rounded-xl shadow-xl flex justify-center items-center">
+    <div className="w-full h-[348px] border border-solid md:w-full md:h-full sm:h-full md:mt-16 bg-white rounded-xl shadow-xl flex justify-center items-center">
       <Calendar
         onChange={onChange}
         value={value}

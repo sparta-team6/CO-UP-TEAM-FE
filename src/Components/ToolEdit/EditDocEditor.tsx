@@ -45,7 +45,6 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
       docId,
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
-      position: 1,
     };
     UpdateDoc(doc).then(() => {
       queryClient.invalidateQueries("getFolders");
