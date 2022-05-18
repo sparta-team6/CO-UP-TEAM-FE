@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import SlidingPanel from "react-sliding-side-panel";
 import "react-sliding-side-panel/lib/index.css";
 import { useRecoilState } from "recoil";
@@ -41,4 +41,4 @@ const Board = () => {
   );
 };
 
-export default Board;
+export default React.memo(Board);

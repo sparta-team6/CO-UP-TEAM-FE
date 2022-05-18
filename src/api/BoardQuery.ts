@@ -1,12 +1,13 @@
 import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
+import { queryClient } from "..";
 import { instance } from "../servers/axios";
 
 export interface Board {
   kbbId: string;
   title: string;
   position: number;
-  cards: Cards[];
+  cards: Cards[] | any;
 }
 
 export interface IBoard {
@@ -41,18 +42,25 @@ export interface ICards {
   position: number;
 }
 
-// export const useUpdateCards = (kbbId: string) => {
-//   return useMutation(async (post: Cards) => {
-//     await instance.patch("api/buckets/cards", post).then((res) => {
-//       alert(res);
-//     });
-//   });
-// };
+export const useUpdateCards = (pjId: string) => {
+  return useMutation(async (post: Cards) => {
+    await instance.patch("api/buckets/cards", post).then(() => {
+      queryClient.invalidateQueries(["getBoard", pjId]);
+    });
+  });
+};
+
+export const useDeleteCards = (post: string) => {
+  return useMutation(async () => {
+    await instance.delete(`api/buckets/cards?kbcId=${post}`);
+  });
+};
 
 // 버킷 생성 테스트 공간
 
 export interface Cards {
   kbcId: string;
+  kbbId: string;
   title: string;
   manager: string;
   contents: string;
@@ -61,8 +69,6 @@ export interface Cards {
 
 export const usePostCards = () => {
   return useMutation(async (post: ICards) => {
-    await instance.post("api/buckets/cards/", post).then((res) => {
-      alert(res);
-    });
+    await instance.post("api/buckets/cards/", post);
   });
 };

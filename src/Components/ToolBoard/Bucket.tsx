@@ -1,11 +1,12 @@
 import { Droppable } from "react-beautiful-dnd";
 import { useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
-import { MyProfile } from "../../recoil/Atoms";
+import { MyProfile, ProjectKey } from "../../recoil/Atoms";
 import DraggableCard from "../../elements/ToolBoard/DraggableCard";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Box, Modal } from "@mui/material";
 import { Cards, usePostCards } from "../../api/BoardQuery";
+import { queryClient } from "../..";
 
 const style = {
   position: "absolute",
@@ -30,6 +31,7 @@ interface IForm {
 }
 
 const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
+  const { pjId } = useRecoilValue(ProjectKey);
   const { nickname } = useRecoilValue(MyProfile);
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
@@ -51,7 +53,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
       position: 0,
     };
     mutateAsync(newToDo).then(() => {
-      console.log(newToDo);
+      queryClient.invalidateQueries(["getBoard", pjId]);
     });
     setValue("toDo", "");
     setValue("toDoComment", "");
@@ -162,4 +164,4 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
   );
 };
 
-export default Bucket;
+export default React.memo(Bucket);
