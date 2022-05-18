@@ -11,11 +11,12 @@ const App = () => {
   const theme = useRecoilValue(themeState);
   console.log(theme);
   return (
-    <div className={`${theme ? "dark" : ""}`}>
-      <GlobalStyle />
-      <Router />
-    </div>
-    // <Suspense fallback={<Spinner />}></Suspense>
+    <Suspense fallback={<Spinner />}>
+      <div className={`${theme ? "dark" : ""}`}>
+        <GlobalStyle />
+        <Router />
+      </div>
+    </Suspense>
   );
 };
 
