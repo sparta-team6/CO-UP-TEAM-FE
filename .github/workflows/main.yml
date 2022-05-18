@@ -52,3 +52,10 @@ jobs:
           SOURCE_DIR: "build"
           SKIP_PREFLIGHT_CHECK: ${{ secrets.SKIP_PREFLIGHT_CHECK }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
+
+      - name: Invalidate cache CloudFront
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ secrets.DISTRIBUTION_ID }}
+          PATHS: "/*"
+        continue-on-error: true
