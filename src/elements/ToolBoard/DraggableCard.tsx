@@ -5,6 +5,9 @@ import { useDeleteCards } from "../../api/BoardQuery";
 import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/Atoms";
 import { queryClient } from "../..";
+import { Trash2 } from "../Icon/Trash2";
+import { SvgEdit2 } from "../Icon/SvgEdit2";
+import EditCard from "./EditCard";
 
 const style = {
   position: "absolute",
@@ -21,7 +24,7 @@ interface IDragabbleCardProps {
   toDoName: string;
   toDoId: string;
   toDoText: string;
-  toDoComment: string;
+  toDoTitle: string;
   index: number;
 }
 
@@ -30,9 +33,10 @@ const DraggableCard = ({
   toDoName,
   toDoId,
   toDoText,
-  toDoComment,
+  toDoTitle,
   index,
 }: IDragabbleCardProps) => {
+  console.log(bucketId, toDoName, toDoId, toDoText, toDoTitle, index);
   const { pjId } = useRecoilValue(ProjectKey);
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
@@ -51,32 +55,39 @@ const DraggableCard = ({
       {(magic, info) => (
         <React.Fragment>
           <div
-            className={`relative h-24 overflow-hidden ${
-              info.isDragging ? "bg-lime-400 shadow-2xl" : "bg-white"
-            }  w-80 mt-2 rounded-md bg-white`}
+            className="relative"
             ref={magic.innerRef}
             {...magic.dragHandleProps}
             {...magic.draggableProps}
           >
             <div
-              className={`w-2 h-full ${
-                bucketId === "ToDo" ? "bg-1" : bucketId === "Done" ? "bg-3" : "bg-2"
-              }  absolute top-0`}
-            />
-            <div
-              className={`${info.isDragging ? "hidden" : ""} absolute top-2 right-2 cursor-pointer`}
+              onClick={handleOpen}
+              className={`relative h-24 overflow-hidden ${
+                info.isDragging ? "bg-lime-400 shadow-2xl" : "bg-white"
+              }  w-80 mt-2 rounded-md bg-white`}
             >
-              X
+              <div
+                className={`w-2 h-full ${
+                  bucketId === "대기" ? "bg-1" : bucketId === "완료" ? "bg-3" : "bg-2"
+                }  absolute top-0`}
+              />
+
+              <div className="w-full h-full pl-4 flex flex-col justify-around">
+                <span className="font-NeoB">{toDoTitle}</span>
+                <span className="font-NeoL">{toDoName}</span>
+              </div>
             </div>
             <div
               onClick={onDelete}
+              className={`${info.isDragging ? "hidden" : ""} absolute top-2 right-2 cursor-pointer`}
+            >
+              <Trash2 />
+            </div>
+            <div
+              onClick={handleOpen}
               className={`${info.isDragging ? "hidden" : ""} absolute top-2 right-6 cursor-pointer`}
             >
-              Y
-            </div>
-            <div className="w-full h-full pl-4 flex flex-col justify-around">
-              <span className="font-NeoB">{toDoText}</span>
-              <span className="font-NeoL">{toDoName}</span>
+              <SvgEdit2 />
             </div>
           </div>
           <Modal
@@ -86,11 +97,19 @@ const DraggableCard = ({
             aria-describedby="modal-modal-description"
           >
             <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
+              <span>{toDoTitle}</span>
               <span>{toDoText}</span>
               <span>{toDoName}</span>
-              <span>{toDoComment}</span>
             </Box>
           </Modal>
+          <EditCard
+            open={open}
+            close={handleClose}
+            toDoTitle={toDoTitle}
+            toDoText={toDoText}
+            toDoName={toDoName}
+            toDoId={toDoId}
+          />
         </React.Fragment>
       )}
     </Draggable>

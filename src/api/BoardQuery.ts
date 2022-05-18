@@ -20,6 +20,16 @@ export const useGetBoard = (pjId: string) => {
   });
 };
 
+interface ICard {
+  data: ICards;
+}
+
+export const useGetCardDetail = (kbcId: string) => {
+  return useQuery<ICard, AxiosError>(["getCard", kbcId], () => {
+    return instance.get(`api/buckets/cards/?kbcId=${kbcId}`);
+  });
+};
+
 interface TestBoard {
   pjId: string;
   title: string;
@@ -36,6 +46,7 @@ export const usePostBoard = () => {
 
 export interface ICards {
   kbbId?: string;
+  kbcId?: string;
   manager?: string;
   title: string;
   contents?: string;

@@ -4,7 +4,7 @@ import Modal from "@mui/material/Modal";
 import KakaoLogin from "../../elements/IntroHome/KakaoLogin";
 import GoogleLogin from "../../elements/IntroHome/GoogleLogin";
 import NaverLogin from "../../elements/IntroHome/NaverLogin";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const style = {
@@ -55,6 +55,12 @@ export default function LoginModal() {
             <KakaoLogin />
             <GoogleLogin />
             <NaverLogin />
+            <Link
+              className="w-[314px] h-[54px] text-white bg-black mt-9 rounded-lg flex justify-center items-center"
+              to="/projectList"
+            >
+              <span>프론트 테스트 접속</span>
+            </Link>
           </div>
         </Box>
       </Modal>

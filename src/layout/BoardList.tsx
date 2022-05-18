@@ -14,14 +14,9 @@ const BoardList = () => {
     if (!destination) return;
     if (destination?.droppableId === source.droppableId) {
       const boardCopy = [...board?.data[Number(source.droppableId)].cards];
-      const ThisKbbId = board?.data[Number(source.droppableId)].kbbId;
       const taskObj = boardCopy[source.index];
       boardCopy.splice(Number(source.index), 1);
       boardCopy.splice(destination?.index, 0, taskObj);
-      console.log(destination, source);
-      console.log(taskObj);
-      console.log(ThisKbbId);
-      console.log(boardCopy);
       const post = {
         kbcId: taskObj.kbcId,
         kbbId: taskObj.kbbId,
@@ -40,15 +35,11 @@ const BoardList = () => {
     }
     if (destination.droppableId !== source.droppableId) {
       const sourceBoard = [...board?.data[Number(source.droppableId)].cards];
-      const StartKbbId = board?.data[Number(source.droppableId)].kbbId;
       const taskObj = sourceBoard[source.index];
       const destinationBoard = [...board?.data[Number(destination.droppableId)].cards];
       const LastKbbId = board?.data[Number(destination.droppableId)].kbbId;
       sourceBoard.splice(source.index, 1);
       destinationBoard.splice(destination?.index, 0, taskObj);
-      console.log(destination, source);
-      console.log(StartKbbId, LastKbbId);
-      console.log(sourceBoard, destinationBoard);
       const post = {
         kbcId: taskObj.kbcId,
         kbbId: String(LastKbbId),
@@ -58,11 +49,9 @@ const BoardList = () => {
         position: destination.index,
       };
       mutateAsync(post)
-        .then(() => {
-          console.log(post);
-        })
+        .then()
         .catch((res) => {
-          console.log(res);
+          alert(res);
         });
     }
   };
@@ -86,6 +75,19 @@ const BoardList = () => {
             </div>
           </div>
         </DragDropContext>
+        {/* {show ? (
+          <div className="w-full h-[calc(100%-5rem)] bg-2 absolute top-20 flex justify-center items-center">
+            <div className="w-[420px] h-[135px] space-y-4">
+              <p className="text-center font-semibold text-4xl mb-4">새로운 보드를 추가해 보세요</p>
+              <span className="text-center text-lg">
+                <p>보드를 사용하여 팀원들과 현재 대기중인, 진행중인,</p>
+                <p>완료된 보드의 작업 상태를 공유할 수 있습니다.</p>
+              </span>
+            </div>
+          </div>
+        ) : (
+          ""
+        )} */}
       </div>
     </div>
   );
