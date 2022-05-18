@@ -91,4 +91,8 @@ a{
   padding: 0;
   width: 100%;
 }
+abbr[title]{
+  text-decoration: none;
+  cursor: auto;
+}
 `;
