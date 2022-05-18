@@ -12,11 +12,10 @@ const App = () => {
   console.log(theme);
   return (
     <div className={`${theme ? "dark" : ""}`}>
-      <Suspense fallback={<Spinner />}>
-        <GlobalStyle />
-        <Router />
-      </Suspense>
+      <GlobalStyle />
+      <Router />
     </div>
+    // <Suspense fallback={<Spinner />}></Suspense>
   );
 };
 

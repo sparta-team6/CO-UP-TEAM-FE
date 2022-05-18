@@ -7,7 +7,7 @@ import Chat from "../../layout/Chat";
 import MyProjectList from "../../layout/MyProjectList";
 import { HandleOpen } from "../../recoil/Atoms";
 
-const Board = () => {
+const ToolBoard = () => {
   const [open, setOpen] = useRecoilState(HandleOpen);
   const onClick = () => {
     setOpen(!open);
@@ -41,4 +41,4 @@ const Board = () => {
   );
 };
 
-export default React.memo(Board);
+export default React.memo(ToolBoard);
