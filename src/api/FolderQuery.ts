@@ -18,7 +18,6 @@ export interface IFolders {
 export interface Folder {
   pjId: string;
   title: string;
-  position: number;
 }
 
 export const useGetFolders = (pjId: string) => {

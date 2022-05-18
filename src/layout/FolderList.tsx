@@ -16,6 +16,7 @@ const FolderList = () => {
   const [dfId, setDfId] = useState("");
   const [title, setTitle] = useState("");
   const { mutateAsync: UpdateFol } = useUpdateFolder(dfId);
+  console.log(data?.data);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,7 +34,6 @@ const FolderList = () => {
     const folder = {
       pjId,
       title: "새 폴더",
-      position: 1,
     };
     AddFol(folder).then(() => {
       queryClient.invalidateQueries("getFolders");
