@@ -6,6 +6,9 @@ import { ProjectKey } from "../recoil/Atoms";
 import { useAddFolder, useGetFolders, useUpdateFolder } from "../api/FolderQuery";
 import { queryClient } from "..";
 import FolderFixed from "../Components/ToolDocument/FolderFixed";
+import imgFolder from "../images/img_folder.png";
+import { FolderPlus } from "../elements/Icon/FolderPlus";
+import { SvgFolder } from "../elements/Icon/SvgFolder";
 
 const FolderList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
@@ -16,7 +19,6 @@ const FolderList = () => {
   const [dfId, setDfId] = useState("");
   const [title, setTitle] = useState("");
   const { mutateAsync: UpdateFol } = useUpdateFolder(dfId);
-  console.log(data?.data);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,54 +47,68 @@ const FolderList = () => {
   };
 
   return (
-    <div className="w-72 h-full bg-[#F0F3F7] sm:w-full">
-      <div className="flex justify-between items-center pt-5 px-4 sm:pt-4">
-        <div className="font-bold text-2xl">문서목록</div>
-        <nav className="w-8 font-bold text-2xl flex justify-center items-center">
-          <button onClick={AddFolder}>+</button>
-        </nav>
-      </div>
-      <div className="border border-solid mt-2 mb-3"></div>
-      {data?.data?.map((folder) => {
-        return (
-          <div key={folder.dfId}>
-            <div className="flex justify-between items-center px-4">
-              <div
-                className={`font-bold text-lg ${
-                  editTitle && dfId === folder.dfId ? "hidden" : "block"
-                }`}
-              >
-                {folder.title}
-              </div>
-              <form
-                className={`w-full font-bold text-lg items-center justify-between ${
-                  editTitle && dfId === folder.dfId ? "flex" : "hidden"
-                }`}
-                onSubmit={onSubmit}
-              >
-                <input defaultValue={folder.title} onChange={onChange} />
-              </form>
-              <FolderFixed dfId={folder.dfId} setEditTitle={setEditTitle} setDfId={setDfId} />
-            </div>
-            <div className="flex flex-col ml-10 mt-2">
-              <div className="flex items-center">
-                <div className="text-base m-1 cursor-pointer">
-                  {folder.docs?.map((doc) => (
-                    <div
-                      onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}
-                      key={doc.docId}
-                    >
-                      {doc.title}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="border border-solid mt-2 mb-3"></div>
+    <>
+      {data?.data.length === 0 ? (
+        <div className="w-72 h-full bg-[#F0F3F7] sm:w-full">
+          <div className="flex justify-between items-center pt-5 px-4 sm:pt-4">
+            <div className="font-bold text-2xl">문서목록</div>
+            <nav className="w-8 font-bold text-2xl flex justify-center items-center">
+              <button onClick={AddFolder}>+</button>
+            </nav>
           </div>
-        );
-      })}
-    </div>
+          <div className="border border-solid mx-3 my-2"></div>
+          <div className="flex flex-col justify-center items-center pt-5">
+            <img src={imgFolder} alt="" />
+            <span className="text-lg opacity-50 mt-[30px]">새로운 문서를 추가해 보세요</span>
+          </div>
+        </div>
+      ) : (
+        <div className="w-72 h-full bg-[#F0F3F7] sm:w-full">
+          <div className="flex justify-between items-center pt-5 px-4 sm:pt-4">
+            <div className="font-bold text-2xl">문서목록</div>
+            <nav className="w-8 font-bold text-2xl flex justify-center items-center">
+              <button onClick={AddFolder}>+</button>
+            </nav>
+          </div>
+          <div className="border border-solid mx-3 my-2"></div>
+          {data?.data?.map((folder) => {
+            return (
+              <div key={folder.dfId}>
+                <div className="flex justify-between items-center px-4">
+                  <div
+                    className={`font-bold text-lg ${
+                      editTitle && dfId === folder.dfId ? "hidden" : "block"
+                    }`}
+                  >
+                    {folder?.docs?.length === 0 ? <SvgFolder /> : <FolderPlus />}
+                    <span className="ml-4">{folder.title}</span>
+                  </div>
+                  <form
+                    className={`w-full font-bold text-lg items-center justify-between ${
+                      editTitle && dfId === folder.dfId ? "flex" : "hidden"
+                    }`}
+                    onSubmit={onSubmit}
+                  >
+                    <input defaultValue={folder.title} onChange={onChange} />
+                  </form>
+                  <FolderFixed dfId={folder.dfId} setEditTitle={setEditTitle} setDfId={setDfId} />
+                </div>
+                {folder.docs?.map((doc) => (
+                  <div key={doc.docId} className="flex flex-col ml-14">
+                    <div className="flex items-center text-base m-1 cursor-pointer">
+                      <div onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}>
+                        {doc.title}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                <div className="border border-solid mx-3 my-2"></div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </>
   );
 };
 

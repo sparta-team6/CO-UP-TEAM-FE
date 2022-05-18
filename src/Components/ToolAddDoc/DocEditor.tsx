@@ -71,8 +71,8 @@ const DocEditor = () => {
             </button>
             <button
               type="button"
-              className="border-none ml-2 px-3 py-2 rounded-md bg-slate-400"
-              onClick={() => navigate(`/tool/${pjId}/document/m`)}
+              className="border-none ml-2 px-3 py-2 rounded-md bg-[#E7EBF2]"
+              onClick={() => navigate(`/tool/${pjId}/document`)}
             >
               닫기
             </button>
@@ -80,17 +80,20 @@ const DocEditor = () => {
         </div>
         <div className="flex items-center justify-between p-4 mt-4">
           <input
-            className="text-2xl font-bold border-none outline-none bg-transparent placeholder:text-black sm:text-3xl sm:w-full sm:text-center"
+            className="text-3xl font-bold border-none outline-none bg-transparent placeholder:text-black sm:text-3xl sm:w-full sm:text-center"
             {...register("title")}
             placeholder="제목을 적어보세요 :)"
           />
           <div className="sm:hidden">
-            <button className="border-none p-[10px] rounded-md text-white bg-3" type="submit">
+            <button
+              className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
+              type="submit"
+            >
               등록
             </button>
             <button
               type="button"
-              className="border-none ml-4 p-[10px] rounded-md bg-slate-400"
+              className="border-none ml-4 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
               onClick={() => navigate(`/tool/${pjId}/document`)}
             >
               닫기
