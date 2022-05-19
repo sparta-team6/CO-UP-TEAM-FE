@@ -1,17 +1,19 @@
 import { Box, Modal } from "@mui/material";
+import { Dispatch, SetStateAction, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
 import { useGetCardDetail, useUpdateCards } from "../../api/BoardQuery";
 import { ProjectKey } from "../../recoil/Atoms";
+import { X } from "../Icon/X";
 
 type IPros = {
-  open: boolean;
+  edit: boolean;
+  setEdit: Dispatch<SetStateAction<boolean>>;
   toDoName: string;
   toDoText: string;
   toDoTitle: string;
   toDoId: string;
-  close: () => void;
 };
 
 type IForm = {
@@ -30,7 +32,9 @@ const style = {
   p: 4,
 };
 
-const EditCard = ({ open, close, toDoName, toDoText, toDoTitle, toDoId }: IPros) => {
+const EditCard = ({ edit, setEdit, toDoName, toDoText, toDoTitle, toDoId }: IPros) => {
+  const [name, setName] = useState("");
+  const handleClose = () => setEdit(false);
   const { pjId } = useRecoilValue(ProjectKey);
   const { mutateAsync } = useUpdateCards(pjId);
   const { data: Card } = useGetCardDetail(toDoId);
@@ -39,7 +43,7 @@ const EditCard = ({ open, close, toDoName, toDoText, toDoTitle, toDoId }: IPros)
     const post = {
       kbcId: String(Card?.data.kbcId),
       kbbId: String(Card?.data.kbbId),
-      manager: data.name,
+      manager: name,
       title: data.title,
       contents: data.text,
       position: Number(Card?.data.position),
@@ -49,24 +53,51 @@ const EditCard = ({ open, close, toDoName, toDoText, toDoTitle, toDoId }: IPros)
       queryClient.invalidateQueries(["getCard", String(Card?.data.kbbId)]);
     });
   };
+  const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setName(e.target.value);
+  };
   return (
     <div>
       <Modal
-        open={open}
-        onClose={close}
+        open={edit}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
-          <span>{toDoTitle}</span>
-          <span>{toDoText}</span>
-          <span>{toDoName}</span>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <input {...register("title")} defaultValue={toDoTitle} />
-            <input {...register("text")} defaultValue={toDoText} />
-            <input {...register("name")} defaultValue={toDoName} />
-            <button type="submit">수정</button>
-          </form>
+        <Box sx={style} className="w-[896px] h-[528px] rounded-xl sm:w-full relative">
+          <div className="w-full h-full p-4">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <input
+                className="text-3xl font-semibold mb-4"
+                {...register("title")}
+                defaultValue={toDoTitle}
+              />
+              <div className="w-full flex items-center space-x-3">
+                <div className="max-w-xs h-7 rounded-sm flex justify-center items-center">
+                  <select
+                    className="outline-none bg-slate-200 border-0"
+                    value={name}
+                    onChange={onChange}
+                  >
+                    <option defaultValue="none">=== 선택 ===</option>
+                    <option value={toDoName}>{toDoName}</option>
+                  </select>
+                </div>
+              </div>
+              <div className="max-h-64 py-8">
+                <input {...register("text")} defaultValue={toDoText} />
+              </div>
+              <button
+                className="w-16 h-9 absolute bottom-5 right-5 rounded-md  font-semibold text-base bg-3 text-white"
+                type="submit"
+              >
+                <span>수정</span>
+              </button>
+            </form>
+          </div>
+          <div onClick={handleClose} className="absolute top-5 right-5 cursor-pointer">
+            <X />
+          </div>
         </Box>
       </Modal>
     </div>

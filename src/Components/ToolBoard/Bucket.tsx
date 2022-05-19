@@ -125,10 +125,17 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
               placeholder="내용입력"
             />
             <button
-              className="w-[100px] absolute bottom-0 right-0 rounded-md p-3 font-extrabold bg-3 text-white"
+              className="w-16 h-9 absolute bottom-0 right-20 rounded-md  font-semibold text-base bg-3 text-white"
               type="submit"
             >
-              등록
+              <span>등록</span>
+            </button>
+            <button
+              onClick={handleClose}
+              className="w-16 h-9 absolute bottom-0 right-0 rounded-md  font-semibold text-base bg-[#E7EBF2]"
+              type="submit"
+            >
+              <span>닫기</span>
             </button>
           </form>
         </Box>

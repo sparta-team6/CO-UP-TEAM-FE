@@ -3,6 +3,7 @@ import ProjectMake from "../Components/ProjectList/ProjectMake";
 import ProjectOpen from "../Components/ProjectList/ProjectOpen";
 
 const ProjectList = () => {
+
   return (
     <div className="w-full h-[calc(100vh-3rem)] bg-[#f0f3f7] flex flex-col items-center justify-center absolute bottom-0">
       <div className="w-full h-full flex flex-col items-center mt-20">

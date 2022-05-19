@@ -8,6 +8,7 @@ import { queryClient } from "../..";
 import { Trash2 } from "../Icon/Trash2";
 import { SvgEdit2 } from "../Icon/SvgEdit2";
 import EditCard from "./EditCard";
+import { X } from "../Icon/X";
 
 const style = {
   position: "absolute",
@@ -36,13 +37,16 @@ const DraggableCard = ({
   toDoTitle,
   index,
 }: IDragabbleCardProps) => {
-  console.log(bucketId, toDoName, toDoId, toDoText, toDoTitle, index);
   const { pjId } = useRecoilValue(ProjectKey);
   const [open, setOpen] = useState(false);
+  const [edit, setEdit] = useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => setOpen(false);
+  const EditOpen = () => {
+    setEdit(true);
+  };
   const { mutateAsync } = useDeleteCards(toDoId);
   const onDelete = () => {
     mutateAsync().then(() => {
@@ -68,7 +72,7 @@ const DraggableCard = ({
             >
               <div
                 className={`w-2 h-full ${
-                  bucketId === "대기" ? "bg-1" : bucketId === "완료" ? "bg-3" : "bg-2"
+                  bucketId === "대기" ? "bg-[#e7ebfe]" : bucketId === "완료" ? "bg-3" : "bg-1"
                 }  absolute top-0`}
               />
 
@@ -79,13 +83,13 @@ const DraggableCard = ({
             </div>
             <div
               onClick={onDelete}
-              className={`${info.isDragging ? "hidden" : ""} absolute top-2 right-2 cursor-pointer`}
+              className={`${info.isDragging ? "hidden" : ""} absolute top-4 right-3 cursor-pointer`}
             >
               <Trash2 />
             </div>
             <div
-              onClick={handleOpen}
-              className={`${info.isDragging ? "hidden" : ""} absolute top-2 right-6 cursor-pointer`}
+              onClick={EditOpen}
+              className={`${info.isDragging ? "hidden" : ""} absolute top-4 right-8 cursor-pointer`}
             >
               <SvgEdit2 />
             </div>
@@ -96,15 +100,30 @@ const DraggableCard = ({
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
-              <span>{toDoTitle}</span>
-              <span>{toDoText}</span>
-              <span>{toDoName}</span>
+            <Box sx={style} className="w-[896px] h-[528px] rounded-xl sm:w-full relative">
+              <div className="w-full h-full p-4">
+                <h1 className="text-3xl font-semibold mb-4">{toDoTitle}</h1>
+                <div className="w-full flex items-center space-x-3">
+                  <span className="mr-4">2022.XX.XX</span>
+                  <div className="w-[84px] h-7 rounded-sm bg-[#E7EBF2] flex justify-center items-center">
+                    <span>{bucketId}</span>
+                  </div>
+                  <div className="max-w-xs h-7 rounded-sm bg-[#E7EBF2] flex px-2 justify-center items-center">
+                    <span>{toDoName}</span>
+                  </div>
+                </div>
+                <div className="max-h-64 py-8">
+                  <span>{toDoText}</span>
+                </div>
+              </div>
+              <div onClick={handleClose} className="absolute top-5 right-5 cursor-pointer">
+                <X />
+              </div>
             </Box>
           </Modal>
           <EditCard
-            open={open}
-            close={handleClose}
+            edit={edit}
+            setEdit={setEdit}
             toDoTitle={toDoTitle}
             toDoText={toDoText}
             toDoName={toDoName}
