@@ -14,12 +14,12 @@ export interface IChat {
 
 export const useGetChatComment = () => {
   return useQuery<IChat, AxiosError>("getChat", () => {
-    return axios.get("https://627f98ccb1cc1b126257d400.mockapi.io/api/chat");
+    return axios.get(String(process.env.REACT_APP_CHAT_SOCKET));
   });
 };
 
 export const useAddChatComment = () => {
   return useMutation(async (post: Chat) => {
-    await axios.post("https://627f98ccb1cc1b126257d400.mockapi.io/api/chat", post);
+    await axios.post(String(process.env.REACT_APP_CHAT_SOCKET), post);
   });
 };
