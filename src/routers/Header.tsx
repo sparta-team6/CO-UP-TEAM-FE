@@ -12,7 +12,7 @@ const Header = () => {
       {location.pathname.includes("tool") ? (
         <FramerHeader />
       ) : location.pathname.includes("projectList") || location.pathname.includes("profile") ? (
-        <div className="w-full h-12 flex justify-between items-center fixed z-50 shadow-md  dark:bg-gray-800">
+        <nav className="w-full h-12 flex justify-between items-center fixed z-50 shadow-md  dark:bg-gray-800">
           <Link to="/">
             <img className="ml-5 w-10 h-10 mt-[1px]" src={Logo} alt="Logo"></img>
           </Link>
@@ -21,7 +21,7 @@ const Header = () => {
               <SvgUser />
             </Link>
           </nav>
-        </div>
+        </nav>
       ) : null}
     </React.Fragment>
   );
