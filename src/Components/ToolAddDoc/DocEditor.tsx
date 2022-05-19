@@ -20,8 +20,8 @@ import { queryClient } from "../../index";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
-import { ProjectKey } from "../../recoil/Atoms";
 import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
+import { ProjectKey } from "../../recoil/RoomID";
 
 interface IForm {
   title: string;

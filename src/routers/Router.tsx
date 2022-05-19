@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Helmet from "react-helmet";
+
 const Header = lazy(() => import("./Header"));
 const MHeader = lazy(() => import("./MHeader"));
 const Footer = lazy(() => import("./Footer"));

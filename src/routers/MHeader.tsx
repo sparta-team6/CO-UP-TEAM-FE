@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useRecoilState } from "recoil";
-import { HandleOpen } from "../recoil/Atoms";
+import { HandleOpen } from "../recoil/AtomsInterface";
 import { SvgUser } from "../elements/Icon/SvgUser";
 
 const style = { width: 40, height: 40, marginLeft: 1 };

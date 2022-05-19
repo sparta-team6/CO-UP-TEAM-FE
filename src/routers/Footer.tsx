@@ -4,7 +4,7 @@ import { MBoard } from "../elements/Icon/mobile/MBoard";
 import { MChat } from "../elements/Icon/mobile/MChat";
 import { MDoc } from "../elements/Icon/mobile/MDoc";
 import { MHome } from "../elements/Icon/mobile/MHome";
-import { ProjectKey } from "../recoil/Atoms";
+import { ProjectKey } from "../recoil/RoomID";
 
 const Footer = () => {
   const { pjId } = useRecoilValue(ProjectKey);

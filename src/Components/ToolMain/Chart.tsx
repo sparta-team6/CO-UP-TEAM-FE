@@ -1,7 +1,8 @@
 import ReactApexChart from "react-apexcharts";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { ChartLength, ProjectKey } from "../../recoil/Atoms";
+import { ChartLength } from "../../recoil/AtomChart";
+import { ProjectKey } from "../../recoil/RoomID";
 
 const Chart = () => {
   const { pjId } = useRecoilValue(ProjectKey);

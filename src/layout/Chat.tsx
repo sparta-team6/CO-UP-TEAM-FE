@@ -3,11 +3,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "..";
 import { useAddChatComment, useGetChatComment } from "../api/ChatQuery";
-import { MyProfile } from "../recoil/Atoms";
+import { MyProfile } from "../recoil/MyProfile";
 
-type IForm = {
+interface IForm {
   text: string;
-};
+}
 
 const Chat = () => {
   const { data } = useGetChatComment();

@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import BoardList from "../../layout/BoardList";
 import Chat from "../../layout/Chat";
 import MyProjectList from "../../layout/MyProjectList";
-import { HandleOpen } from "../../recoil/Atoms";
+import { HandleOpen } from "../../recoil/AtomsInterface";
 
 const ToolBoard = () => {
   const [open, setOpen] = useRecoilState(HandleOpen);

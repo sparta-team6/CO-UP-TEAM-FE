@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { DragDropContext, DropResult, resetServerContext } from "react-beautiful-dnd";
 import { useRecoilValue } from "recoil";
-import { Board, useGetBoard, useUpdateCards } from "../api/BoardQuery";
+import { Board, useGetBoard } from "../api/BoardQuery";
 import Bucket from "../Components/ToolBoard/Bucket";
-import { ProjectKey } from "../recoil/Atoms";
 import BoardImg from "../images/board1.png";
+import { useUpdateCards } from "../api/CardQuery";
+import { ProjectKey } from "../recoil/RoomID";
 
 const BoardList = () => {
   const { pjId } = useRecoilValue(ProjectKey);

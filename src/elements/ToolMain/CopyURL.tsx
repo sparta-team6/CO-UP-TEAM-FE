@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useRecoilValue } from "recoil";
-import { ProjectKey } from "../../recoil/Atoms";
+import { ProjectKey } from "../../recoil/RoomID";
 import { Share2 } from "../Icon/Share2";
 
 const CopyURL = () => {

@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
-import { ProjectKey } from "../recoil/Atoms";
 import { useAddFolder, useGetFolders, useUpdateFolder } from "../api/FolderQuery";
 import { queryClient } from "..";
 import FolderFixed from "../Components/ToolDocument/FolderFixed";
@@ -10,6 +9,7 @@ import imgFolder from "../images/img_folder.png";
 import { FolderPlus } from "../elements/Icon/FolderPlus";
 import { SvgFolder } from "../elements/Icon/SvgFolder";
 import { Plus } from "../elements/Icon/Plus";
+import { ProjectKey } from "../recoil/RoomID";
 
 const FolderList = () => {
   const { pjId } = useRecoilValue(ProjectKey);

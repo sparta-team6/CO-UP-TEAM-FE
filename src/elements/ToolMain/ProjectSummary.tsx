@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { ProjectKey } from "../../recoil/Atoms";
+import { ProjectKey } from "../../recoil/RoomID";
 
 const ProjectSummary = () => {
   const Project = useRecoilValue(ProjectKey);

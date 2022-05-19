@@ -3,24 +3,25 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
-import { useGetCardDetail, useUpdateCards } from "../../api/BoardQuery";
-import { ProjectKey } from "../../recoil/Atoms";
+import { useGetCardDetail, useUpdateCards } from "../../api/CardQuery";
+import { ProjectKey } from "../../recoil/RoomID";
+
 import { X } from "../Icon/X";
 
-type IPros = {
+interface IPros {
   edit: boolean;
   setEdit: Dispatch<SetStateAction<boolean>>;
   toDoName: string;
   toDoText: string;
   toDoTitle: string;
   toDoId: string;
-};
+}
 
-type IForm = {
+interface IForm {
   title: string;
   text: string;
   name: string;
-};
+}
 
 const style = {
   position: "absolute",

@@ -5,7 +5,7 @@ import ProjectAnnouncement from "../../elements/ToolMain/ProjectAnnouncement";
 import ProjectMain from "../../Components/ToolMain/ProjectMain";
 import SlidingMain from "../../Components/ToolMain/SlidingMain";
 import { useSetRecoilState } from "recoil";
-import { HandleOpen } from "../../recoil/Atoms";
+import { HandleOpen } from "../../recoil/AtomsInterface";
 import { useEffect } from "react";
 
 const ToolMain = () => {

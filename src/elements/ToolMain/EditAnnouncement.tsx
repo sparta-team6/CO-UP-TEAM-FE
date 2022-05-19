@@ -8,7 +8,7 @@ import {
   useDelAnnouncement,
   useUpdateAnnouncement,
 } from "../../api/AnnouncementQuery";
-import { MyProfile } from "../../recoil/Atoms";
+import { MyProfile } from "../../recoil/MyProfile";
 import { SvgEdit3 } from "../Icon/SvgEdit3";
 import { Trash } from "../Icon/Trash";
 
@@ -24,7 +24,7 @@ const style = {
   p: 4,
 };
 
-interface IProp {
+interface IForm {
   title: string;
   content: string;
 }
@@ -38,9 +38,9 @@ const EditAnnouncement = ({ id, title, content }: Announcement) => {
 
   const { mutateAsync: DELAN } = useDelAnnouncement(Number(id));
   const { mutateAsync: UpdateAN } = useUpdateAnnouncement(Number(id));
-  const { register, handleSubmit } = useForm<IProp>();
+  const { register, handleSubmit } = useForm<IForm>();
 
-  const onSubmit: SubmitHandler<IProp> = (data) => {
+  const onSubmit: SubmitHandler<IForm> = (data) => {
     const Update = {
       id: Number(id),
       title: data.title,
