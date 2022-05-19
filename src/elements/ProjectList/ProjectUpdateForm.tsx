@@ -1,10 +1,10 @@
-import { PhotoCamera } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { queryClient } from "../..";
 import { useUpdateRoom } from "../../api/ProjectQuery";
 import { resizeFile } from "../../servers/resize";
+import { SvgEdit } from "../Icon/SvgEdit";
 
 interface IForm {
   title: string;
@@ -68,17 +68,8 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
     }
   };
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center">
-      <img
-        width="100px"
-        height="100px"
-        alt=""
-        src={
-          imgBase64
-            ? imgBase64
-            : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN6PA8mWFE7fwakdei0UJqZOhQWC0b0IKMDg&usqp=CAU"
-        }
-      />
+    <div className="w-full h-full flex flex-col justify-center items-center relative">
+      <img className="rounded-full mb-4" width="100px" height="100px" alt="" src={imgBase64} />
       <label htmlFor="icon-button-file">
         <input
           type="file"
@@ -87,32 +78,37 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
           onChange={onChange}
           ref={fileInput}
         />
-        <IconButton color="primary" aria-label="upload picture" component="span">
-          <PhotoCamera fontSize="small" />
-        </IconButton>
+        <div className="w-8 h-8 rounded-full flex justify-center items-center bg-gray-100 absolute top-[70px] right-[220px]">
+          <IconButton aria-label="upload picture" component="span">
+            <SvgEdit />
+          </IconButton>
+        </div>
       </label>
       <div className="w-[418px]">
         <form className="w-full h-full flex flex-col space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex items-center">
-            <span className="w-14 mr-5">팀 이름</span>
+            <span className="w-14 mr-4">팀 이름</span>
 
             <input
-              className="w-full p-2 rounded-md border-none border border-[#D1D1D1]"
+              className="w-[352px] h-10 p-2 rounded-md border-none border border-[#D1D1D1]"
               defaultValue={roomTitle}
               {...register("title")}
             />
           </div>
           <div className="flex">
-            <span className="w-14 mr-5 mt-2">소개</span>
+            <span className="w-14 mr-4 mt-2">소개</span>
             <textarea
-              rows={4}
-              className="w-full outline-none resize-none p-2 rounded-md border-none border border-[#D1D1D1]"
+              rows={5}
+              className="w-[352px] h-[95px] outline-none resize-none p-2 rounded-md border-none border border-[#D1D1D1]"
               defaultValue={roomSummary}
               {...register("summary")}
             />
           </div>
           <div className="flex justify-end">
-            <button className="w-24 px-[18px] py-[10px] text-white bg-3 rounded-md" type="submit">
+            <button
+              className="w-24 h-[45px] leading-[27px] px-[18px] py-[10px] text-white bg-3 rounded-md"
+              type="submit"
+            >
               수정하기
             </button>
           </div>
