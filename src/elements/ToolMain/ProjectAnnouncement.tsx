@@ -6,7 +6,7 @@ import { queryClient } from "../..";
 import { useGetAnnouncement, usePostAnnouncement } from "../../api/AnnouncementQuery";
 import EditAnnouncement from "./EditAnnouncement";
 import { Plus } from "../../elements/Icon/Plus";
-import { MyProfile } from "../../recoil/MyProfile";
+import { ProjectKey } from "../../recoil/RoomID";
 
 const style = {
   position: "absolute",
@@ -21,29 +21,24 @@ const style = {
 };
 
 interface IForm {
-  id: number;
   title: string;
   content: string;
-  name: string;
 }
 
 const ProjectAnnouncement = () => {
-  const { nickname } = useRecoilValue(MyProfile);
   const [open, setOpen] = useState(false);
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const { data } = useGetAnnouncement();
+  const { pjId } = useRecoilValue(ProjectKey);
+  const { data: Ann } = useGetAnnouncement(pjId);
   const { mutateAsync: postAn } = usePostAnnouncement();
   const { register, handleSubmit, setValue } = useForm<IForm>();
 
   const onSubmit: SubmitHandler<IForm> = (data) => {
     const post = {
-      id: Date.now(),
+      pjId,
       title: data.title,
-      content: data.content,
-      name: nickname,
+      contents: data.content,
     };
     postAn(post).then(() => queryClient.invalidateQueries("getAnnouncement"));
     setValue("title", "");
@@ -91,7 +86,7 @@ const ProjectAnnouncement = () => {
         </Box>
       </Modal>
       <div className="w-full h-full space-y-2 overflow-y-auto">
-        {data?.data?.map((data, index) => {
+        {Ann?.data?.map((data, index) => {
           return (
             <div
               key={index}
@@ -105,8 +100,7 @@ const ProjectAnnouncement = () => {
                 </div>
                 <div className="flex justify-between pt-1">
                   <div className="flex space-x-5">
-                    <div className="font-normal text-xs text-gray-400">{data.id}</div>
-                    <div className="font-normal text-xs text-gray-400">{data.name}</div>
+                    <div className="font-normal text-xs text-gray-400">{data.contents}</div>
                   </div>
                 </div>
               </div>

@@ -8,7 +8,6 @@ import { MyProfile } from "../../recoil/MyProfile";
 const Member = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data } = useGetProjectUser(String(pjId));
-  console.log(data);
   const user = useRecoilValue(MyProfile);
   return (
     <div className="w-full h-full">
