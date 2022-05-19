@@ -15,8 +15,18 @@ export interface IBoard {
 }
 
 export const useGetBoard = (pjId: string) => {
-  return useQuery<IBoard, AxiosError>(["getBoard", pjId], () => {
-    return instance.get(`api/buckets/?pjId=${pjId}`);
+  return useQuery<IBoard, AxiosError>(["getBoard", pjId], async () => {
+    return await instance.get(`api/buckets/?pjId=${pjId}`);
+  });
+};
+
+interface ICard {
+  data: ICards;
+}
+
+export const useGetCardDetail = (kbcId: string) => {
+  return useQuery<ICard, AxiosError>(["getCard", kbcId], () => {
+    return instance.get(`api/buckets/cards/?kbcId=${kbcId}`);
   });
 };
 
@@ -36,6 +46,7 @@ export const usePostBoard = () => {
 
 export interface ICards {
   kbbId?: string;
+  kbcId?: string;
   manager?: string;
   title: string;
   contents?: string;

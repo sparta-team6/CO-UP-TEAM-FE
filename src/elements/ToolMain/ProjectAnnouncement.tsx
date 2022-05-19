@@ -6,23 +6,26 @@ import { queryClient } from "../..";
 import { useGetAnnouncement, usePostAnnouncement } from "../../api/AnnouncementQuery";
 import { MyProfile } from "../../recoil/Atoms";
 import EditAnnouncement from "./EditAnnouncement";
+import { Plus } from "../../elements/Icon/Plus";
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
+  width: 704,
+  height: 384,
   transform: "translate(-50%, -50%)",
   bgcolor: "background.paper",
   boxShadow: 2,
   p: 4,
 };
 
-type IForm = {
+interface IForm {
   id: number;
   title: string;
   content: string;
   name: string;
-};
+}
 
 const ProjectAnnouncement = () => {
   const { nickname } = useRecoilValue(MyProfile);
@@ -50,14 +53,11 @@ const ProjectAnnouncement = () => {
 
   return (
     <div className="w-full h-[348px] border border-solid bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center sm:p-4">
-      <div className="w-full h-8 flex items-center justify-between mb-2">
-        <span className="font-bold text-lg">공지사항</span>
-        <button
-          className="h-full border-none bg-transparent flex items-center text-2xl"
-          onClick={handleOpen}
-        >
-          +
-        </button>
+      <div className="w-full h-8 flex items-center justify-between mb-3">
+        <span className="font-bold text-2xl">공지사항</span>
+        <div onClick={handleOpen} className="cursor-pointer">
+          <Plus />
+        </div>
       </div>
       <Modal
         open={open}
@@ -71,7 +71,7 @@ const ProjectAnnouncement = () => {
               className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold font-semibold"
               {...register("title", { required: true })}
               type="text"
-              placeholder="제목을 입력해주세요"
+              placeholder="공지 제목을 적어주세요 :)"
             />
             <textarea
               className="w-full outline-none border-none resize-none overflow-y-auto"
@@ -80,7 +80,12 @@ const ProjectAnnouncement = () => {
               placeholder="내용을 입력해주세요"
             />
             <div className="absolute bottom-0 right-0">
-              <button type="submit">등록</button>
+              <button className="text-white bg-3 w-[58px] h-[37px] rounded-md pt-1" type="submit">
+                등록
+              </button>
+              <button className="bg-[#E7EBF2] w-[58px] h-[37px] rounded-md ml-2 pt-1" type="button">
+                닫기
+              </button>
             </div>
           </form>
         </Box>
@@ -95,7 +100,7 @@ const ProjectAnnouncement = () => {
               <div className="w-2 h-full bg-3" />
               <div className="w-full h-full ml-4 mr-2 flex flex-col">
                 <div className="flex">
-                  <div className="w-full font-semibold pt-3">{data.title}</div>
+                  <div className="w-full text-[13px] font-semibold pt-3">{data.title}</div>
                   <EditAnnouncement {...data} />
                 </div>
                 <div className="flex justify-between pt-1">

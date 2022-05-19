@@ -1,28 +1,60 @@
-import { Link } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
-import { useRecoilState } from "recoil";
-import { HandleOpen } from "../recoil/Atoms";
-import { SvgUser } from "../elements/Icon/SvgUser";
-
-const style = { width: 40, height: 40, marginLeft: 1 };
+import { Link, useMatch } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { MBoard } from "../elements/Icon/mobile/MBoard";
+import { MChat } from "../elements/Icon/mobile/MChat";
+import { MDoc } from "../elements/Icon/mobile/MDoc";
+import { MHome } from "../elements/Icon/mobile/MHome";
+import { ProjectKey } from "../recoil/Atoms";
 
 const Footer = () => {
-  const [open, setOpen] = useRecoilState(HandleOpen);
-  const onClick = () => {
-    setOpen(!open);
-  };
-
+  const { pjId } = useRecoilValue(ProjectKey);
+  const mainMatch = useMatch("/tool/:id");
+  const docMatch = useMatch("/tool/:id/document");
+  const boardMatch = useMatch("/tool/:id/board");
+  const ChatMatch = useMatch("/tool/:id/chat");
   return (
-    <div className="hidden w-full h-12 fixed top-0 sm:flex justify-between items-center bg-white dark:bg-gray-900">
-      <div className="cursor-pointer">
-        <MenuIcon className="dark:text-white" onClick={onClick} sx={style} />
-      </div>
-      <Link to="/profile">
-        <span className="dark:text-white">
-          <SvgUser />
-        </span>
+    <nav className="hidden w-full h-20 fixed bottom-0 bg-white sm:flex justify-around items-center">
+      <Link to={`/tool/${pjId}`}>
+        <div
+          className={`w-full h-full flex flex-col items-center space-y-2 font-semibold ${
+            mainMatch ? "text-3" : ""
+          }`}
+        >
+          <MHome />
+          <span className="dark:text-white">메인</span>
+        </div>
       </Link>
-    </div>
+      <Link to={`/tool/${pjId}/document`}>
+        <div
+          className={`w-full h-full flex flex-col items-center space-y-2 font-semibold ${
+            docMatch ? "text-3" : ""
+          }`}
+        >
+          <MDoc />
+          <span className="dark:text-white">문서</span>
+        </div>
+      </Link>
+      <Link to={`/tool/${pjId}/board`}>
+        <div
+          className={`w-full h-full flex flex-col items-center space-y-2 font-semibold ${
+            boardMatch ? "text-3" : ""
+          }`}
+        >
+          <MBoard />
+          <span className="dark:text-white">보드</span>
+        </div>
+      </Link>
+      <Link to={`/tool/${pjId}/chat`} className="hidden md:block">
+        <div
+          className={`w-full h-full flex flex-col items-center space-y-2 font-semibold ${
+            ChatMatch ? "text-3" : ""
+          }`}
+        >
+          <MChat />
+          <span className="dark:text-white">채팅</span>
+        </div>
+      </Link>
+    </nav>
   );
 };
 

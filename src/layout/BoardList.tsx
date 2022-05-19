@@ -1,6 +1,6 @@
 /* eslint-disable no-unsafe-optional-chaining */
-import React from "react";
-import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import React, { useEffect } from "react";
+import { DragDropContext, DropResult, resetServerContext } from "react-beautiful-dnd";
 import { useRecoilValue } from "recoil";
 import { Board, useGetBoard, useUpdateCards } from "../api/BoardQuery";
 import Bucket from "../Components/ToolBoard/Bucket";
@@ -10,18 +10,16 @@ const BoardList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data: board } = useGetBoard(String(pjId));
   const { mutateAsync } = useUpdateCards(pjId);
+  useEffect(() => {
+    resetServerContext();
+  }, [board]);
   const onDragEnd = ({ destination, source }: DropResult) => {
     if (!destination) return;
     if (destination?.droppableId === source.droppableId) {
       const boardCopy = [...board?.data[Number(source.droppableId)].cards];
-      const ThisKbbId = board?.data[Number(source.droppableId)].kbbId;
       const taskObj = boardCopy[source.index];
       boardCopy.splice(Number(source.index), 1);
       boardCopy.splice(destination?.index, 0, taskObj);
-      console.log(destination, source);
-      console.log(taskObj);
-      console.log(ThisKbbId);
-      console.log(boardCopy);
       const post = {
         kbcId: taskObj.kbcId,
         kbbId: taskObj.kbbId,
@@ -30,25 +28,15 @@ const BoardList = () => {
         contents: taskObj.contents,
         position: destination.index,
       };
-      mutateAsync(post)
-        .then(() => {
-          console.log(post);
-        })
-        .catch((res) => {
-          console.log(res);
-        });
+      mutateAsync(post);
     }
     if (destination.droppableId !== source.droppableId) {
       const sourceBoard = [...board?.data[Number(source.droppableId)].cards];
-      const StartKbbId = board?.data[Number(source.droppableId)].kbbId;
       const taskObj = sourceBoard[source.index];
       const destinationBoard = [...board?.data[Number(destination.droppableId)].cards];
       const LastKbbId = board?.data[Number(destination.droppableId)].kbbId;
       sourceBoard.splice(source.index, 1);
       destinationBoard.splice(destination?.index, 0, taskObj);
-      console.log(destination, source);
-      console.log(StartKbbId, LastKbbId);
-      console.log(sourceBoard, destinationBoard);
       const post = {
         kbcId: taskObj.kbcId,
         kbbId: String(LastKbbId),
@@ -57,13 +45,7 @@ const BoardList = () => {
         contents: taskObj.contents,
         position: destination.index,
       };
-      mutateAsync(post)
-        .then(() => {
-          console.log(post);
-        })
-        .catch((res) => {
-          console.log(res);
-        });
+      mutateAsync(post);
     }
   };
   return (
@@ -86,9 +68,22 @@ const BoardList = () => {
             </div>
           </div>
         </DragDropContext>
+        {/* {show ? (
+          <div className="w-full h-[calc(100%-5rem)] bg-2 absolute top-20 flex justify-center items-center">
+            <div className="w-[420px] h-[135px] space-y-4">
+              <p className="text-center font-semibold text-4xl mb-4">새로운 보드를 추가해 보세요</p>
+              <span className="text-center text-lg">
+                <p>보드를 사용하여 팀원들과 현재 대기중인, 진행중인,</p>
+                <p>완료된 보드의 작업 상태를 공유할 수 있습니다.</p>
+              </span>
+            </div>
+          </div>
+        ) : (
+          ""
+        )} */}
       </div>
     </div>
   );
 };
 
-export default React.memo(BoardList);
+export default BoardList;

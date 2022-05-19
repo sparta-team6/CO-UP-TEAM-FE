@@ -11,9 +11,12 @@
   min-width: 44px;
   background: none;
   margin-top: 15px;
-  font-size: 20px;
+}
+.react-calendar__navigation__arrow {
+  font-size: 30px;
 }
 .react-calendar__navigation__label span {
+  font-size: 20px;
   color: #c5daff;
 }
 .react-calendar__navigation button:enabled:hover,

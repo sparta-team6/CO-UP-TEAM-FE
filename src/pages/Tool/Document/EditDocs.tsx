@@ -6,9 +6,9 @@ import Chat from "../../../layout/Chat";
 import DocumentList from "../../../layout/FolderList";
 import MyProjectList from "../../../layout/MyProjectList";
 
-type ILocation = {
+interface ILocation {
   state: Docs;
-};
+}
 
 const EditDocs = () => {
   const location = useLocation() as ILocation;

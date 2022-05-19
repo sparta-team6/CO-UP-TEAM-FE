@@ -15,7 +15,6 @@ const ToolBoard = () => {
   useEffect(() => {
     setOpen(false);
   }, []);
-  console.log("hi");
   return (
     <>
       <div className="w-full h-[calc(100vh-3rem)] bg-slate-100 flex absolute bottom-0">
@@ -41,4 +40,4 @@ const ToolBoard = () => {
   );
 };
 
-export default React.memo(ToolBoard);
+export default ToolBoard;

@@ -13,17 +13,19 @@ const CopyURL = () => {
     document.execCommand("copy");
   };
   return (
-    <div className="w-3/12 h-full flex items-center justify-end space-x-3">
+    <div className="w-1/5 h-full flex items-end justify-end space-x-3">
       <input
-        className="w-1 opacity-0 pointer-events-none"
+        className="w-[100px] opacity-0 pointer-events-none"
         value={inviteCode || ""}
         ref={textInput}
         readOnly
       />
-      <span className="text-[#666]" onClick={copy}>
-        <Share2 />
-        <span className="ml-2 sm:hidden">공유</span>
-      </span>
+      <div className="flex text-[#666] cursor-pointer mb-3">
+        <div className="w-20 space-x-2 flex justify-end" onClick={copy}>
+          <Share2 />
+          <span className="pt-[2px]">공유</span>
+        </div>
+      </div>
     </div>
   );
 };
