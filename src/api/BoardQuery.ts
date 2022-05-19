@@ -30,16 +30,6 @@ export const useGetCardDetail = (kbcId: string) => {
   });
 };
 
-interface ICard {
-  data: ICards;
-}
-
-export const useGetCardDetail = (kbcId: string) => {
-  return useQuery<ICard, AxiosError>(["getCard", kbcId], () => {
-    return instance.get(`api/buckets/cards/?kbcId=${kbcId}`);
-  });
-};
-
 interface TestBoard {
   pjId: string;
   title: string;
