@@ -6,21 +6,21 @@ import { queryClient } from "../..";
 import { useUpdateRoom } from "../../api/ProjectQuery";
 import { resizeFile } from "../../servers/resize";
 
-type IForm = {
+interface IForm {
   title: string;
   summary: string;
   img?: string;
   name: string;
   id?: number;
-};
+}
 
-type IProps = {
+interface IProps {
   setUpOpen: Dispatch<SetStateAction<boolean>>;
   roomID?: string;
   roomImg: string;
   roomTitle: string;
   roomSummary: string;
-};
+}
 
 const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary }: IProps) => {
   const [imgBase64, setImgBase64] = useState<string>(roomImg);

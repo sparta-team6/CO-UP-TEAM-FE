@@ -3,15 +3,15 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
 import { usePostRoom } from "../../api/ProjectQuery";
-import { MyProfile } from "../../recoil/Atoms";
+import { MyProfile } from "../../recoil/MyProfile";
 import { resizeFile } from "../../servers/resize";
 import { SvgImage } from "../Icon/SvgImage";
 
-type IForm = {
+interface IForm {
   title: string;
   summary: string;
   thumbnail: string;
-};
+}
 
 interface IProp {
   open: Dispatch<SetStateAction<boolean>>;

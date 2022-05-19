@@ -4,9 +4,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
 import { useGetAnnouncement, usePostAnnouncement } from "../../api/AnnouncementQuery";
-import { MyProfile } from "../../recoil/Atoms";
 import EditAnnouncement from "./EditAnnouncement";
 import { Plus } from "../../elements/Icon/Plus";
+import { MyProfile } from "../../recoil/MyProfile";
 
 const style = {
   position: "absolute",

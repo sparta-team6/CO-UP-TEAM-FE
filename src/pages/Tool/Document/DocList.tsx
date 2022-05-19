@@ -7,7 +7,8 @@ import ViewDoc from "../../../Components/ToolDocument/ViewDoc";
 import Chat from "../../../layout/Chat";
 import FolderList from "../../../layout/FolderList";
 import MyProjectList from "../../../layout/MyProjectList";
-import { HandleOpen, ProjectKey } from "../../../recoil/Atoms";
+import { HandleOpen } from "../../../recoil/AtomsInterface";
+import { ProjectKey } from "../../../recoil/RoomID";
 
 const DocList = () => {
   const { pjId } = useRecoilValue(ProjectKey);

@@ -5,7 +5,7 @@ import "./styles/tailwind.css";
 import { Suspense } from "react";
 import Spinner from "./layout/Spinner";
 import { useRecoilValue } from "recoil";
-import { themeState } from "./recoil/Atoms";
+import { themeState } from "./recoil/DarkMode";
 
 const App = () => {
   const theme = useRecoilValue(themeState);

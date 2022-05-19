@@ -2,12 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { useGetRoom } from "../api/ProjectQuery";
 import { useLogOut } from "../api/UserQuery";
-import { HandleOpen, ProjectKey, themeState } from "../recoil/Atoms";
+import { HandleOpen } from "../recoil/AtomsInterface";
 import { motion } from "framer-motion";
 import { Logout } from "../elements/Icon/Logout";
 import { Power } from "../elements/Icon/Power";
 import { Moon } from "../elements/Icon/Moon";
 import { Sun } from "../elements/Icon/Sun";
+import { ProjectKey } from "../recoil/RoomID";
+import { themeState } from "../recoil/DarkMode";
 
 const MyProjectList = () => {
   const setOpen = useSetRecoilState(HandleOpen);

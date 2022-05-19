@@ -3,8 +3,8 @@ import { useRecoilValue } from "recoil";
 import Logo from "../../images/LOGO_2.png";
 import React from "react";
 import { Link, useMatch } from "react-router-dom";
-import { ProjectKey } from "../../recoil/Atoms";
 import { SvgUser } from "../../elements/Icon/SvgUser";
+import { ProjectKey } from "../../recoil/RoomID";
 
 const FramerHeader = () => {
   const { pjId } = useRecoilValue(ProjectKey);

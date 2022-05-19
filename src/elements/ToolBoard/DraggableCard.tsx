@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { Box, Modal } from "@mui/material";
-import { useDeleteCards } from "../../api/BoardQuery";
 import { useRecoilValue } from "recoil";
-import { ProjectKey } from "../../recoil/Atoms";
 import { queryClient } from "../..";
 import { Trash2 } from "../Icon/Trash2";
 import { SvgEdit2 } from "../Icon/SvgEdit2";
 import EditCard from "./EditCard";
 import { X } from "../Icon/X";
+import { useDeleteCards } from "../../api/CardQuery";
+import { ProjectKey } from "../../recoil/RoomID";
 
 const style = {
   position: "absolute",
