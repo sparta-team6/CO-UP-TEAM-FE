@@ -20,9 +20,9 @@ import { queryClient } from "../../index";
 import { useNavigate, useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-type IForm = {
+interface IForm {
   title: string;
-};
+}
 
 const DocEditor = ({ title, contents, docId }: Docs) => {
   const { id } = useParams();
@@ -59,14 +59,14 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
           <span>문서</span>
           <div>
             <button
-              className="border-none px-3 py-2 rounded-md text-white bg-slate-600"
+              className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
               type="submit"
             >
               수정
             </button>
             <button
               type="button"
-              className="border-none ml-2 px-3 py-2 rounded-md bg-slate-400"
+              className="border-none ml-2 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
               onClick={() => navigate(-1)}
             >
               닫기
@@ -82,14 +82,14 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
           />
           <div className="sm:hidden">
             <button
-              className="border-none p-[10px] rounded-md text-white bg-slate-600"
+              className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
               type="submit"
             >
               수정
             </button>
             <button
               type="button"
-              className="border-none ml-4 p-[10px] rounded-md bg-slate-400"
+              className="border-none ml-4 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
               onClick={() => navigate(-1)}
             >
               닫기

@@ -22,9 +22,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/Atoms";
 
-type IForm = {
+interface IForm {
   title: string;
-};
+}
 
 const DocEditor = () => {
   const { state } = useLocation();
@@ -64,15 +64,15 @@ const DocEditor = () => {
           <span>문서</span>
           <div>
             <button
-              className="border-none px-3 py-2 rounded-md text-white bg-slate-600"
+              className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
               type="submit"
             >
               등록
             </button>
             <button
               type="button"
-              className="border-none ml-2 px-3 py-2 rounded-md bg-[#E7EBF2]"
-              onClick={() => navigate(`/tool/${pjId}/document`)}
+              className="border-none ml-2 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
+              onClick={() => navigate(-1)}
             >
               닫기
             </button>
@@ -94,7 +94,7 @@ const DocEditor = () => {
             <button
               type="button"
               className="border-none ml-4 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
-              onClick={() => navigate(`/tool/${pjId}/document`)}
+              onClick={() => navigate(-1)}
             >
               닫기
             </button>

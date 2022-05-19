@@ -9,6 +9,7 @@ import FolderFixed from "../Components/ToolDocument/FolderFixed";
 import imgFolder from "../images/img_folder.png";
 import { FolderPlus } from "../elements/Icon/FolderPlus";
 import { SvgFolder } from "../elements/Icon/SvgFolder";
+import { Plus } from "../elements/Icon/Plus";
 
 const FolderList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
@@ -49,32 +50,32 @@ const FolderList = () => {
   return (
     <>
       {data?.data.length === 0 ? (
-        <div className="w-72 h-full bg-[#F0F3F7] sm:w-full">
+        <div className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
           <div className="flex justify-between items-center pt-5 px-4 sm:pt-4">
             <div className="font-bold text-2xl">문서목록</div>
-            <nav className="w-8 font-bold text-2xl flex justify-center items-center">
-              <button onClick={AddFolder}>+</button>
-            </nav>
+            <div onClick={AddFolder} className="cursor-pointer">
+              <Plus />
+            </div>
           </div>
           <div className="border border-solid mx-3 my-2"></div>
           <div className="flex flex-col justify-center items-center pt-5">
-            <img src={imgFolder} alt="" />
+            <img width={165} height={165} src={imgFolder} alt="" />
             <span className="text-lg opacity-50 mt-[30px]">새로운 문서를 추가해 보세요</span>
           </div>
         </div>
       ) : (
-        <div className="w-72 h-full bg-[#F0F3F7] sm:w-full">
+        <div className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
           <div className="flex justify-between items-center pt-5 px-4 sm:pt-4">
             <div className="font-bold text-2xl">문서목록</div>
-            <nav className="w-8 font-bold text-2xl flex justify-center items-center">
-              <button onClick={AddFolder}>+</button>
-            </nav>
+            <div onClick={AddFolder} className="cursor-pointer">
+              <Plus />
+            </div>
           </div>
           <div className="border border-solid mx-3 my-2"></div>
           {data?.data?.map((folder) => {
             return (
               <div key={folder.dfId}>
-                <div className="flex justify-between items-center px-4">
+                <div className="flex justify-between items-center pl-6 pr-5">
                   <div
                     className={`font-bold text-lg ${
                       editTitle && dfId === folder.dfId ? "hidden" : "block"
@@ -93,8 +94,16 @@ const FolderList = () => {
                   </form>
                   <FolderFixed dfId={folder.dfId} setEditTitle={setEditTitle} setDfId={setDfId} />
                 </div>
+                <div
+                  className={`flex flex-col justify-center items-center pt-2 ${
+                    folder?.docs?.length !== 0 && "hidden"
+                  }`}
+                >
+                  <img width={165} height={165} src={imgFolder} alt="" />
+                  <span className="text-lg opacity-50 mt-[30px]">새로운 문서를 추가해 보세요</span>
+                </div>
                 {folder.docs?.map((doc) => (
-                  <div key={doc.docId} className="flex flex-col ml-14">
+                  <div key={doc.docId} className="flex flex-col ml-[52px]">
                     <div className="flex items-center text-base m-1 cursor-pointer">
                       <div onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}>
                         {doc.title}

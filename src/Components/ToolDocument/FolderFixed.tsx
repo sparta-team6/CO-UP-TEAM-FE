@@ -1,18 +1,18 @@
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/Atoms";
 import { useDelFolder } from "../../api/FolderQuery";
 import { queryClient } from "../..";
+import { MoreHorizontal } from "../../elements/Icon/MoreHorizontal";
 
-type IProps = {
+interface IProps {
   dfId?: string;
   setEditTitle: Dispatch<SetStateAction<boolean>>;
   setDfId: Dispatch<SetStateAction<string>>;
-};
+}
 
 const FolderFiexd = ({ dfId, setEditTitle, setDfId }: IProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
@@ -54,7 +54,7 @@ const FolderFiexd = ({ dfId, setEditTitle, setDfId }: IProps) => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreHorizIcon />
+        <MoreHorizontal />
       </IconButton>
       <Menu
         id="long-menu"
