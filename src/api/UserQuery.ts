@@ -23,7 +23,7 @@ export const useGetProjectUser = (pjId: string) => {
 
 export const useUpdateUser = () => {
   return useMutation(async (post: User) => {
-    await instance.put("api/users/update/", post);
+    await instance.put("api/users/update", post);
   });
 };
 

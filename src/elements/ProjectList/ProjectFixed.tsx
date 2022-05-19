@@ -79,6 +79,7 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
             backgroundColor: "#E7EBF2",
             display: "flex",
             alignItems: "center",
+            padding: 0,
           },
         }}
       >
