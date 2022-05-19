@@ -10,12 +10,12 @@ import { themeState } from "./recoil/Atoms";
 const App = () => {
   const theme = useRecoilValue(themeState);
   return (
-    <Suspense fallback={<Spinner />}>
-      <div className={`${theme ? "dark" : ""}`}>
+    <div className={`${theme ? "dark" : ""}`}>
+      <Suspense fallback={<Spinner />}>
         <GlobalStyle />
         <Router />
-      </div>
-    </Suspense>
+      </Suspense>
+    </div>
   );
 };
 

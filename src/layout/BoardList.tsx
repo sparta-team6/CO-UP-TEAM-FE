@@ -1,17 +1,24 @@
 /* eslint-disable no-unsafe-optional-chaining */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { DragDropContext, DropResult, resetServerContext } from "react-beautiful-dnd";
 import { useRecoilValue } from "recoil";
 import { Board, useGetBoard, useUpdateCards } from "../api/BoardQuery";
 import Bucket from "../Components/ToolBoard/Bucket";
 import { ProjectKey } from "../recoil/Atoms";
+import BoardImg from "../images/board1.png";
 
 const BoardList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data: board } = useGetBoard(String(pjId));
+  const [open, setOpen] = useState<boolean>(false);
   const { mutateAsync } = useUpdateCards(pjId);
   useEffect(() => {
     resetServerContext();
+    let sum = 0;
+    for (let i = 0; i < 3; i++) {
+      sum += board?.data[i].cards.length;
+    }
+    sum === 0 ? setOpen(true) : setOpen(false);
   }, [board]);
   const onDragEnd = ({ destination, source }: DropResult) => {
     if (!destination) return;
@@ -68,8 +75,9 @@ const BoardList = () => {
             </div>
           </div>
         </DragDropContext>
-        {/* {show ? (
-          <div className="w-full h-[calc(100%-5rem)] bg-2 absolute top-20 flex justify-center items-center">
+        {open ? (
+          <div className="w-full h-[calc(100%-5rem)] absolute top-20 flex flex-col justify-center items-center space-y-6">
+            <img src={BoardImg} alt="보드" />
             <div className="w-[420px] h-[135px] space-y-4">
               <p className="text-center font-semibold text-4xl mb-4">새로운 보드를 추가해 보세요</p>
               <span className="text-center text-lg">
@@ -80,7 +88,7 @@ const BoardList = () => {
           </div>
         ) : (
           ""
-        )} */}
+        )}
       </div>
     </div>
   );

@@ -13,13 +13,13 @@ const FramerHeader = () => {
   const boardMatch = useMatch("/tool/:id/board");
   return (
     <React.Fragment>
-      <div className="sm:hidden w-full h-12 flex justify-between items-center fixed z-50 shadow-md bg-white dark:bg-gray-800">
+      <nav className="sm:hidden w-full h-12 flex justify-between items-center fixed z-50 shadow-md bg-white dark:bg-gray-800">
         <div className="w-[25rem]">
           <Link to="/">
             <img className="ml-5 w-10 h-10 mt-[1px]" src={Logo} alt="Logo"></img>
           </Link>
         </div>
-        <nav className="w-[calc(100%-37rem)] min-w-max flex  space-x-20 text-base pl-5 sm:hidden">
+        <div className="w-[calc(100%-37rem)] min-w-max flex  space-x-20 text-base pl-5 sm:hidden">
           <div className="relative">
             <Link to={`/tool/${pjId}`}>
               <span className="dark:text-white">메인</span>
@@ -56,7 +56,7 @@ const FramerHeader = () => {
               />
             )}
           </div>
-        </nav>
+        </div>
         <nav className="w-56 h-full flex justify-around items-center sm:hidden">
           <Link to={`/tool/${pjId}/chat`} className="hidden md:block">
             <span className="dark:text-white">채팅</span>
@@ -67,7 +67,7 @@ const FramerHeader = () => {
             </span>
           </Link>
         </nav>
-      </div>
+      </nav>
     </React.Fragment>
   );
 };

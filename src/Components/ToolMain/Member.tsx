@@ -1,13 +1,15 @@
 import { useRecoilValue } from "recoil";
 // import { useGetProjectUser } from "../../api/UserQuery";
-import { MyProfile } from "../../recoil/Atoms";
+import { MyProfile, ProjectKey } from "../../recoil/Atoms";
 import imgCrown from "../../images/img_crown.png";
 import { SvgUser } from "../../elements/Icon/SvgUser";
+import { useGetProjectUser } from "../../api/UserQuery";
 
 const Member = () => {
   // 값 아직 안가져옴
-  // const { pjId } = useRecoilValue(ProjectKey);
-  // const { data } = useGetProjectUser(String(pjId));
+  const { pjId } = useRecoilValue(ProjectKey);
+  const { data } = useGetProjectUser(String(pjId));
+  console.log(data);
   const user = useRecoilValue(MyProfile);
   return (
     <div className="w-full h-full">
