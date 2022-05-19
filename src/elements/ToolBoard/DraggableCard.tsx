@@ -37,7 +37,6 @@ const DraggableCard = ({
   toDoTitle,
   index,
 }: IDragabbleCardProps) => {
-  console.log(bucketId, toDoName, toDoId, toDoText, toDoTitle, index);
   const { pjId } = useRecoilValue(ProjectKey);
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
