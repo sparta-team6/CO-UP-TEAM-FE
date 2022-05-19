@@ -98,4 +98,28 @@ abbr[title]{
   text-decoration: none;
   cursor: auto;
 }
+
+/* react-slick */
+.slick-arrow::before{
+  font-size: 50px;
+}
+.slick-arrow.slick-prev{
+  position: absolute;
+  top: 265px;
+  left: -54px;
+}
+.slick-dots li button:before{
+  line-height: 4;
+  font-size: 14px;
+  width: 17px;
+  height: 17px;
+}
+.slick-dots li.slick-active button:before{
+  color: #5F99FF;
+}
+
+/* editor */
+.toastui-editor-defaultUI{
+  border: none;
+}
 `;

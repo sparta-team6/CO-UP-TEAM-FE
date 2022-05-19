@@ -24,7 +24,7 @@ const EditDocs = () => {
             <DocumentList />
           </div>
         </div>
-        <div className="w-[calc(100%-794px)] h-full ml-[362px] flex flex-col p-4 md:w-[calc(100%-21rem)] sm:w-full sm:p-2 sm:m-0">
+        <div className="w-[calc(100%-800px)] h-full ml-[368px] flex flex-col md:w-[calc(100%-21rem)] sm:w-full sm:p-2 sm:m-0">
           <EditDocEditor {...result} />
         </div>
       </div>

@@ -72,12 +72,12 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                   </button>
                 </div>
               </div>
-              <div className="p-4 mt-4">
-                <div className="flex sm:hidden justify-between">
-                  <div className="text-3xl font-bold">{title}</div>
+              <div className="flex flex-col sm:hidden mx-[46px] mt-[60px] mb-[20px]">
+                <div className="flex justify-between items-center">
+                  <div className="text-[32px] font-bold">{title}</div>
                   <div>
                     <button
-                      className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
+                      className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
                       onClick={() =>
                         navigate(`/tool/${id}/document/${docId}/edit`, {
                           state: { docId, title, contents },
@@ -87,53 +87,60 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                       수정
                     </button>
                     <button
-                      className="border-none ml-4 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
+                      className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-[#E7EBF2]"
                       onClick={onDelete}
                     >
                       삭제
                     </button>
                   </div>
                 </div>
-                <div className="hidden sm:block text-3xl font-bold">{title}</div>
-                <div className="text-xl mt-5">
-                  <MarkdownPreview className="whitespace-pre-wrap break-all" source={contents} />
-                </div>
+                <div className="text-lg text-[#666] mt-[15px]">2022.05.04 by 작성자</div>
+              </div>
+              <div className="hidden sm:block text-3xl font-bold">{title}</div>
+              <div className="text-xl mx-[46px] mt-[20px]">
+                <MarkdownPreview
+                  className="whitespace-pre-wrap break-all text-lg"
+                  source={contents}
+                />
               </div>
             </>
           ) : docData ? (
-            <div className="p-4 mt-4">
-              <div className="flex justify-between">
-                <div className="text-3xl font-bold">{docData.title}</div>
-                <div>
-                  <button
-                    className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
-                    onClick={() =>
-                      navigate(`/tool/${id}/document/${docData.docId}/edit`, {
-                        state: {
-                          docId: docData.docId,
-                          title: docData.title,
-                          contents: docData.contents,
-                        },
-                      })
-                    }
-                  >
-                    수정
-                  </button>
-                  <button
-                    className="border-none ml-4 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
-                    onClick={onDelete2}
-                  >
-                    삭제
-                  </button>
+            <>
+              <div className="flex flex-col sm:hidden mx-[46px] mt-[60px] mb-[20px]">
+                <div className="flex justify-between items-center">
+                  <div className="text-3xl font-bold">{docData.title}</div>
+                  <div>
+                    <button
+                      className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
+                      onClick={() =>
+                        navigate(`/tool/${id}/document/${docData.docId}/edit`, {
+                          state: {
+                            docId: docData.docId,
+                            title: docData.title,
+                            contents: docData.contents,
+                          },
+                        })
+                      }
+                    >
+                      수정
+                    </button>
+                    <button
+                      className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-[#E7EBF2]"
+                      onClick={onDelete2}
+                    >
+                      삭제
+                    </button>
+                  </div>
                 </div>
+                <div className="text-lg text-[#666] mt-[15px]">2022.05.04 by 작성자</div>
               </div>
-              <div className="text-xl mt-5">
+              <div className="text-xl mx-[46px] mt-[20px]">
                 <MarkdownPreview
-                  className="whitespace-pre-wrap break-all"
+                  className="whitespace-pre-wrap break-all text-lg"
                   source={docData.contents}
                 />
               </div>
-            </div>
+            </>
           ) : (
             <div className=" w-full h-full flex flex-col justify-center items-center text-center">
               <img
