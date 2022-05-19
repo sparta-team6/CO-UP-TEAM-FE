@@ -15,8 +15,8 @@ export interface IBoard {
 }
 
 export const useGetBoard = (pjId: string) => {
-  return useQuery<IBoard, AxiosError>(["getBoard", pjId], () => {
-    return instance.get(`api/buckets/?pjId=${pjId}`);
+  return useQuery<IBoard, AxiosError>(["getBoard", pjId], async () => {
+    return await instance.get(`api/buckets/?pjId=${pjId}`);
   });
 };
 

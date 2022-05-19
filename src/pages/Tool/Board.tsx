@@ -40,4 +40,4 @@ const ToolBoard = () => {
   );
 };
 
-export default React.memo(ToolBoard);
+export default ToolBoard;

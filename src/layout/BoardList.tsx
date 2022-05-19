@@ -1,6 +1,6 @@
 /* eslint-disable no-unsafe-optional-chaining */
-import React from "react";
-import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import React, { useEffect } from "react";
+import { DragDropContext, DropResult, resetServerContext } from "react-beautiful-dnd";
 import { useRecoilValue } from "recoil";
 import { Board, useGetBoard, useUpdateCards } from "../api/BoardQuery";
 import Bucket from "../Components/ToolBoard/Bucket";
@@ -10,6 +10,9 @@ const BoardList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data: board } = useGetBoard(String(pjId));
   const { mutateAsync } = useUpdateCards(pjId);
+  useEffect(() => {
+    resetServerContext();
+  }, [board]);
   const onDragEnd = ({ destination, source }: DropResult) => {
     if (!destination) return;
     if (destination?.droppableId === source.droppableId) {
@@ -25,13 +28,7 @@ const BoardList = () => {
         contents: taskObj.contents,
         position: destination.index,
       };
-      mutateAsync(post)
-        .then(() => {
-          console.log(post);
-        })
-        .catch((res) => {
-          console.log(res);
-        });
+      mutateAsync(post);
     }
     if (destination.droppableId !== source.droppableId) {
       const sourceBoard = [...board?.data[Number(source.droppableId)].cards];
@@ -48,11 +45,7 @@ const BoardList = () => {
         contents: taskObj.contents,
         position: destination.index,
       };
-      mutateAsync(post)
-        .then()
-        .catch((res) => {
-          alert(res);
-        });
+      mutateAsync(post);
     }
   };
   return (
@@ -93,4 +86,4 @@ const BoardList = () => {
   );
 };
 
-export default React.memo(BoardList);
+export default BoardList;
