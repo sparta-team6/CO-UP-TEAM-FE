@@ -84,22 +84,22 @@ const DocEditor = () => {
             </button>
           </div>
         </div>
-        <div className="flex items-center justify-between p-4 mt-4">
+        <div className="flex items-center justify-between mx-[46px] mt-[60px] mb-[20px]">
           <input
-            className="text-3xl font-bold border-none outline-none bg-transparent placeholder:text-black sm:text-3xl sm:w-full sm:text-center"
+            className="text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-black sm:text-3xl sm:w-full sm:text-center"
             {...register("title")}
             placeholder="제목을 적어보세요 :)"
           />
           <div className="sm:hidden">
             <button
-              className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
+              className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
               type="submit"
             >
               등록
             </button>
             <button
               type="button"
-              className="border-none ml-4 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
+              className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-[#E7EBF2]"
               onClick={() => navigate(-1)}
             >
               닫기
@@ -108,7 +108,7 @@ const DocEditor = () => {
         </div>
       </form>
       <Editor
-        height="80%"
+        height="70%"
         previewStyle="vertical"
         initialEditType="wysiwyg"
         useCommandShortcut={true}

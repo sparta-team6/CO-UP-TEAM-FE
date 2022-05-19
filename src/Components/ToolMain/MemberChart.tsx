@@ -16,21 +16,21 @@ const MemberChart = () => {
   const { data } = useGetManagers(pjId);
   console.log(data);
   return (
-    <div className="w-full h-full p-4">
-      <div className="flex justify-between items-center pb-2">
-        <span className="text-2xl font-semibold sm:text-lg">팀 상태 개요</span>
-        <div className="w-[200px] h-full flex justify-between items-center sm:w-[150px]">
+    <div className="w-full h-full px-[32px] py-[28px]">
+      <div className="flex justify-between items-center">
+        <span className="text-2xl font-semibold sm:text-lg mb-[30px]">팀 상태 개요</span>
+        <div className="flex justify-between items-center sm:w-[150px]">
           <section className="flex items-center space-x-2 sm:space-x-1">
-            <div className="w-2 h-2 rounded-full bg-1" />
-            <span>대기</span>
+            <div className="w-2 h-2 rounded-full bg-[#E7EBF2]" />
+            <span className="text-xs">대기</span>
           </section>
-          <section className="flex items-center space-x-2 sm:space-x-1">
-            <div className="w-2 h-2 rounded-full bg-2" />
-            <span>진행중</span>
+          <section className="flex items-center mx-[16px] space-x-2 sm:space-x-1">
+            <div className="w-2 h-2 rounded-full bg-1" />
+            <span className="text-xs">진행</span>
           </section>
           <section className="flex items-center space-x-2 sm:space-x-1">
             <div className="w-2 h-2 rounded-full bg-3" />
-            <span>완료</span>
+            <span className="text-xs">완료</span>
           </section>
         </div>
       </div>

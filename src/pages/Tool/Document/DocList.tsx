@@ -45,7 +45,7 @@ const DocList = () => {
           </div>
         </div>
         <div
-          className={`w-[calc(100%-794px)] h-full flex ml-[362px] p-4 md:w-full md:justify-center sm:p-2 sm:m-0 ${
+          className={`w-[calc(100%-800px)] h-full flex ml-[368px] md:w-full md:justify-center sm:p-2 sm:m-0 ${
             data?.data.length !== 0 && "sm:hidden"
           }`}
         >
