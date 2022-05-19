@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 5px;
   }
   &::-webkit-scrollbar-thumb {
-    background: blue;
+    background: #5F99FF;
     border-radius: 5px;
   }
 }
@@ -43,6 +43,9 @@ time, mark, audio, video {
 	font-size: 100%;
 	/* font: inherit; */
 	vertical-align: baseline;
+}
+nav {
+  background-color: white;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 

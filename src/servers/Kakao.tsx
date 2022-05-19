@@ -19,7 +19,7 @@ const Kakao = () => {
     const Kakao = async (code: string) => {
       return await instance
         .post(`/auth/kakao?code=${code}`)
-        .then((res) => {
+        .then((res: any) => {
           cookies.set("accessToken", String(res.data.accessToken), {
             path: "/",
             expires: accessTime,
@@ -28,6 +28,7 @@ const Kakao = () => {
             path: "/",
             expires: refreshTime,
           });
+          user(res);
           navigate("/projectList");
         })
         .catch((err) => {

@@ -1,4 +1,3 @@
-import { PhotoCamera } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -18,6 +17,7 @@ type IForm = {
 
 const EditProfile = () => {
   const [user, setUser] = useRecoilState(MyProfile);
+  console.log(user);
   const [imgBase64, setImgBase64] = useState<string>("");
   const fileInput = useRef<HTMLInputElement>(null);
   const { register, handleSubmit } = useForm<IForm>();
