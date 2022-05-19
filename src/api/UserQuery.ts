@@ -3,16 +3,16 @@ import { useMutation, useQuery } from "react-query";
 import { instance } from "../servers/axios";
 
 export interface User {
-  loginId: string;
+  loginId?: string;
   social?: string;
-  profileImage: string;
+  profileImage?: string;
   url: string;
   nickname: string;
   aboutMe: string;
 }
 
 export interface IUser {
-  data: User[];
+  data: User;
 }
 
 export const useGetProjectUser = (pjId: string) => {
@@ -28,7 +28,7 @@ export const useUpdateUser = () => {
 };
 
 export const useMyInfo = () => {
-  return useQuery("getMyInfo", () => {
+  return useQuery<IUser, AxiosError>("getMyInfo", () => {
     return instance.get("api/users/myInfo/");
   });
 };
