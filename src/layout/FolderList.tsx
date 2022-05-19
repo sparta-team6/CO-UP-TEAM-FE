@@ -51,15 +51,15 @@ const FolderList = () => {
     <>
       {data?.data.length === 0 ? (
         <div className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
-          <div className="flex justify-between items-center pt-5 px-4 sm:pt-4">
+          <div className="flex justify-between items-center px-[22px] pt-[45px]">
             <div className="font-bold text-2xl">문서목록</div>
             <div onClick={AddFolder} className="cursor-pointer">
               <Plus />
             </div>
           </div>
-          <div className="border border-solid mx-3 my-2"></div>
-          <div className="flex flex-col justify-center items-center pt-5">
-            <img className="w-[165px] h-[165px] sm:w-[100px] sm:h-[100px]" src={imgFolder} alt="" />
+          <div className="border border-solid w-[264px] mx-auto mt-[10px]"></div>
+          <div className="flex flex-col justify-center items-center mt-[50px]">
+            <img className="w-[130px] h-[130px] sm:w-[100px] sm:h-[100px]" src={imgFolder} alt="" />
             <span className="text-lg opacity-50 mt-[30px] sm:text-base sm:mt-5">
               새로운 문서를 추가해 보세요
             </span>
@@ -73,18 +73,18 @@ const FolderList = () => {
               <Plus />
             </div>
           </div>
-          <div className="border border-solid mx-3 my-2"></div>
+          <div className="border border-solid w-[264px] mx-auto mt-[10px]"></div>
           {data?.data?.map((folder) => {
             return (
               <div key={folder.dfId}>
-                <div className="flex justify-between items-center pl-6 pr-5">
+                <div className="flex justify-between items-center pl-6 pr-5 mt-[16px]">
                   <div
                     className={`font-bold text-lg ${
                       editTitle && dfId === folder.dfId ? "hidden" : "block"
                     }`}
                   >
                     {folder?.docs?.length === 0 ? <SvgFolder /> : <FolderPlus />}
-                    <span className="ml-4">{folder.title}</span>
+                    <span className="ml-[15px]">{folder.title}</span>
                   </div>
                   <form
                     className={`w-full font-bold text-lg items-center justify-between ${
@@ -102,7 +102,7 @@ const FolderList = () => {
                   }`}
                 >
                   <img
-                    className="w-[165px] h-[165px] sm:w-[100px] sm:h-[100px]"
+                    className="w-[130px] h-[130px] sm:w-[100px] sm:h-[100px]"
                     src={imgFolder}
                     alt=""
                   />
@@ -111,15 +111,15 @@ const FolderList = () => {
                   </span>
                 </div>
                 {folder.docs?.map((doc) => (
-                  <div key={doc.docId} className="flex flex-col ml-[52px]">
-                    <div className="flex items-center text-base m-1 cursor-pointer">
+                  <div key={doc.docId} className="flex flex-col ml-[54px] my-[5px]">
+                    <div className="flex items-center text-base cursor-pointer">
                       <div onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}>
                         {doc.title}
                       </div>
                     </div>
                   </div>
                 ))}
-                <div className="border border-solid mx-3 my-2"></div>
+                <div className="border border-solid w-[264px] mx-auto mt-[10px]"></div>
               </div>
             );
           })}
