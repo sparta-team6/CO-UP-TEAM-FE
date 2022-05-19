@@ -17,7 +17,7 @@
 }
 .react-calendar__navigation__label span {
   font-size: 20px;
-  color: #c5daff;
+  color: #5f99ff;
 }
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
@@ -42,11 +42,11 @@ abbr[title] {
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
   background: #f8f8fa;
-  color: #c5daff;
+  color: #5f99ff;
   border-radius: 30px;
 }
 .react-calendar__tile--now {
-  background: white;
+  background: #f8f8fa;
   border-radius: 30px;
   color: black;
 }
@@ -54,21 +54,21 @@ abbr[title] {
 .react-calendar__tile--now:enabled:focus {
   background: #f8f8fa;
   border-radius: 30px;
-  color: #c5daff;
+  color: #5f99ff;
 }
 .react-calendar__tile--hasActive:enabled:hover,
 .react-calendar__tile--hasActive:enabled:focus {
   background: #f8f8fa;
 }
 .react-calendar__tile--active {
-  background: #c5daff;
+  background: #5f99ff;
   border-radius: 30px;
-  color: black;
+  color: white;
 }
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
-  background: #c5daff;
-  color: black;
+  background: #5f99ff;
+  color: white;
 }
 
 @media screen and (max-width: 1300px) {
