@@ -14,9 +14,16 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
   const { data } = useGetFolders(String(id));
   const folderData = data?.data[data?.data.length - 1];
   const docData = folderData?.docs?.[folderData?.docs.length - 1];
+  const { mutateAsync: DelDoc2 } = useDelDoc(String(docData?.docId));
 
   const onDelete = () => {
     DelDoc().then(() => {
+      queryClient.invalidateQueries("getFolders");
+      navigate(`/tool/${id}/document`);
+    });
+  };
+  const onDelete2 = () => {
+    DelDoc2().then(() => {
       queryClient.invalidateQueries("getFolders");
       navigate(`/tool/${id}/document`);
     });
@@ -84,7 +91,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                   </button>
                   <button
                     className="border-none ml-4 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
-                    onClick={onDelete}
+                    onClick={onDelete2}
                   >
                     삭제
                   </button>
@@ -99,7 +106,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
             </div>
           ) : (
             <div className=" w-full h-full flex flex-col justify-center items-center">
-              <img src={imgFolder2} alt="" />
+              <img width={328} height={286} src={imgFolder2} alt="" />
               <div className="font-bold text-2xl m-4">
                 새로운 폴더를 만들어 문서를 추가해 보세요
               </div>
