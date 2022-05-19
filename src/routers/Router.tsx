@@ -2,6 +2,8 @@ import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Helmet from "react-helmet";
 const Header = lazy(() => import("./Header"));
+const MHeader = lazy(() => import("./MHeader"));
+const Footer = lazy(() => import("./Footer"));
 const IntroHome = lazy(() => import("../pages/IntroHome"));
 const Profile = lazy(() => import("../pages/Profile"));
 const Login = lazy(() => import("../pages/Mobile/Login"));
@@ -20,10 +22,9 @@ const Router = () => {
     <BrowserRouter>
       <Helmet>
         <title>CO-UP</title>
-        <link rel="icon" type="image/svg+xml" href="../../favicon.ico" sizes="16x16" />
-        <link rel="shortcut icon" href="../../favicon.ico" />
       </Helmet>
       <Header />
+      <MHeader />
       <Routes>
         <Route path="/" element={<IntroHome />} />
         <Route path="/projectList" element={<ProjectList />} />
@@ -38,6 +39,7 @@ const Router = () => {
         <Route path="/tool/:id/board" element={<ToolBoard />} />
         <Route path="/user/kakao/callback/*" element={<Kakao />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
