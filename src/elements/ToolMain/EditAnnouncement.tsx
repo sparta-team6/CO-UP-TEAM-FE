@@ -1,14 +1,12 @@
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
 import {
   Announcement,
   useDelAnnouncement,
   useUpdateAnnouncement,
 } from "../../api/AnnouncementQuery";
-import { MyProfile } from "../../recoil/MyProfile";
 import { SvgEdit3 } from "../Icon/SvgEdit3";
 import { Trash } from "../Icon/Trash";
 
@@ -27,38 +25,32 @@ const style = {
 interface IForm {
   title: string;
   content: string;
+  contents: string;
 }
 
-const EditAnnouncement = ({ id, title, content }: Announcement) => {
+const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
   const [open, setOpen] = useState(false);
-  const { nickname } = useRecoilValue(MyProfile);
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const { mutateAsync: DELAN } = useDelAnnouncement(Number(id));
-  const { mutateAsync: UpdateAN } = useUpdateAnnouncement(Number(id));
+  const { mutateAsync: DELAN } = useDelAnnouncement(String(noticeId));
+  const { mutateAsync: UpdateAN } = useUpdateAnnouncement();
   const { register, handleSubmit } = useForm<IForm>();
-
   const onSubmit: SubmitHandler<IForm> = (data) => {
     const Update = {
-      id: Number(id),
+      noticeId: String(noticeId),
       title: data.title,
-      content: data.content,
-      name: nickname,
+      contents: data.content,
     };
     UpdateAN(Update).then(() => {
       queryClient.invalidateQueries("getAnnouncement");
     });
     setOpen(false);
   };
-
   const onDelete = () => {
     DELAN().then(() => {
       queryClient.invalidateQueries("getAnnouncement");
     });
   };
-
   return (
     <>
       <div className="flex pt-2">
@@ -89,7 +81,7 @@ const EditAnnouncement = ({ id, title, content }: Announcement) => {
               rows={14}
               {...register("content", { required: true })}
               placeholder="내용을 입력해주세요"
-              defaultValue={content}
+              defaultValue={contents}
             />
             <div className="absolute bottom-0 right-0">
               <button className="text-white bg-3 w-[58px] h-[37px] rounded-md pt-1" type="submit">
