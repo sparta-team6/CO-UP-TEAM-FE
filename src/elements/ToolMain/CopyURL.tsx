@@ -13,7 +13,7 @@ const CopyURL = () => {
     document.execCommand("copy");
   };
   return (
-    <div className="w-1/5 h-full flex items-end justify-end space-x-3">
+    <div className="w-1/5 h-full flex items-end justify-end">
       <input
         className="w-[100px] opacity-0 pointer-events-none"
         value={inviteCode || ""}

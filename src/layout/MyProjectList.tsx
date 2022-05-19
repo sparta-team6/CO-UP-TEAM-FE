@@ -37,15 +37,15 @@ const MyProjectList = () => {
     DarkMode((prev: boolean) => !prev);
   };
   return (
-    <div className="w-[74px] h-[calc(100%-3rem)] bg-gray-200 flex flex-col justify-between items-center sm:h-[calc(100vh-80px)] sm:pt-12">
+    <div className="w-20 h-[calc(100%-3rem)] bg-gray-200 flex flex-col justify-between items-center sm:h-[calc(100vh-80px)] sm:pt-12">
       <div className="mt-1">
         {data?.data.map((room, index) => (
           <motion.div whileHover={{ scale: 1.1 }} onClick={() => onClick(room.pjId)} key={index}>
-            <img className="w-[46px] h-[46px] rounded-lg mt-2" src={room.thumbnail} alt="" />
+            <img className="w-[48px] h-[48px] rounded-lg mt-[16px]" src={room.thumbnail} alt="" />
           </motion.div>
         ))}
       </div>
-      <div className="w-[74px] h-32 flex flex-col justify-between items-center mb-4">
+      <div className="w-20 h-32 flex flex-col justify-between items-center mb-4">
         <span className="cursor-pointer" onClick={onDarkMode}>
           {theme ? <Moon /> : <Sun />}
         </span>

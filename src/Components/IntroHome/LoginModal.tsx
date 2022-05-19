@@ -44,7 +44,7 @@ export default function LoginModal() {
       </motion.div>
       <motion.button
         whileHover={{ scale: 1.05 }}
-        className="w-44 rounded-md p-3 font-extrabold sm:hidden bg-3 text-white"
+        className="w-[336px] h-[96px] rounded-xl text-[32px] mt-[70px] font-extrabold sm:hidden bg-3 text-white"
         onClick={handleOpen}
       >
         CO-UP 시작하기
