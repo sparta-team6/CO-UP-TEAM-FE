@@ -44,6 +44,9 @@ time, mark, audio, video {
 	/* font: inherit; */
 	vertical-align: baseline;
 }
+svg {
+  color: rgba(0, 0, 0, 0.7)
+}
 nav {
   background-color: white;
 }

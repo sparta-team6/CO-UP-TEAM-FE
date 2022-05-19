@@ -1,13 +1,13 @@
-import { useRecoilValue } from "recoil";
 import imgCrown from "../../images/img_crown.png";
 import { SvgUser } from "../../elements/Icon/SvgUser";
-import { useGetProjectUser } from "../../api/UserQuery";
-import { ProjectKey } from "../../recoil/RoomID";
+import { useRecoilValue } from "recoil";
 import { MyProfile } from "../../recoil/MyProfile";
+// import { ProjectKey } from "../../recoil/RoomID";
+// import { useGetProjectUser } from "../../api/UserQuery";
 
 const Member = () => {
-  const { pjId } = useRecoilValue(ProjectKey);
-  const { data } = useGetProjectUser(String(pjId));
+  // const { pjId } = useRecoilValue(ProjectKey);
+  // const { data } = useGetProjectUser(pjId);
   const user = useRecoilValue(MyProfile);
   return (
     <div className="w-full h-full">
@@ -17,8 +17,8 @@ const Member = () => {
       </div>
       <div className="group w-full mt-[20px] relative flex items-center space-x-2">
         <img className="absolute -top-1 left-6" src={imgCrown} alt="" />
-        <img className="rounded-full m-0" width={36} height={36} src={user.profileImage} alt="" />
-        <span className="font-semibold">{user.nickname}</span>
+        <img className="rounded-full m-0" width={36} height={36} src={user?.profileImage} alt="" />
+        <span className="font-semibold">{user?.nickname}</span>
         <div className="hidden w-[352px] h-[134px] bg-gray-200  group-hover:flex sm:group-focus:block absolute right-[-330px] top-0 rounded-lg shadow-lg">
           <div className="w-full h-full p-3 flex flex-col">
             <div className="w-full flex flex-col space-x-5">
@@ -27,14 +27,14 @@ const Member = () => {
                   className="rounded-full"
                   width={48}
                   height={48}
-                  src={user.profileImage}
+                  src={user?.profileImage}
                   alt=""
                 />
-                <div className="ml-3 font-semibold">{user.nickname}</div>
+                <div className="ml-3 font-semibold">{user?.nickname}</div>
               </div>
               <div className="flex flex-col pl-10 pt-1">
-                <div>{user.aboutMe}</div>
-                <div className="text-xs">{user.url}</div>
+                <div>{user?.aboutMe}</div>
+                <div className="text-xs">{user?.url}</div>
               </div>
             </div>
           </div>

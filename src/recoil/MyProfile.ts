@@ -1,20 +1,19 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
-import { User } from "../api/UserQuery";
 import IMG from "../images/DuckProfile.jpg";
 
 const { persistAtom } = recoilPersist();
 
 /* 내 정보 저장 */
-export const MyProfile = atom<User>({
+export const MyProfile = atom({
   key: "myProfile",
   default: {
-    loginId: "email",
-    social: "KAKAO",
+    loginId: "",
+    social: "",
     profileImage: IMG,
-    url: "www~~~",
-    nickname: "JIHO",
-    aboutMe: "안녕하세여",
+    url: "",
+    nickname: "",
+    aboutMe: "",
   },
   effects_UNSTABLE: [persistAtom],
 });

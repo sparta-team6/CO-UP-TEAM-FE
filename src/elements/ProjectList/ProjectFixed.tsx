@@ -21,7 +21,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 630,
+  width: 624,
   bgcolor: "background.paper",
   boxShadow: 12,
   p: 4,
@@ -59,6 +59,7 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
         aria-expanded={open ? "true" : undefined}
         aria-haspopup="true"
         onClick={handleClick}
+        className="m-3"
       >
         <MoreHorizIcon />
       </IconButton>
@@ -97,7 +98,7 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={style} className="rounded-xl">
           <ProjectUpdateForm
             setUpOpen={setUpOpen}
             roomID={roomID}

@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { useUpdateUser } from "../../api/UserQuery";
 import { SvgEdit } from "../../elements/Icon/SvgEdit";
-import { MyProfile } from "../../recoil/MyProfile";
 import { resizeFile } from "../../servers/resize";
+import { MyProfile } from "../../recoil/MyProfile";
 
 interface IForm {
   id?: string;
@@ -17,7 +17,6 @@ interface IForm {
 
 const EditProfile = () => {
   const [user, setUser] = useRecoilState(MyProfile);
-  console.log(user);
   const [imgBase64, setImgBase64] = useState<string>("");
   const fileInput = useRef<HTMLInputElement>(null);
   const { register, handleSubmit } = useForm<IForm>();
@@ -27,9 +26,9 @@ const EditProfile = () => {
     if (fileInput?.current?.files === null) return;
     const size = fileInput?.current?.files[0];
     const profile = {
-      loginId: user.loginId,
+      loginId: user?.loginId,
       nickname: data.nickName,
-      profileImage: user.profileImage,
+      profileImage: String(user?.profileImage),
       url: data.url,
       aboutMe: data.about_me,
     };
@@ -40,15 +39,15 @@ const EditProfile = () => {
       });
     } else {
       const image = await resizeFile(size);
-      const Eprofile = {
-        loginId: user.loginId,
+      const profile = {
+        loginId: user?.loginId,
         nickname: data.nickName,
         profileImage: String(image),
         url: data.url,
         aboutMe: data.about_me,
       };
-      mutateAsync(Eprofile).then(() => {
-        setUser(Eprofile);
+      mutateAsync(profile).then(() => {
+        setUser(profile);
         navigate(-1);
       });
     }
@@ -79,7 +78,7 @@ const EditProfile = () => {
             width="244px"
             height="244px"
             alt=""
-            src={imgBase64 ? imgBase64 : user.profileImage}
+            src={imgBase64 ? imgBase64 : user?.profileImage}
           />
           <label
             className="flex justify-center items-center absolute w-12 h-12 rounded-full bg-white right-24 bottom-0"
@@ -93,7 +92,6 @@ const EditProfile = () => {
               ref={fileInput}
             />
             <IconButton aria-label="upload picture" component="span">
-              {/* <PhotoCamera fontSize="small" /> */}
               <SvgEdit />
             </IconButton>
           </label>
@@ -102,19 +100,19 @@ const EditProfile = () => {
           <input
             className="text-center text-2xl h-14 rounded-md border-none"
             placeholder="닉네임"
-            defaultValue={user.nickname}
+            defaultValue={user?.nickname}
             {...register("nickName")}
           />
           <input
             className="text-center text-2xl h-14 rounded-md border-none"
             placeholder="URL"
-            defaultValue={user.url}
+            defaultValue={user?.url}
             {...register("url")}
           />
           <textarea
             className="text-center text-2xl h-[150px] rounded-md border-none resize-none"
             placeholder="자기소개"
-            defaultValue={user.aboutMe}
+            defaultValue={user?.aboutMe}
             {...register("about_me")}
           />
           <div className="text-right">

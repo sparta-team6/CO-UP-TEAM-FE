@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
 import { usePostRoom } from "../../api/ProjectQuery";
-import { MyProfile } from "../../recoil/MyProfile";
 import { resizeFile } from "../../servers/resize";
-import { SvgImage } from "../Icon/SvgImage";
+import { SvgEdit } from "../Icon/SvgEdit";
+import DefaultImg from "../../images/logo_50x50.png";
+import { IconButton } from "@mui/material";
 
 interface IForm {
   title: string;
@@ -18,8 +18,7 @@ interface IProp {
 }
 
 const ProjectMakeForm = ({ open }: IProp) => {
-  const user = useRecoilValue(MyProfile);
-  const [imgBase64, setImgBase64] = useState<string>("");
+  const [imgBase64, setImgBase64] = useState<string>(DefaultImg);
   const fileInput = useRef<HTMLInputElement>(null);
   const { mutateAsync } = usePostRoom();
   const { register, handleSubmit } = useForm<IForm>();
@@ -30,9 +29,8 @@ const ProjectMakeForm = ({ open }: IProp) => {
       mutateAsync({
         title: data.title,
         summary: data.summary,
-        thumbnail: user.profileImage,
-      }).then((res) => {
-        console.log(res);
+        thumbnail: imgBase64,
+      }).then(() => {
         queryClient.invalidateQueries("getProject");
         open(false);
       });
@@ -42,8 +40,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
         title: data.title,
         summary: data.summary,
         thumbnail: String(image),
-      }).then((res) => {
-        console.log(res);
+      }).then(() => {
         queryClient.invalidateQueries("getProject");
         open(false);
       });
@@ -64,14 +61,8 @@ const ProjectMakeForm = ({ open }: IProp) => {
     }
   };
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center">
-      <img
-        className={`${imgBase64 ? "" : "hidden"} rounded-full mb-4`}
-        width="100px"
-        height="100px"
-        alt=""
-        src={imgBase64}
-      />
+    <div className="w-full h-full relative flex flex-col justify-center items-center">
+      <img className="rounded-full mb-4" width="100px" height="100px" alt="" src={imgBase64} />
       <label htmlFor="icon-button-file">
         <input
           type="file"
@@ -80,12 +71,10 @@ const ProjectMakeForm = ({ open }: IProp) => {
           onChange={onChange}
           ref={fileInput}
         />
-        <div
-          className={`${
-            imgBase64 ? "hidden" : ""
-          } mb-6 w-[100px] h-[100px] bg-[#D7DCE5] rounded-full flex justify-center items-center`}
-        >
-          <SvgImage />
+        <div className="w-8 h-8 rounded-full flex justify-center items-center bg-gray-100 absolute top-[80px] right-[220px]">
+          <IconButton aria-label="upload picture" component="span">
+            <SvgEdit />
+          </IconButton>
         </div>
       </label>
 
