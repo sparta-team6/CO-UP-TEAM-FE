@@ -1,12 +1,13 @@
 import { Droppable } from "react-beautiful-dnd";
 import { useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
-import { MyProfile, ProjectKey } from "../../recoil/Atoms";
 import DraggableCard from "../../elements/ToolBoard/DraggableCard";
 import React, { useState } from "react";
 import { Box, Modal } from "@mui/material";
-import { Cards, usePostCards } from "../../api/BoardQuery";
 import { queryClient } from "../..";
+import { Cards, usePostCards } from "../../api/CardQuery";
+import { ProjectKey } from "../../recoil/RoomID";
+import { MyProfile } from "../../recoil/MyProfile";
 
 const style = {
   position: "absolute",

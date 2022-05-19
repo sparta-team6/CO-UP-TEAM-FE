@@ -3,11 +3,12 @@ import TeamList from "../../layout/TeamList";
 import SlidingPanel from "react-sliding-side-panel";
 import "react-sliding-side-panel/lib/index.css";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { ChartLength, HandleOpen } from "../../recoil/Atoms";
+import { HandleOpen } from "../../recoil/AtomsInterface";
 import { useRecoilValue } from "recoil";
 import { useGetBoard } from "../../api/BoardQuery";
-import { ProjectKey } from "../../recoil/Atoms";
 import { useEffect } from "react";
+import { ProjectKey } from "../../recoil/RoomID";
+import { ChartLength } from "../../recoil/AtomChart";
 
 const SlidingMain = () => {
   const [open, setOpen] = useRecoilState(HandleOpen);

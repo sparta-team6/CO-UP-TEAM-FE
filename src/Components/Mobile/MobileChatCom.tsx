@@ -4,16 +4,16 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
 import { useAddChatComment, useGetChatComment } from "../../api/ChatQuery";
-import { MyProfile } from "../../recoil/Atoms";
 import MyProjectList from "../../layout/MyProjectList";
-import { HandleOpen } from "../../recoil/Atoms";
+import { HandleOpen } from "../../recoil/AtomsInterface";
 import SlidingPanel from "react-sliding-side-panel";
 import "react-sliding-side-panel/lib/index.css";
 import { useRecoilState } from "recoil";
+import { MyProfile } from "../../recoil/MyProfile";
 
-type IForm = {
+interface IForm {
   text: string;
-};
+}
 
 const MobileChatCom = () => {
   const [open, setOpen] = useRecoilState(HandleOpen);

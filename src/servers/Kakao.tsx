@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Cookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { MyProfile } from "../recoil/Atoms";
+import { MyProfile } from "../recoil/MyProfile";
 import { instance } from "./axios";
 
 const Kakao = () => {

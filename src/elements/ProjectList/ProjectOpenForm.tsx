@@ -3,9 +3,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { usePostOpenRoom } from "../../api/ProjectQuery";
 
-type IForm = {
+interface IForm {
   inviteCode?: string;
-};
+}
 
 const ProjectOpenForm = () => {
   const { register, handleSubmit } = useForm();

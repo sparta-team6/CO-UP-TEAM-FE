@@ -1,7 +1,7 @@
 import { ProgressBar } from "react-bootstrap";
 import { useRecoilValue } from "recoil";
 import { useGetManagers } from "../../api/ChartQuery";
-import { ProjectKey } from "../../recoil/Atoms";
+import { ProjectKey } from "../../recoil/RoomID";
 
 const MemberChart = () => {
   // // const { pjId } = useRecoilValue(ProjectKey);

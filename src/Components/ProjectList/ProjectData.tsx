@@ -3,7 +3,7 @@ import { useGetRoom } from "../../api/ProjectQuery";
 import React from "react";
 import ProjectFixed from "../../elements/ProjectList/ProjectFixed";
 import { useSetRecoilState } from "recoil";
-import { ProjectKey } from "../../recoil/Atoms";
+import { ProjectKey } from "../../recoil/RoomID";
 
 const ProjectData = () => {
   const setProject = useSetRecoilState(ProjectKey);

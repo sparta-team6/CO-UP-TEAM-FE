@@ -9,12 +9,12 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import ProjectUpdateForm from "./ProjectUpdateForm";
 
-type IProps = {
+interface IProps {
   roomID?: string;
   roomImg: string;
   roomTitle: string;
   roomSummary: string;
-};
+}
 
 const style = {
   position: "absolute",

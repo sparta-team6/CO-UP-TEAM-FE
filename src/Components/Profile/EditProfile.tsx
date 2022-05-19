@@ -5,15 +5,15 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { useUpdateUser } from "../../api/UserQuery";
 import { SvgEdit } from "../../elements/Icon/SvgEdit";
-import { MyProfile } from "../../recoil/Atoms";
+import { MyProfile } from "../../recoil/MyProfile";
 import { resizeFile } from "../../servers/resize";
 
-type IForm = {
+interface IForm {
   id?: string;
   nickName: string;
   url: string;
   about_me: string;
-};
+}
 
 const EditProfile = () => {
   const [user, setUser] = useRecoilState(MyProfile);
