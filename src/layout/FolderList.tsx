@@ -59,8 +59,10 @@ const FolderList = () => {
           </div>
           <div className="border border-solid mx-3 my-2"></div>
           <div className="flex flex-col justify-center items-center pt-5">
-            <img width={165} height={165} src={imgFolder} alt="" />
-            <span className="text-lg opacity-50 mt-[30px]">새로운 문서를 추가해 보세요</span>
+            <img className="w-[165px] h-[165px] sm:w-[100px] sm:h-[100px]" src={imgFolder} alt="" />
+            <span className="text-lg opacity-50 mt-[30px] sm:text-base sm:mt-5">
+              새로운 문서를 추가해 보세요
+            </span>
           </div>
         </div>
       ) : (
@@ -99,8 +101,14 @@ const FolderList = () => {
                     folder?.docs?.length !== 0 && "hidden"
                   }`}
                 >
-                  <img width={165} height={165} src={imgFolder} alt="" />
-                  <span className="text-lg opacity-50 mt-[30px]">새로운 문서를 추가해 보세요</span>
+                  <img
+                    className="w-[165px] h-[165px] sm:w-[100px] sm:h-[100px]"
+                    src={imgFolder}
+                    alt=""
+                  />
+                  <span className="text-lg opacity-50 mt-[30px] sm:text-base sm:mt-5">
+                    새로운 문서를 추가해 보세요
+                  </span>
                 </div>
                 {folder.docs?.map((doc) => (
                   <div key={doc.docId} className="flex flex-col ml-[52px]">

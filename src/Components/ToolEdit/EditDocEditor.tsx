@@ -19,6 +19,7 @@ import { Docs, useUpdateDoc } from "../../api/DocumentQuery";
 import { queryClient } from "../../index";
 import { useNavigate, useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
 
 interface IForm {
   title: string;
@@ -56,20 +57,18 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
     <React.Fragment>
       <form onSubmit={handleSubmit(onValid)}>
         <div className="hidden sm:flex justify-between items-center border-b-2 border-solid border-slate-400 pb-2">
-          <span>문서</span>
+          <div
+            className="border-none px-[15px] py-[8px] rounded-md bg-[#E7EBF2]"
+            onClick={() => navigate(-1)}
+          >
+            <ChevronLeft />
+          </div>
           <div>
             <button
-              className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
+              className="border-none px-[15px] py-[8px] rounded-md text-white bg-3"
               type="submit"
             >
               수정
-            </button>
-            <button
-              type="button"
-              className="border-none ml-2 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
-              onClick={() => navigate(-1)}
-            >
-              닫기
             </button>
           </div>
         </div>
@@ -98,7 +97,7 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
         </div>
       </form>
       <Editor
-        height="80%"
+        height="70%"
         previewStyle="vertical"
         initialEditType="wysiwyg"
         useCommandShortcut={true}

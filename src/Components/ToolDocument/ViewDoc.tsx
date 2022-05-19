@@ -5,6 +5,7 @@ import "../../styles/ViewDoc.css";
 import { queryClient } from "../..";
 import { useAddFolder, useGetFolders } from "../../api/FolderQuery";
 import imgFolder2 from "../../images/img_folder2.png";
+import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
 
 const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
   const { id } = useParams();
@@ -44,12 +45,17 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
       {!isLoading && (
         <div className="w-full h-full flex flex-col">
           {title && contents ? (
-            <div className="p-4 mt-4">
-              <div className="flex justify-between">
-                <div className="text-2xl font-bold">{title}</div>
+            <>
+              <div className="hidden sm:flex justify-between items-center border-b-2 border-solid border-slate-400 pb-2">
+                <div
+                  className="border-none px-[15px] py-[8px] rounded-md bg-[#E7EBF2]"
+                  onClick={() => navigate(-1)}
+                >
+                  <ChevronLeft />
+                </div>
                 <div>
                   <button
-                    className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
+                    className="border-none px-[15px] py-[8px] rounded-md text-white bg-3"
                     onClick={() =>
                       navigate(`/tool/${id}/document/${docId}/edit`, {
                         state: { docId, title, contents },
@@ -59,21 +65,45 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                     수정
                   </button>
                   <button
-                    className="border-none ml-4 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
+                    className="border-none ml-2 px-[15px] py-[8px] rounded-md bg-[#E7EBF2]"
                     onClick={onDelete}
                   >
                     삭제
                   </button>
                 </div>
               </div>
-              <div className="text-xl p-4 mt-5">
-                <MarkdownPreview className="whitespace-pre-wrap break-all" source={contents} />
+              <div className="p-4 mt-4">
+                <div className="flex sm:hidden justify-between">
+                  <div className="text-3xl font-bold">{title}</div>
+                  <div>
+                    <button
+                      className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
+                      onClick={() =>
+                        navigate(`/tool/${id}/document/${docId}/edit`, {
+                          state: { docId, title, contents },
+                        })
+                      }
+                    >
+                      수정
+                    </button>
+                    <button
+                      className="border-none ml-4 px-[15px] py-[10px] rounded-md bg-[#E7EBF2]"
+                      onClick={onDelete}
+                    >
+                      삭제
+                    </button>
+                  </div>
+                </div>
+                <div className="hidden sm:block text-3xl font-bold">{title}</div>
+                <div className="text-xl mt-5">
+                  <MarkdownPreview className="whitespace-pre-wrap break-all" source={contents} />
+                </div>
               </div>
-            </div>
+            </>
           ) : docData ? (
             <div className="p-4 mt-4">
               <div className="flex justify-between">
-                <div className="text-2xl font-bold">{docData.title}</div>
+                <div className="text-3xl font-bold">{docData.title}</div>
                 <div>
                   <button
                     className="border-none px-[15px] py-[10px] rounded-md text-white bg-3"
@@ -97,7 +127,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                   </button>
                 </div>
               </div>
-              <div className="text-xl p-4 mt-5">
+              <div className="text-xl mt-5">
                 <MarkdownPreview
                   className="whitespace-pre-wrap break-all"
                   source={docData.contents}
@@ -105,13 +135,18 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
               </div>
             </div>
           ) : (
-            <div className=" w-full h-full flex flex-col justify-center items-center">
-              <img width={328} height={286} src={imgFolder2} alt="" />
+            <div className=" w-full h-full flex flex-col justify-center items-center text-center">
+              <img
+                className="w-[328px] h-[286px] sm:w-[177px] sm:h-[154px]"
+                src={imgFolder2}
+                alt=""
+              />
               <div className="font-bold text-2xl m-4">
                 새로운 폴더를 만들어 문서를 추가해 보세요
               </div>
-              <div>미팅 노트, 제품 요구사항, 결정 사항 또는 기타 콘텐츠를 만들어</div>
-              <div>팀원들과 공유해보세요</div>
+              <div>
+                미팅 노트, 제품 요구사항, 결정 사항 또는 기타 콘텐츠를 만들어 팀원들과 공유해보세요
+              </div>
               <button
                 onClick={AddFolder}
                 className="border-none m-4 px-8 py-3 rounded-md text-white bg-3 font-bold"
