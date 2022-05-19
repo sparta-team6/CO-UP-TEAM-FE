@@ -16,16 +16,18 @@ const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
+  width: 704,
+  height: 384,
   transform: "translate(-50%, -50%)",
   bgcolor: "background.paper",
   boxShadow: 2,
   p: 4,
 };
 
-type IProp = {
+interface IProp {
   title: string;
   content: string;
-};
+}
 
 const EditAnnouncement = ({ id, title, content }: Announcement) => {
   const [open, setOpen] = useState(false);
@@ -79,7 +81,7 @@ const EditAnnouncement = ({ id, title, content }: Announcement) => {
               className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold font-semibold"
               {...register("title", { required: true })}
               type="text"
-              placeholder="제목을 입력해주세요"
+              placeholder="공지 제목을 적어주세요 :)"
               defaultValue={title}
             />
             <textarea
@@ -90,7 +92,9 @@ const EditAnnouncement = ({ id, title, content }: Announcement) => {
               defaultValue={content}
             />
             <div className="absolute bottom-0 right-0">
-              <button type="submit">수정</button>
+              <button className="text-white bg-3 w-[58px] h-[37px] rounded-md pt-1" type="submit">
+                수정
+              </button>
             </div>
           </form>
         </Box>
