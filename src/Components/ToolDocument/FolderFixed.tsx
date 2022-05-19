@@ -73,6 +73,7 @@ const FolderFiexd = ({ dfId, setEditTitle, setDfId }: IProps) => {
             marginLeft: "40px",
             marginTop: "-30px",
             border: "1px solid #BEBEBE",
+            padding: 0,
           },
         }}
       >
