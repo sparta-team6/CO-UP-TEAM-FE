@@ -3,7 +3,8 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
-import { useGetCardDetail, useUpdateCards } from "../../api/CardQuery";
+import { useGetCardDetail } from "../../api/CardQuery";
+import { useUpdateCards } from "../../api/Optimistic";
 import { ProjectKey } from "../../recoil/RoomID";
 
 import { X } from "../Icon/X";
