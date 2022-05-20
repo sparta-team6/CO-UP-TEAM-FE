@@ -1,6 +1,7 @@
 import Router from "./routers/Router";
 import { GlobalStyle } from "./styles/GlobalStyle";
 import "./styles/tailwind.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Suspense } from "react";
 import Spinner from "./layout/Spinner";
 import { useRecoilValue } from "recoil";
