@@ -3,8 +3,6 @@ import { useGetManagers } from "../../api/ChartQuery";
 import { ProjectKey } from "../../recoil/RoomID";
 import coupFamily from "../../images/coupfamily.png";
 import styled from "styled-components";
-
-const MemberChart = () => {
 import { useNavigate } from "react-router-dom";
 
 const MemberChart = () => {
@@ -14,7 +12,7 @@ const MemberChart = () => {
   const result = data?.data;
   return (
     <>
-      {result?.length === 0 ? (
+      {!result ? (
         <div className="w-full h-full px-[32px] py-[28px]">
           <span className="text-2xl font-semibold sm:text-lg mb-[30px]">팀 상태 개요</span>
           <div className="flex flex-col justify-center items-center relative">

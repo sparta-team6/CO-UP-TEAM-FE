@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import { queryClient } from "..";
 import { useAddChatComment, useGetChatComment } from "../api/ChatQuery";
 import { MyProfile } from "../recoil/MyProfile";
-import message from "../images/message.png";
+// import message from "../images/message.png";
 
 interface IForm {
   text: string;
