@@ -73,7 +73,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                 </div>
               </div>
               <div className="flex flex-col sm:hidden mx-[46px] mt-[60px] mb-[20px]">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center h-[47px] pl-[2px]">
                   <div className="text-[32px] font-bold">{title}</div>
                   <div>
                     <button
@@ -87,14 +87,14 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                       수정
                     </button>
                     <button
-                      className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-5"
+                      className="border-none ml-[16px] w-[62px] h-[44px] rounded-md bg-5"
                       onClick={onDelete}
                     >
                       삭제
                     </button>
                   </div>
                 </div>
-                <div className="text-lg text-[#666] mt-[15px]">2022.05.04 by 작성자</div>
+                <div className="text-lg text-[#999] mt-[15px]">{"2022.05.04  by 작성자"}</div>
               </div>
               <div className="hidden sm:block text-[32px] font-bold">{title}</div>
               <div className="text-xl mx-[46px] mt-[20px]">
@@ -107,7 +107,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
           ) : docData ? (
             <>
               <div className="flex flex-col sm:hidden mx-[46px] mt-[60px] mb-[20px]">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center h-[47px] pl-[2px]">
                   <div className="text-[32px] font-bold">{docData.title}</div>
                   <div>
                     <button
@@ -125,14 +125,14 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                       수정
                     </button>
                     <button
-                      className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-5"
+                      className="border-none ml-[16px] w-[62px] h-[44px] rounded-md bg-5"
                       onClick={onDelete2}
                     >
                       삭제
                     </button>
                   </div>
                 </div>
-                <div className="text-lg text-[#666] mt-[15px]">2022.05.04 by 작성자</div>
+                <div className="text-lg text-[#999] mt-[15px]">{"2022.05.04  by 작성자"}</div>
               </div>
               <div className="text-xl mx-[46px] mt-[20px]">
                 <MarkdownPreview

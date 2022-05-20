@@ -46,7 +46,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="w-[432px] h-[calc(100%-4rem)] bg-white flex flex-col justify-end absolute top-16 right-0 border-l border-[#C1C1C1] border-solid md:hidden">
+    <div className="w-[432px] h-[calc(100%-4rem)] bg-white flex flex-col justify-end absolute top-16 right-0 border-l border-[#E7EBF2] border-solid md:hidden">
       <div ref={messageBoxRef} className="w-full h-full space-y-2 overflow-y-auto">
         {data?.data?.map((box, index) => {
           return (
@@ -71,7 +71,7 @@ const Chat = () => {
           onSubmit={handleSubmit(handleonEnter)}
         >
           <textarea
-            className="w-full h-full p-[18px] rounded-xl border border-5 outline-none resize-none relative bg-[#F5F5F5]"
+            className="w-full h-full p-[18px] rounded-xl border outline-none resize-none relative bg-[#F5F5F5]"
             onKeyDown={onKeyDown}
             {...(register("text"), { placeholder: "메세지를 입력하세요." })}
           />
