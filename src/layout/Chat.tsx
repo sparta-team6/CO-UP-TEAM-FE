@@ -45,7 +45,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="w-[432px] h-[calc(100%-3rem)] bg-white flex flex-col justify-end absolute top-12 right-0 border-l border-[#C1C1C1] border-solid md:hidden">
+    <div className="w-[432px] h-[calc(100%-4rem)] bg-white flex flex-col justify-end absolute top-16 right-0 border-l border-[#C1C1C1] border-solid md:hidden">
       <div ref={messageBoxRef} className="w-full h-full space-y-2 overflow-y-auto">
         {data?.data?.map((box, index) => {
           return (

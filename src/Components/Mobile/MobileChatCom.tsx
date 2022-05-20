@@ -59,7 +59,7 @@ const MobileChatCom = () => {
 
   return (
     <div className="w-full h-[calc(100%-5.5rem)] bg-slate-400 flex flex-col justify-end absolute top-10 right-0 -z-20">
-      <div className="flex fixed top-0 left-0 mt-12 h-full ">
+      <div className="flex fixed top-0 left-0 mt-16 h-full ">
         <div className="hidden sm:block sm:w-screen ">
           <SlidingPanel type={"left"} isOpen={open} size={100}>
             <div onClick={onClick} className="flex">

@@ -4,7 +4,7 @@ import ProjectSummary from "../../elements/ToolMain/ProjectSummary";
 
 const ProjectMain = () => {
   return (
-    <div className="flex mt-[65px] mb-[30px] sm:p-1 items-center justify-between">
+    <div className="flex mt-[65px] mb-[30px] items-center sm:items-end justify-between">
       <ProjectSummary />
       <CopyURL />
     </div>

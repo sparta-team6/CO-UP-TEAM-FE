@@ -6,8 +6,8 @@ import DocumentList from "../../../layout/FolderList";
 const AddDocs = () => {
   return (
     <>
-      <div className="w-full h-[calc(100vh-3rem)] bg-white flex absolute bottom-0">
-        <div className="flex fixed top-0 left-0 mt-12 h-full">
+      <div className="w-full h-[calc(100vh-4rem)] bg-white flex absolute bottom-0">
+        <div className="flex fixed top-0 left-0 mt-16 h-full">
           <div className="sm:hidden">
             <MyProjectList />
           </div>

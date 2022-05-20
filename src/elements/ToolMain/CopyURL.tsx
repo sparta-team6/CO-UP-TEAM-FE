@@ -13,14 +13,14 @@ const CopyURL = () => {
     document.execCommand("copy");
   };
   return (
-    <div className="w-1/5 h-full flex items-end justify-end">
+    <div className="w-1/5 h-20 flex items-end justify-end">
       <input
         className="w-[100px] opacity-0 pointer-events-none"
         value={inviteCode || ""}
         ref={textInput}
         readOnly
       />
-      <div className="flex text-[#666] cursor-pointer mb-3">
+      <div className="flex text-[#666] cursor-pointer">
         <div className="w-20 space-x-2 flex justify-end" onClick={copy}>
           <Share2 />
           <span className="pt-[2px]">공유</span>
