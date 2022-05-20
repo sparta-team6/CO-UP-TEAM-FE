@@ -6,9 +6,6 @@ import GoogleLogin from "../../elements/IntroHome/GoogleLogin";
 import NaverLogin from "../../elements/IntroHome/NaverLogin";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useMyInfo } from "../../api/UserQuery";
-import { useSetRecoilState } from "recoil";
-import { MyProfile } from "../../recoil/MyProfile";
 
 /* h-[480px] 입니다 */
 const style = {
@@ -24,9 +21,6 @@ const style = {
 };
 
 export default function LoginModal() {
-  const SetUser = useSetRecoilState(MyProfile);
-  const { data } = useMyInfo();
-  const user = data?.data;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -64,7 +58,6 @@ export default function LoginModal() {
             <GoogleLogin />
             <NaverLogin />
             <Link
-              onClick={() => SetUser(user)}
               className="w-[314px] h-[54px] text-white bg-4 mt-9 rounded-lg flex justify-center items-center"
               to="/projectList"
             >
