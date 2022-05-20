@@ -20,6 +20,6 @@ export const useGetChatComment = () => {
 
 export const useAddChatComment = () => {
   return useMutation(async (post: Chat) => {
-    await axios.post("https://627f98ccb1cc1b126257d400.mockapi.io/api/chat43", post);
+    await axios.post("https://627f98ccb1cc1b126257d400.mockapi.io/api/chat", post);
   });
 };

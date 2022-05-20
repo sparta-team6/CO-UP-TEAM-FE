@@ -14,6 +14,9 @@ export interface Board {
 export interface IBoard {
   data: Board[];
 }
+export interface IBoards {
+  data: Board;
+}
 
 export const useGetBoard = (pjId: string) => {
   return useQuery<IBoard, AxiosError>(["getBoard", pjId], async () => {
