@@ -30,6 +30,7 @@ const Kakao = () => {
           });
           console.log(res);
           SetUser(res);
+          navigate("/projectList");
         })
         .catch((err) => {
           console.log(err);
