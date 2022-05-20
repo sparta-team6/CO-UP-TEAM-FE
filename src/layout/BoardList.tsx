@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useRecoilValue } from "recoil";
 import { Board, useGetBoard } from "../api/BoardQuery";
+import { useUpdateCards } from "../api/Optimistic";
 import Bucket from "../Components/ToolBoard/Bucket";
 import BoardImg from "../images/board1.png";
-import { useUpdateCards } from "../api/CardQuery";
 import { ProjectKey } from "../recoil/RoomID";
 
 const BoardList = () => {
