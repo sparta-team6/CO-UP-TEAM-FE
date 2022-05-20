@@ -10,6 +10,8 @@ const ProjectList = () => {
   const SetUser = useSetRecoilState(MyProfile);
   const { data } = useMyInfo();
   const user = data?.data;
+  console.log(data?.data);
+  console.log("hi");
   useEffect(() => {
     SetUser(user);
   }, []);

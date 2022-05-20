@@ -8,12 +8,12 @@ const { persistAtom } = recoilPersist();
 export const MyProfile = atom({
   key: "myProfile",
   default: {
-    loginId: "",
-    social: "",
+    loginId: "test12",
+    social: "kakao",
     profileImage: IMG,
-    url: "",
-    nickname: "",
-    aboutMe: "",
+    url: "www",
+    nickname: "test",
+    aboutMe: "hi",
   },
   effects_UNSTABLE: [persistAtom],
 });
