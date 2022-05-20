@@ -41,7 +41,7 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
         setUpOpen(false);
       });
     } else {
-      const image = await resizeFile(size);
+      const image = await resizeFile(size, 100, 100, "base64");
       mutateAsync({
         title: data.title,
         summary: data.summary,

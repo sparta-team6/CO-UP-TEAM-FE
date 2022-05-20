@@ -38,7 +38,7 @@ const EditProfile = () => {
         navigate(-1);
       });
     } else {
-      const image = await resizeFile(size);
+      const image = await resizeFile(size, 244, 244, "base64");
       const profile = {
         loginId: user?.loginId,
         nickname: data.nickName,
