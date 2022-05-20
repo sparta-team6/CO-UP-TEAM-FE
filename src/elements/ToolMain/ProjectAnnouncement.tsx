@@ -78,7 +78,7 @@ const ProjectAnnouncement = () => {
               <button className="text-white bg-3 w-[58px] h-[37px] rounded-md pt-1" type="submit">
                 등록
               </button>
-              <button className="bg-[#E7EBF2] w-[58px] h-[37px] rounded-md ml-2 pt-1" type="button">
+              <button className="bg-5 w-[58px] h-[37px] rounded-md ml-2 pt-1" type="button">
                 닫기
               </button>
             </div>

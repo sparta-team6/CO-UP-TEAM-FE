@@ -46,7 +46,7 @@ const MemberChart = () => {
             <span className="text-2xl font-semibold sm:text-lg mb-[30px]">팀 상태 개요</span>
             <div className="flex justify-between items-center sm:w-[150px]">
               <section className="flex items-center space-x-2 sm:space-x-1">
-                <div className="w-2 h-2 rounded-full bg-[#E7EBF2]" />
+                <div className="w-2 h-2 rounded-full bg-5" />
                 <span className="text-xs">대기</span>
               </section>
               <section className="flex items-center mx-[16px] space-x-2 sm:space-x-1">

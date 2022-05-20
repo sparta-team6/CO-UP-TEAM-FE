@@ -71,7 +71,7 @@ const Chat = () => {
           onSubmit={handleSubmit(handleonEnter)}
         >
           <textarea
-            className="w-full h-full p-[18px] rounded-xl border border-[#E7EbF2] outline-none resize-none relative bg-[#F5F5F5]"
+            className="w-full h-full p-[18px] rounded-xl border border-5 outline-none resize-none relative bg-[#F5F5F5]"
             onKeyDown={onKeyDown}
             {...(register("text"), { placeholder: "메세지를 입력하세요." })}
           />

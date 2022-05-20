@@ -48,7 +48,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
             <>
               <div className="hidden sm:flex justify-between items-center border-b-2 border-solid border-slate-400 pb-2">
                 <div
-                  className="border-none px-[15px] py-[8px] rounded-md bg-[#E7EBF2]"
+                  className="border-none px-[15px] py-[8px] rounded-md bg-5"
                   onClick={() => navigate(-1)}
                 >
                   <ChevronLeft />
@@ -65,7 +65,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                     수정
                   </button>
                   <button
-                    className="border-none ml-2 px-[15px] py-[8px] rounded-md bg-[#E7EBF2]"
+                    className="border-none ml-2 px-[15px] py-[8px] rounded-md bg-5"
                     onClick={onDelete}
                   >
                     삭제
@@ -87,7 +87,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                       수정
                     </button>
                     <button
-                      className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-[#E7EBF2]"
+                      className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-5"
                       onClick={onDelete}
                     >
                       삭제
@@ -96,7 +96,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                 </div>
                 <div className="text-lg text-[#666] mt-[15px]">2022.05.04 by 작성자</div>
               </div>
-              <div className="hidden sm:block text-3xl font-bold">{title}</div>
+              <div className="hidden sm:block text-[32px] font-bold">{title}</div>
               <div className="text-xl mx-[46px] mt-[20px]">
                 <MarkdownPreview
                   className="whitespace-pre-wrap break-all text-lg"
@@ -108,7 +108,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
             <>
               <div className="flex flex-col sm:hidden mx-[46px] mt-[60px] mb-[20px]">
                 <div className="flex justify-between items-center">
-                  <div className="text-3xl font-bold">{docData.title}</div>
+                  <div className="text-[32px] font-bold">{docData.title}</div>
                   <div>
                     <button
                       className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
@@ -125,7 +125,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                       수정
                     </button>
                     <button
-                      className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-[#E7EBF2]"
+                      className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-5"
                       onClick={onDelete2}
                     >
                       삭제
