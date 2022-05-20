@@ -1,6 +1,5 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
-import IMG from "../images/DuckProfile.jpg";
 
 const { persistAtom } = recoilPersist();
 
@@ -8,12 +7,12 @@ const { persistAtom } = recoilPersist();
 export const MyProfile = atom({
   key: "myProfile",
   default: {
-    loginId: "test12",
-    social: "kakao",
-    profileImage: IMG,
-    url: "www",
-    nickname: "test",
-    aboutMe: "hi",
+    loginId: "",
+    social: "",
+    profileImage: "",
+    url: "",
+    nickname: "",
+    aboutMe: "",
   },
   effects_UNSTABLE: [persistAtom],
 });
