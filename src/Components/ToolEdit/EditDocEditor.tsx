@@ -88,7 +88,7 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
             </button>
             <button
               type="button"
-              className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-5"
+              className="border-none ml-[16px] w-[62px] h-[44px] rounded-md bg-5"
               onClick={() => navigate(-1)}
             >
               닫기
