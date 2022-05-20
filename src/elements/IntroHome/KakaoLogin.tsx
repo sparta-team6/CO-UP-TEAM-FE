@@ -7,7 +7,7 @@ const KakaoLogin = () => {
 
   return (
     <div onClick={onClick}>
-      <button className="w-[314px] h-[54px] text-white bg-[#FFD33C] mt-9 rounded-lg">
+      <button className="w-[314px] h-[54px] text-white bg-[#FFD33C] mt-[40px] rounded-lg">
         카카오 로그인
       </button>
     </div>

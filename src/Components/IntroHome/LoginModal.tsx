@@ -13,8 +13,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 784,
-  height: 520,
+  width: 704,
+  height: 384,
   bgcolor: "background.paper",
   boxShadow: 12,
   p: 4,
@@ -52,17 +52,19 @@ export default function LoginModal() {
       >
         {/* h-[370px]입니다 */}
         <Box sx={style} className="rounded-xl">
-          <div className="flex flex-col items-center">
-            <span className="font-bold text-4xl p-8">{`로그인을 해주세요:)`}</span>
+          <div className="flex flex-col items-center relative">
+            <span className="font-bold text-2xl pt-[25px]">{`로그인을 해주세요:)`}</span>
             <KakaoLogin />
             <GoogleLogin />
             <NaverLogin />
-            <Link
-              className="w-[314px] h-[54px] text-white bg-4 mt-9 rounded-lg flex justify-center items-center"
-              to="/projectList"
-            >
-              <span>테스트 입장</span>
-            </Link>
+            <div className="absolute right-0 bottom-0">
+              <Link
+                className="w-[50px] h-[50px] text-white bg-4 mt-[24px] rounded-full flex justify-center items-center"
+                to="/projectList"
+              >
+                <span>테스트</span>
+              </Link>
+            </div>
           </div>
         </Box>
       </Modal>
