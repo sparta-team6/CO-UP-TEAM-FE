@@ -60,7 +60,7 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
         aria-expanded={open ? "true" : undefined}
         aria-haspopup="true"
         onClick={handleClick}
-        className="m-3"
+        className="p-3"
       >
         <MoreHorizIcon />
       </IconButton>

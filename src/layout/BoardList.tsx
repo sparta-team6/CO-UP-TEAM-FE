@@ -10,7 +10,7 @@ import { ProjectKey } from "../recoil/RoomID";
 
 const BoardList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
-  const { data: board, isFetching } = useGetBoard(String(pjId));
+  const { data: board } = useGetBoard(String(pjId));
   const [open, setOpen] = useState<boolean>(false);
   const { mutateAsync } = useUpdateCards(pjId);
   useEffect(() => {
@@ -56,11 +56,11 @@ const BoardList = () => {
     }
   };
   return (
-    <div className="w-full h-full bg-slate-100 overflow-auto">
-      <div className="w-full h-full flex justify-center items-center relative">
+    <div className="w-full h-full bg-[#F0F3F7] overflow-auto">
+      <div className="max-w-[1300px] h-full ml-16 sm:ml-2 flex justify-center items-center relative">
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="w-full h-full flex">
-            <div className="flex justify-around items-start w-full gap-2 md:justify-start">
+            <div className="flex w-full h-full gap-7 md:justify-start overflow-auto">
               {board?.data.map((bucketId: Board, index: number) => {
                 return (
                   <Bucket
@@ -69,7 +69,6 @@ const BoardList = () => {
                     key={bucketId.title}
                     toDos={bucketId.cards}
                     index={index}
-                    isFetching={isFetching}
                   />
                 );
               })}

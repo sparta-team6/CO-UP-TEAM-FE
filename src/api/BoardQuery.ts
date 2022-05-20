@@ -7,7 +7,6 @@ import { Cards } from "./CardQuery";
 export interface Board {
   kbbId: string;
   title: string;
-  position: number;
   cards: Cards[] | any;
 }
 
@@ -27,7 +26,6 @@ export const useGetBoard = (pjId: string) => {
 interface PostBoard {
   pjId: string;
   title: string;
-  position: number;
 }
 
 export const usePostBoard = () => {

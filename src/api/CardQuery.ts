@@ -9,7 +9,6 @@ export interface ICards {
   manager?: string;
   title: string;
   contents?: string;
-  position: number;
 }
 
 interface ICard {
@@ -34,7 +33,6 @@ export interface Cards {
   title: string;
   manager: string;
   contents: string;
-  position: number;
 }
 
 export const usePostCards = () => {

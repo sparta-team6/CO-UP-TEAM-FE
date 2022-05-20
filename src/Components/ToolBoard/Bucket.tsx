@@ -24,7 +24,6 @@ interface IBoardProps {
   bucketId: string;
   kbbId: string;
   index: number;
-  isFetching: boolean;
 }
 
 interface IForm {
@@ -32,7 +31,7 @@ interface IForm {
   toDoComment: string;
 }
 
-const Bucket = ({ toDos, bucketId, kbbId, index, isFetching }: IBoardProps) => {
+const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { nickname } = useRecoilValue(MyProfile);
   const [open, setOpen] = useState(false);
@@ -53,8 +52,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, isFetching }: IBoardProps) => {
       kbbId,
       title: toDo,
       contents: toDoComment,
-      manager: "테스트 이름 변경",
-      position: 0,
+      manager: nickname,
     };
     mutateAsync(newToDo).then(() => {
       queryClient.invalidateQueries(["getBoard", pjId]);
@@ -68,8 +66,8 @@ const Bucket = ({ toDos, bucketId, kbbId, index, isFetching }: IBoardProps) => {
     setName(e.target.value);
   };
   return (
-    <div className="w-80 rounded-md min-h-[800px] flex flex-col">
-      <div className="w-full h-6 mt-10 flex justify-between">
+    <div className="w-96 mr-7 rounded-md min-h-[830px] flex flex-col">
+      <div className="w-full h-6 mt-10 sm:mt-2 flex justify-between">
         <h2 className="text-center font-semibold text-lg">{bucketId}</h2>
         <button
           className="h-full border-none bg-transparent flex items-center"
@@ -116,7 +114,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, isFetching }: IBoardProps) => {
                 value={name}
                 onChange={onChange}
               >
-                <option defaultValue="none">=== 선택 ===</option>
+                {/* <option defaultValue="none">=== 선택 ===</option> */}
                 <option value={nickname}>{nickname}</option>
               </select>
             </div>
@@ -142,36 +140,34 @@ const Bucket = ({ toDos, bucketId, kbbId, index, isFetching }: IBoardProps) => {
           </form>
         </Box>
       </Modal>
-      {!isFetching && (
-        <Droppable droppableId={String(index)}>
-          {(magic, info) => (
-            <div
-              className={`${
-                info.isDraggingOver
-                  ? "bg-gray-200"
-                  : info.draggingFromThisWith
-                  ? "bg-gray-100"
-                  : "bg-transparent"
-              } min-h-[500px] mt-3 rounded-sm w-full flex flex-col transition-colors ease-in-out delay-300`}
-              ref={magic.innerRef}
-              {...magic.droppableProps}
-            >
-              {toDos.map((toDo, index) => (
-                <DraggableCard
-                  key={toDo.kbcId}
-                  index={index}
-                  toDoId={toDo.kbcId}
-                  toDoText={toDo.contents}
-                  toDoName={toDo.manager}
-                  toDoTitle={toDo.title}
-                  bucketId={bucketId}
-                />
-              ))}
-              {magic.placeholder}
-            </div>
-          )}
-        </Droppable>
-      )}
+      <Droppable droppableId={String(index)}>
+        {(magic, info) => (
+          <div
+            className={`${
+              info.isDraggingOver
+                ? "bg-gray-200"
+                : info.draggingFromThisWith
+                ? "bg-gray-100"
+                : "bg-[#E7EBF2]"
+            } lg:overflow-y-scroll lg:overflow-x-hidden lg:h-[750px] sm:min-h-[600px] p-2 mt-3 rounded-lg w-full flex flex-col transition-colors ease-in-out delay-300`}
+            ref={magic.innerRef}
+            {...magic.droppableProps}
+          >
+            {toDos.map((toDo, index) => (
+              <DraggableCard
+                key={toDo.kbcId}
+                index={index}
+                toDoId={toDo.kbcId}
+                toDoText={toDo.contents}
+                toDoName={toDo.manager}
+                toDoTitle={toDo.title}
+                bucketId={bucketId}
+              />
+            ))}
+            {magic.placeholder}
+          </div>
+        )}
+      </Droppable>
     </div>
   );
 };

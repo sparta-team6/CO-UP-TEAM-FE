@@ -61,7 +61,7 @@ const FramerHeader = () => {
           <Link to={`/tool/${pjId}/chat`} className="hidden md:block">
             <span className="dark:text-white">채팅</span>
           </Link>
-          <Link to="/profile" className="md:hidden">
+          <Link to="/profile" className="sm:hidden">
             <span className="dark:text-white">
               <SvgUser />
             </span>

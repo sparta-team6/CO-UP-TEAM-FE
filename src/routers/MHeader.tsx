@@ -10,7 +10,6 @@ const MHeader = () => {
   const [open, setOpen] = useRecoilState(HandleOpen);
   const onClick = () => {
     setOpen(!open);
-    console.log("hi");
   };
   const location = useLocation();
   return (
