@@ -21,6 +21,16 @@ button{
   border: none;
   background-color: transparent;
 }
+/* span {
+  color: ${(props) => props.theme.textColor}
+} */
+svg {
+  color: ${(props) => props.theme.textColor}
+}
+nav {
+  background-color: ${(props) => props.theme.bgColor}
+}
+
 details > summary::-webkit-details-marker {
   display: none;
 }
@@ -43,12 +53,6 @@ time, mark, audio, video {
 	font-size: 100%;
 	/* font: inherit; */
 	vertical-align: baseline;
-}
-svg {
-  color: rgba(0, 0, 0, 0.7)
-}
-nav {
-  background-color: white;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
