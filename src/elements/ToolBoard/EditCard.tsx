@@ -5,6 +5,7 @@ import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
 import { useGetCardDetail } from "../../api/CardQuery";
 import { useUpdateCards } from "../../api/Optimistic";
+import { MyProfile } from "../../recoil/MyProfile";
 import { ProjectKey } from "../../recoil/RoomID";
 
 import { X } from "../Icon/X";
@@ -12,7 +13,6 @@ import { X } from "../Icon/X";
 interface IPros {
   edit: boolean;
   setEdit: Dispatch<SetStateAction<boolean>>;
-  toDoName: string;
   toDoText: string;
   toDoTitle: string;
   toDoId: string;
@@ -34,10 +34,11 @@ const style = {
   p: 4,
 };
 
-const EditCard = ({ edit, setEdit, toDoName, toDoText, toDoTitle, toDoId }: IPros) => {
+const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
   const [name, setName] = useState("");
   const handleClose = () => setEdit(false);
   const { pjId } = useRecoilValue(ProjectKey);
+  const { nickname } = useRecoilValue(MyProfile);
   const { mutateAsync } = useUpdateCards(pjId);
   const { data: Card } = useGetCardDetail(toDoId);
   const { register, handleSubmit } = useForm<IForm>();
@@ -48,12 +49,11 @@ const EditCard = ({ edit, setEdit, toDoName, toDoText, toDoTitle, toDoId }: IPro
       manager: name,
       title: data.title,
       contents: data.text,
-      position: Number(Card?.data.position),
     };
-    console.log(post);
     mutateAsync(post).then(() => {
       queryClient.invalidateQueries(["getCard", String(Card?.data.kbbId)]);
     });
+    setEdit(false);
   };
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setName(e.target.value);
@@ -66,11 +66,12 @@ const EditCard = ({ edit, setEdit, toDoName, toDoText, toDoTitle, toDoId }: IPro
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="w-[896px] h-[528px] rounded-xl sm:w-full relative">
-          <div className="w-full h-full p-4">
+        <Box sx={style} className="w-[704px] h-[384px] rounded-xl sm:w-full relative">
+          <div className="w-full h-full">
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
-                className="text-3xl font-semibold mb-4"
+                autoFocus
+                className="text-3xl font-semibold mb-2 rounded-md border-none"
                 {...register("title")}
                 defaultValue={toDoTitle}
               />
@@ -81,13 +82,17 @@ const EditCard = ({ edit, setEdit, toDoName, toDoText, toDoTitle, toDoId }: IPro
                     value={name}
                     onChange={onChange}
                   >
-                    <option defaultValue="none">=== 선택 ===</option>
-                    <option value={toDoName}>{toDoName}</option>
+                    {/* <option defaultValue="none">=== 선택 ===</option> */}
+                    <option value={nickname}>{nickname}</option>
                   </select>
                 </div>
               </div>
               <div className="max-h-64 py-8">
-                <input {...register("text")} defaultValue={toDoText} />
+                <input
+                  className="rounded-md border-none"
+                  {...register("text")}
+                  defaultValue={toDoText}
+                />
               </div>
               <button
                 className="w-16 h-9 absolute bottom-5 right-5 rounded-md  font-semibold text-base bg-3 text-white"

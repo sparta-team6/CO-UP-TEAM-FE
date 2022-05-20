@@ -66,28 +66,28 @@ const DraggableCard = ({
           >
             <div
               onClick={handleOpen}
-              className={`relative h-24 overflow-hidden w-80 mt-2 rounded-md bg-white`}
+              className={`relative h-24 overflow-hidden min-w-[256px] mt-2 rounded-md bg-white`}
             >
               <div
-                className={`w-2 h-full ${
-                  bucketId === "대기" ? "bg-[#e7ebfe]" : bucketId === "완료" ? "bg-3" : "bg-1"
+                className={`w-[10px] h-full ${
+                  bucketId === "대기" ? "bg-[#c4c4c4]" : bucketId === "완료" ? "bg-3" : "bg-1"
                 }  absolute top-0`}
               />
 
-              <div className="w-full h-full pl-4 flex flex-col justify-around">
+              <div className="w-full h-full pl-6 flex flex-col justify-center space-y-8 font-semibold">
                 <span className="font-NeoB">{toDoTitle}</span>
                 <span className="font-NeoL">{toDoName}</span>
               </div>
             </div>
             <div
               onClick={onDelete}
-              className={`${info.isDragging ? "hidden" : ""} absolute top-4 right-3 cursor-pointer`}
+              className={`${info.isDragging ? "hidden" : ""} absolute top-5 right-3 cursor-pointer`}
             >
               <Trash2 />
             </div>
             <div
               onClick={EditOpen}
-              className={`${info.isDragging ? "hidden" : ""} absolute top-4 right-8 cursor-pointer`}
+              className={`${info.isDragging ? "hidden" : ""} absolute top-5 right-9 cursor-pointer`}
             >
               <SvgEdit2 />
             </div>
@@ -98,11 +98,10 @@ const DraggableCard = ({
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style} className="w-[896px] h-[528px] rounded-xl sm:w-full relative">
-              <div className="w-full h-full p-4">
-                <h1 className="text-3xl font-semibold mb-4">{toDoTitle}</h1>
+            <Box sx={style} className="w-[704px] h-[384px] rounded-xl sm:w-full relative">
+              <div className="w-full h-full">
+                <h1 className="text-3xl font-semibold mb-2">{toDoTitle}</h1>
                 <div className="w-full flex items-center space-x-3">
-                  <span className="mr-4">2022.XX.XX</span>
                   <div className="w-[84px] h-7 rounded-sm bg-[#E7EBF2] flex justify-center items-center">
                     <span>{bucketId}</span>
                   </div>
@@ -124,7 +123,6 @@ const DraggableCard = ({
             setEdit={setEdit}
             toDoTitle={toDoTitle}
             toDoText={toDoText}
-            toDoName={toDoName}
             toDoId={toDoId}
           />
         </React.Fragment>

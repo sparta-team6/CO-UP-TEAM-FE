@@ -58,9 +58,9 @@ const MobileChatCom = () => {
   };
 
   return (
-    <div className="w-full h-[calc(100%-5.5rem)] bg-slate-400 flex flex-col justify-end absolute top-10 right-0 -z-20">
-      <div className="flex fixed top-0 left-0 mt-16 h-full ">
-        <div className="hidden sm:block sm:w-screen ">
+    <div className="w-full h-[calc(100%-20rem)] flex flex-col justify-end absolute bottom-48 right-0">
+      <div className="flex fixed top-0 left-0 mt-16 h-full z-40">
+        <div className="hidden sm:block sm:w-screen">
           <SlidingPanel type={"left"} isOpen={open} size={100}>
             <div onClick={onClick} className="flex">
               <MyProjectList />
@@ -68,28 +68,34 @@ const MobileChatCom = () => {
           </SlidingPanel>
         </div>
       </div>
-      <div className="w-full  h-[calc(100%-9rem)] flex flex-col justify-end absolute top-0 right-0 -z-10">
-        <div ref={messageBoxRef} className="w-full h-full space-y-2 overflow-y-auto">
+      <div className="w-full h-full  flex flex-col justify-end absolute top-0 right-0 z-50">
+        <div
+          ref={messageBoxRef}
+          className="w-full min-h-[715px] bg-gray-200 space-y-2 overflow-auto"
+        >
           {data?.data?.map((box, index) => {
             return (
               <div className="w-full min-h-10 p-1 flex items-center" key={index}>
-                <img width="30px" height="30px" src={box.profile} alt="" />
-                <span>{box.name}</span>
+                <img className="w-[30px] h-[30px] rounded-full" src={box.profile} alt="" />
+                <span className="font-bold text-lg">{box.name}</span>
+                <span className="text-[#AAA] text-xs">{box.createAt}</span>
                 <span className="whitespace-pre-wrap break-all">{box.comment}</span>
-                <span className="text-xs">{box.createAt}</span>
               </div>
             );
           })}
         </div>
       </div>
-      <div className="w-full h-28 fixed bottom-20 bg-gray-300">
+      <div className={`w-full h-28 fixed bottom-20 bg-gray-300 ${open ? "z-30" : "z-40"}`}>
         <form className="w-full h-full outline-none " onSubmit={handleSubmit(handleonEnter)}>
           <textarea
-            className="w-full h-full outline-none resize-none absolute"
+            className="w-full h-full outline-none resize-none"
             onKeyDown={onKeyDown}
             {...register("text")}
           />
-          <button className="w-12 h-6 absolute bottom-4 right-2" type="submit">
+          <button
+            className="w-12 h-7 absolute bottom-4 right-2 text-white bg-3 rounded-[4px] leading-7"
+            type="submit"
+          >
             전송
           </button>
         </form>

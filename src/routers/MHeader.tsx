@@ -10,13 +10,12 @@ const MHeader = () => {
   const [open, setOpen] = useRecoilState(HandleOpen);
   const onClick = () => {
     setOpen(!open);
-    console.log("hi");
   };
   const location = useLocation();
   return (
     <>
       {location.pathname.includes("tool") ? (
-        <nav className="hidden w-full h-12 fixed z-50 top-0 sm:flex justify-between items-center dark:bg-gray-900">
+        <nav className="hidden w-full h-16 fixed z-50 top-0 sm:flex justify-between items-center dark:bg-gray-900">
           <div className="cursor-pointer">
             <MenuIcon className="dark:text-white" onClick={onClick} sx={style} />
           </div>
