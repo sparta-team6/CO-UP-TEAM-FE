@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 import { queryClient } from "..";
 import { useAddChatComment, useGetChatComment } from "../api/ChatQuery";
 import { MyProfile } from "../recoil/MyProfile";
+import message from "../images/message.png";
 
 interface IForm {
   text: string;
@@ -49,9 +50,9 @@ const Chat = () => {
       <div ref={messageBoxRef} className="w-full h-full space-y-2 overflow-y-auto">
         {data?.data?.map((box, index) => {
           return (
-            <div className="w-[370px] min-h-10 pl-8 flex items-start" key={index}>
-              <img className="w-[40px] h-[40px] rounded-full" src={box.profile} alt="" />
-              <div className="flex flex-col pl-2 pt-1 pb-2">
+            <div className="w-[370px] min-h-10 pl-[40px] pb-[26px] flex items-start" key={index}>
+              <img className="w-[36px] h-[36px] rounded-full" src={box.profile} alt="" />
+              <div className="flex flex-col pl-[10px]">
                 <span className="font-bold text-lg">{box.name}</span>
                 <span className="text-[#AAA] text-xs">{box.createAt}</span>
                 <span className="whitespace-pre-wrap break-all mt-2 leading-5">{box.comment}</span>
@@ -60,18 +61,22 @@ const Chat = () => {
           );
         })}
       </div>
+      {/* <div className="h-full flex flex-col justify-center items-center">
+        <img width={191} height={229} src={message} alt="" />
+        <span className="pt-[41px] text-[#B0B0B0]">팀원들에게 메세지를 전달해보세요</span>
+      </div> */}
       <div className="w-full flex justify-center items-center relative bg-white">
         <form
-          className="w-[386px] h-[120px] mb-7 bg-slate-200 outline-none flex items-center justify-center rounded-lg"
+          className="w-[384px] h-[120px] mb-7 bg-slate-200 outline-none flex items-center justify-center rounded-xl"
           onSubmit={handleSubmit(handleonEnter)}
         >
           <textarea
-            className="w-[380px] h-24 p-2 outline-none resize-none relative bg-transparent"
+            className="w-full h-full p-[18px] rounded-xl border border-[#E7EbF2] outline-none resize-none relative bg-[#F5F5F5]"
             onKeyDown={onKeyDown}
             {...(register("text"), { placeholder: "메세지를 입력하세요." })}
           />
           <button
-            className="w-12 h-7 absolute right-8 bottom-10 text-white bg-3 rounded-[4px] leading-7"
+            className="w-[56px] h-[36px] absolute right-9 bottom-10 text-white bg-3 rounded-[4px]"
             type="submit"
           >
             전송
