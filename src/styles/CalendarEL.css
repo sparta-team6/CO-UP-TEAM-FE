@@ -1,10 +1,13 @@
 /* Calendar */
 .react-calendar {
-  width: 330px;
-  height: 330px;
+  width: 310px;
+  height: 300px;
   max-width: 100%;
   border: none;
   border-radius: 0.8em;
+}
+.react-calendar__navigation {
+  height: 35px;
 }
 .react-calendar__navigation button {
   color: black;
@@ -30,14 +33,17 @@ abbr[title] {
   text-decoration: none;
   cursor: auto;
 }
+.react-calendar__month-view__days {
+  width: 310px;
+}
 .react-calendar__month-view__days__day {
-  padding: 15px 0;
+  padding: 14px 0;
 }
 .react-calendar__month-view__days__day--weekend {
   color: #d10000;
 }
 .react-calendar__month-view__weekdays__weekday {
-  padding: 10px 6px;
+  padding: 5px;
 }
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {

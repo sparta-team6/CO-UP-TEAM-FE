@@ -57,9 +57,9 @@ const FolderList = () => {
               <Plus />
             </div>
           </div>
-          <div className="border border-solid w-[264px] mx-auto mt-[10px]"></div>
-          <div className="flex flex-col justify-center items-center mt-[50px]">
-            <img className="w-[130px] h-[130px] sm:w-[100px] sm:h-[100px]" src={imgFolder} alt="" />
+          <div className="border border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
+          <div className="flex flex-col justify-center items-center mt-[50px] sm:hidden">
+            <img className="w-[130px] h-[130px]" src={imgFolder} alt="" />
             <span className="text-lg opacity-50 mt-[30px] sm:text-base sm:mt-5">
               새로운 문서를 추가해 보세요
             </span>
@@ -73,7 +73,7 @@ const FolderList = () => {
               <Plus />
             </div>
           </div>
-          <div className="border border-solid w-[264px] mx-auto mt-[10px]"></div>
+          <div className="border border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
           {data?.data?.map((folder) => {
             return (
               <div key={folder.dfId}>
@@ -97,15 +97,11 @@ const FolderList = () => {
                   <FolderFixed dfId={folder.dfId} setEditTitle={setEditTitle} setDfId={setDfId} />
                 </div>
                 <div
-                  className={`flex flex-col justify-center items-center pt-2 ${
+                  className={`flex flex-col justify-center items-center pt-2 sm:hidden ${
                     folder?.docs?.length !== 0 && "hidden"
                   }`}
                 >
-                  <img
-                    className="w-[130px] h-[130px] sm:w-[100px] sm:h-[100px]"
-                    src={imgFolder}
-                    alt=""
-                  />
+                  <img className="w-[130px] h-[130px]" src={imgFolder} alt="" />
                   <span className="text-lg opacity-50 mt-[30px] sm:text-base sm:mt-5">
                     새로운 문서를 추가해 보세요
                   </span>
@@ -119,7 +115,7 @@ const FolderList = () => {
                     </div>
                   </div>
                 ))}
-                <div className="border border-solid w-[264px] mx-auto mt-[10px]"></div>
+                <div className="border border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
               </div>
             );
           })}

@@ -48,7 +48,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
             <>
               <div className="hidden sm:flex justify-between items-center border-b-2 border-solid border-slate-400 pb-2">
                 <div
-                  className="border-none px-[15px] py-[8px] rounded-md bg-[#E7EBF2]"
+                  className="border-none px-[15px] py-[8px] rounded-md bg-5"
                   onClick={() => navigate(-1)}
                 >
                   <ChevronLeft />
@@ -65,7 +65,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                     수정
                   </button>
                   <button
-                    className="border-none ml-2 px-[15px] py-[8px] rounded-md bg-[#E7EBF2]"
+                    className="border-none ml-2 px-[15px] py-[8px] rounded-md bg-5"
                     onClick={onDelete}
                   >
                     삭제
@@ -73,7 +73,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                 </div>
               </div>
               <div className="flex flex-col sm:hidden mx-[46px] mt-[60px] mb-[20px]">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center h-[47px] pl-[2px]">
                   <div className="text-[32px] font-bold">{title}</div>
                   <div>
                     <button
@@ -87,16 +87,16 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                       수정
                     </button>
                     <button
-                      className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-[#E7EBF2]"
+                      className="border-none ml-[16px] w-[62px] h-[44px] rounded-md bg-5"
                       onClick={onDelete}
                     >
                       삭제
                     </button>
                   </div>
                 </div>
-                <div className="text-lg text-[#666] mt-[15px]">2022.05.04 by 작성자</div>
+                <div className="text-lg text-[#999] mt-[15px]">{"2022.05.04  by 작성자"}</div>
               </div>
-              <div className="hidden sm:block text-3xl font-bold">{title}</div>
+              <div className="hidden sm:block text-[32px] font-bold">{title}</div>
               <div className="text-xl mx-[46px] mt-[20px]">
                 <MarkdownPreview
                   className="whitespace-pre-wrap break-all text-lg"
@@ -107,8 +107,8 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
           ) : docData ? (
             <>
               <div className="flex flex-col sm:hidden mx-[46px] mt-[60px] mb-[20px]">
-                <div className="flex justify-between items-center">
-                  <div className="text-3xl font-bold">{docData.title}</div>
+                <div className="flex justify-between items-center h-[47px] pl-[2px]">
+                  <div className="text-[32px] font-bold">{docData.title}</div>
                   <div>
                     <button
                       className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
@@ -125,14 +125,14 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                       수정
                     </button>
                     <button
-                      className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-[#E7EBF2]"
+                      className="border-none ml-[16px] w-[62px] h-[44px] rounded-md bg-5"
                       onClick={onDelete2}
                     >
                       삭제
                     </button>
                   </div>
                 </div>
-                <div className="text-lg text-[#666] mt-[15px]">2022.05.04 by 작성자</div>
+                <div className="text-lg text-[#999] mt-[15px]">{"2022.05.04  by 작성자"}</div>
               </div>
               <div className="text-xl mx-[46px] mt-[20px]">
                 <MarkdownPreview
@@ -142,13 +142,13 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
               </div>
             </>
           ) : (
-            <div className=" w-full h-full flex flex-col justify-center items-center text-center">
+            <div className=" w-full h-full flex flex-col justify-center items-center text-center px-[46px]">
               <img
                 className="w-[328px] h-[286px] sm:w-[177px] sm:h-[154px]"
                 src={imgFolder2}
                 alt=""
               />
-              <div className="font-bold text-2xl m-4">
+              <div className="font-bold text-2xl pt-[33px] pb-[20px]">
                 새로운 폴더를 만들어 문서를 추가해 보세요
               </div>
               <div>
@@ -156,7 +156,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
               </div>
               <button
                 onClick={AddFolder}
-                className="border-none m-4 px-8 py-3 rounded-md text-white bg-3 font-bold"
+                className="border-none w-[192px] h-[52px] mt-[36px] rounded-xl text-white bg-3 font-bold"
               >
                 새 폴더 만들기
               </button>

@@ -102,10 +102,11 @@ const DraggableCard = ({
               <div className="w-full h-full">
                 <h1 className="text-3xl font-semibold mb-2">{toDoTitle}</h1>
                 <div className="w-full flex items-center space-x-3">
-                  <div className="w-[84px] h-7 rounded-sm bg-[#E7EBF2] flex justify-center items-center">
+                  <span className="mr-4">2022.XX.XX</span>
+                  <div className="w-[84px] h-7 rounded-sm bg-5 flex justify-center items-center">
                     <span>{bucketId}</span>
                   </div>
-                  <div className="max-w-xs h-7 rounded-sm bg-[#E7EBF2] flex px-2 justify-center items-center">
+                  <div className="max-w-xs h-7 rounded-sm bg-5 flex px-2 justify-center items-center">
                     <span>{toDoName}</span>
                   </div>
                 </div>

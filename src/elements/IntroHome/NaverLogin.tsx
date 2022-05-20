@@ -6,7 +6,7 @@ const NaverLogin = () => {
   };
   return (
     <div onClick={onClick}>
-      <button className="w-[314px] h-[54px] text-white bg-[#24C934] mt-9 rounded-lg">
+      <button className="w-[314px] h-[54px] text-white bg-[#24C934] mt-[24px] rounded-lg">
         네이버 로그인
       </button>
     </div>

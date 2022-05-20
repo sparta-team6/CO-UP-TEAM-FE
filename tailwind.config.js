@@ -7,6 +7,7 @@ module.exports = {
         2: "#FFD33C",
         3: "#5F99FF",
         4: "#00D39E",
+        5: "#E7EBF2",
       },
     },
     screens: {

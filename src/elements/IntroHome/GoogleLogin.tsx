@@ -6,7 +6,7 @@ const GoogleLogin = () => {
   };
   return (
     <div onClick={onClick}>
-      <button className="w-[314px] h-[54px] text-white bg-[#5F99FF] mt-9 rounded-lg">
+      <button className="w-[314px] h-[54px] text-white bg-[#5F99FF] mt-[24px] rounded-lg">
         구글 로그인
       </button>
     </div>
