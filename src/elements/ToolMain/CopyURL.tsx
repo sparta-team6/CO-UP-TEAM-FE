@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/RoomID";
-import { Share2 } from "../Icon/Share2";
 
 const CopyURL = () => {
   const { inviteCode } = useRecoilValue(ProjectKey);
@@ -21,10 +20,9 @@ const CopyURL = () => {
         readOnly
       />
       <div className="flex text-[#666] cursor-pointer">
-        <div className="w-20 space-x-2 flex justify-end" onClick={copy}>
-          <Share2 />
-          <span className="pt-[2px]">공유</span>
-        </div>
+        <button onClick={copy} className="w-[86px] h-[39px] bg-5 rounded">
+          초대코드
+        </button>
       </div>
     </div>
   );

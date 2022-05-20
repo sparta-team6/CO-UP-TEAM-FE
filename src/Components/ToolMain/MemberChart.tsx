@@ -20,21 +20,21 @@ const MemberChart = () => {
   console.log(data);
   return (
     <>
-      {data?.data.length === 0 ? (
+      {!data?.data ? (
         <div className="w-full h-full px-[32px] py-[28px]">
           <span className="text-2xl font-semibold sm:text-lg mb-[30px]">팀 상태 개요</span>
-          <div className="flex flex-col justify-center items-center mt-[-10px]">
+          <div className="flex flex-col justify-center items-center relative">
             <img
-              className="max-w-full w-[396px] h-[177px] sm:w-[198px] sm:h-[88px]"
+              className="max-w-full w-[320px] h-[143px] sm:w-[198px] sm:h-[88px] mt-[25px]"
               src={coupFamily}
               alt=""
             />
-            <span className="text-lg font-semibold my-[8px]">
+            <span className="text-lg font-semibold mt-[21px]">
               팀원들과 프로젝트 진행 상황을 공유해보세요
             </span>
             <button
               onClick={() => navigate(`/tool/${pjId}/board`)}
-              className="w-[170px] h-[52px] bg-3 rounded-[4px] text-white text-xl"
+              className="w-[118px] h-[39px] bg-3 rounded-[4px] text-white absolute -top-9 -right-2"
             >
               보드 생성하기
             </button>

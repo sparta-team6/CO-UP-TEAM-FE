@@ -19,7 +19,7 @@ const Member = () => {
         <img className="absolute -top-1 left-6" src={imgCrown} alt="" />
         <img className="rounded-full m-0" width={36} height={36} src={user?.profileImage} alt="" />
         <span className="font-semibold">{user?.nickname}</span>
-        <div className="hidden w-[352px] h-[134px] bg-gray-200  group-hover:flex sm:group-focus:block absolute right-[-330px] top-0 rounded-lg shadow-lg">
+        <div className="hidden w-[386px] h-[134px] bg-gray-200  group-hover:flex sm:group-focus:block absolute right-[-330px] top-0 rounded-lg shadow-lg">
           <div className="w-full h-full p-3 flex flex-col">
             <div className="w-full flex flex-col space-x-5">
               <div className="flex items-center">
