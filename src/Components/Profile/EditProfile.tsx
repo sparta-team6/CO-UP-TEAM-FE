@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { useUpdateUser } from "../../api/UserQuery";
+import { useLogOut, useUpdateUser } from "../../api/UserQuery";
 import { SvgEdit } from "../../elements/Icon/SvgEdit";
 import { resizeFile } from "../../servers/resize";
 import { MyProfile } from "../../recoil/MyProfile";
@@ -66,6 +66,16 @@ const EditProfile = () => {
       reader.readAsDataURL(files);
     }
   };
+  const { mutateAsync: Logout } = useLogOut();
+  const onLogOut = () => {
+    Logout()
+      .then(() => {
+        alert("안녕히가세여");
+      })
+      .catch(() => {
+        alert("로그인 실패");
+      });
+  };
   return (
     <>
       <div className="font-bold text-4xl text-left w-full pl-12 pb-12">
@@ -116,6 +126,9 @@ const EditProfile = () => {
             {...register("about_me")}
           />
           <div className="text-right">
+            <button onClick={onLogOut} className="w-32 h-10 p-2 bg-3 rounded-lg mr-4" type="submit">
+              <span className="text-white text-xl">로그아웃</span>
+            </button>
             <button className="w-32 h-10 p-2 bg-3 rounded-lg" type="submit">
               <span className="text-white text-xl">저장하기</span>
             </button>
