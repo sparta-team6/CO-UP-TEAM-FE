@@ -134,7 +134,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, isFetching }: IBoardProps) => {
             </button>
             <button
               onClick={handleClose}
-              className="w-16 h-9 absolute bottom-0 right-0 rounded-md  font-semibold text-base bg-[#E7EBF2]"
+              className="w-16 h-9 absolute bottom-0 right-0 rounded-md  font-semibold text-base bg-5"
               type="submit"
             >
               <span>닫기</span>

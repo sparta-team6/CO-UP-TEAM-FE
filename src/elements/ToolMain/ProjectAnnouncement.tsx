@@ -61,16 +61,16 @@ const ProjectAnnouncement = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
-          <form className="w-full h-full relative space-y-4" onSubmit={handleSubmit(onSubmit)}>
+          <form className="w-full h-full relative" onSubmit={handleSubmit(onSubmit)}>
             <input
-              className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold font-semibold"
+              className="w-full outline-none text-2xl border-none placeholder:text-black placeholder:font-semibold font-semibold"
               {...register("title", { required: true })}
               type="text"
               placeholder="공지 제목을 적어주세요 :)"
             />
+            <div className="mt-[10px] text-[#666]">2022.xx.xx</div>
             <textarea
-              className="w-full outline-none border-none resize-none overflow-y-auto"
-              rows={14}
+              className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
               {...register("content", { required: true })}
               placeholder="내용을 입력해주세요"
             />
@@ -78,7 +78,7 @@ const ProjectAnnouncement = () => {
               <button className="text-white bg-3 w-[58px] h-[37px] rounded-md pt-1" type="submit">
                 등록
               </button>
-              <button className="bg-[#E7EBF2] w-[58px] h-[37px] rounded-md ml-2 pt-1" type="button">
+              <button className="bg-5 w-[58px] h-[37px] rounded-md ml-2 pt-1" type="button">
                 닫기
               </button>
             </div>

@@ -125,4 +125,8 @@ abbr[title]{
 .toastui-editor-defaultUI{
   border: none;
 }
+.toastui-editor-defaultUI .ProseMirror{
+  padding-left: 46px;
+  padding-top: 30px;
+}
 `;

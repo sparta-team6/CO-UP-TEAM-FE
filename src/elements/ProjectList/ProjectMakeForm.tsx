@@ -71,7 +71,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
           onChange={onChange}
           ref={fileInput}
         />
-        <div className="w-8 h-8 rounded-full flex justify-center items-center bg-gray-100 absolute top-[80px] right-[220px]">
+        <div className="w-8 h-8 rounded-full flex justify-center items-center bg-white border absolute top-[70px] right-[260px]">
           <IconButton aria-label="upload picture" component="span">
             <SvgEdit />
           </IconButton>

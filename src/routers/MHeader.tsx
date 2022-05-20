@@ -16,7 +16,7 @@ const MHeader = () => {
   return (
     <>
       {location.pathname.includes("tool") ? (
-        <nav className="hidden w-full h-12 fixed z-50 top-0 sm:flex justify-between items-center dark:bg-gray-900">
+        <nav className="hidden w-full h-16 fixed z-50 top-0 sm:flex justify-between items-center shadow-sm">
           <div className="cursor-pointer">
             <MenuIcon className="dark:text-white" onClick={onClick} sx={style} />
           </div>

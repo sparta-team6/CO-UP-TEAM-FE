@@ -91,7 +91,7 @@ const EditProfile = () => {
             src={imgBase64 ? imgBase64 : user?.profileImage}
           />
           <label
-            className="flex justify-center items-center absolute w-12 h-12 rounded-full bg-white right-24 bottom-0"
+            className="flex justify-center items-center absolute w-12 h-12 rounded-full border bg-white right-24 bottom-0"
             htmlFor="icon-button-file"
           >
             <input

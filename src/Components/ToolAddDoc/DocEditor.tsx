@@ -63,7 +63,7 @@ const DocEditor = () => {
       <form onSubmit={handleSubmit(onValid)}>
         <div className="hidden sm:flex justify-between items-center border-b-2 border-solid border-slate-400 pb-2">
           <div
-            className="border-none px-[15px] py-[8px] rounded-md bg-[#E7EBF2]"
+            className="border-none px-[15px] py-[8px] rounded-md bg-5"
             onClick={() => navigate(-1)}
           >
             <ChevronLeft />
@@ -77,7 +77,7 @@ const DocEditor = () => {
             </button>
             <button
               type="button"
-              className="border-none ml-2 px-[15px] py-[8px] rounded-md bg-[#E7EBF2]"
+              className="border-none ml-2 px-[15px] py-[8px] rounded-md bg-5"
               onClick={() => navigate(-1)}
             >
               닫기
@@ -99,7 +99,7 @@ const DocEditor = () => {
             </button>
             <button
               type="button"
-              className="border-none ml-[20px] w-[62px] h-[44px] rounded-md bg-[#E7EBF2]"
+              className="border-none ml-[16px] w-[62px] h-[44px] rounded-md bg-5"
               onClick={() => navigate(-1)}
             >
               닫기
