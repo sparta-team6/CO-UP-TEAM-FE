@@ -13,7 +13,10 @@ const Footer = () => {
   const boardMatch = useMatch("/tool/:id/board");
   const ChatMatch = useMatch("/tool/:id/chat");
   return (
-    <nav className="hidden w-full h-20 fixed bottom-0  dark:bg-black sm:flex justify-around items-center">
+    <nav
+      style={{ boxShadow: "0 0 10px 5px rgb(0, 0, 0, 0.1" }}
+      className="hidden w-full h-20 fixed bottom-0  dark:bg-black sm:flex justify-around items-center"
+    >
       <Link to={`/tool/${pjId}`}>
         <div
           className={`w-full h-full flex flex-col items-center space-y-2 font-semibold ${

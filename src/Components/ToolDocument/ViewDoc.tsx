@@ -142,13 +142,13 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
               </div>
             </>
           ) : (
-            <div className=" w-full h-full flex flex-col justify-center items-center text-center">
+            <div className=" w-full h-full flex flex-col justify-center items-center text-center px-[46px]">
               <img
                 className="w-[328px] h-[286px] sm:w-[177px] sm:h-[154px]"
                 src={imgFolder2}
                 alt=""
               />
-              <div className="font-bold text-2xl m-4">
+              <div className="font-bold text-2xl pt-[33px] pb-[20px]">
                 새로운 폴더를 만들어 문서를 추가해 보세요
               </div>
               <div>
@@ -156,7 +156,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
               </div>
               <button
                 onClick={AddFolder}
-                className="border-none m-4 px-8 py-3 rounded-md text-white bg-3 font-bold"
+                className="border-none w-[192px] h-[52px] mt-[36px] rounded-xl text-white bg-3 font-bold"
               >
                 새 폴더 만들기
               </button>

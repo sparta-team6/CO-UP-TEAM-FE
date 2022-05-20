@@ -3,8 +3,10 @@ import { useRecoilValue } from "recoil";
 import { useGetManagers } from "../../api/ChartQuery";
 import { ProjectKey } from "../../recoil/RoomID";
 import coupFamily from "../../images/coupfamily.png";
+import { useNavigate } from "react-router-dom";
 
 const MemberChart = () => {
+  const navigate = useNavigate();
   // // const { pjId } = useRecoilValue(ProjectKey);
   // const toDos = useRecoilValue(toDoState);
   // // const { data } = useGetProjectUser(String(pjId));
@@ -30,7 +32,10 @@ const MemberChart = () => {
             <span className="text-lg font-semibold my-[8px]">
               팀원들과 프로젝트 진행 상황을 공유해보세요
             </span>
-            <button className="w-[170px] h-[52px] bg-3 rounded-[4px] text-white text-xl">
+            <button
+              onClick={() => navigate(`/tool/${pjId}/board`)}
+              className="w-[170px] h-[52px] bg-3 rounded-[4px] text-white text-xl"
+            >
               보드 생성하기
             </button>
           </div>

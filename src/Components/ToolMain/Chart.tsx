@@ -27,7 +27,7 @@ const Chart = () => {
             type="donut"
             series={[chartLength[0], chartLength[1], chartLength[2]]}
             options={{
-              labels: ["대기중", "진행", "완료"],
+              labels: ["대기", "진행", "완료"],
               colors: ["#e7ebfe", "#FF7637", "#5F99FF"],
               chart: {
                 type: "donut",
