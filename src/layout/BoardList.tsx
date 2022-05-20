@@ -1,6 +1,6 @@
 /* eslint-disable no-unsafe-optional-chaining */
 import React, { useEffect, useState } from "react";
-import { DragDropContext, DropResult, resetServerContext } from "react-beautiful-dnd";
+import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useRecoilValue } from "recoil";
 import { Board, useGetBoard } from "../api/BoardQuery";
 import Bucket from "../Components/ToolBoard/Bucket";
@@ -10,11 +10,10 @@ import { ProjectKey } from "../recoil/RoomID";
 
 const BoardList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
-  const { data: board } = useGetBoard(String(pjId));
+  const { data: board, isFetching } = useGetBoard(String(pjId));
   const [open, setOpen] = useState<boolean>(false);
   const { mutateAsync } = useUpdateCards(pjId);
   useEffect(() => {
-    resetServerContext();
     let sum = 0;
     for (let i = 0; i < 3; i++) {
       sum += board?.data[i].cards.length;
@@ -70,6 +69,7 @@ const BoardList = () => {
                     key={bucketId.title}
                     toDos={bucketId.cards}
                     index={index}
+                    isFetching={isFetching}
                   />
                 );
               })}
@@ -95,4 +95,4 @@ const BoardList = () => {
   );
 };
 
-export default BoardList;
+export default React.memo(BoardList);

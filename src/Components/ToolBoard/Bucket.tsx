@@ -24,6 +24,7 @@ interface IBoardProps {
   bucketId: string;
   kbbId: string;
   index: number;
+  isFetching: boolean;
 }
 
 interface IForm {
@@ -31,7 +32,7 @@ interface IForm {
   toDoComment: string;
 }
 
-const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
+const Bucket = ({ toDos, bucketId, kbbId, index, isFetching }: IBoardProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { nickname } = useRecoilValue(MyProfile);
   const [open, setOpen] = useState(false);
@@ -141,34 +142,36 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
           </form>
         </Box>
       </Modal>
-      <Droppable droppableId={String(index)}>
-        {(magic, info) => (
-          <div
-            className={`${
-              info.isDraggingOver
-                ? "bg-blue-600"
-                : info.draggingFromThisWith
-                ? "bg-red-600"
-                : "bg-transparent"
-            } min-h-[500px] mt-3 rounded-sm w-full flex flex-col transition-colors ease-in-out delay-300`}
-            ref={magic.innerRef}
-            {...magic.droppableProps}
-          >
-            {toDos.map((toDo, index) => (
-              <DraggableCard
-                key={toDo.kbcId}
-                index={index}
-                toDoId={toDo.kbcId}
-                toDoText={toDo.contents}
-                toDoName={toDo.manager}
-                toDoTitle={toDo.title}
-                bucketId={bucketId}
-              />
-            ))}
-            {magic.placeholder}
-          </div>
-        )}
-      </Droppable>
+      {!isFetching && (
+        <Droppable droppableId={String(index)}>
+          {(magic, info) => (
+            <div
+              className={`${
+                info.isDraggingOver
+                  ? "bg-gray-200"
+                  : info.draggingFromThisWith
+                  ? "bg-gray-100"
+                  : "bg-transparent"
+              } min-h-[500px] mt-3 rounded-sm w-full flex flex-col transition-colors ease-in-out delay-300`}
+              ref={magic.innerRef}
+              {...magic.droppableProps}
+            >
+              {toDos.map((toDo, index) => (
+                <DraggableCard
+                  key={toDo.kbcId}
+                  index={index}
+                  toDoId={toDo.kbcId}
+                  toDoText={toDo.contents}
+                  toDoName={toDo.manager}
+                  toDoTitle={toDo.title}
+                  bucketId={bucketId}
+                />
+              ))}
+              {magic.placeholder}
+            </div>
+          )}
+        </Droppable>
+      )}
     </div>
   );
 };
