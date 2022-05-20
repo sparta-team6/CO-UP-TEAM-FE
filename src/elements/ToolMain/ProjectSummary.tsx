@@ -4,7 +4,7 @@ import { ProjectKey } from "../../recoil/RoomID";
 const ProjectSummary = () => {
   const Project = useRecoilValue(ProjectKey);
   return (
-    <div className="w-9/12 h-full flex items-center">
+    <div className="w-9/12 h-full flex items-center sm:flex-col sm:items-start">
       <img className="rounded-full" width="88px" height="88px" src={Project.thumbnail} alt="" />
       <div className="flex flex-col justify-center space-y-2 ml-[26px]">
         <div className="w-full flex items-center">

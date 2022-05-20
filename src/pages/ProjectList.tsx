@@ -17,7 +17,7 @@ const ProjectList = () => {
     console.log(test);
   }, [data]);
   return (
-    <div className="w-full h-[calc(100vh-3rem)] bg-[#f0f3f7] flex flex-col items-center justify-center absolute bottom-0">
+    <div className="w-full h-[calc(100vh-4rem)] bg-[#f0f3f7] flex flex-col items-center justify-center absolute bottom-0">
       <div className="w-full h-full flex flex-col items-center mt-20">
         <div className=" w-[1200px] flex justify-between items-center md:w-[90%]">
           <span className="text-4xl leading-[50px] sm:text-3xl">팀 리스트</span>

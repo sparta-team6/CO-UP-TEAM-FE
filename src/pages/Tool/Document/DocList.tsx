@@ -23,9 +23,9 @@ const DocList = () => {
   }, []);
   return (
     <>
-      <div className="w-full h-[calc(100vh-3rem)] bg-white flex absolute bottom-0">
+      <div className="w-full h-[calc(100vh-4rem)] bg-white flex absolute bottom-0">
         <div
-          className={`flex fixed top-0 left-0 mt-12 ml-0 h-full ${
+          className={`flex fixed top-0 left-0 mt-16 ml-0 h-full ${
             data?.data.length === 0 ? "sm:hidden" : "sm:w-full"
           }`}
         >

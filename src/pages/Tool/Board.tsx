@@ -17,8 +17,8 @@ const ToolBoard = () => {
   }, []);
   return (
     <>
-      <div className="w-full h-[calc(100vh-3rem)] bg-slate-100 flex absolute bottom-0">
-        <div className="flex fixed top-0 left-0 mt-12 h-full">
+      <div className="w-full h-[calc(100vh-4rem)] bg-slate-100 flex absolute bottom-0">
+        <div className="flex fixed top-0 left-0 mt-16 h-full">
           <div className="sm:hidden">
             <MyProjectList />
           </div>
@@ -30,7 +30,7 @@ const ToolBoard = () => {
             </SlidingPanel>
             <BoardList />
           </div>
-          <div className="w-[calc(100vw-29rem)] md:w-[calc(100vw-3rem)] sm:hidden">
+          <div className="w-[calc(100vw-29rem)] md:w-[calc(100vw-4rem)] sm:hidden">
             <BoardList />
           </div>
         </div>
