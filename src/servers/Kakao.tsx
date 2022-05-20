@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { Cookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-// import { useSetRecoilState } from "recoil";
-// import { MyProfile } from "../recoil/MyProfile";
+import { useSetRecoilState } from "recoil";
+import { MyProfile } from "../recoil/MyProfile";
 import { instance } from "./axios";
 
 const Kakao = () => {
-  // const user = useSetRecoilState(MyProfile);
+  const SetUser = useSetRecoilState(MyProfile);
   const navigate = useNavigate();
   const code = new URL(window.location.href).searchParams.get("code");
   const cookies = new Cookies();
@@ -28,8 +28,8 @@ const Kakao = () => {
             path: "/",
             expires: refreshTime,
           });
-          // user(res);
-          navigate("/projectList");
+          console.log(res);
+          SetUser(res);
         })
         .catch((err) => {
           console.log(err);
