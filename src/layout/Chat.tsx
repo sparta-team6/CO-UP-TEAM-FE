@@ -47,15 +47,20 @@ const Chat = () => {
 
   return (
     <div className="w-[432px] h-[calc(100%-4rem)] bg-white flex flex-col justify-end absolute top-16 right-0 border-l border-[#E7EBF2] border-solid md:hidden">
-      <div ref={messageBoxRef} className="w-full h-full space-y-2 overflow-y-auto">
+      <div
+        ref={messageBoxRef}
+        className="w-full h-full space-y-[16px] overflow-y-auto flex flex-col items-center pb-3"
+      >
         {data?.data?.map((box, index) => {
           return (
-            <div className="w-[370px] min-h-10 pl-[40px] pb-[26px] flex items-start" key={index}>
+            <div className="w-[366px] min-h-10  flex items-start" key={index}>
               <img className="w-[36px] h-[36px] rounded-full" src={box.profile} alt="" />
               <div className="flex flex-col pl-[10px]">
                 <span className="font-bold text-lg">{box.name}</span>
                 <span className="text-[#AAA] text-xs">{box.createAt}</span>
-                <span className="whitespace-pre-wrap break-all mt-2 leading-5">{box.comment}</span>
+                <span className="whitespace-pre-wrap break-all mt-2 leading-5 text-sm">
+                  {box.comment}
+                </span>
               </div>
             </div>
           );

@@ -78,9 +78,11 @@ const BoardList = () => {
         </DragDropContext>
         {open ? (
           <div className="w-full h-[calc(100%-5rem)] absolute top-20 flex flex-col justify-center items-center space-y-6">
-            <img src={BoardImg} alt="보드" />
+            <img className="sm:w-full " src={BoardImg} alt="보드" />
             <div className="w-[420px] h-[135px] space-y-4">
-              <p className="text-center font-semibold text-4xl mb-4">새로운 보드를 추가해 보세요</p>
+              <p className="text-center font-semibold text-4xl mb-4 w-full flex sm:flex-col">
+                <span>새로운 보드를</span> <span>추가해 보세요</span>
+              </p>
               <span className="text-center text-lg">
                 <p>보드를 사용하여 팀원들과 현재 대기중인, 진행중인,</p>
                 <p>완료된 보드의 작업 상태를 공유할 수 있습니다.</p>

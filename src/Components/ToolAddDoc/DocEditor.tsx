@@ -86,7 +86,7 @@ const DocEditor = () => {
         </div>
         <div className="flex items-center justify-between mx-[46px] mt-[60px] mb-[20px]">
           <input
-            className="text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-black sm:text-3xl sm:w-full sm:text-center"
+            className="text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-gray-400 sm:text-3xl sm:w-full sm:text-center"
             {...register("title")}
             placeholder="제목을 적어보세요 :)"
           />

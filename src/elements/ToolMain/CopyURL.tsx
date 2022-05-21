@@ -36,7 +36,7 @@ const CopyURL = () => {
         readOnly
       />
       <div className="flex text-[#666] cursor-pointer">
-        <button onClick={copy} className="w-[86px] h-[39px] bg-5 rounded">
+        <button onClick={copy} className="w-[86px] h-[39px] bg-[#D7DCE5] rounded">
           초대코드
         </button>
       </div>

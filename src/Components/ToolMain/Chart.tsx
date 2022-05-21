@@ -1,16 +1,21 @@
 import ReactApexChart from "react-apexcharts";
 import { useRecoilValue } from "recoil";
 import { ChartLength } from "../../recoil/AtomChart";
+import { themeState } from "../../recoil/DarkMode";
 
 const Chart = () => {
+  const Dark = useRecoilValue(themeState);
   const chartLength = useRecoilValue(ChartLength);
   const chartSum = chartLength.reduce((a, b) => a + b, 0);
   const chartSuccess = Math.round((chartLength[2] / chartSum) * 1000) / 10;
   return (
     <div className="w-full h-full flex justify-center">
-      <div className="w-full h-[280px] flex items-center relative">
-        <div className="w-full h-full flex flex-col justify-center items-center absolute bottom-4 font-semibold text-3xl">
-          <span>{chartSum !== 0 ? chartSuccess : 0}%</span>
+      <div className="w-full h-[310px] flex items-center relative dark:text-white">
+        <div className="w-full h-full flex flex-col justify-center items-center absolute bottom-2">
+          <div className="w-full flex justify-center items-center space-x-2">
+            <span className="font-semibold text-5xl">{chartSum !== 0 ? chartSuccess : 0}</span>
+            <small>%</small>
+          </div>
           <p className="text-sm">완료율</p>
         </div>
         <ReactApexChart
@@ -22,12 +27,13 @@ const Chart = () => {
             chart: {
               type: "donut",
               height: 400,
+              foreColor: Dark ? "white" : "black",
             },
             plotOptions: {
               pie: {
                 customScale: 1.08,
                 donut: {
-                  size: "75%",
+                  size: "80%",
                 },
               },
             },
@@ -36,9 +42,8 @@ const Chart = () => {
               fontWeight: 600,
             },
             stroke: {
-              show: true,
+              show: false,
               lineCap: "round",
-              width: 1,
             },
             dataLabels: {
               enabled: false,

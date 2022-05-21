@@ -9,12 +9,12 @@ import { ProjectKey } from "../../recoil/RoomID";
 const FramerHeader = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const mainMatch = useMatch("/tool/:id");
-  const docMatch = useMatch("/tool/:id/document");
+  const docMatch = useMatch("/tool/:id/document/*");
   const boardMatch = useMatch("/tool/:id/board");
   return (
     <React.Fragment>
       <nav className="sm:hidden w-full h-16 flex justify-between items-center fixed z-50 shadow-md dark:bg-gray-800">
-        <div className="w-[25rem]">
+        <div className="w-[24rem]">
           <Link to="/">
             <img className="ml-5 w-10 h-10 mt-[1px]" src={Logo} alt="Logo"></img>
           </Link>
@@ -27,7 +27,7 @@ const FramerHeader = () => {
             {mainMatch && (
               <motion.div
                 transition={{ duration: 0.15 }}
-                className="w-14 h-1 absolute top-8 -right-[14px] bg-3 rounded-t-2xl sm:hidden"
+                className="w-20 h-1 absolute top-8 -right-[26px] bg-3 rounded-t-2xl sm:hidden"
                 layoutId="circle"
               />
             )}
@@ -39,7 +39,7 @@ const FramerHeader = () => {
             {docMatch && (
               <motion.div
                 transition={{ duration: 0.15 }}
-                className="w-14 h-1 absolute top-8 -right-[14px] bg-3 rounded-t-2xl sm:hidden"
+                className="w-20 h-1 absolute top-8 -right-[26px] bg-3 rounded-t-2xl sm:hidden"
                 layoutId="circle"
               />
             )}
@@ -51,20 +51,20 @@ const FramerHeader = () => {
             {boardMatch && (
               <motion.div
                 transition={{ duration: 0.15 }}
-                className="w-14 h-1 absolute top-8 -right-[14px] bg-3 rounded-t-2xl sm:hidden"
+                className="w-20 h-1 absolute top-8 -right-[26px] bg-3 rounded-t-2xl sm:hidden"
                 layoutId="circle"
               />
             )}
           </div>
         </div>
-        <nav className="w-56 h-full flex justify-around items-center sm:hidden dark:bg-gray-800">
+        <nav className="w-32 h-full flex justify-around items-center sm:hidden dark:bg-gray-800">
           <Link to={`/tool/${pjId}/chat`} className="hidden md:block">
             <span className="dark:text-white">채팅</span>
           </Link>
           <Link to="/profile" className="sm:hidden">
-            <span className="dark:text-white">
+            <div className="w-8 h-8 flex justify-center items-center rounded-full bg-3 opacity-70">
               <SvgUser />
-            </span>
+            </div>
           </Link>
         </nav>
       </nav>

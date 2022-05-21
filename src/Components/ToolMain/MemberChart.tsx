@@ -16,15 +16,15 @@ const MemberChart = () => {
   return (
     <>
       {!result ? (
-        <div className="w-full h-full px-[32px] py-[28px]">
+        <div className="w-full h-full p-8">
           <span className="text-2xl font-semibold sm:text-lg mb-[30px]">팀 상태 개요</span>
-          <div className="flex flex-col justify-center items-center relative">
+          <div className="flex flex-col justify-center items-center relative pt-5">
             <img
               className="max-w-full w-[320px] h-[143px] sm:w-[198px] sm:h-[88px] mt-[25px]"
               src={coupFamily}
               alt=""
             />
-            <span className="text-lg font-semibold mt-[21px]">
+            <span className="text-lg mt-[21px] text-gray-400">
               팀원들과 프로젝트 진행 상황을 공유해보세요
             </span>
             <button
@@ -64,8 +64,8 @@ const MemberChart = () => {
               const warning = Math.round((data.buckets[1].cards.length / sum) * 1000) / 10;
               const success = Math.round((data.buckets[2].cards.length / sum) * 1000) / 10;
               return (
-                <div key={index} className="flex flex-col items-center mb-3">
-                  <div className="w-full flex space-x-3">
+                <div key={index} className="h-14 flex flex-col items-center mb-3">
+                  <div className="w-full flex space-x-4">
                     <img
                       width="40px"
                       height="40px"
@@ -88,8 +88,8 @@ const MemberChart = () => {
                 </div>
               );
             })}
-            <div className="flex flex-col items-center mb-3">
-              <div className="w-full flex space-x-3">
+            <div className="h-14 flex flex-col items-center mb-3">
+              <div className="w-full flex space-x-4">
                 <img width="40px" height="40px" className="rounded-full" src={profile1} alt="1" />
                 <div className="w-full flex flex-col">
                   <div className="w-full flex justify-between items-end">
@@ -104,8 +104,8 @@ const MemberChart = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-center mb-3">
-              <div className="w-full flex space-x-3">
+            <div className="h-14 flex flex-col items-center mb-3">
+              <div className="w-full flex space-x-4">
                 <img width="40px" height="40px" className="rounded-full" src={profile3} alt="1" />
                 <div className="w-full flex flex-col">
                   <div className="w-full flex justify-between items-end">

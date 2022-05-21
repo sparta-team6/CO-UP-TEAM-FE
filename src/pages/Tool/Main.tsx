@@ -16,18 +16,18 @@ const ToolMain = () => {
   return (
     <div className="w-full h-screen flex justify-between relative pt-16 md:h-full md:justify-start overflow-hidden">
       <SlidingMain />
-      <div className="w-[calc(100%-800px)] h-full bg-slate-100 flex flex-col ml-[368px] md:w-[calc(100%-21rem)] sm:w-full sm:m-0">
-        <div className="w-full h-full px-[62px] sm:px-[16px] flex flex-col">
+      <div className="w-[calc(100%-800px)] h-full bg-[#f0f3f6] flex flex-col ml-[368px] md:w-[calc(100%-21rem)] sm:w-full sm:m-0">
+        <div className="w-full h-full px-[51px] sm:px-[16px] flex flex-col">
           <ProjectMain />
-          <div className="w-full flex md:flex-col">
-            <div className="w-full max-w-[600px] h-[304px] md:max-w-full md:h-[300px]">
+          <div className="w-full lg:max-h-[332px] flex md:flex-col md:h-full">
+            <div className="w-full max-w-[612px] h-[332px] md:max-w-full md:h-[300px]">
               <ProjectAnnouncement />
             </div>
-            <div className="w-full max-w-[384px] min-w-max h-[304px] ml-[12px] md:ml-0 md:max-w-full md:h-full sm:h-full">
+            <div className="w-full max-w-[396px] min-w-max h-full ml-[12px] md:ml-0 md:max-w-full md:h-full sm:h-full">
               <CalendarEL />
             </div>
           </div>
-          <div className="w-full max-w-[996px] h-[386px] mt-[16px]">
+          <div className="w-full max-w-[1018px] h-[381px] mt-[10px]">
             <div className="w-full bg-white border border-solid rounded-2xl h-full">
               <MemberChart />
             </div>
