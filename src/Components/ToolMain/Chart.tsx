@@ -15,10 +15,10 @@ const Chart = () => {
         </div>
         <ReactApexChart
           type="donut"
-          series={[chartLength[0], chartLength[1], chartLength[2]]}
+          series={chartSum === 0 ? [1] : [chartLength[0], chartLength[1], chartLength[2]]}
           options={{
-            labels: ["대기", "진행", "완료"],
-            colors: ["#e7ebfe", "#FF7637", "#5F99FF"],
+            labels: chartSum === 0 ? ["보드를 추가해주세요"] : ["대기", "진행", "완료"],
+            colors: chartSum === 0 ? ["#e7ebfe"] : ["#e7ebfe", "#FF7637", "#5F99FF"],
             chart: {
               type: "donut",
               height: 400,
