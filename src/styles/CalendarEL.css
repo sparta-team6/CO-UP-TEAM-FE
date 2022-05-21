@@ -84,11 +84,14 @@ abbr[title] {
     max-height: 300px;
     padding: 0;
   }
+  .react-calendar__month-view__days {
+    width: 300px;
+  }
   .react-calendar__navigation {
     margin-bottom: 10px;
   }
   .react-calendar__month-view__days__day {
-    padding: 13px 0;
+    padding: 14px 0;
   }
   .react-calendar__month-view__weekdays__weekday {
     padding: 5px 3px;
@@ -100,6 +103,9 @@ abbr[title] {
     max-width: 250px;
     max-height: 250px;
     border-radius: 0.8em;
+  }
+  .react-calendar__month-view__days {
+    width: 250px;
   }
   .react-calendar__navigation {
     margin-bottom: 5px;
