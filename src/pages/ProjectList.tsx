@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { useMyInfo } from "../api/UserQuery";
 import ProjectData from "../Components/ProjectList/ProjectData";
 import ProjectMake from "../Components/ProjectList/ProjectMake";
@@ -10,11 +10,9 @@ const ProjectList = () => {
   const SetUser = useSetRecoilState(MyProfile);
   const { data } = useMyInfo();
   const user = data?.data;
-  console.log(data?.data);
-  const test = useRecoilValue(MyProfile);
+  // const test = useRecoilValue(MyProfile);
   useEffect(() => {
     SetUser(user);
-    console.log(test);
   }, [data]);
   return (
     <div className="w-full h-[calc(100vh-4rem)] bg-[#f0f3f7] flex flex-col items-center justify-center absolute bottom-0">

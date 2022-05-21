@@ -9,15 +9,15 @@ import { useGetBoard } from "../../api/BoardQuery";
 import { useEffect } from "react";
 import { ProjectKey } from "../../recoil/RoomID";
 import { ChartLength } from "../../recoil/AtomChart";
-import { useGetProjectUser } from "../../api/UserQuery";
+// import { useGetProjectUser } from "../../api/UserQuery";
 
 const SlidingMain = () => {
   const [open, setOpen] = useRecoilState(HandleOpen);
   const setChart = useSetRecoilState(ChartLength);
   const { pjId } = useRecoilValue(ProjectKey);
   const { data: board } = useGetBoard(String(pjId));
-  const { data } = useGetProjectUser(pjId);
-  console.log(data);
+  // const { data } = useGetProjectUser(pjId);
+  // console.log(data);
   useEffect(() => {
     if (board) {
       const a = board?.data.map((a) => a.cards.length);

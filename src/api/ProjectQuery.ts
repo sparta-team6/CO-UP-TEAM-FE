@@ -32,9 +32,7 @@ export const useGetRoomDetail = (postId: string) => {
 
 export const usePostRoom = () => {
   return useMutation(async (post: Room) => {
-    await instance.post("api/projects/", post).then((res) => {
-      console.log(res);
-    });
+    await instance.post("api/projects/", post)
   });
 };
 

@@ -28,7 +28,7 @@ const Kakao = () => {
           navigate("/projectList");
         })
         .catch((err) => {
-          console.log(err);
+          alert(err);
         });
     };
     if (code) {
