@@ -21,7 +21,7 @@ export interface IChart {
 }
 
 export const useGetManagers = (pjId: string) => {
-  return useQuery<IChart, AxiosError>("getManager", () => {
+  return useQuery<IChart, AxiosError>(["getManager", pjId], () => {
     return instance.get(`api/buckets/cards/managers/?pjId=${pjId}`);
   });
 };

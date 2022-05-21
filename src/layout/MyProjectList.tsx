@@ -10,6 +10,7 @@ import { Moon } from "../elements/Icon/Moon";
 import { Sun } from "../elements/Icon/Sun";
 import { ProjectKey } from "../recoil/RoomID";
 import { themeState } from "../recoil/DarkMode";
+import { removeTokenFromCookie } from "../servers/Cookie";
 
 const MyProjectList = () => {
   const setOpen = useSetRecoilState(HandleOpen);
@@ -34,6 +35,8 @@ const MyProjectList = () => {
     mutateAsync()
       .then(() => {
         alert("안녕히가세여");
+        navigate("/");
+        removeTokenFromCookie();
       })
       .catch(() => {
         alert("로그인 실패");

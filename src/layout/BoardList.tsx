@@ -69,6 +69,7 @@ const BoardList = () => {
                     key={bucketId.title}
                     toDos={bucketId.cards}
                     index={index}
+                    boardOpen={open}
                   />
                 );
               })}

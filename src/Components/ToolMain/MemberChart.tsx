@@ -4,6 +4,9 @@ import { ProjectKey } from "../../recoil/RoomID";
 import coupFamily from "../../images/coupfamily.png";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import profile1 from "../../images/Profile/COUP_square_대지 1.png";
+import profile2 from "../../images/Profile/COUP_square-02.png";
+import profile3 from "../../images/Profile/COUP_square-03.png";
 
 const MemberChart = () => {
   const navigate = useNavigate();
@@ -62,20 +65,61 @@ const MemberChart = () => {
               const success = Math.round((data.buckets[2].cards.length / sum) * 1000) / 10;
               return (
                 <div key={index} className="flex flex-col items-center mb-3">
-                  <div className="w-[900px] flex flex-col">
-                    <div className="w-full flex justify-between">
-                      <span className="text-xl font-semibold">{`JIHO`}</span>
-                      <div>{`${dange}/${warning}/${success}`}</div>
-                    </div>
-                    <div className="w-full h-10 flex">
-                      <Dange className="rounded-xl" dange={dange} />
-                      <Warning className="rounded-xl" warning={warning} />
-                      <Success className="rounded-xl" success={success} />
+                  <div className="w-full flex space-x-3">
+                    <img
+                      width="40px"
+                      height="40px"
+                      className="rounded-full"
+                      src={profile2}
+                      alt="1"
+                    />
+                    <div className="w-full flex flex-col">
+                      <div className="w-full flex justify-between items-end">
+                        <span className="text-xl font-semibold">{`JIHO`}</span>
+                        <div>{`${dange}/${warning}/${success}`}</div>
+                      </div>
+                      <div className="w-full h-10 flex space-x-1">
+                        <Dange className="rounded-xl" dange={dange} />
+                        <Warning className="rounded-xl" warning={warning} />
+                        <Success className="rounded-xl" success={success} />
+                      </div>
                     </div>
                   </div>
                 </div>
               );
             })}
+            <div className="flex flex-col items-center mb-3">
+              <div className="w-full flex space-x-3">
+                <img width="40px" height="40px" className="rounded-full" src={profile1} alt="1" />
+                <div className="w-full flex flex-col">
+                  <div className="w-full flex justify-between items-end">
+                    <span className="text-xl font-semibold">{`Dog`}</span>
+                    <div>{`${30}/${40}/${30}`}</div>
+                  </div>
+                  <div className="w-full h-10 flex space-x-1">
+                    <Dange className="rounded-xl" dange={20} />
+                    <Warning className="rounded-xl" warning={30} />
+                    <Success className="rounded-xl" success={50} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-center mb-3">
+              <div className="w-full flex space-x-3">
+                <img width="40px" height="40px" className="rounded-full" src={profile3} alt="1" />
+                <div className="w-full flex flex-col">
+                  <div className="w-full flex justify-between items-end">
+                    <span className="text-xl font-semibold">{`Cat`}</span>
+                    <div>{`${30}/${40}/${30}`}</div>
+                  </div>
+                  <div className="w-full h-10 flex space-x-1">
+                    <Dange className="rounded-xl" dange={30} />
+                    <Warning className="rounded-xl" warning={20} />
+                    <Success className="rounded-xl" success={50} />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
