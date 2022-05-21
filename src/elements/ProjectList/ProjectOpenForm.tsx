@@ -12,10 +12,9 @@ const ProjectOpenForm = () => {
   const { mutateAsync } = usePostOpenRoom();
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<IForm> = (data) => {
-    console.log(data.inviteCode);
+    // console.log(data.inviteCode);
     mutateAsync(String(data.inviteCode))
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         navigate(`/tool/${data.inviteCode}`);
       })
       .catch((err) => {

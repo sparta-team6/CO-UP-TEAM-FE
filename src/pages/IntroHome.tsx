@@ -8,7 +8,6 @@ const IntroHome = () => {
   useEffect(() => {
     const accessToken = getAccessTokenFromCookie();
     const refreshToken = getFreshTokenFromCookie();
-    console.log(accessToken, refreshToken);
     if ((accessToken !== undefined && refreshToken !== undefined) === true) {
       navigate("/projectList");
     } else {

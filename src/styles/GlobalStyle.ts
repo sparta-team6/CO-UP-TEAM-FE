@@ -59,6 +59,12 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+/* section {
+  background-color: ${(prop) => prop.theme.bgColor};
+} */
+/* span {
+  color: ${(prop) => prop.theme.textColor};
+} */
 body {
 	line-height: 1;
 }
