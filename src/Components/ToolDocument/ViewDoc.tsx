@@ -148,17 +148,18 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                 src={imgFolder2}
                 alt=""
               />
-              <div className="font-bold text-2xl pt-[33px] pb-[20px]">
-                새로운 폴더를 만들어 문서를 추가해 보세요
+              <div className="font-bold text-3xl pt-[33px] pb-[20px]">
+                <span>새로운 문서를 추가해 보세요</span>
               </div>
-              <div>
-                미팅 노트, 제품 요구사항, 결정 사항 또는 기타 콘텐츠를 만들어 팀원들과 공유해보세요
+              <div className="w-full flex flex-col space-y-1 text-gray-500">
+                <span>미팅 노트, 제품 요구사항, 결정 사항 또는 기타 콘텐츠를 만들어</span>
+                <span>팀원들과 공유해보세요</span>
               </div>
               <button
                 onClick={AddFolder}
-                className="border-none w-[192px] h-[52px] mt-[36px] rounded-xl text-white bg-3 font-bold"
+                className="border-none w-[192px] h-[52px] mt-[36px] rounded-lg text-white bg-3 font-bold"
               >
-                새 폴더 만들기
+                첫 페이지 만들기
               </button>
             </div>
           )}

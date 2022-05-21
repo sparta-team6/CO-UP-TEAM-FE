@@ -20,9 +20,9 @@ const MHeader = () => {
             <MenuIcon className="dark:text-white" onClick={onClick} sx={style} />
           </div>
           <Link to="/profile">
-            <span className="dark:text-white">
+            <div className="w-8 h-8 flex justify-center items-center rounded-full bg-3 opacity-70">
               <SvgUser />
-            </span>
+            </div>
           </Link>
         </nav>
       ) : (

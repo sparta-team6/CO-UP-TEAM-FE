@@ -11,28 +11,28 @@ const Member = () => {
   const user = useRecoilValue(MyProfile);
   return (
     <div className="w-full h-full">
-      <div className="flex items-center mt-3">
+      <div className="flex items-center mt-7">
         <SvgUser />
-        <h3 className="text-lg font-bold mt-1 ml-1">팀원</h3>
+        <h3 className="text-lg font-bold mt-1 ml-1 dark:text-white">팀원</h3>
       </div>
       <div className="group w-full mt-[20px] relative flex items-center space-x-2">
         <img className="absolute -top-1 left-6" src={imgCrown} alt="" />
         <img className="rounded-full m-0" width={36} height={36} src={user?.profileImage} alt="" />
-        <span className="font-semibold">{user?.nickname}</span>
-        <div className="hidden w-[386px] h-[134px] bg-gray-200  group-hover:flex sm:group-focus:block absolute right-[-330px] top-0 rounded-lg shadow-lg">
-          <div className="w-full h-full p-3 flex flex-col">
-            <div className="w-full flex flex-col space-x-5">
-              <div className="flex items-center">
+        <span className="font-semibold dark:text-white">{user?.nickname}</span>
+        <div className="hidden w-[344px] min-h-[134px] bg-5  group-hover:flex sm:group-focus:block absolute right-[-330px] top-0 rounded-lg shadow-md">
+          <div className="w-full h-full px-3 py-6 flex flex-col">
+            <div className="w-full h-full flex flex-col space-x-5">
+              <div className="h-full flex items-center span">
                 <img
                   className="rounded-full"
-                  width={48}
-                  height={48}
+                  width={36}
+                  height={36}
                   src={user?.profileImage}
                   alt=""
                 />
-                <div className="ml-3 font-semibold">{user?.nickname}</div>
+                <div className="ml-[12px] font-semibold ">{user?.nickname}</div>
               </div>
-              <div className="flex flex-col pl-10 pt-1">
+              <div className="flex flex-col w-full h-full pl-[28px] pr-2 space-y-1 mt-3">
                 <div>{user?.aboutMe}</div>
                 <div className="text-xs">{user?.url}</div>
               </div>
