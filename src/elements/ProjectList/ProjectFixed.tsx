@@ -76,7 +76,6 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
           style: {
             width: "120px",
             height: "65px",
-            marginLeft: "-90px",
             textAlign: "center",
             backgroundColor: "#E7EBF2",
             display: "flex",

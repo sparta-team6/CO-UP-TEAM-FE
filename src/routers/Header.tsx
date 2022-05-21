@@ -16,7 +16,7 @@ const Header = () => {
           <Link to="/">
             <img className="ml-5 w-10 h-10 mt-[1px]" src={Logo} alt="Logo"></img>
           </Link>
-          <div className="w-72 flex justify-around">
+          <div className="w-14 flex justify-around">
             <Link to="/profile">
               <SvgUser />
             </Link>
