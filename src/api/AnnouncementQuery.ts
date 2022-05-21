@@ -3,7 +3,7 @@ import { useMutation, useQuery } from "react-query";
 import { instance } from "../servers/axios";
 
 export interface Announcement {
-  pjId ?: string;
+  pjId?: string;
   title: string;
   contents: string;
   noticeId?: string;
