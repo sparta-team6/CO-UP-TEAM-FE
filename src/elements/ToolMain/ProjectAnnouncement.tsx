@@ -78,14 +78,18 @@ const ProjectAnnouncement = () => {
               <button className="text-white bg-3 w-[58px] h-[37px] rounded-md pt-1" type="submit">
                 등록
               </button>
-              <button className="bg-5 w-[58px] h-[37px] rounded-md ml-2 pt-1" type="button">
+              <button
+                onClick={handleClose}
+                className="bg-5 w-[58px] h-[37px] rounded-md ml-2 pt-1"
+                type="button"
+              >
                 닫기
               </button>
             </div>
           </form>
         </Box>
       </Modal>
-      <div className="w-full h-full space-y-3 overflow-y-auto flex flex-col items-center">
+      <div className="w-full h-full space-y-2 overflow-y-auto flex flex-col items-center">
         {Ann?.data?.map((data, index) => {
           return (
             <div
