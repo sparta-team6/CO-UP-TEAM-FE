@@ -3,7 +3,7 @@ import { useMutation, useQuery } from "react-query";
 import { instance } from "../servers/axios";
 
 export interface Announcement {
-  pjId ?: string;
+  pjId?: string;
   title: string;
   contents: string;
   noticeId?: string;
@@ -18,7 +18,7 @@ export interface IAnnouncement {
 }
 
 export const useGetAnnouncement = (pjId: string) => {
-  return useQuery<IAnnouncement, AxiosError>("getAnnouncement", () => {
+  return useQuery<IAnnouncement, AxiosError>(["getAnnouncement", pjId], () => {
     return instance.get(`api/notices/all?pjId=${pjId}`);
   });
 };

@@ -85,7 +85,7 @@ const ProjectAnnouncement = () => {
           </form>
         </Box>
       </Modal>
-      <div className="w-full h-full space-y-3 overflow-y-auto flex flex-col items-center">
+      <div className="w-full h-full space-y-2 overflow-y-auto flex flex-col items-center">
         {Ann?.data?.map((data, index) => {
           return (
             <div
