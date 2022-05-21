@@ -59,7 +59,7 @@ const MobileChatCom = () => {
 
   return (
     <div className="w-full h-[calc(100%-20rem)] flex flex-col justify-end absolute bottom-48 right-0">
-      <div className="flex fixed top-0 left-0 mt-16 h-full z-40">
+      <div className="flex fixed top-0 left-0 mt-16 h-full z-[45]">
         <div className="hidden sm:block sm:w-screen">
           <SlidingPanel type={"left"} isOpen={open} size={100}>
             <div onClick={onClick} className="flex">
@@ -68,7 +68,11 @@ const MobileChatCom = () => {
           </SlidingPanel>
         </div>
       </div>
-      <div className="w-full h-full  flex flex-col justify-end absolute top-0 right-0 z-50">
+      <div
+        className={`w-full h-full  flex flex-col justify-end absolute top-0 right-0 ${
+          open ? "z-40" : "z-[49]"
+        }`}
+      >
         <div
           ref={messageBoxRef}
           className="w-full min-h-[715px] bg-gray-200 space-y-2 overflow-auto"
@@ -85,7 +89,7 @@ const MobileChatCom = () => {
           })}
         </div>
       </div>
-      <div className={`w-full h-28 fixed bottom-20 bg-gray-300 ${open ? "z-30" : "z-40"}`}>
+      <div className={`w-full h-28 fixed bottom-20 bg-gray-300 ${open ? "z-30" : "z-[46]"}`}>
         <form className="w-full h-full outline-none " onSubmit={handleSubmit(handleonEnter)}>
           <textarea
             className="w-full h-full outline-none resize-none"

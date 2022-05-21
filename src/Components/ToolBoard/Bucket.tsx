@@ -152,7 +152,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen }: IBoardProps) => {
                 : "bg-[#E7EBF2]"
             } ${
               boardOpen ? "bg-transparent" : "bg-[#E7EBF2]"
-            } lg:overflow-y-scroll lg:overflow-x-hidden lg:h-[750px] sm:min-h-[600px] p-2 mt-3 rounded-lg w-full flex flex-col transition-colors ease-in-out delay-300`}
+            } lg:overflow-y-scroll lg:overflow-x-hidden lg:h-[750px] sm:min-h-[620px] p-2 mt-3 rounded-lg w-full flex flex-col transition-colors ease-in-out delay-300`}
             ref={magic.innerRef}
             {...magic.droppableProps}
           >

@@ -46,7 +46,7 @@ const MyProjectList = () => {
     DarkMode((prev: boolean) => !prev);
   };
   return (
-    <div className="z-50 w-20 h-[calc(100%-4rem)] bg-gray-200 dark:bg-gray-700 flex flex-col justify-between items-center sm:h-[calc(100vh-80px)] sm:pt-16">
+    <div className="z-50 w-[74px] h-[calc(100%-4rem)] bg-gray-200 dark:bg-gray-700 flex flex-col justify-between items-center sm:h-[calc(100vh-80px)] sm:pt-16">
       <div className="mt-1">
         {data?.data.map((room, index) => (
           <motion.div whileHover={{ scale: 1.1 }} onClick={() => onClick(room.pjId)} key={index}>
