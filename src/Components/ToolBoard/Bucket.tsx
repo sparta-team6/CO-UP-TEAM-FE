@@ -24,6 +24,7 @@ interface IBoardProps {
   bucketId: string;
   kbbId: string;
   index: number;
+  boardOpen: boolean;
 }
 
 interface IForm {
@@ -31,7 +32,7 @@ interface IForm {
   toDoComment: string;
 }
 
-const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
+const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen }: IBoardProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { nickname } = useRecoilValue(MyProfile);
   const [open, setOpen] = useState(false);
@@ -149,6 +150,8 @@ const Bucket = ({ toDos, bucketId, kbbId, index }: IBoardProps) => {
                 : info.draggingFromThisWith
                 ? "bg-gray-100"
                 : "bg-[#E7EBF2]"
+            } ${
+              boardOpen ? "bg-transparent" : "bg-[#E7EBF2]"
             } lg:overflow-y-scroll lg:overflow-x-hidden lg:h-[750px] sm:min-h-[600px] p-2 mt-3 rounded-lg w-full flex flex-col transition-colors ease-in-out delay-300`}
             ref={magic.innerRef}
             {...magic.droppableProps}

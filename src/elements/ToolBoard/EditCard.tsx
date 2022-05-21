@@ -46,7 +46,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
     const post = {
       kbcId: String(Card?.data.kbcId),
       kbbId: String(Card?.data.kbbId),
-      manager: name,
+      manager: nickname,
       title: data.title,
       contents: data.text,
     };

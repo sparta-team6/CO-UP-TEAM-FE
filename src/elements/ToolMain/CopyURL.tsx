@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/RoomID";
+import Swal from "sweetalert2";
 
 const CopyURL = () => {
   const { inviteCode } = useRecoilValue(ProjectKey);
@@ -10,6 +11,21 @@ const CopyURL = () => {
     if (el === null) return;
     el.select();
     document.execCommand("copy");
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: "초대코드 복사 완료😊",
+    });
   };
   return (
     <div className="w-1/5 h-20 flex items-end justify-end">
