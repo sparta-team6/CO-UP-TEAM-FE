@@ -24,6 +24,11 @@ const ProjectMakeForm = ({ open }: IProp) => {
   const { register, handleSubmit } = useForm<IForm>();
   const onSubmit: SubmitHandler<IForm> = async (data) => {
     if (fileInput.current?.files === null) return;
+    if (data.summary === "" || data.title === "") {
+      /*sweetDuck */
+      alert("이름과 소개를 모두 입력해주세요");
+      return;
+    }
     const size = fileInput?.current?.files[0];
     if (size === undefined) {
       mutateAsync({
@@ -77,12 +82,12 @@ const ProjectMakeForm = ({ open }: IProp) => {
           </IconButton>
         </div>
       </label>
-
       <div className="w-[418px] sm:w-[280px]">
         <form className="w-full h-full flex flex-col space-y-4 " onSubmit={handleSubmit(onSubmit)}>
           <div className="flex items-center">
             <span className="w-14 mr-4 sm:hidden">팀 이름</span>
             <input
+              autoFocus
               className="w-[352px] h-10 p-2 rounded-md border-none border border-[#D1D1D1]"
               placeholder="팀 이름"
               {...register("title")}

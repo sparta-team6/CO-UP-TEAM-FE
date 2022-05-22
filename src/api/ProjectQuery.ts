@@ -47,7 +47,7 @@ export const useDelRoom = (postId: string) => {
     await instance
       .delete(`api/projects/${postId}`)
       .then()
-      .catch((err) => console.log(err));
+      .catch((err) => alert(err));
   });
 };
 

@@ -87,6 +87,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
         <Box sx={style} className="w-[704px] h-[384px] rounded-xl sm:w-full">
           <form className="w-full h-full relative space-y-4" onSubmit={handleSubmit(onValid)}>
             <input
+              autoFocus
               className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold font-semibold"
               {...register("toDo")}
               type="text"

@@ -1,5 +1,6 @@
 import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
+import Swal from "sweetalert2";
 import { instance } from "../servers/axios";
 
 export interface User {
@@ -23,7 +24,23 @@ export const useGetProjectUser = (pjId: string) => {
 
 export const useUpdateUser = () => {
   return useMutation(async (post: User) => {
-    await instance.put("api/users/update", post);
+    await instance.put("api/users/update", post).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "프로필 수정 완료😊",
+      });
+    });
   });
 };
 
