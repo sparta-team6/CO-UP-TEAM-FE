@@ -63,6 +63,7 @@ const ProjectAnnouncement = () => {
         <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
           <form className="w-full h-full relative" onSubmit={handleSubmit(onSubmit)}>
             <input
+              autoFocus
               className="w-full outline-none text-2xl border-none placeholder:text-black placeholder:font-semibold font-semibold"
               {...register("title", { required: true })}
               type="text"

@@ -78,6 +78,7 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
             />
             <div className="mt-[10px] text-[#666]">2022.xx.xx</div>
             <textarea
+              autoFocus
               className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
               {...register("content", { required: true })}
               placeholder="내용을 입력해주세요"

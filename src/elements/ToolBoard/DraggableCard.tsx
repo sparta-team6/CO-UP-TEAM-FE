@@ -98,7 +98,7 @@ const DraggableCard = ({
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style} className="w-[704px] h-[384px] rounded-xl sm:w-full relative">
+            <Box sx={style} className="w-[704px] h-[384px] rounded-xl sm:w-full sm:min-w-[320px] sm:h-[448px] relative">
               <div className="w-full h-full">
                 <h1 className="text-3xl font-semibold mb-2">{toDoTitle}</h1>
                 <div className="w-full flex items-center space-x-3">

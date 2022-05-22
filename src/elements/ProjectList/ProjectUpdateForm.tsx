@@ -88,7 +88,6 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
         <form className="w-full h-full flex flex-col space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex items-center">
             <span className="w-14 mr-4 sm:hidden">팀 이름</span>
-
             <input
               className="w-[352px] h-10 p-2 rounded-md border-none border border-[#D1D1D1]"
               defaultValue={roomTitle}
@@ -98,6 +97,7 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
           <div className="flex">
             <span className="w-14 mr-4 mt-2 sm:hidden">소개</span>
             <textarea
+              autoFocus
               rows={5}
               className="w-[352px] h-[95px] outline-none resize-none p-2 rounded-md border-none border border-[#D1D1D1]"
               defaultValue={roomSummary}

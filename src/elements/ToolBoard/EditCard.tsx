@@ -66,7 +66,10 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="w-[704px] h-[384px] rounded-xl sm:w-full relative">
+        <Box
+          sx={style}
+          className="w-[704px] h-[384px] rounded-xl sm:w-full sm:min-w-[320px] sm:h-[448px] relative"
+        >
           <div className="w-full h-full">
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
