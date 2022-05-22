@@ -73,31 +73,30 @@ const MobileChatCom = () => {
           open ? "z-40" : "z-[49]"
         }`}
       >
-        <div
-          ref={messageBoxRef}
-          className="w-full min-h-[715px] bg-gray-200 space-y-2 overflow-auto"
-        >
+        <div ref={messageBoxRef} className="w-full min-h-[715px] space-y-2 overflow-auto">
           {data?.data?.map((box, index) => {
             return (
-              <div className="w-full min-h-10 p-1 flex items-center" key={index}>
-                <img className="w-[30px] h-[30px] rounded-full" src={box.profile} alt="" />
-                <span className="font-bold text-lg">{box.name}</span>
-                <span className="text-[#AAA] text-xs">{box.createAt}</span>
-                <span className="whitespace-pre-wrap break-all">{box.comment}</span>
+              <div className="w-full min-h-[80px] pl-[26px] flex items-start" key={index}>
+                <img className="w-9 h-9 rounded-full" src={box.profile} alt="" />
+                <div className="flex flex-col pl-[10px]">
+                  <span className="font-bold text-lg">{box.name}</span>
+                  <span className="text-[#AAA] text-xs">{box.createAt}</span>
+                  <span className="whitespace-pre-wrap break-all mt-2">{box.comment}</span>
+                </div>
               </div>
             );
           })}
         </div>
       </div>
-      <div className={`w-full h-28 fixed bottom-20 bg-gray-300 ${open ? "z-30" : "z-[46]"}`}>
+      <div className={`w-full h-28 fixed bottom-14 ${open ? "z-30" : "z-[46]"}`}>
         <form className="w-full h-full outline-none " onSubmit={handleSubmit(handleonEnter)}>
           <textarea
-            className="w-full h-full outline-none resize-none"
+            className="w-full h-[86px] sm:h-[86px] pl-8 pt-4 bg-[#F5F5F5] outline-none resize-none"
             onKeyDown={onKeyDown}
-            {...register("text")}
+            {...(register("text"), { placeholder: "메세지를 입력하세요." })}
           />
           <button
-            className="w-12 h-7 absolute bottom-4 right-2 text-white bg-3 rounded-[4px] leading-7"
+            className="w-12 h-8 absolute bottom-4 right-2 sm:bottom-16 sm:right-6 text-white bg-3 rounded-[4px] leading-8"
             type="submit"
           >
             전송

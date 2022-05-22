@@ -32,17 +32,17 @@ export default function LoginModal() {
     <div>
       <motion.div
         whileHover={{ scale: 1.05 }}
-        className="hidden w-44 rounded-md p-3 font-extrabold sm:block bg-3 text-white"
+        className="hidden w-44 rounded-md p-3 font-extrabold justify-center items-center sm:flex bg-3 text-white"
         onClick={onClick}
       >
-        CO-UP 시작하기
+        <span>CO-UP 시작하기</span>
       </motion.div>
       <motion.button
         whileHover={{ scale: 1.05 }}
-        className="w-[280px] h-[80px] rounded-xl text-[32px] mt-[70px] font-extrabold sm:hidden bg-3 text-white"
+        className="w-[280px] h-[80px] rounded-xl text-[32px] flex justify-center items-center mt-[70px] font-extrabold sm:hidden bg-3 text-white"
         onClick={handleOpen}
       >
-        CO-UP 시작하기
+        <span>CO-UP 시작하기</span>
       </motion.button>
       <Modal
         open={open}

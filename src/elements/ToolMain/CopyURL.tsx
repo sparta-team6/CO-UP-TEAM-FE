@@ -28,7 +28,7 @@ const CopyURL = () => {
     });
   };
   return (
-    <div className="w-1/5 h-20 flex items-end justify-end">
+    <div className="w-1/5 h-20 flex items-center justify-end">
       <input
         className="w-[100px] opacity-0 pointer-events-none"
         value={inviteCode || ""}
