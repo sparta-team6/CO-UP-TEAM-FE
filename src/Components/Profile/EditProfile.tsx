@@ -81,20 +81,18 @@ const EditProfile = () => {
   };
   return (
     <>
-      <div className="font-bold text-4xl text-left w-full pl-12 pb-12">
+      <div className="font-bold text-4xl sm:text-2xl text-left w-full pl-12 pb-12 sm:pl-6">
         <div>내 프로필 설정</div>
       </div>
       <div className="flex flex-col">
         <div className="flex justify-center relative">
           <img
-            className="rounded-full"
-            width="244px"
-            height="244px"
+            className="rounded-full w-[244px] h-[244px] sm:w-[148px] sm:h-[148px]"
             alt=""
             src={imgBase64 ? imgBase64 : user?.profileImage}
           />
           <label
-            className="flex justify-center items-center absolute w-12 h-12 rounded-full border bg-white right-24 bottom-0"
+            className="flex justify-center items-center absolute w-12 h-12 sm:w-9 sm:h-9 rounded-full border bg-white right-24 bottom-0 sm:right-16"
             htmlFor="icon-button-file"
           >
             <input
@@ -109,31 +107,34 @@ const EditProfile = () => {
             </IconButton>
           </label>
         </div>
-        <form className="flex flex-col space-y-6 mt-14 w-[440px]" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="flex flex-col space-y-6 mt-14 sm:mt-6 w-[440px] sm:w-[288px]"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <input
-            className="text-center text-2xl h-14 rounded-md border-none"
+            className="text-center text-2xl h-14 rounded-md border-none sm:h-[36px] sm:text-base "
             placeholder="닉네임"
             defaultValue={user?.nickname}
             {...register("nickName")}
           />
           <input
-            className="text-center text-2xl h-14 rounded-md border-none"
+            className="text-center text-2xl h-14 rounded-md border-none sm:h-[36px] sm:text-base "
             placeholder="URL"
             defaultValue={user?.url}
             {...register("url")}
           />
           <textarea
-            className="text-center text-2xl h-[150px] rounded-md border-none resize-none"
+            className="text-center text-2xl h-[150px] sm:h-[74px] sm:text-base rounded-md border-none resize-none"
             placeholder="자기소개"
             defaultValue={user?.aboutMe}
             {...register("about_me")}
           />
           <div className="text-right">
-            <button onClick={onLogOut} className="w-32 h-10 p-2 bg-3 rounded-lg mr-4" type="submit">
-              <span className="text-white text-xl">로그아웃</span>
+            <button onClick={onLogOut} className="w-32 h-11 p-2 bg-5 rounded-lg mr-4 sm:mr-2" type="submit">
+              <span className="text-white text-lg">로그아웃</span>
             </button>
-            <button className="w-32 h-10 p-2 bg-3 rounded-lg" type="submit">
-              <span className="text-white text-xl">저장하기</span>
+            <button className="w-32 h-11 p-2 bg-3 rounded-lg" type="submit">
+              <span className="text-white text-lg">저장하기</span>
             </button>
           </div>
         </form>

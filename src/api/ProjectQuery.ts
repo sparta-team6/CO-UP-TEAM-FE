@@ -32,7 +32,7 @@ export const useGetRoomDetail = (postId: string) => {
 
 export const usePostRoom = () => {
   return useMutation(async (post: Room) => {
-    await instance.post("api/projects/", post)
+    await instance.post("api/projects/", post);
   });
 };
 
@@ -44,7 +44,10 @@ export const usePostOpenRoom = () => {
 
 export const useDelRoom = (postId: string) => {
   return useMutation(async () => {
-    await instance.delete(`api/projects/${postId}`);
+    await instance
+      .delete(`api/projects/${postId}`)
+      .then()
+      .catch((err) => console.log(err));
   });
 };
 

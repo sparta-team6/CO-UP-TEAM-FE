@@ -10,8 +10,6 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 704,
-  height: 384,
   bgcolor: "background.paper",
   boxShadow: 12,
   p: 4,
@@ -33,7 +31,7 @@ export default function ProjectMake() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="rounded-xl">
+        <Box sx={style} className="rounded-xl w-[704px] h-[384px] sm:w-[320px] sm:h-[420px]">
           <ProjectMakeForm open={setOpen} />
         </Box>
       </Modal>

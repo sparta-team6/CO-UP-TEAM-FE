@@ -78,16 +78,16 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
           onChange={onChange}
           ref={fileInput}
         />
-        <div className="w-8 h-8 rounded-full flex justify-center items-center bg-white border absolute top-[65px] right-[260px]">
+        <div className="w-8 h-8 rounded-full flex justify-center items-center bg-white border absolute top-[70px] right-[260px] sm:top-[80px] sm:right-[70px] ">
           <IconButton aria-label="upload picture" component="span">
             <SvgEdit />
           </IconButton>
         </div>
       </label>
-      <div className="w-[418px]">
+      <div className="w-[418px] sm:w-[280px]">
         <form className="w-full h-full flex flex-col space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex items-center">
-            <span className="w-14 mr-4">팀 이름</span>
+            <span className="w-14 mr-4 sm:hidden">팀 이름</span>
 
             <input
               className="w-[352px] h-10 p-2 rounded-md border-none border border-[#D1D1D1]"
@@ -96,7 +96,7 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
             />
           </div>
           <div className="flex">
-            <span className="w-14 mr-4 mt-2">소개</span>
+            <span className="w-14 mr-4 mt-2 sm:hidden">소개</span>
             <textarea
               rows={5}
               className="w-[352px] h-[95px] outline-none resize-none p-2 rounded-md border-none border border-[#D1D1D1]"

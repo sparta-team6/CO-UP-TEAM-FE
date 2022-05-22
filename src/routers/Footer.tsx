@@ -6,6 +6,7 @@ import { MDoc } from "../elements/Icon/mobile/MDoc";
 import { MHome } from "../elements/Icon/mobile/MHome";
 import { ProjectKey } from "../recoil/RoomID";
 
+/* style={{ boxShadow: "0 0 10px 5px rgb(0, 0, 0, 0.1" }} */
 const Footer = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const location = useLocation();
@@ -16,8 +17,7 @@ const Footer = () => {
   return (
     <>
       {location.pathname.includes("tool") && (
-        <nav style={{ boxShadow: "0 0 10px 5px rgb(0, 0, 0, 0.1" }}
-          className="hidden w-full h-20 fixed bottom-0 sm:flex justify-around items-center z-50">
+        <nav className="hidden w-full h-20 fixed bottom-0 sm:flex justify-around items-center z-50">
           <Link to={`/tool/${pjId}`}>
             <div
               className={`w-full h-full flex flex-col items-center space-y-2 font-semibold ${

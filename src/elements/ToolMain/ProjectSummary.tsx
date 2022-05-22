@@ -6,7 +6,7 @@ const ProjectSummary = () => {
   return (
     <div className="w-9/12 h-full flex items-center sm:flex-col sm:items-start">
       <img className="rounded-full" width="76px" height="76px" src={Project.thumbnail} alt="" />
-      <div className="flex flex-col justify-center space-y-2 ml-[26px]">
+      <div className="flex flex-col justify-center space-y-2 ml-[26px] sm:ml-0 sm:mt-[14px]">
         <div className="w-full flex items-center">
           <span className="text-3xl sm:text-2xl font-semibold">{Project.title}</span>
         </div>

@@ -94,7 +94,7 @@ const ProjectAnnouncement = () => {
           return (
             <div
               key={index}
-              className="w-[91%] max-w-[548px] h-[68px] bg-white border rounded-lg overflow-hidden flex"
+              className="w-[91%] max-w-[548px] min-h-[68px] bg-white border rounded-lg overflow-hidden flex"
             >
               <div className="w-2 h-full bg-3" />
               <div className="w-full h-full ml-4 mr-2 flex flex-col">
