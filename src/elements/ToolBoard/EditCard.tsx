@@ -89,8 +89,9 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
               </div>
               <div className="max-h-64 py-8">
                 <input
+                  autoFocus
                   className="rounded-md border-none"
-                  {...register("text")}
+                  {...(register("text"), { placeholder: "내용입력" })}
                   defaultValue={toDoText}
                 />
               </div>

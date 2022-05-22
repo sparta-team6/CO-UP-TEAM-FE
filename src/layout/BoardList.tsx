@@ -1,6 +1,6 @@
 /* eslint-disable no-unsafe-optional-chaining */
 import React, { useEffect, useState } from "react";
-import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import { DragDropContext, DropResult, resetServerContext } from "react-beautiful-dnd";
 import { useRecoilValue } from "recoil";
 import { Board, useGetBoard } from "../api/BoardQuery";
 import { useUpdateCards } from "../api/Optimistic";
@@ -10,10 +10,11 @@ import { ProjectKey } from "../recoil/RoomID";
 
 const BoardList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
-  const { data: board } = useGetBoard(String(pjId));
+  const { data: board, isFetching } = useGetBoard(String(pjId));
   const [open, setOpen] = useState<boolean>(false);
   const { mutateAsync } = useUpdateCards(pjId);
   useEffect(() => {
+    resetServerContext();
     let sum = 0;
     for (let i = 0; i < 3; i++) {
       sum += board?.data[i].cards.length;
@@ -22,6 +23,9 @@ const BoardList = () => {
   }, [board]);
   const onDragEnd = ({ destination, source }: DropResult) => {
     if (!destination) return;
+    if (destination.index === source.index && destination.droppableId === source.droppableId) {
+      return;
+    }
     if (destination?.droppableId === source.droppableId) {
       const boardCopy = [...board?.data[Number(source.droppableId)].cards];
       const taskObj = boardCopy[source.index];
@@ -70,6 +74,7 @@ const BoardList = () => {
                     toDos={bucketId.cards}
                     index={index}
                     boardOpen={open}
+                    isFetching={isFetching}
                   />
                 );
               })}
