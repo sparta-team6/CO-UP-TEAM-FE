@@ -46,16 +46,16 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
         <div className="w-full h-full flex flex-col">
           {title && contents ? (
             <>
-              <div className="hidden sm:flex justify-between items-center border-b-2 border-solid border-slate-400 pb-2">
+              <div className="hidden sm:flex justify-between items-center border-b border-solid border-[#BEBEBE] pb-2">
                 <div
-                  className="border-none px-[15px] py-[8px] rounded-md bg-5"
+                  className="flex justify-center items-center border-none w-[39px] h-[36px] rounded-md bg-5"
                   onClick={() => navigate(-1)}
                 >
                   <ChevronLeft />
                 </div>
                 <div>
                   <button
-                    className="border-none px-[15px] py-[8px] rounded-md text-white bg-3"
+                    className="border-none w-[56px] h-[36px] rounded-md text-white bg-3"
                     onClick={() =>
                       navigate(`/tool/${id}/document/${docId}/edit`, {
                         state: { docId, title, contents },
@@ -65,7 +65,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                     수정
                   </button>
                   <button
-                    className="border-none ml-2 px-[15px] py-[8px] rounded-md bg-5"
+                    className="border-none ml-2 w-[56px] h-[36px] rounded-md bg-5"
                     onClick={onDelete}
                   >
                     삭제
@@ -74,7 +74,9 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
               </div>
               <div className="flex flex-col sm:hidden mx-[46px] mt-[60px] mb-[20px]">
                 <div className="flex justify-between items-center h-[47px] pl-[2px]">
-                  <div className="text-[32px] font-bold">{title}</div>
+                  <div className="text-[32px] font-bold sm:mt-[30px] sm:mb-[22px] sm:mx-[12px]]">
+                    {title}
+                  </div>
                   <div>
                     <button
                       className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
@@ -96,8 +98,10 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                 </div>
                 <div className="text-lg text-[#999] mt-[15px]">{"2022.05.04  by 작성자"}</div>
               </div>
-              <div className="hidden sm:block text-[32px] font-bold">{title}</div>
-              <div className="text-xl mx-[46px] mt-[20px]">
+              <div className="hidden sm:block text-[32px] font-bold sm:mt-[30px] sm:mb-[22px] sm:mx-[12px]">
+                {title}
+              </div>
+              <div className="text-xl mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
                 <MarkdownPreview
                   className="whitespace-pre-wrap break-all text-lg"
                   source={contents}
@@ -134,7 +138,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                 </div>
                 <div className="text-lg text-[#999] mt-[15px]">{"2022.05.04  by 작성자"}</div>
               </div>
-              <div className="text-xl mx-[46px] mt-[20px]">
+              <div className="text-xl mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
                 <MarkdownPreview
                   className="whitespace-pre-wrap break-all text-lg"
                   source={docData.contents}

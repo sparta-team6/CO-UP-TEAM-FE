@@ -56,25 +56,25 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
   return (
     <React.Fragment>
       <form onSubmit={handleSubmit(onValid)}>
-        <div className="hidden sm:flex justify-between items-center border-b-2 border-solid border-slate-400 pb-2">
+        <div className="hidden sm:flex justify-between items-center border-b border-solid border-[#BEBEBE] pb-2">
           <div
-            className="border-none px-[15px] py-[8px] rounded-md bg-5"
+            className="flex justify-center items-center border-none w-[39px] h-[36px] rounded-md bg-5"
             onClick={() => navigate(-1)}
           >
             <ChevronLeft />
           </div>
           <div>
             <button
-              className="border-none px-[15px] py-[8px] rounded-md text-white bg-3"
+              className="border-none w-[56px] h-[36px] rounded-md text-white bg-3"
               type="submit"
             >
               수정
             </button>
           </div>
         </div>
-        <div className="flex items-center justify-between mx-[46px] mt-[60px] mb-[20px]">
+        <div className="flex items-center justify-between mx-[46px] mt-[60px] mb-[20px] sm:mt-[22px] sm:mx-[10px]">
           <input
-            className="text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-black sm:text-3xl sm:w-full sm:text-center"
+            className="text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-black sm:w-full sm:text-left"
             {...register("title")}
             placeholder="제목을 적어보세요 :)"
             defaultValue={title}

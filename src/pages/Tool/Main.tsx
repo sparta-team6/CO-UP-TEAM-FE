@@ -27,7 +27,7 @@ const ToolMain = () => {
               <CalendarEL />
             </div>
           </div>
-          <div className="w-full max-w-[1018px] h-[381px] mt-[10px] sm:mt-4">
+          <div className="w-full max-w-[1018px] h-[381px] mt-[10px] sm:mt-4 sm:mb-[100px]">
             <div className="w-full bg-white border border-solid rounded-2xl h-full">
               <MemberChart />
             </div>

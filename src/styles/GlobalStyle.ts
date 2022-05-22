@@ -139,4 +139,10 @@ abbr[title]{
   padding-left: 46px;
   padding-top: 30px;
 }
+@media screen and (max-width: 768px) {
+  .toastui-editor-defaultUI .ProseMirror{
+  padding-left: 10px;
+  padding-top: 10px;
+}
+}
 `;

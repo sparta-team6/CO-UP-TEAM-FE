@@ -61,32 +61,32 @@ const DocEditor = () => {
   return (
     <React.Fragment>
       <form onSubmit={handleSubmit(onValid)}>
-        <div className="hidden sm:flex justify-between items-center border-b-2 border-solid border-slate-400 pb-2">
+        <div className="hidden sm:flex justify-between items-center border-b border-solid border-[#BEBEBE] pb-2">
           <div
-            className="border-none px-[15px] py-[8px] rounded-md bg-5"
+            className="flex justify-center items-center border-none w-[39px] h-[36px] rounded-md bg-5"
             onClick={() => navigate(-1)}
           >
             <ChevronLeft />
           </div>
           <div>
             <button
-              className="border-none px-[15px] py-[8px] rounded-md text-white bg-3"
+              className="border-none w-[56px] h-[36px] rounded-md text-white bg-3"
               type="submit"
             >
               등록
             </button>
             <button
               type="button"
-              className="border-none ml-2 px-[15px] py-[8px] rounded-md bg-5"
+              className="border-none ml-2 w-[56px] h-[36px] rounded-md bg-5"
               onClick={() => navigate(-1)}
             >
               닫기
             </button>
           </div>
         </div>
-        <div className="flex items-center justify-between mx-[46px] mt-[60px] mb-[20px]">
+        <div className="flex items-center justify-between mx-[46px] mt-[60px] mb-[20px] sm:mt-[30px] sm:mx-[10px]">
           <input
-            className="text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-gray-400 sm:text-3xl sm:w-full sm:text-center"
+            className="text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-gray-400 sm:w-full sm:text-left"
             {...register("title")}
             placeholder="제목을 적어보세요 :)"
           />
