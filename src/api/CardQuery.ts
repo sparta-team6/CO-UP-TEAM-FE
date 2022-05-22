@@ -9,9 +9,10 @@ export interface ICards {
   manager?: string;
   title: string;
   contents?: string;
+  position?: number;
 }
 
-interface ICard {
+export interface ICard {
   data: ICards;
 }
 
