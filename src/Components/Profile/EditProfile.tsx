@@ -34,10 +34,12 @@ const EditProfile = () => {
       aboutMe: data.about_me,
     };
     if (size === undefined) {
-      mutateAsync(profile).then(() => {
-        setUser(profile);
-        navigate(-1);
-      });
+      if (confirm("프로필을 수정하시겠습니까?")) {
+        mutateAsync(profile).then(() => {
+          setUser(profile);
+          navigate(-1);
+        });
+      }
     } else {
       const image = await resizeFile(size, 244, 244, "base64");
       const profile = {
@@ -47,10 +49,12 @@ const EditProfile = () => {
         url: data.url,
         aboutMe: data.about_me,
       };
-      mutateAsync(profile).then(() => {
-        setUser(profile);
-        navigate(-1);
-      });
+      if (confirm("프로필을 수정하시겠습니까?")) {
+        mutateAsync(profile).then(() => {
+          setUser(profile);
+          navigate(-1);
+        });
+      }
     }
   };
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,15 +73,17 @@ const EditProfile = () => {
   };
   const { mutateAsync: Logout } = useLogOut();
   const onLogOut = () => {
-    Logout()
-      .then(() => {
-        alert("안녕히가세여");
-        navigate("/");
-        removeTokenFromCookie();
-      })
-      .catch(() => {
-        alert("로그인 실패");
-      });
+    if (confirm("로그아웃 하시겠습니까?")) {
+      Logout()
+        .then(() => {
+          alert("안녕히가세여");
+          navigate("/");
+          removeTokenFromCookie();
+        })
+        .catch(() => {
+          alert("로그인 실패");
+        });
+    }
   };
   return (
     <>
@@ -130,7 +136,11 @@ const EditProfile = () => {
             {...register("about_me")}
           />
           <div className="text-right">
-            <button onClick={onLogOut} className="w-32 h-11 p-2 bg-5 rounded-lg mr-4 sm:mr-2" type="submit">
+            <button
+              onClick={onLogOut}
+              className="w-32 h-11 p-2 bg-5 rounded-lg mr-4 sm:mr-2"
+              type="button"
+            >
               <span className="text-white text-lg">로그아웃</span>
             </button>
             <button className="w-32 h-11 p-2 bg-3 rounded-lg" type="submit">

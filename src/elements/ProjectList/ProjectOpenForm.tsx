@@ -12,14 +12,15 @@ const ProjectOpenForm = () => {
   const { mutateAsync } = usePostOpenRoom();
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<IForm> = (data) => {
-    // console.log(data.inviteCode);
-    mutateAsync(String(data.inviteCode))
-      .then(() => {
-        navigate(`/tool/${data.inviteCode}`);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-      });
+    if (confirm("해당 프로젝트로 입장하시겠습니까?")) {
+      mutateAsync(String(data.inviteCode))
+        .then(() => {
+          navigate(`/tool/${data.inviteCode}`);
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
+    }
   };
   return (
     <div className="w-[448px] h-[262px] flex flex-col p-12">

@@ -1,12 +1,14 @@
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
 import {
   Announcement,
   useDelAnnouncement,
   useUpdateAnnouncement,
 } from "../../api/AnnouncementQuery";
+import { ProjectKey } from "../../recoil/RoomID";
 import { SvgEdit3 } from "../Icon/SvgEdit3";
 import { Trash } from "../Icon/Trash";
 
@@ -32,11 +34,22 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const { mutateAsync: DELAN } = useDelAnnouncement(String(noticeId));
+  const { pjId } = useRecoilValue(ProjectKey);
+  const { mutateAsync: DELAN } = useDelAnnouncement();
   const { mutateAsync: UpdateAN } = useUpdateAnnouncement();
   const { register, handleSubmit } = useForm<IForm>();
   const onSubmit: SubmitHandler<IForm> = (data) => {
+    if (!data.title) {
+      alert("공지 제목을 적어주세요 :)");
+      return;
+    }
+    if (!data.content) {
+      alert("내용을 입력해주세요 :)");
+      return;
+    }
+
     const Update = {
+      pjId,
       noticeId: String(noticeId),
       title: data.title,
       contents: data.content,
@@ -47,9 +60,15 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
     setOpen(false);
   };
   const onDelete = () => {
-    DELAN().then(() => {
-      queryClient.invalidateQueries("getAnnouncement");
-    });
+    const a = {
+      noticeId,
+      pjId,
+    };
+    if (confirm("공지사항을 삭제하시겠습니까?")) {
+      DELAN(a).then(() => {
+        queryClient.invalidateQueries("getAnnouncement");
+      });
+    }
   };
   return (
     <>
@@ -72,7 +91,7 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
             <input
               autoFocus
               className="w-full outline-none border-none text-2xl placeholder:text-black placeholder:font-semibold font-semibold"
-              {...register("title", { required: true })}
+              {...register("title")}
               type="text"
               placeholder="공지 제목을 적어주세요 :)"
               defaultValue={title}
@@ -80,7 +99,7 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
             <div className="mt-[10px] text-[#666]">2022.xx.xx</div>
             <textarea
               className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
-              {...register("content", { required: true })}
+              {...register("content")}
               placeholder="내용을 입력해주세요"
               defaultValue={contents}
             />
