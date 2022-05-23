@@ -21,7 +21,10 @@ export default function ProjectOpen() {
 
   return (
     <div>
-      <button className="px-[22px] py-[12px] text-white bg-3 rounded-[4px]" onClick={handleOpen}>
+      <button
+        className="px-[22px] py-[12px] text-white bg-3 rounded-[4px] md:mr-[12px] sm:mr-0"
+        onClick={handleOpen}
+      >
         초대 코드
       </button>
       <Modal

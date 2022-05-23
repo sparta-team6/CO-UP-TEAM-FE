@@ -68,7 +68,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
     setName(e.target.value);
   };
   return (
-    <div className="sm:min-w-[280px] w-96 mr-7 rounded-md min-h-[870px] flex flex-col sm:ml-2">
+    <div className="min-w-[280px] w-96 mr-7 rounded-md min-h-[870px] flex flex-col sm:ml-2">
       <div className="w-full h-6 mt-10 sm:mt-10 flex justify-between">
         <h2 className="text-center font-semibold text-lg">{bucketId}</h2>
         <button
@@ -155,7 +155,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
                   : "bg-[#E7EBF2]"
               } ${
                 boardOpen ? "bg-transparent" : "bg-[#E7EBF2]"
-              } lg:overflow-y-scroll lg:overflow-x-hidden lg:h-[750px] sm:min-h-[600px] p-2 mt-3 rounded-lg w-full flex flex-col transition-colors ease-in-out delay-100`}
+              } overflow-y-scroll lg:overflow-x-hidden h-[750px] sm:h-auto sm:min-h-[600px] p-2 mt-3 rounded-lg w-full flex flex-col transition-colors ease-in-out delay-100`}
               ref={magic.innerRef}
               {...magic.droppableProps}
             >
