@@ -149,6 +149,10 @@ abbr[title]{
   color: #5F99FF;
 }
 
+.slick-dots {
+  background-color: transparent;
+}
+
 /* editor */
 .toastui-editor-defaultUI{
   border: none;
