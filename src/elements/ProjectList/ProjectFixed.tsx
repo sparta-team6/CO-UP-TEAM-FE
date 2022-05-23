@@ -43,10 +43,12 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
   };
   const { mutateAsync } = useDelRoom(String(roomID));
   const delProject = () => {
-    mutateAsync().then(() => {
-      queryClient.invalidateQueries("getProject");
-      setAnchorEl(null);
-    });
+    if (confirm("프로젝트를 삭제하시겠습니까?")) {
+      mutateAsync().then(() => {
+        queryClient.invalidateQueries("getProject");
+        setAnchorEl(null);
+      });
+    }
   };
   return (
     <>

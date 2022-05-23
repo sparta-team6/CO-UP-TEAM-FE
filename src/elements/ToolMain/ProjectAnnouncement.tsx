@@ -36,21 +36,31 @@ const ProjectAnnouncement = () => {
   const { register, handleSubmit, setValue } = useForm<IForm>();
 
   const onSubmit: SubmitHandler<IForm> = (data) => {
+    if (!data.title) {
+      alert("공지 제목을 적어주세요 :)");
+      return;
+    }
+    if (!data.content) {
+      alert("내용을 입력해주세요 :)");
+      return;
+    }
     const post = {
       pjId,
       title: data.title,
       contents: data.content,
     };
-    postAn(post).then(() => queryClient.invalidateQueries("getAnnouncement"));
-    setValue("title", "");
-    setValue("content", "");
-    setOpen(false);
+    if (confirm("공지사항을 등록하시겠습니까?")) {
+      postAn(post).then(() => queryClient.invalidateQueries("getAnnouncement"));
+      setValue("title", "");
+      setValue("content", "");
+      setOpen(false);
+    }
   };
 
   return (
     <div className="w-full h-full border border-solid bg-white rounded-2xl flex flex-col">
-      <div className="w-full flex justify-center">
-        <div className="w-[91%] flex items-center justify-between mb-[21px] mt-[28px]">
+      <div className="w-full flex justify-center px-[34px] sm:px-[20px]">
+        <div className="w-full flex items-center justify-between mb-[21px] mt-[28px]">
           <span className="font-bold text-xl">공지사항</span>
           <div onClick={handleOpen} className="cursor-pointer">
             <Plus />
@@ -68,14 +78,14 @@ const ProjectAnnouncement = () => {
             <input
               autoFocus
               className="w-full outline-none text-2xl border-none placeholder:text-black placeholder:font-semibold font-semibold"
-              {...register("title", { required: true })}
+              {...register("title")}
               type="text"
               placeholder="공지 제목을 적어주세요 :)"
             />
             <div className="mt-[10px] text-[#666]">2022.xx.xx</div>
             <textarea
               className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
-              {...register("content", { required: true })}
+              {...register("content")}
               placeholder="내용을 입력해주세요"
             />
             <div className="absolute bottom-0 right-0">

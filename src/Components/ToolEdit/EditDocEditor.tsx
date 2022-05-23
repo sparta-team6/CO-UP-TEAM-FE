@@ -47,10 +47,12 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
     };
-    UpdateDoc(doc).then(() => {
-      queryClient.invalidateQueries("getFolders");
-      navigate(`/tool/${id}/document/${docId}`);
-    });
+    if (confirm("문서 내용을 수정하시겠습니까?")) {
+      UpdateDoc(doc).then(() => {
+        queryClient.invalidateQueries("getFolders");
+        navigate(`/tool/${id}/document/${docId}`);
+      });
+    }
   };
 
   return (

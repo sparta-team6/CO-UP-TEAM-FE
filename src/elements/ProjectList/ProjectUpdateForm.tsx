@@ -30,27 +30,33 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
   const onSubmit: SubmitHandler<IForm> = async (data) => {
     if (fileInput?.current?.files === null) return;
     const size = fileInput?.current?.files[0];
+    const project = {
+      title: data.title,
+      summary: data.summary,
+      thumbnail: roomImg,
+      pjId: roomID,
+    };
     if (size === undefined) {
-      mutateAsync({
-        title: data.title,
-        summary: data.summary,
-        thumbnail: roomImg,
-        pjId: roomID,
-      }).then(() => {
-        queryClient.invalidateQueries("getProject");
-        setUpOpen(false);
-      });
+      if (confirm("내용을 수정하시겠습니까?")) {
+        mutateAsync(project).then(() => {
+          queryClient.invalidateQueries("getProject");
+          setUpOpen(false);
+        });
+      }
     } else {
       const image = await resizeFile(size, 100, 100, "base64");
-      mutateAsync({
+      const project = {
         title: data.title,
         summary: data.summary,
         thumbnail: String(image),
         pjId: roomID,
-      }).then(() => {
-        queryClient.invalidateQueries("getProject");
-        setUpOpen(false);
-      });
+      };
+      if (confirm("내용을 수정하시겠습니까?")) {
+        mutateAsync(project).then(() => {
+          queryClient.invalidateQueries("getProject");
+          setUpOpen(false);
+        });
+      }
     }
   };
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {

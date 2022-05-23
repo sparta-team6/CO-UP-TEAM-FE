@@ -27,10 +27,12 @@ const FolderList = () => {
       dfId,
       title: title,
     };
-    UpdateFol(folder).then(() => {
-      queryClient.invalidateQueries("getFolders");
-      setEditTitle(false);
-    });
+    if (confirm("폴더 제목을 바꾸시겠습니까?")) {
+      UpdateFol(folder).then(() => {
+        queryClient.invalidateQueries("getFolders");
+        setEditTitle(false);
+      });
+    }
   };
 
   const AddFolder = () => {

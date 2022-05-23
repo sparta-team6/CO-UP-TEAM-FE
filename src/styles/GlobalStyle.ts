@@ -118,10 +118,7 @@ a{
 }
 
 /* mui modal */
-.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-.css-6hp17o-MuiList-root-MuiMenu-list{
+.MuiList-root.MuiList-padding.MuiMenu-list{
   padding: 0;
   width: 100%;
 }

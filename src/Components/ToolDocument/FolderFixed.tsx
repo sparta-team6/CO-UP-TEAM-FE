@@ -34,9 +34,11 @@ const FolderFiexd = ({ dfId, setEditTitle, setDfId }: IProps) => {
   };
 
   const DeleteFolder = () => {
-    DelFolder().then(() => {
-      queryClient.invalidateQueries("getFolders");
-    });
+    if (confirm("폴더를 삭제하시겠습니까?")) {
+      DelFolder().then(() => {
+        queryClient.invalidateQueries("getFolders");
+      });
+    }
   };
 
   const onEdit = () => {

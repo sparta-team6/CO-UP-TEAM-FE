@@ -4,8 +4,8 @@ import { instance } from "../servers/axios";
 
 export interface Announcement {
   pjId?: string;
-  title: string;
-  contents: string;
+  title?: string;
+  contents?: string;
   noticeId?: string;
 }
 
@@ -35,8 +35,8 @@ export const useUpdateAnnouncement = () => {
   });
 };
 
-export const useDelAnnouncement = (noticeId: string) => {
-  return useMutation(async () => {
-    await instance.delete(`api/notices/?noticeId=${noticeId}`);
+export const useDelAnnouncement = () => {
+  return useMutation(async (post: any) => {
+    await instance.delete("api/notices/", post);
   });
 };

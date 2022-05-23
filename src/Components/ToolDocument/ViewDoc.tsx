@@ -18,16 +18,21 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
   const { mutateAsync: DelDoc2 } = useDelDoc(String(docData?.docId));
 
   const onDelete = () => {
-    DelDoc().then(() => {
-      queryClient.invalidateQueries("getFolders");
-      navigate(`/tool/${id}/document`);
-    });
+    if (confirm("문서를 삭제하시겠습니까?")) {
+      DelDoc().then(() => {
+        queryClient.invalidateQueries("getFolders");
+        navigate(`/tool/${id}/document`);
+      });
+    }
   };
+
   const onDelete2 = () => {
-    DelDoc2().then(() => {
-      queryClient.invalidateQueries("getFolders");
-      navigate(`/tool/${id}/document`);
-    });
+    if (confirm("문서를 삭제하시겠습니까?")) {
+      DelDoc2().then(() => {
+        queryClient.invalidateQueries("getFolders");
+        navigate(`/tool/${id}/document`);
+      });
+    }
   };
 
   const AddFolder = () => {
