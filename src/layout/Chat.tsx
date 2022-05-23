@@ -76,7 +76,6 @@ const Chat = () => {
           onSubmit={handleSubmit(handleonEnter)}
         >
           <textarea
-            autoFocus
             className="w-full h-full p-[18px] rounded-xl border outline-none resize-none relative bg-[#F5F5F5]"
             onKeyDown={onKeyDown}
             {...(register("text"), { placeholder: "메세지를 입력하세요." })}

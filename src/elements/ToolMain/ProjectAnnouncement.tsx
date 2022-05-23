@@ -7,6 +7,7 @@ import { useGetAnnouncement, usePostAnnouncement } from "../../api/AnnouncementQ
 import EditAnnouncement from "./EditAnnouncement";
 import { Plus } from "../../elements/Icon/Plus";
 import { ProjectKey } from "../../recoil/RoomID";
+import styled from "styled-components";
 
 const style = {
   position: "absolute",
@@ -48,7 +49,7 @@ const ProjectAnnouncement = () => {
 
   return (
     <div className="w-full h-full border border-solid bg-white rounded-2xl flex flex-col">
-      <div className="flex items-center justify-between mb-[21px] mx-[34px] mt-[28px]">
+      <div className="flex items-center justify-between mb-[21px] px-[34px] mt-[28px] sm:px-[20px]">
         <span className="font-bold text-xl">공지사항</span>
         <div onClick={handleOpen} className="cursor-pointer">
           <Plus />
@@ -90,12 +91,12 @@ const ProjectAnnouncement = () => {
           </form>
         </Box>
       </Modal>
-      <div className="w-full h-full space-y-2 overflow-y-auto flex flex-col items-center">
+      <Scroll className="w-full h-full space-y-2 px-[34px] sm:px-[20px] overflow-y-auto flex flex-col items-center">
         {Ann?.data?.map((data, index) => {
           return (
             <div
               key={index}
-              className="w-[91%] max-w-[548px] min-h-[68px] bg-white border rounded-lg overflow-hidden flex"
+              className="w-full min-h-[68px] bg-white border rounded-lg overflow-hidden flex"
             >
               <div className="w-2 h-full bg-3" />
               <div className="w-full h-full ml-4 mr-2 flex flex-col">
@@ -112,9 +113,15 @@ const ProjectAnnouncement = () => {
             </div>
           );
         })}
-      </div>
+      </Scroll>
     </div>
   );
 };
+
+const Scroll = styled.div`
+  &::-webkit-scrollbar-thumb {
+    background: white;
+  }
+`;
 
 export default ProjectAnnouncement;
