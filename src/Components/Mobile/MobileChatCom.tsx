@@ -27,7 +27,7 @@ const MobileChatCom = () => {
   const { mutateAsync } = useAddChatComment();
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const user = useRecoilValue(MyProfile);
-  const messageBoxRef = useRef<HTMLDivElement>(null);
+  const messageBoxRef = useRef<HTMLUListElement>(null);
   const scrollToBottom = () => {
     if (messageBoxRef.current) {
       messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
@@ -58,8 +58,8 @@ const MobileChatCom = () => {
   };
 
   return (
-    <div className="w-full h-[calc(100%-20rem)] flex flex-col justify-end absolute bottom-48 right-0">
-      <div className="flex fixed top-0 left-0 mt-16 h-full z-[45]">
+    <div className="w-full h-[calc(100vh-14rem)] flex flex-col justify-end absolute top-16">
+      <div className="flex fixed top-0 left-0  h-full z-[45]">
         <div className="hidden sm:block sm:w-screen">
           <SlidingPanel type={"left"} isOpen={open} size={100}>
             <div onClick={onClick} className="flex">
@@ -69,24 +69,24 @@ const MobileChatCom = () => {
         </div>
       </div>
       <div
-        className={`w-full h-full  flex flex-col justify-end absolute top-0 right-0 ${
+        className={`w-full h-full  flex flex-col justify-end absolute ${
           open ? "z-40" : "z-[49]"
         }`}
       >
-        <div ref={messageBoxRef} className="w-full min-h-[715px] space-y-2 overflow-auto">
+        <ul ref={messageBoxRef} className="w-full h-full sm:min-h-[612px] space-y-2 overflow-auto">
           {data?.data?.map((box, index) => {
             return (
-              <div className="w-full min-h-[80px] pl-[26px] flex items-start" key={index}>
+              <li className="w-full min-h-[80px] pl-[26px] flex items-start" key={index}>
                 <img className="w-9 h-9 rounded-full" src={box.profile} alt="" />
                 <div className="flex flex-col pl-[10px]">
                   <span className="font-bold text-lg">{box.name}</span>
                   <span className="text-[#AAA] text-xs">{box.createAt}</span>
                   <span className="whitespace-pre-wrap break-all mt-2">{box.comment}</span>
                 </div>
-              </div>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
       <div className={`w-full h-28 fixed bottom-14 ${open ? "z-30" : "z-[46]"}`}>
         <form className="w-full h-full outline-none " onSubmit={handleSubmit(handleonEnter)}>
