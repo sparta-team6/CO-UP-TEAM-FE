@@ -14,9 +14,10 @@ const Footer = () => {
   const docMatch = useMatch("/tool/:id/document");
   const boardMatch = useMatch("/tool/:id/board");
   const ChatMatch = useMatch("/tool/:id/chat");
+  const FixDoc = location.pathname.includes("document/add") || location.pathname.includes("edit");
   return (
     <>
-      {location.pathname.includes("tool") && (
+      {location.pathname.includes("tool") && !FixDoc && (
         <nav className="hidden w-full h-20 fixed bottom-0 sm:flex justify-around items-center z-50">
           <Link to={`/tool/${pjId}`}>
             <div
