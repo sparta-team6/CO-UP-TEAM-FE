@@ -94,7 +94,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                 <input
                   autoFocus
                   className="rounded-md border-none"
-                  {...(register("text"), { placeholder: "내용입력" })}
+                  {...register("text")}
                   defaultValue={toDoText}
                 />
               </div>
