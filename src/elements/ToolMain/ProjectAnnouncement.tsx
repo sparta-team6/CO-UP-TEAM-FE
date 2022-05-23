@@ -48,10 +48,12 @@ const ProjectAnnouncement = () => {
 
   return (
     <div className="w-full h-full border border-solid bg-white rounded-2xl flex flex-col">
-      <div className="flex items-center justify-between mb-[21px] mx-[34px] mt-[28px]">
-        <span className="font-bold text-xl">공지사항</span>
-        <div onClick={handleOpen} className="cursor-pointer">
-          <Plus />
+      <div className="w-full flex justify-center">
+        <div className="w-[91%] flex items-center justify-between mb-[21px] mt-[28px]">
+          <span className="font-bold text-xl">공지사항</span>
+          <div onClick={handleOpen} className="cursor-pointer">
+            <Plus />
+          </div>
         </div>
       </div>
       <Modal

@@ -70,6 +70,7 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
         <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
           <form className="w-full h-full relative space-y-4" onSubmit={handleSubmit(onSubmit)}>
             <input
+              autoFocus
               className="w-full outline-none border-none text-2xl placeholder:text-black placeholder:font-semibold font-semibold"
               {...register("title", { required: true })}
               type="text"
@@ -78,7 +79,6 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
             />
             <div className="mt-[10px] text-[#666]">2022.xx.xx</div>
             <textarea
-              autoFocus
               className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
               {...register("content", { required: true })}
               placeholder="내용을 입력해주세요"

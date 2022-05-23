@@ -101,11 +101,8 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
               <div className="hidden sm:block text-[32px] font-bold sm:mt-[30px] sm:mb-[22px] sm:mx-[12px]">
                 {title}
               </div>
-              <div className="text-xl mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
-                <MarkdownPreview
-                  className="whitespace-pre-wrap break-all text-lg"
-                  source={contents}
-                />
+              <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
+                <MarkdownPreview className="whitespace-pre-wrap break-all" source={contents} />
               </div>
             </>
           ) : docData ? (
@@ -138,9 +135,9 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                 </div>
                 <div className="text-lg text-[#999] mt-[15px]">{"2022.05.04  by 작성자"}</div>
               </div>
-              <div className="text-xl mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
+              <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
                 <MarkdownPreview
-                  className="whitespace-pre-wrap break-all text-lg"
+                  className="whitespace-pre-wrap break-all"
                   source={docData.contents}
                 />
               </div>

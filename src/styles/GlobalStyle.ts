@@ -151,8 +151,9 @@ abbr[title]{
   border: none;
 }
 .toastui-editor-defaultUI .ProseMirror{
-  padding-left: 46px;
-  padding-top: 30px;
+  padding-left: 46px !important;
+  padding-top: 18px !important;
+  font-size: 16px !important;
 }
 @media screen and (max-width: 768px) {
   .toastui-editor-defaultUI .ProseMirror{

@@ -17,22 +17,25 @@ const MemberChart = () => {
     <>
       {!result ? (
         <div className="w-full h-full p-8">
-          <span className="text-2xl font-semibold sm:text-lg mb-[30px]">팀 상태 개요</span>
-          <div className="flex flex-col justify-center items-center relative pt-5">
+          <div className="flex justify-between items-center">
+            <span className="text-2xl font-semibold sm:text-lg">팀 상태 개요</span>
+            <button
+              onClick={() => navigate(`/tool/${pjId}/board`)}
+              className="w-[118px] h-[39px] bg-3 rounded-[4px] text-white"
+            >
+              보드 생성하기
+            </button>
+          </div>
+
+          <div className="flex flex-col justify-center items-center pt-5">
             <img
-              className="max-w-full w-[320px] h-[143px] sm:w-[198px] sm:h-[88px] mt-[25px]"
+              className="max-w-full w-[320px] h-[143px] sm:w-[198px] sm:h-[88px]"
               src={coupFamily}
               alt=""
             />
             <span className="text-lg mt-[21px] text-gray-400">
               팀원들과 프로젝트 진행 상황을 공유해보세요
             </span>
-            <button
-              onClick={() => navigate(`/tool/${pjId}/board`)}
-              className="w-[118px] h-[39px] bg-3 rounded-[4px] text-white absolute -top-9 -right-2"
-            >
-              보드 생성하기
-            </button>
           </div>
         </div>
       ) : (
