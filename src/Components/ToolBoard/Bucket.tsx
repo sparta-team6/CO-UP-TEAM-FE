@@ -35,7 +35,7 @@ interface IForm {
 
 const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoardProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
-  const { nickname } = useRecoilValue(MyProfile);
+  const { nickname, loginId } = useRecoilValue(MyProfile);
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const handleOpen = () => setOpen(true);
@@ -54,7 +54,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
       kbbId,
       title: toDo,
       contents: toDoComment,
-      manager: nickname,
+      manager: loginId,
     };
     mutateAsync(newToDo).then(() => {
       queryClient.invalidateQueries(["getBoard", pjId]);
@@ -118,7 +118,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
                 onChange={onChange}
               >
                 {/* <option defaultValue="none">=== 선택 ===</option> */}
-                <option value={nickname}>{nickname}</option>
+                <option value={loginId}>{nickname}</option>
               </select>
             </div>
             <input
@@ -155,7 +155,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
                   : "bg-[#E7EBF2]"
               } ${
                 boardOpen ? "bg-transparent" : "bg-[#E7EBF2]"
-              } overflow-y-scroll lg:overflow-x-hidden h-[750px] sm:h-auto sm:min-h-[600px] p-2 mt-3 rounded-lg w-full flex flex-col transition-colors ease-in-out delay-100`}
+              } lg:overflow-y-scroll lg:overflow-x-hidden lg:h-[750px] sm:h-auto sm:min-h-[600px] p-2 mt-3 rounded-lg w-full flex flex-col transition-colors ease-in-out delay-100`}
               ref={magic.innerRef}
               {...magic.droppableProps}
             >

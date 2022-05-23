@@ -91,7 +91,6 @@ const MobileChatCom = () => {
       <div className={`w-full h-28 fixed bottom-14 ${open ? "z-30" : "z-[46]"}`}>
         <form className="w-full h-full outline-none " onSubmit={handleSubmit(handleonEnter)}>
           <textarea
-            autoFocus
             className="w-full h-[86px] sm:h-[86px] pl-8 pt-4 bg-[#F5F5F5] outline-none resize-none"
             onKeyDown={onKeyDown}
             {...(register("text"), { placeholder: "메세지를 입력하세요." })}
