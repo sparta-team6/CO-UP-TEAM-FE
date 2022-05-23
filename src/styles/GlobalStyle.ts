@@ -99,6 +99,21 @@ a{
   }
 }
 
+/* projectlist */
+.pjList:nth-child(4n+4){
+  margin-right: 0;
+}
+@media screen and (max-width: 1300px) {
+  .pjList:nth-child(4n+4){
+    margin-right: 12px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .pjList:nth-child(4n+4){
+    margin-right: 0px;
+  }
+}
+
 /* mui modal */
 .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
   background-color: rgba(0, 0, 0, 0.4);
@@ -141,8 +156,8 @@ abbr[title]{
 }
 @media screen and (max-width: 768px) {
   .toastui-editor-defaultUI .ProseMirror{
-  padding-left: 10px;
-  padding-top: 10px;
-}
+    padding-left: 10px;
+    padding-top: 10px;
+  }
 }
 `;

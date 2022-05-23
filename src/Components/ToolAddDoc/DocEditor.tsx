@@ -89,6 +89,7 @@ const DocEditor = () => {
             className="text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-gray-400 sm:w-full sm:text-left"
             {...register("title")}
             placeholder="제목을 적어보세요 :)"
+            autoFocus
           />
           <div className="sm:hidden">
             <button
@@ -115,6 +116,7 @@ const DocEditor = () => {
         previewHighlight={false}
         ref={editorRef}
         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
+        autofocus={false}
       />
     </React.Fragment>
   );

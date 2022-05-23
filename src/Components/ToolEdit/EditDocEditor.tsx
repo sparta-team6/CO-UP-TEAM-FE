@@ -78,6 +78,7 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
             {...register("title")}
             placeholder="제목을 적어보세요 :)"
             defaultValue={title}
+            autoFocus
           />
           <div className="sm:hidden">
             <button
@@ -105,6 +106,7 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
         ref={editorRef}
         initialValue={contents ? contents : ""}
         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
+        autofocus={false}
       />
     </React.Fragment>
   );
