@@ -53,6 +53,9 @@ export const useDelRoom = (postId: string) => {
 
 export const useUpdateRoom = (postId: string) => {
   return useMutation(async (post: Room) => {
-    await instance.patch(`api/projects/${postId}`, post);
+    await instance
+      .patch(`api/projects/${postId}`, post)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   });
 };
