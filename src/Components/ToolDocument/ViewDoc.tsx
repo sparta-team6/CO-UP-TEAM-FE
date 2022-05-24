@@ -41,7 +41,6 @@ const ViewDoc = ({ title, contents, isFetching, docId }: Docs) => {
     const folder = {
       pjId: String(id),
       title: "새 폴더",
-      position: 1,
     };
     AddFol(folder).then(() => {
       queryClient.invalidateQueries("getFolders");

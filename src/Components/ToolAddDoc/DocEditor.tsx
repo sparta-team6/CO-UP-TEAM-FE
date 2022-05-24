@@ -50,7 +50,6 @@ const DocEditor = () => {
       dfId: state === null ? getDfId : state,
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
-      position: 1,
     };
 
     mutateAsync(doc).then(() => {

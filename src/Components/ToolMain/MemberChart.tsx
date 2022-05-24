@@ -13,6 +13,7 @@ const MemberChart = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data } = useGetManagers(pjId);
   const result = data?.data;
+  console.log(result);
   return (
     <>
       {!result ? (
