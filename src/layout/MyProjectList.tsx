@@ -59,7 +59,7 @@ const MyProjectList = () => {
           </motion.div>
         ))}
       </Scroll>
-      <div className="w-20 h-52 flex flex-col justify-center items-center space-y-[27px]">
+      <div className="sticky bottom-20 w-20 h-52 flex flex-col justify-center items-center space-y-[27px]">
         <span className="cursor-pointer" onClick={onDarkMode}>
           {theme ? <Moon /> : <Sun />}
         </span>
