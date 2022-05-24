@@ -2,10 +2,12 @@ import { useRef } from "react";
 import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/RoomID";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const CopyURL = () => {
   const { inviteCode } = useRecoilValue(ProjectKey);
   const textInput = useRef<HTMLInputElement>(null);
+  const { pjId } = useRecoilValue(ProjectKey);
   const copy = () => {
     const el = textInput.current;
     if (el === null) return;
@@ -40,6 +42,9 @@ const CopyURL = () => {
           초대코드
         </button>
       </div>
+      <Link to={`/tool/${pjId}/Testroom`} className="flex text-[#666] cursor-pointer ml-2">
+        <div className="w-[20px] h-[39px] bg-[#D7DCE5] rounded" />
+      </Link>
     </div>
   );
 };
