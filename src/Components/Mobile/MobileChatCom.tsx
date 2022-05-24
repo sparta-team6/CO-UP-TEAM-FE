@@ -89,7 +89,7 @@ const MobileChatCom = () => {
       <div className={`w-full h-[86px] fixed bottom-0 ${open ? "z-30" : "z-[46]"}`}>
         <form className="w-full h-full outline-none " onSubmit={handleSubmit(handleonEnter)}>
           <textarea
-            className="fixed w-full h-full pl-[32px] pt-[20px] text-[#B0B0B0] bg-[#F5F5F5] outline-none resize-none"
+            className="w-full h-full pl-[32px] pt-[20px] text-[#B0B0B0] bg-[#F5F5F5] outline-none resize-none"
             onKeyDown={onKeyDown}
             {...(register("text"), { placeholder: "메세지를 입력하세요." })}
           />
