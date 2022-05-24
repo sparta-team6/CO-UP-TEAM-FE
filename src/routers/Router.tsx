@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Helmet from "react-helmet";
 import { useRecoilValue } from "recoil";
 import { themeState } from "../recoil/DarkMode";
-import Naver from "../servers/Naver";
 
 const Header = lazy(() => import("./Header"));
 const MHeader = lazy(() => import("./MHeader"));
@@ -20,7 +19,9 @@ const AddDocs = lazy(() => import("../pages/Tool/Document/AddDocs"));
 const ProjectList = lazy(() => import("../pages/ProjectList"));
 const Kakao = lazy(() => import("../servers/Kakao"));
 const Google = lazy(() => import("../servers/Google"));
+const Naver = lazy(() => import("../servers/Naver"));
 const EditDocs = lazy(() => import("../pages/Tool/Document/EditDocs"));
+const TestRoom = lazy(() => import("../pages/Tool/TestRoom"));
 
 const Router = () => {
   const theme = useRecoilValue(themeState);
@@ -47,6 +48,7 @@ const Router = () => {
           <Route path="/user/kakao/callback/*" element={<Kakao />} />
           <Route path="/user/naver/callback/*" element={<Naver />} />
           <Route path="/user/google/callback/*" element={<Google />} />
+          <Route path="/tool/:id/Testroom" element={<TestRoom />} />
         </Routes>
         <Footer />
       </div>
