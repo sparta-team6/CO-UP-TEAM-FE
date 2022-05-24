@@ -52,7 +52,7 @@ const MemberChart = () => {
               </section>
             </div>
           </div>
-          <div className="overflow-y-auto h-72">
+          <Scroll className="overflow-y-auto h-72">
             {result?.map((data, index) => {
               const sum =
                 data.buckets[0].cards.length +
@@ -118,7 +118,7 @@ const MemberChart = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Scroll>
         </div>
       )}
     </>
@@ -143,4 +143,10 @@ const Success = styled.div<{ success: number }>`
   background-color: #5f99ff;
   height: 16px;
   width: ${(prop) => prop.success}%;
+`;
+
+const Scroll = styled.ul`
+  &::-webkit-scrollbar-thumb {
+    background: #ebebeb;
+  }
 `;

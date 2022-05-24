@@ -10,6 +10,7 @@ import { FolderPlus } from "../elements/Icon/FolderPlus";
 import { SvgFolder } from "../elements/Icon/SvgFolder";
 import { Plus } from "../elements/Icon/Plus";
 import { ProjectKey } from "../recoil/RoomID";
+import styled from "styled-components";
 
 const FolderList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
@@ -52,7 +53,7 @@ const FolderList = () => {
   return (
     <>
       {data?.data.length === 0 ? (
-        <div className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
+        <Scroll className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
           <div className="flex justify-between items-center px-[16px] pt-[45px]">
             <div className="font-bold text-2xl">문서목록</div>
             <div onClick={AddFolder} className="cursor-pointer">
@@ -66,9 +67,9 @@ const FolderList = () => {
               새로운 문서를 추가해 보세요
             </span>
           </div>
-        </div>
+        </Scroll>
       ) : (
-        <div className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
+        <Scroll className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
           <div className="flex justify-between items-center pt-[20px] px-[16px]">
             <div className="font-bold text-2xl">문서목록</div>
             <div onClick={AddFolder} className="cursor-pointer">
@@ -121,10 +122,16 @@ const FolderList = () => {
               </div>
             );
           })}
-        </div>
+        </Scroll>
       )}
     </>
   );
 };
 
 export default React.memo(FolderList);
+
+const Scroll = styled.div`
+  &::-webkit-scrollbar-thumb {
+    background: #ebebeb;
+  }
+`;

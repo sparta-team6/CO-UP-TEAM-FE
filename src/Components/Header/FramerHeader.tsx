@@ -17,7 +17,6 @@ const FramerHeader = () => {
         <Link to="/">
           <img className="mt-[3px]" src={HeaderLogo} alt="Logo" />
         </Link>
-
         <div className="w-[calc(100%-37rem)] min-w-max flex items-end h-10 space-x-20 text-base pl-5 sm:hidden">
           <div className="relative">
             <Link to={`/tool/${pjId}`}>

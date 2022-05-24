@@ -16,7 +16,6 @@ const style = {
   transform: "translate(-50%, -50%)",
   bgcolor: "background.paper",
   boxShadow: 2,
-  p: 4,
 };
 
 interface IBoardProps {
@@ -68,7 +67,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
     setName(e.target.value);
   };
   return (
-    <div className="min-w-[280px] w-96 mr-7 rounded-md min-h-[870px] flex flex-col sm:ml-2">
+    <div className="min-w-[280px] sm:max-w-[247px] w-96 lg:mr-7 rounded-md min-h-[870px] flex flex-col sm:ml-[34px]">
       <div className="w-full h-6 mt-10 sm:mt-10 flex justify-between">
         <h2 className="text-center font-semibold text-lg">{bucketId}</h2>
         <button
@@ -84,8 +83,11 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="w-[704px] h-[384px] rounded-xl sm:w-full">
-          <form className="w-full h-full relative space-y-4" onSubmit={handleSubmit(onValid)}>
+        <Box
+          sx={style}
+          className="w-[704px] h-[384px] rounded-xl sm:w-[320px] sm:h-[448px] pb-[15px] px-[19px] pt-[25px]"
+        >
+          <form className="w-full h-full relative space-y-[21px]" onSubmit={handleSubmit(onValid)}>
             <input
               autoFocus
               className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold font-semibold"
@@ -94,7 +96,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
               placeholder="보드의 제목을 적어주세요 :)"
             />
             <div className="w-full flex items-center space-x-4">
-              <div className="w-14 bg-slate-200 text-base font-semibold">
+              <div className="w-[60px] h-7 bg-slate-200 text-base font-semibold rounded-md leading-8">
                 <p className="text-center">{bucketId}</p>
               </div>
               {/* <select
@@ -113,7 +115,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
                 <option value={nickname}>{nickname}</option>
               </select> */}
               <select
-                className="outline-none bg-slate-200 border-0"
+                className="outline-none bg-slate-200 border-0 rounded-md w-[86px] h-7 text-center"
                 value={name}
                 onChange={onChange}
               >
@@ -128,7 +130,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
               placeholder="내용입력"
             />
             <button
-              className="w-16 h-9 absolute bottom-0 right-20 rounded-md  font-semibold text-base bg-3 text-white"
+              className="w-16 h-9 absolute bottom-0 right-[70px] rounded-md  font-semibold text-base bg-3 text-white"
               type="submit"
             >
               <span>등록</span>
@@ -155,7 +157,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
                   : "bg-[#E7EBF2]"
               } ${
                 boardOpen ? "bg-transparent" : "bg-[#E7EBF2]"
-              } lg:overflow-y-scroll lg:overflow-x-hidden lg:h-[750px] sm:h-auto sm:min-h-[600px] p-2 mt-3 rounded-lg w-full flex flex-col transition-colors ease-in-out delay-100`}
+              } lg:overflow-y-scroll lg:overflow-x-hidden lg:h-[750px] sm:h-auto md:min-h-[600px] p-2 mt-3 rounded-lg w-full flex flex-col transition-colors ease-in-out delay-100`}
               ref={magic.innerRef}
               {...magic.droppableProps}
             >

@@ -9,6 +9,7 @@ import EditCard from "./EditCard";
 import { X } from "../Icon/X";
 import { useDeleteCards } from "../../api/CardQuery";
 import { ProjectKey } from "../../recoil/RoomID";
+import Swal from "sweetalert2";
 
 const style = {
   position: "absolute",
@@ -17,7 +18,6 @@ const style = {
   transform: "translate(-50%, -50%)",
   bgcolor: "background.paper",
   boxShadow: 2,
-  p: 4,
 };
 
 interface IDragabbleCardProps {
@@ -49,9 +49,16 @@ const DraggableCard = ({
   };
   const { mutateAsync } = useDeleteCards(toDoId);
   const onDelete = () => {
-    mutateAsync().then(() => {
-      alert("삭제완료");
-      queryClient.invalidateQueries(["getBoard", pjId]);
+    Swal.fire({
+      title: "삭제",
+      text: "진짜 삭제하시겠어요?!!",
+      showCancelButton: true,
+      confirmButtonText: "넵!",
+      cancelButtonText: "취소!",
+    }).then(() => {
+      mutateAsync().then(() => {
+        queryClient.invalidateQueries(["getBoard", pjId]);
+      });
     });
   };
   return (
@@ -66,7 +73,7 @@ const DraggableCard = ({
           >
             <div
               onClick={handleOpen}
-              className={`relative h-24 overflow-hidden min-w-[256px] mt-2 rounded-md bg-white`}
+              className={`relative h-24 overflow-hidden min-w-[256px] mb-2 rounded-md bg-white`}
             >
               <div
                 className={`w-[10px] h-full ${
@@ -81,13 +88,17 @@ const DraggableCard = ({
             </div>
             <div
               onClick={onDelete}
-              className={`${info.isDragging ? "hidden" : ""} absolute top-5 right-3 cursor-pointer`}
+              className={`${
+                info.isDragging ? "hidden" : ""
+              } w-7 h-7 group absolute top-2 right-3 cursor-pointer flex justify-center items-center`}
             >
               <Trash2 />
             </div>
             <div
               onClick={EditOpen}
-              className={`${info.isDragging ? "hidden" : ""} absolute top-5 right-9 cursor-pointer`}
+              className={`${
+                info.isDragging ? "hidden" : ""
+              } w-7 h-7 group absolute top-2 right-10 cursor-pointer flex justify-center items-center`}
             >
               <SvgEdit2 />
             </div>
@@ -98,19 +109,22 @@ const DraggableCard = ({
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style} className="w-[704px] h-[384px] rounded-xl sm:w-full sm:min-w-[320px] sm:h-[448px] relative">
-              <div className="w-full h-full">
-                <h1 className="text-3xl font-semibold mb-2">{toDoTitle}</h1>
-                <div className="w-full flex items-center space-x-3">
-                  <span className="mr-4">2022.XX.XX</span>
-                  <div className="w-[84px] h-7 rounded-sm bg-5 flex justify-center items-center">
+            <Box
+              sx={style}
+              className="w-[704px] h-[384px] rounded-xl sm:w-[320px] sm:h-[192px] relative"
+            >
+              <div className="w-full h-full p-6">
+                <h1 className="text-lg font-semibold mb-2">{toDoTitle}</h1>
+                <div className="w-full flex items-center space-x-2">
+                  <span className="text-xs mr-1">2022.XX.XX</span>
+                  <div className="text-xs w-[50px] h-7 rounded-md bg-5 flex justify-center items-center">
                     <span>{bucketId}</span>
                   </div>
-                  <div className="max-w-xs h-7 rounded-sm bg-5 flex px-2 justify-center items-center">
+                  <div className="text-xs min-w-[80px] h-7 rounded-md bg-5 flex px-2 justify-center items-center">
                     <span>{toDoName}</span>
                   </div>
                 </div>
-                <div className="max-h-64 py-8">
+                <div className="max-h-64 py-8 sm:py-4">
                   <span>{toDoText}</span>
                 </div>
               </div>

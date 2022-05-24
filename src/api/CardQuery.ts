@@ -1,5 +1,6 @@
 import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
+import Swal from "sweetalert2";
 
 import { instance } from "../servers/axios";
 
@@ -24,7 +25,23 @@ export const useGetCardDetail = (kbcId: string) => {
 
 export const useDeleteCards = (post: string) => {
   return useMutation(async () => {
-    await instance.delete(`api/buckets/cards?kbcId=${post}`);
+    await instance.delete(`api/buckets/cards?kbcId=${post}`).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "카드 삭제 완료😊",
+      });
+    });
   });
 };
 

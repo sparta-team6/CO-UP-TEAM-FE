@@ -11,6 +11,7 @@ import { Sun } from "../elements/Icon/Sun";
 import { ProjectKey } from "../recoil/RoomID";
 import { themeState } from "../recoil/DarkMode";
 import { removeTokenFromCookie } from "../servers/Cookie";
+import styled from "styled-components";
 
 const MyProjectList = () => {
   const setOpen = useSetRecoilState(HandleOpen);
@@ -46,8 +47,9 @@ const MyProjectList = () => {
     DarkMode((prev: boolean) => !prev);
   };
   return (
-    <div className="z-50 w-20 h-[calc(100%-4rem)] bg-[#e7ebf2] dark:bg-gray-700 flex flex-col justify-between items-center sm:h-screen sm:pb-20 sm:pt-16">
-      <div className="mt-1 w-full h-full flex flex-col items-center ">
+    <div className="z-50 w-20 h-[calc(100%-4rem)] bg-[#e7ebf2] dark:bg-gray-700 flex flex-col justify-between items-center sm:h-screen sm:pt-16">
+      {/* 밑에 버튼 3개 h 확정나면 calc 범위 변경 sweetDuck*/}
+      <Scroll className="mt-1 w-full max-h-[calc(100%-190px)] flex flex-col items-center overflow-auto">
         {data?.data.map((room, index) => (
           <motion.div whileHover={{ scale: 1.1 }} onClick={() => onClick(room.pjId)} key={index}>
             <img
@@ -57,8 +59,8 @@ const MyProjectList = () => {
             />
           </motion.div>
         ))}
-      </div>
-      <div className="w-20 h-32 flex flex-col justify-between items-center mb-[46px] space-y-6">
+      </Scroll>
+      <div className="w-20 h-52 flex flex-col justify-center items-center space-y-[27px]">
         <span className="cursor-pointer" onClick={onDarkMode}>
           {theme ? <Moon /> : <Sun />}
         </span>
@@ -74,3 +76,9 @@ const MyProjectList = () => {
 };
 
 export default MyProjectList;
+
+const Scroll = styled.div`
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+`;

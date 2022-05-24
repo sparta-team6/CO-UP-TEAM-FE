@@ -81,7 +81,7 @@ const ProjectAnnouncement = () => {
               placeholder="공지 제목을 적어주세요 :)"
             />
             <div className="mt-[10px] text-[#666]">2022.xx.xx</div>
-            <textarea
+            <ScrollTextArea
               className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
               {...register("content")}
               placeholder="내용을 입력해주세요"
@@ -128,9 +128,15 @@ const ProjectAnnouncement = () => {
   );
 };
 
+const ScrollTextArea = styled.textarea`
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+`;
+
 const Scroll = styled.div`
   &::-webkit-scrollbar-thumb {
-    background: white;
+    background: transparent;
   }
 `;
 
