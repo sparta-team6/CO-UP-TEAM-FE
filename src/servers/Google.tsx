@@ -15,7 +15,9 @@ const Google = () => {
   useEffect(() => {
     const Google = async (code: string) => {
       return await instance
-        .post(`/auth/google?code=${code}`)
+        .post(
+          `/auth/google?code=${code}&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none`
+        )
         .then((res: any) => {
           cookies.set("accessToken", String(res.data.accessToken), {
             path: "/",
