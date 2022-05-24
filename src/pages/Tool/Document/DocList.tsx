@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import SlidingPanel from "react-sliding-side-panel";
 import "react-sliding-side-panel/lib/index.css";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -7,6 +8,7 @@ import ViewDoc from "../../../Components/ToolDocument/ViewDoc";
 import Chat from "../../../layout/Chat";
 import FolderList from "../../../layout/FolderList";
 import MyProjectList from "../../../layout/MyProjectList";
+import { docId } from "../../../recoil/AtomDocument";
 import { HandleOpen } from "../../../recoil/AtomsInterface";
 import { ProjectKey } from "../../../recoil/RoomID";
 
@@ -14,12 +16,17 @@ const DocList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data } = useGetFolders(String(pjId));
   const [open, setOpen] = useRecoilState(HandleOpen);
+  const getDocId = useRecoilValue(docId);
+  const navigate = useNavigate();
   const onClick = () => {
     setOpen(!open);
   };
 
   useEffect(() => {
     setOpen(false);
+    if (!docId) {
+      navigate(`/tool/${pjId}/document/${getDocId}`);
+    }
   }, []);
   return (
     <>

@@ -38,8 +38,7 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
     };
     if (size === undefined) {
       if (confirm("내용을 수정하시겠습니까?")) {
-        mutateAsync(project).then((res) => {
-          console.log(res);
+        mutateAsync(project).then(() => {
           queryClient.invalidateQueries("getProject");
           setUpOpen(false);
         });

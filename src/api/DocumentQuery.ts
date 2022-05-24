@@ -1,11 +1,13 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { useMutation, useQuery } from "react-query";
+import { useSetRecoilState } from "recoil";
+import { docId } from "../recoil/AtomDocument";
 import { instance } from "../servers/axios";
 
 export interface Docs {
   title?: string;
   contents?: string;
-  isLoading?: boolean;
+  isFetching?: boolean;
   docId?: string;
   position?: number;
 }
@@ -21,8 +23,9 @@ export const useGetOneDoc = (docId: string) => {
 };
 
 export const useAddDoc = () => {
+  const setDocId = useSetRecoilState(docId);
   return useMutation(async (Doc: Docs) => {
-    await instance.post("api/folders/docs", Doc);
+    await instance.post("api/folders/docs", Doc).then((res) => setDocId(res.data.docId));
   });
 };
 

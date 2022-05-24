@@ -22,6 +22,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
 import { ProjectKey } from "../../recoil/RoomID";
+import { dfId } from "../../recoil/AtomDocument";
 
 interface IForm {
   title: string;
@@ -34,6 +35,7 @@ const DocEditor = () => {
   const editorRef = createRef<Editor>();
   const { mutateAsync } = useAddDoc();
   const { register, handleSubmit } = useForm<IForm>();
+  const getDfId = useRecoilValue(dfId);
   const onValid: SubmitHandler<IForm> = (data) => {
     if (editorRef.current === null) return;
     if (!data.title) {
@@ -44,9 +46,8 @@ const DocEditor = () => {
       alert("내용을 입력해주세요!");
       return;
     }
-
     const doc = {
-      dfId: state,
+      dfId: state === null ? getDfId : state,
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
       position: 1,
