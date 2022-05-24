@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Helmet from "react-helmet";
 import { useRecoilValue } from "recoil";
 import { themeState } from "../recoil/DarkMode";
+import styled from "styled-components";
 
 const Header = lazy(() => import("./Header"));
 const MHeader = lazy(() => import("./MHeader"));
@@ -27,7 +28,7 @@ const Router = () => {
       <Helmet>
         <title>CO-UP</title>
       </Helmet>
-      <div className={`${theme ? "dark" : ""}`}>
+      <MobileView className={`${theme ? "dark" : ""}`}>
         <Header />
         <MHeader />
         <Routes>
@@ -45,9 +46,15 @@ const Router = () => {
           <Route path="/user/kakao/callback/*" element={<Kakao />} />
         </Routes>
         <Footer />
-      </div>
+      </MobileView>
     </BrowserRouter>
   );
 };
+const MobileView = styled.div`
+  @media screen and (max-width: 768px) {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+`;
 
 export default Router;
