@@ -1,11 +1,12 @@
 import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
+import { useSetRecoilState } from "recoil";
+import { dfId } from "../recoil/AtomDocument";
 import { instance } from "../servers/axios";
 import { Docs } from "./DocumentQuery";
 
 export interface Folders {
   title?: string;
-  isLoading?: boolean;
   dfId?: string;
   position?: number;
   docs?: Docs[];
@@ -27,8 +28,9 @@ export const useGetFolders = (pjId: string) => {
 };
 
 export const useAddFolder = () => {
+  const setDfId = useSetRecoilState(dfId);
   return useMutation(async (Folder: Folder) => {
-    await instance.post("api/folders/", Folder);
+    await instance.post("api/folders/", Folder).then((res) => setDfId(res.data.dfId));
   });
 };
 

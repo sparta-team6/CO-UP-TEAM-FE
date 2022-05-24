@@ -8,7 +8,7 @@ import EmptyFolder from "../../images/Document/EmptyFolder.png";
 import EmptyFolderM from "../../images/Document/EmptyFolder_m.png";
 import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
 
-const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
+const ViewDoc = ({ title, contents, isFetching, docId }: Docs) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { mutateAsync: DelDoc } = useDelDoc(String(docId));
@@ -17,6 +17,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
   const folderData = data?.data[data?.data.length - 1];
   const docData = folderData?.docs?.[folderData?.docs.length - 1];
   const { mutateAsync: DelDoc2 } = useDelDoc(String(docData?.docId));
+  console.log(isFetching);
 
   const onDelete = () => {
     if (confirm("문서를 삭제하시겠습니까?")) {
@@ -43,12 +44,12 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
       position: 1,
     };
     AddFol(folder).then(() => {
-      queryClient.invalidateQueries("getFolders").then((res) => console.log(res));
+      queryClient.invalidateQueries("getFolders");
     });
   };
   return (
     <>
-      {!isLoading && (
+      {!isFetching && (
         <div className="w-full h-full flex flex-col">
           {title && contents ? (
             <>

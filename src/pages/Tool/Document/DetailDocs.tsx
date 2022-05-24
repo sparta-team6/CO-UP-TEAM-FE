@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const DetailDocs = () => {
   const { postId } = useParams();
-  const { data, isLoading } = useGetOneDoc(String(postId));
+  const { data, isFetching } = useGetOneDoc(String(postId));
   const DocData = data?.data;
   return (
     <>
@@ -17,7 +17,7 @@ const DetailDocs = () => {
           <DocumentList />
         </div>
         <div className="w-[calc(100%-800px)] h-full flex ml-[368px] md:w-[calc(100%-21rem)] sm:w-full sm:p-2 sm:m-0">
-          <ViewDoc {...DocData} isLoading={isLoading} />
+          <ViewDoc {...DocData} isFetching={isFetching} />
         </div>
       </div>
       <Chat />
