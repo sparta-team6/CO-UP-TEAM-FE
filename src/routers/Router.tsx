@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Helmet from "react-helmet";
 import { useRecoilValue } from "recoil";
 import { themeState } from "../recoil/DarkMode";
-import styled from "styled-components";
 
 const Header = lazy(() => import("./Header"));
 const MHeader = lazy(() => import("./MHeader"));
@@ -19,6 +18,7 @@ const ToolBoard = lazy(() => import("../pages/Tool/Board"));
 const AddDocs = lazy(() => import("../pages/Tool/Document/AddDocs"));
 const ProjectList = lazy(() => import("../pages/ProjectList"));
 const Kakao = lazy(() => import("../servers/Kakao"));
+const Google = lazy(() => import("../servers/Google"));
 const EditDocs = lazy(() => import("../pages/Tool/Document/EditDocs"));
 
 const Router = () => {
@@ -28,7 +28,7 @@ const Router = () => {
       <Helmet>
         <title>CO-UP</title>
       </Helmet>
-      <MobileView className={`${theme ? "dark" : ""}`}>
+      <div className={`${theme ? "dark" : ""}`}>
         <Header />
         <MHeader />
         <Routes>
@@ -44,17 +44,12 @@ const Router = () => {
           <Route path="/tool/:id/document/add" element={<AddDocs />} />
           <Route path="/tool/:id/board" element={<ToolBoard />} />
           <Route path="/user/kakao/callback/*" element={<Kakao />} />
+          <Route path="/user/google/callback/*" element={<Google />} />
         </Routes>
         <Footer />
-      </MobileView>
+      </div>
     </BrowserRouter>
   );
 };
-const MobileView = styled.div`
-  @media screen and (max-width: 768px) {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-  }
-`;
 
 export default Router;
