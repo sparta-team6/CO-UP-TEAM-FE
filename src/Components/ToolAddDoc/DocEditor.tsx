@@ -52,12 +52,10 @@ const DocEditor = () => {
       position: 1,
     };
 
-    if (confirm("문서를 등록하시겠습니까?")) {
-      mutateAsync(doc).then(() => {
-        queryClient.invalidateQueries("getFolders");
-        navigate(`/tool/${pjId}/document/`);
-      });
-    }
+    mutateAsync(doc).then(() => {
+      queryClient.invalidateQueries("getFolders");
+      navigate(`/tool/${pjId}/document/`);
+    });
   };
 
   return (
