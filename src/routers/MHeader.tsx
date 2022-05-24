@@ -20,7 +20,7 @@ const MHeader = () => {
   return (
     <>
       {location.pathname.includes("tool") && !docMatch && !FixDoc ? (
-        <nav className="hidden w-full h-16 fixed z-[70] top-0 sm:flex justify-between items-center shadow-sm px-[16px]">
+        <nav className="hidden w-full h-16 fixed z-[1000] top-0 sm:flex justify-between items-center shadow-sm px-[16px]">
           <div>
             {ChatMatch ? (
               <div onClick={() => navigate(-1)}>
