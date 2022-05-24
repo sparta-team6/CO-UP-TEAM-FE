@@ -7,7 +7,6 @@ import { useLogOut, useUpdateUser } from "../../api/UserQuery";
 import { SvgEdit } from "../../elements/Icon/SvgEdit";
 import { resizeFile } from "../../servers/resize";
 import { MyProfile } from "../../recoil/MyProfile";
-import { removeTokenFromCookie } from "../../servers/Cookie";
 
 interface IForm {
   id?: string;
@@ -78,7 +77,6 @@ const EditProfile = () => {
         .then(() => {
           alert("안녕히가세여");
           navigate("/");
-          removeTokenFromCookie();
         })
         .catch(() => {
           alert("로그인 실패");

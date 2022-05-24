@@ -10,7 +10,6 @@ import { Moon } from "../elements/Icon/Moon";
 import { Sun } from "../elements/Icon/Sun";
 import { ProjectKey } from "../recoil/RoomID";
 import { themeState } from "../recoil/DarkMode";
-import { removeTokenFromCookie } from "../servers/Cookie";
 import styled from "styled-components";
 
 const MyProjectList = () => {
@@ -37,7 +36,6 @@ const MyProjectList = () => {
       .then(() => {
         alert("안녕히가세여");
         navigate("/");
-        removeTokenFromCookie();
       })
       .catch(() => {
         alert("로그인 실패");
@@ -59,7 +57,7 @@ const MyProjectList = () => {
           </motion.div>
         ))}
       </Scroll>
-      <div className="sticky bottom-20 w-20 h-52 flex flex-col justify-center items-center space-y-[27px]">
+      <div className="sticky bottom-[88px] w-20 h-52 flex flex-col justify-center items-center space-y-[27px]">
         <span className="cursor-pointer" onClick={onDarkMode}>
           {theme ? <Moon /> : <Sun />}
         </span>
