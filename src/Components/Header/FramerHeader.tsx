@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
-import Logo from "../../images/LOGO_2.png";
+import HeaderLogo from "../../images/Header/HeaderLogo.png";
 import React from "react";
 import { Link, useMatch } from "react-router-dom";
 import { SvgUser } from "../../elements/Icon/SvgUser";
@@ -13,12 +13,11 @@ const FramerHeader = () => {
   const boardMatch = useMatch("/tool/:id/board");
   return (
     <React.Fragment>
-      <nav className="sm:hidden w-full h-16 flex justify-between items-center fixed z-50 shadow-md dark:bg-gray-800">
-        <div className="w-[24rem]">
-          <Link to="/">
-            <img className="ml-5 w-10 h-10 mt-[1px]" src={Logo} alt="Logo"></img>
-          </Link>
-        </div>
+      <nav className="sm:hidden w-full h-16 flex justify-between items-center fixed z-50 shadow-md dark:bg-gray-800 px-[23px]">
+        <Link to="/">
+          <img className="mt-[3px]" src={HeaderLogo} alt="Logo" />
+        </Link>
+
         <div className="w-[calc(100%-37rem)] min-w-max flex items-end h-10 space-x-20 text-base pl-5 sm:hidden">
           <div className="relative">
             <Link to={`/tool/${pjId}`}>
@@ -57,7 +56,7 @@ const FramerHeader = () => {
             )}
           </div>
         </div>
-        <nav className="w-32 h-full flex justify-around items-center sm:hidden dark:bg-gray-800">
+        <nav className="h-full flex justify-around items-center sm:hidden dark:bg-gray-800">
           <Link to={`/tool/${pjId}/chat`} className="hidden md:block">
             <span className="dark:text-white">채팅</span>
           </Link>

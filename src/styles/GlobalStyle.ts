@@ -161,8 +161,13 @@ abbr[title]{
 }
 @media screen and (max-width: 768px) {
   .toastui-editor-defaultUI .ProseMirror{
-    padding-left: 10px;
-    padding-top: 10px;
+    padding-left: 10px !important;
+    padding-top: 10px !important;
+  }
+  .MuiSvgIcon-root{
+    margin: 0;
+    width: 30px;
+    height: 30px;
   }
 }
 `;
