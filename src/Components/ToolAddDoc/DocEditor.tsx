@@ -81,7 +81,7 @@ const DocEditor = () => {
             </button>
           </div>
         </div>
-        <div className="flex h-[calc(100%-4rem)] pt-[60px] items-center justify-between mx-[46px] mb-[20px] sm:mx-[10px]">
+        <div className="flex h-[calc(100%-4rem)] pt-[60px] items-center justify-between mx-[46px] sm:mx-[10px]">
           <input
             className="text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-gray-400 sm:w-full sm:text-left"
             {...register("title")}

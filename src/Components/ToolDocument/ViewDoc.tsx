@@ -78,9 +78,11 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                   </button>
                 </div>
               </div>
-              <div className="flex flex-col sm:hidden mx-[46px] mb-[20px]">
-                <div className="flex justify-between items-center h-[47px] pl-[2px]">
-                  <div className="text-[32px] font-bold sm:mb-[22px] sm:mx-[12px]">{title}</div>
+              <div className="flex flex-col sm:hidden mx-[46px] mt-[39px] mb-[20px]">
+                <div className="flex justify-between items-center pl-[2px]">
+                  <div className="text-[32px] font-bold sm:mt-[60px] sm:mb-[22px] sm:mx-[12px]">
+                    {title}
+                  </div>
                   <div>
                     <button
                       className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
@@ -102,18 +104,16 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                 </div>
                 <div className="text-lg text-[#999] mt-[15px]">{"2022.05.04  by 작성자"}</div>
               </div>
-              <div className="h-[calc(100%-4rem)] pt-[68px]">
-                <div className="hidden sm:block text-[32px] font-bold sm:mb-[22px] sm:mx-[12px]">
-                  {title}
-                </div>
-                <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
-                  <MarkdownPreview className="whitespace-pre-wrap break-all" source={contents} />
-                </div>
+              <div className="hidden sm:block text-[32px] font-bold sm:mt-[60px] sm:mb-[22px] sm:mx-[12px]">
+                {title}
+              </div>
+              <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
+                <MarkdownPreview className="whitespace-pre-wrap break-all" source={contents} />
               </div>
             </>
           ) : docData ? (
             <>
-              <div className="flex flex-col sm:hidden mx-[46px] mb-[20px]">
+              <div className="flex flex-col sm:hidden mx-[46px] mt-[37px] mb-[20px]">
                 <div className="flex justify-between items-center h-[47px] pl-[2px]">
                   <div className="text-[32px] font-bold">{docData.title}</div>
                   <div>
@@ -139,7 +139,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                     </button>
                   </div>
                 </div>
-                <div className="text-lg text-[#999] mt-[15px]">{"2022.05.04  by 작성자"}</div>
+                <div className="text-lg text-[#999] mt-[14px]">{"2022.05.04  by 작성자"}</div>
               </div>
               <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
                 <MarkdownPreview
