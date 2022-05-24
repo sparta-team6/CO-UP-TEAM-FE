@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import SlidingPanel from "react-sliding-side-panel";
 import "react-sliding-side-panel/lib/index.css";
 import { useRecoilState, useRecoilValue } from "recoil";
+import styled from "styled-components";
 import { useGetFolders } from "../../../api/FolderQuery";
 import ViewDoc from "../../../Components/ToolDocument/ViewDoc";
 import Chat from "../../../layout/Chat";
@@ -23,7 +24,7 @@ const DocList = () => {
   }, []);
   return (
     <>
-      <div className="w-full h-[calc(100vh-4rem)] bg-white flex absolute bottom-0">
+      <MobileView className="w-full h-[calc(100vh-4rem)] bg-white flex absolute bottom-0">
         <div
           className={`flex fixed h-full sm:h-[calc(100%-144px)] top-0 left-0 mt-16 ml-0 z-[60] ${
             data?.data.length === 0 ? "sm:hidden" : "sm:w-full"
@@ -51,10 +52,18 @@ const DocList = () => {
         >
           <ViewDoc />
         </div>
-      </div>
+      </MobileView>
       <Chat />
     </>
   );
 };
+
+const MobileView = styled.div`
+  @media screen and (max-width: 768px) {
+    height: 100vh;
+    height: -webkit-fill-available;
+    height: fill-available;
+  }
+`;
 
 export default DocList;
