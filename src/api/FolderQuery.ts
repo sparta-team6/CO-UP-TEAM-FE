@@ -8,7 +8,6 @@ import { Docs } from "./DocumentQuery";
 export interface Folders {
   title?: string;
   dfId?: string;
-  position?: number;
   docs?: Docs[];
 }
 

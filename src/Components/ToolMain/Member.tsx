@@ -2,12 +2,13 @@ import imgCrown from "../../images/img_crown.png";
 import { SvgUser } from "../../elements/Icon/SvgUser";
 import { useRecoilValue } from "recoil";
 import { MyProfile } from "../../recoil/MyProfile";
-// import { ProjectKey } from "../../recoil/RoomID";
-// import { useGetProjectUser } from "../../api/UserQuery";
+import { ProjectKey } from "../../recoil/RoomID";
+import { useGetProjectUser } from "../../api/UserQuery";
 
 const Member = () => {
-  // const { pjId } = useRecoilValue(ProjectKey);
-  // const { data } = useGetProjectUser(pjId);
+  const { pjId } = useRecoilValue(ProjectKey);
+  const { data } = useGetProjectUser(pjId);
+  console.log(data?.data);
   const user = useRecoilValue(MyProfile);
   return (
     <div className="w-full h-full">

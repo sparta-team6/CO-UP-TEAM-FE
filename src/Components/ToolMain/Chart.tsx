@@ -33,7 +33,7 @@ const Chart = () => {
               pie: {
                 customScale: 1.08,
                 donut: {
-                  size: "80%",
+                  size: "77%",
                 },
               },
             },
@@ -42,14 +42,13 @@ const Chart = () => {
               fontWeight: 600,
             },
             stroke: {
-              show: false,
+              show: true,
               lineCap: "round",
+              width: 3,
+              colors: Dark ? ["#212529"] : ["white"],
             },
             dataLabels: {
               enabled: false,
-            },
-            fill: {
-              type: "gradient",
             },
             yaxis: {
               tooltip: {

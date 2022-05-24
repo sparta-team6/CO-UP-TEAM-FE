@@ -9,7 +9,6 @@ export interface Docs {
   contents?: string;
   isFetching?: boolean;
   docId?: string;
-  position?: number;
 }
 
 export interface IDocDetail {
