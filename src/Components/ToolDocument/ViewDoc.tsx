@@ -4,7 +4,8 @@ import { Docs, useDelDoc } from "../../api/DocumentQuery";
 import "../../styles/ViewDoc.css";
 import { queryClient } from "../..";
 import { useAddFolder, useGetFolders } from "../../api/FolderQuery";
-import imgFolder2 from "../../images/img_folder2.png";
+import EmptyFolder from "../../images/Document/EmptyFolder.png";
+import EmptyFolderM from "../../images/Document/EmptyFolder_m.png";
 import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
 
 const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
@@ -149,11 +150,8 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
             </>
           ) : (
             <div className=" w-full h-full flex flex-col justify-center items-center text-center px-[46px]">
-              <img
-                className="w-[328px] h-[286px] sm:w-[177px] sm:h-[154px]"
-                src={imgFolder2}
-                alt=""
-              />
+              <img className="block sm:hidden" src={EmptyFolder} alt="" />
+              <img className="hidden sm:block" src={EmptyFolderM} alt="" />
               <div className="font-bold text-3xl pt-[33px] pb-[20px]">
                 <span>새로운 문서를 추가해 보세요</span>
               </div>
