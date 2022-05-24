@@ -47,9 +47,8 @@ const MyProjectList = () => {
     DarkMode((prev: boolean) => !prev);
   };
   return (
-    <div className="fixed z-50 w-20 h-[calc(100%-4rem)] bg-[#e7ebf2] dark:bg-gray-700 flex flex-col justify-between items-center sm:h-[calc(100%-9rem)] sm:top-16">
-      {/* 밑에 버튼 3개 h 확정나면 calc 범위 변경 sweetDuck*/}
-      <Scroll className="mt-1 w-full h-[calc(100%-190px)] flex flex-col items-center overflow-auto">
+    <div className="w-20 h-[calc(100%-4rem)] bg-[#e7ebf2] dark:bg-gray-700 flex flex-col justify-between items-center sm:h-[calc(100vh-5rem)] sm:pt-16">
+      <Scroll className="mt-1 w-full max-h-[calc(100%-190px)] flex flex-col items-center overflow-auto">
         {data?.data.map((room, index) => (
           <motion.div whileHover={{ scale: 1.1 }} onClick={() => onClick(room.pjId)} key={index}>
             <img
