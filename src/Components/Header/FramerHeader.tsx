@@ -13,11 +13,11 @@ const FramerHeader = () => {
   const boardMatch = useMatch("/tool/:id/board");
   return (
     <React.Fragment>
-      <nav className="sm:hidden w-full h-16 flex justify-between items-center fixed z-50 shadow-md dark:bg-gray-800 px-[23px]">
+      <nav className="sm:hidden w-full h-16 flex justify-between items-center fixed z-[1000] shadow-md dark:bg-gray-800 px-[23px]">
         <Link to="/">
           <img className="mt-[3px]" src={HeaderLogo} alt="Logo" />
         </Link>
-        <div className="w-[calc(100%-37rem)] min-w-max flex items-end h-10 space-x-20 text-base pl-5 sm:hidden">
+        <div className="w-[calc(100%-37rem)] min-w-max flex items-end h-10 space-x-20 text-base pl-28 sm:hidden">
           <div className="relative">
             <Link to={`/tool/${pjId}`}>
               <span className="dark:text-white">메인</span>
