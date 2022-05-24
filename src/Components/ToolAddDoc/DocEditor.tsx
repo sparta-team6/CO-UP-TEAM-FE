@@ -61,14 +61,11 @@ const DocEditor = () => {
   return (
     <React.Fragment>
       <form onSubmit={handleSubmit(onValid)}>
-        <div className="hidden sm:flex justify-between items-center border-b border-solid border-[#BEBEBE] pb-2 sm:mx-[8px]">
-          <div
-            className="flex justify-center items-center border-none w-[39px] h-[36px] rounded-md bg-5"
-            onClick={() => navigate(-1)}
-          >
+        <div className="hidden fixed top-0 left-0 w-full sm:flex justify-between items-center pb-2 px-[16px] pt-[19px]">
+          <div className="flex justify-center items-center" onClick={() => navigate(-1)}>
             <ChevronLeft />
           </div>
-          <div className="h-[49px] flex items-center">
+          <div className="flex items-center">
             <button
               className="border-none w-[56px] h-[36px] rounded-md text-white bg-3"
               type="submit"
@@ -84,7 +81,7 @@ const DocEditor = () => {
             </button>
           </div>
         </div>
-        <div className="flex items-center justify-between mx-[46px] mt-[60px] mb-[20px] sm:mt-[30px] sm:mx-[10px]">
+        <div className="flex items-center justify-between mx-[46px] mt-[60px] mb-[20px] sm:mx-[10px]">
           <input
             className="text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-gray-400 sm:w-full sm:text-left"
             {...register("title")}
