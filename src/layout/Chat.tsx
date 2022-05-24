@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import { queryClient } from "..";
 import { useAddChatComment, useGetChatComment } from "../api/ChatQuery";
 import { MyProfile } from "../recoil/MyProfile";
-// import message from "../images/message.png";
+// import EmptyChat from "../images/Main/EmptyChat.png";
 
 interface IForm {
   text: string;
@@ -67,7 +67,7 @@ const Chat = () => {
         })}
       </div>
       {/* <div className="h-full flex flex-col justify-center items-center">
-        <img width={191} height={229} src={message} alt="" />
+        <img src={EmptyChat} alt="" />
         <span className="pt-[41px] text-[#B0B0B0]">팀원들에게 메세지를 전달해보세요</span>
       </div> */}
       <div className="w-full flex justify-center items-center relative bg-white">

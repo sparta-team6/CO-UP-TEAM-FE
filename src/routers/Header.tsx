@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import FramerHeader from "../Components/Header/FramerHeader";
 import { SvgUser } from "../elements/Icon/SvgUser";
-import Logo from "../images/LOGO_2.png";
+import HeaderLogo from "../images/Header/HeaderLogo.png";
 
 const Header = () => {
   const location = useLocation();
@@ -12,11 +12,11 @@ const Header = () => {
       {location.pathname.includes("tool") ? (
         <FramerHeader />
       ) : location.pathname.includes("projectList") || location.pathname.includes("profile") ? (
-        <nav className="w-full h-16 flex justify-between items-center fixed z-50 shadow-md  dark:bg-gray-800">
+        <nav className="w-full h-16 flex justify-between items-center fixed z-50 shadow-md  dark:bg-gray-800 px-[21px]">
           <Link to="/">
-            <img className="ml-5 w-10 h-10 mt-[1px]" src={Logo} alt="Logo"></img>
+            <img className="mt-[3px]" src={HeaderLogo} alt="Logo" />
           </Link>
-          <div className="w-14 flex justify-around">
+          <div className="flex justify-around">
             <Link to="/profile">
               <SvgUser />
             </Link>

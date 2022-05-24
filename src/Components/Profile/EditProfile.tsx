@@ -135,16 +135,19 @@ const EditProfile = () => {
             defaultValue={user?.aboutMe}
             {...register("about_me")}
           />
-          <div className="text-right">
+          <div className="text-center sm:pt-[10px]">
             <button
               onClick={onLogOut}
-              className="w-32 h-11 p-2 bg-5 rounded-lg mr-4 sm:mr-2"
+              className="w-[160px] h-[48px] sm:w-[124px] sm:h-[40px] bg-[#D7DCE5] rounded-xl sm:rounded-[4px] mr-[27px] sm:mr-[6px]"
               type="button"
             >
-              <span className="text-white text-lg">로그아웃</span>
+              <span className="text-white text-lg sm:text-base">로그아웃</span>
             </button>
-            <button className="w-32 h-11 p-2 bg-3 rounded-lg" type="submit">
-              <span className="text-white text-lg">저장하기</span>
+            <button
+              className="w-[160px] h-[48px] sm:w-[124px] sm:h-[40px] bg-3 rounded-xl sm:rounded-[4px]"
+              type="submit"
+            >
+              <span className="text-white text-lg sm:text-base">저장하기</span>
             </button>
           </div>
         </form>

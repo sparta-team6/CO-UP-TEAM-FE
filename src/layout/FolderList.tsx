@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import { useAddFolder, useGetFolders, useUpdateFolder } from "../api/FolderQuery";
 import { queryClient } from "..";
 import FolderFixed from "../Components/ToolDocument/FolderFixed";
-import imgFolder from "../images/img_folder.png";
+import EmptyFile from "../images/Document/EmptyFile.png";
 import { FolderPlus } from "../elements/Icon/FolderPlus";
 import { SvgFolder } from "../elements/Icon/SvgFolder";
 import { Plus } from "../elements/Icon/Plus";
@@ -54,7 +54,7 @@ const FolderList = () => {
     <>
       {data?.data.length === 0 ? (
         <Scroll className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
-          <div className="flex justify-between items-center px-[22px] pt-[45px]">
+          <div className="flex justify-between items-center px-[16px] pt-[45px]">
             <div className="font-bold text-2xl">문서목록</div>
             <div onClick={AddFolder} className="cursor-pointer">
               <Plus />
@@ -62,7 +62,7 @@ const FolderList = () => {
           </div>
           <div className="border border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
           <div className="flex flex-col justify-center items-center mt-[50px] sm:hidden">
-            <img className="w-[130px] h-[130px]" src={imgFolder} alt="" />
+            <img src={EmptyFile} alt="" />
             <span className="text-lg opacity-50 mt-[30px] sm:text-base sm:mt-5">
               새로운 문서를 추가해 보세요
             </span>
@@ -70,7 +70,7 @@ const FolderList = () => {
         </Scroll>
       ) : (
         <Scroll className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
-          <div className="flex justify-between items-center pt-5 px-4 sm:pt-4">
+          <div className="flex justify-between items-center pt-[20px] px-[16px]">
             <div className="font-bold text-2xl">문서목록</div>
             <div onClick={AddFolder} className="cursor-pointer">
               <Plus />
@@ -104,7 +104,7 @@ const FolderList = () => {
                     folder?.docs?.length !== 0 && "hidden"
                   }`}
                 >
-                  <img className="w-[130px] h-[130px]" src={imgFolder} alt="" />
+                  <img src={EmptyFile} alt="" />
                   <span className="text-lg opacity-50 mt-[30px] sm:text-base sm:mt-5">
                     새로운 문서를 추가해 보세요
                   </span>

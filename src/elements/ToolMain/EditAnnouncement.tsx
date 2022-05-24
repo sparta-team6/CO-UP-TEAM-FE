@@ -55,10 +55,12 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
       title: data.title,
       contents: data.content,
     };
-    UpdateAN(Update).then(() => {
-      queryClient.invalidateQueries("getAnnouncement");
-    });
-    setOpen(false);
+    if (confirm("수정하시겠습니까?")) {
+      UpdateAN(Update).then(() => {
+        queryClient.invalidateQueries("getAnnouncement");
+      });
+      setOpen(false);
+    }
   };
   const onDelete = () => {
     const a = {

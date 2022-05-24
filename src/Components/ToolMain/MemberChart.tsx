@@ -1,7 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { useGetManagers } from "../../api/ChartQuery";
 import { ProjectKey } from "../../recoil/RoomID";
-import coupFamily from "../../images/coupfamily.png";
+import EmptyStatus from "../../images/Main/EmptyStatus.png";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import profile1 from "../../images/Profile/COUP_square_대지 1.png";
@@ -26,13 +26,8 @@ const MemberChart = () => {
               보드 생성하기
             </button>
           </div>
-
           <div className="flex flex-col justify-center items-center pt-5">
-            <img
-              className="max-w-full w-[320px] h-[143px] sm:w-[198px] sm:h-[88px]"
-              src={coupFamily}
-              alt=""
-            />
+            <img className="sm:w-[198px] sm:h-[88px]" src={EmptyStatus} alt="" />
             <span className="text-lg mt-[21px] text-gray-400">
               팀원들과 프로젝트 진행 상황을 공유해보세요
             </span>

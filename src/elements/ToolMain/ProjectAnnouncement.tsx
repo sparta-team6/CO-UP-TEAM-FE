@@ -49,12 +49,10 @@ const ProjectAnnouncement = () => {
       title: data.title,
       contents: data.content,
     };
-    if (confirm("공지사항을 등록하시겠습니까?")) {
-      postAn(post).then(() => queryClient.invalidateQueries("getAnnouncement"));
-      setValue("title", "");
-      setValue("content", "");
-      setOpen(false);
-    }
+    postAn(post).then(() => queryClient.invalidateQueries("getAnnouncement"));
+    setValue("title", "");
+    setValue("content", "");
+    setOpen(false);
   };
 
   return (
