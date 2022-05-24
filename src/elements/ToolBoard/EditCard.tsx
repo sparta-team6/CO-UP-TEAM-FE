@@ -2,6 +2,7 @@ import { Box, Modal } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
+import Swal from "sweetalert2";
 import { queryClient } from "../..";
 import { useGetCardDetail } from "../../api/CardQuery";
 import { useUpdateCards } from "../../api/Optimistic";
@@ -31,7 +32,6 @@ const style = {
   transform: "translate(-50%, -50%)",
   bgcolor: "background.paper",
   boxShadow: 2,
-  p: 4,
 };
 
 const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
@@ -52,6 +52,21 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
     };
     mutateAsync(post).then(() => {
       queryClient.invalidateQueries(["getCard", String(Card?.data.kbbId)]);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "카드 수정 완료😊",
+      });
     });
     setEdit(false);
   };
@@ -68,20 +83,20 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
       >
         <Box
           sx={style}
-          className="w-[704px] h-[384px] rounded-xl sm:w-full sm:min-w-[320px] sm:h-[448px] relative"
+          className="w-[704px] h-[384px] rounded-xl sm:w-[320px] sm:h-[448px] pb-[15px] px-[19px] pt-[25px]"
         >
-          <div className="w-full h-full">
+          <div className="w-full h-full relative space-y-[21px]">
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
                 autoFocus
-                className="text-3xl font-semibold mb-2 rounded-md border-none"
+                className="w-full text-3xl font-semibold mb-2 rounded-md border-none"
                 {...register("title")}
                 defaultValue={toDoTitle}
               />
               <div className="w-full flex items-center space-x-3">
                 <div className="max-w-xs h-7 rounded-sm flex justify-center items-center">
                   <select
-                    className="outline-none bg-slate-200 border-0"
+                    className="outline-none bg-slate-200 border-0 rounded-md w-[86px] h-7 text-center"
                     value={name}
                     onChange={onChange}
                   >
@@ -90,16 +105,16 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                   </select>
                 </div>
               </div>
-              <div className="max-h-64 py-8">
+              <div className="w-full max-h-64 py-8">
                 <input
                   autoFocus
-                  className="rounded-md border-none"
+                  className="w-full rounded-md border-none"
                   {...register("text")}
                   defaultValue={toDoText}
                 />
               </div>
               <button
-                className="w-16 h-9 absolute bottom-5 right-5 rounded-md  font-semibold text-base bg-3 text-white"
+                className="w-16 h-9 absolute bottom-0 right-0 rounded-md  font-semibold text-base text-white bg-3"
                 type="submit"
               >
                 <span>수정</span>

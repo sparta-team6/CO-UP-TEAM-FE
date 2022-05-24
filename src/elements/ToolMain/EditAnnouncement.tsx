@@ -2,6 +2,7 @@ import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
+import styled from "styled-components";
 import { queryClient } from "../..";
 import {
   Announcement,
@@ -97,7 +98,7 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
               defaultValue={title}
             />
             <div className="mt-[10px] text-[#666]">2022.xx.xx</div>
-            <textarea
+            <Scroll
               className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
               {...register("content")}
               placeholder="내용을 입력해주세요"
@@ -116,3 +117,9 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
 };
 
 export default React.memo(EditAnnouncement);
+
+const Scroll = styled.textarea`
+  &::-webkit-scrollbar-thumb {
+    background: #ebebeb;
+  }
+`;

@@ -25,13 +25,13 @@ const SlidingMain = () => {
     }
   }, [board]);
   return (
-    <div className="flex fixed top-0 left-0 mt-16 h-full">
+    <div className="flex fixed top-0 left-0 mt-16 h-full z-[60]">
       <div className="sm:hidden">
         <MyProjectList />
       </div>
       <div className="hidden sm:block">
         <SlidingPanel type={"left"} onClose={() => setOpen(false)} isOpen={open} size={100}>
-          <div className="flex overflow-hidden">
+          <div className="flex overflow-hidden relative">
             <MyProjectList />
             <TeamList />
           </div>

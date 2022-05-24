@@ -61,7 +61,7 @@ const BoardList = () => {
   };
   return (
     <div className="w-full h-full bg-[#F0F3F7] overflow-auto">
-      <div className="max-w-[1300px] sm:h-auto h-full ml-16 sm:ml-2 flex justify-center items-center relative sm:pb-36">
+      <div className="min-w-[1300px] sm:h-auto h-full ml-16 sm:ml-2 flex justify-center items-center relative sm:pb-36">
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="w-full h-full flex">
             <div className="flex w-full h-full gap-7 md:justify-start overflow-auto">
@@ -82,8 +82,8 @@ const BoardList = () => {
           </div>
         </DragDropContext>
         {open ? (
-          <div className="w-full h-[calc(100%-5rem)] absolute top-20 flex flex-col justify-center items-center space-y-6">
-            <img className="sm:w-full " src={BoardImg} alt="보드" />
+          <div className="w-full h-[calc(100%-5rem)] absolute top-20 flex flex-col justify-center items-center space-y-6 sm:items-start">
+            <img className="sm:w-[155px] " src={BoardImg} alt="보드" />
             <div className="w-[420px] h-[135px] space-y-4">
               <p className="text-center font-semibold text-4xl mb-4 w-full flex sm:flex-col">
                 <span>새로운 보드를</span> <span>추가해 보세요</span>
