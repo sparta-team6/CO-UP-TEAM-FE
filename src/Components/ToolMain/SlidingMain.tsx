@@ -25,7 +25,7 @@ const SlidingMain = () => {
     }
   }, [board]);
   return (
-    <div className="flex fixed top-0 left-0 mt-16 h-full z-[60]">
+    <div className="flex fixed top-0 left-0 mt-16 h-full z-[100]">
       <div className="sm:hidden">
         <MyProjectList />
       </div>
