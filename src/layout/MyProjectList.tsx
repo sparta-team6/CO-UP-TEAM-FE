@@ -47,7 +47,7 @@ const MyProjectList = () => {
     DarkMode((prev: boolean) => !prev);
   };
   return (
-    <div className="absolute z-50 w-20 h-[calc(100%-4rem)] bg-[#e7ebf2] dark:bg-gray-700 flex flex-col justify-between items-center sm:h-[calc(100%-4rem)] top-16">
+    <div className="absolute z-50 w-20 h-[calc(100%-4rem)] bg-[#e7ebf2] dark:bg-gray-700 flex flex-col justify-between items-center sm:h-[calc(100%-4rem)] sm:top-16">
       {/* 밑에 버튼 3개 h 확정나면 calc 범위 변경 sweetDuck*/}
       <Scroll className="mt-1 w-full h-[calc(100%-190px)] flex flex-col items-center overflow-auto">
         {data?.data.map((room, index) => (
