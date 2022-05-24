@@ -8,6 +8,7 @@ import EditAnnouncement from "./EditAnnouncement";
 import { Plus } from "../../elements/Icon/Plus";
 import { ProjectKey } from "../../recoil/RoomID";
 import styled from "styled-components";
+import EmptyAnnouncement from "../../images/Main/EmptyAnnouncement.png";
 
 const style = {
   position: "absolute",
@@ -101,29 +102,36 @@ const ProjectAnnouncement = () => {
           </form>
         </Box>
       </Modal>
-      <Scroll className="w-full h-full space-y-2 px-[34px] sm:px-[20px] overflow-y-auto flex flex-col items-center">
-        {Ann?.data?.map((data, index) => {
-          return (
-            <div
-              key={index}
-              className="w-full min-h-[68px] bg-white border rounded-lg overflow-hidden flex"
-            >
-              <div className="w-2 h-full bg-3" />
-              <div className="w-full h-full ml-4 mr-2 flex flex-col">
-                <div className="flex">
-                  <div className="w-full text-[13px] font-semibold pt-3">{data.title}</div>
-                  <EditAnnouncement {...data} />
-                </div>
-                <div className="flex justify-between pt-1">
-                  <div className="flex space-x-5">
-                    <div className="font-normal text-xs text-gray-400">{data.contents}</div>
+      {Ann?.data.length === 0 ? (
+        <div className="flex flex-col items-center -mt-[15px]">
+          <img src={EmptyAnnouncement} alt="" />
+          <span className="text-lg text-[#B0B0B0] mt-[20px]">팀원들에게 메세지를 전달해보세요</span>
+        </div>
+      ) : (
+        <Scroll className="w-full h-full space-y-2 px-[34px] sm:px-[20px] overflow-y-auto flex flex-col items-center">
+          {Ann?.data?.map((data, index) => {
+            return (
+              <div
+                key={index}
+                className="w-full min-h-[68px] bg-white border rounded-lg overflow-hidden flex"
+              >
+                <div className="w-2 h-full bg-3" />
+                <div className="w-full h-full ml-4 mr-2 flex flex-col">
+                  <div className="flex">
+                    <div className="w-full text-[13px] font-semibold pt-3">{data.title}</div>
+                    <EditAnnouncement {...data} />
+                  </div>
+                  <div className="flex justify-between pt-1">
+                    <div className="flex space-x-5">
+                      <div className="font-normal text-xs text-gray-400">{data.contents}</div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </Scroll>
+            );
+          })}
+        </Scroll>
+      )}
     </div>
   );
 };

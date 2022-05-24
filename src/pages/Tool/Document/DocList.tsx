@@ -25,14 +25,14 @@ const DocList = () => {
     <>
       <div className="w-full h-[calc(100vh-4rem)] bg-white flex absolute bottom-0">
         <div
-          className={`flex fixed top-0 left-0 mt-16 ml-0 h-full ${
+          className={`flex fixed h-full sm:h-[calc(100%-144px)] top-0 left-0 mt-16 ml-0 z-[60] ${
             data?.data.length === 0 ? "sm:hidden" : "sm:w-full"
           }`}
         >
           <div className="sm:hidden">
             <MyProjectList />
           </div>
-          <div className="hidden sm:block sm:w-full">
+          <div className="hidden sm:flex sm:w-full">
             <SlidingPanel type={"left"} isOpen={open} size={100}>
               <div onClick={onClick} className="flex">
                 <MyProjectList />
