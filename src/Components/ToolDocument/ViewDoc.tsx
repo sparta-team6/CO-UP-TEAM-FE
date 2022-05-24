@@ -43,7 +43,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
       position: 1,
     };
     AddFol(folder).then(() => {
-      queryClient.invalidateQueries("getFolders");
+      queryClient.invalidateQueries("getFolders").then((res) => console.log(res));
     });
   };
   return (
@@ -52,14 +52,14 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
         <div className="w-full h-full flex flex-col">
           {title && contents ? (
             <>
-              <div className="hidden sm:flex justify-between items-center border-b border-solid border-[#BEBEBE] pb-2 sm:mx-[8px]">
+              <div className="hidden fixed top-0 left-0 w-full sm:flex justify-between items-center pb-2 px-[16px] pt-[19px]">
                 <div
-                  className="flex justify-center items-center border-none w-[39px] h-[36px] rounded-md bg-5"
+                  className="flex justify-center items-center border-none"
                   onClick={() => navigate(-1)}
                 >
                   <ChevronLeft />
                 </div>
-                <div className="h-[49px] flex items-center">
+                <div className="flex items-center">
                   <button
                     className="border-none w-[56px] h-[36px] rounded-md text-white bg-3"
                     onClick={() =>
@@ -78,9 +78,9 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                   </button>
                 </div>
               </div>
-              <div className="flex flex-col sm:hidden mx-[46px] mt-[60px] mb-[20px]">
+              <div className="flex flex-col sm:hidden mx-[46px] mt-[68px] mb-[20px]">
                 <div className="flex justify-between items-center h-[47px] pl-[2px]">
-                  <div className="text-[32px] font-bold sm:mt-[30px] sm:mb-[22px] sm:mx-[12px]">
+                  <div className="text-[32px] font-bold sm:mt-[68px] sm:mb-[22px] sm:mx-[12px]">
                     {title}
                   </div>
                   <div>
@@ -104,7 +104,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                 </div>
                 <div className="text-lg text-[#999] mt-[15px]">{"2022.05.04  by 작성자"}</div>
               </div>
-              <div className="hidden sm:block text-[32px] font-bold sm:mt-[30px] sm:mb-[22px] sm:mx-[12px]">
+              <div className="hidden sm:block text-[32px] font-bold sm:mt-[68px] sm:mb-[22px] sm:mx-[12px]">
                 {title}
               </div>
               <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
@@ -113,7 +113,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
             </>
           ) : docData ? (
             <>
-              <div className="flex flex-col sm:hidden mx-[46px] mt-[60px] mb-[20px]">
+              <div className="flex flex-col sm:hidden mx-[46px] mt-[68px] mb-[20px]">
                 <div className="flex justify-between items-center h-[47px] pl-[2px]">
                   <div className="text-[32px] font-bold">{docData.title}</div>
                   <div>
@@ -160,7 +160,10 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
                 <span>팀원들과 공유해보세요</span>
               </div>
               <button
-                onClick={AddFolder}
+                onClick={() => {
+                  AddFolder();
+                  navigate(`/tool/${id}/document/add`);
+                }}
                 className="border-none w-[192px] h-[52px] mt-[36px] rounded-lg text-white bg-3 font-bold"
               >
                 첫 페이지 만들기
