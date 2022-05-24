@@ -69,7 +69,7 @@ const FolderList = () => {
           </div>
         </Scroll>
       ) : (
-        <Scroll className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
+        <Scroll className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto ml-[80px] sm:m-0">
           <div className="flex justify-between items-center pt-[20px] px-[16px]">
             <div className="font-bold text-2xl">문서목록</div>
             <div onClick={AddFolder} className="cursor-pointer">
