@@ -58,8 +58,8 @@ const MobileChatCom = () => {
   };
 
   return (
-    <div className="w-full h-[calc(100vh-14rem)] flex flex-col justify-end absolute top-16">
-      <div className="flex fixed top-0 left-0  h-full z-[45]">
+    <div className="w-full h-[calc(100vh-150px)] flex flex-col justify-end absolute top-16">
+      <div className="flex fixed top-0 left-0 h-full z-[45]">
         <div className="hidden sm:block sm:w-screen">
           <SlidingPanel type={"left"} isOpen={open} size={100}>
             <div onClick={onClick} className="flex">
@@ -69,9 +69,7 @@ const MobileChatCom = () => {
         </div>
       </div>
       <div
-        className={`w-full h-full  flex flex-col justify-end absolute ${
-          open ? "z-40" : "z-[49]"
-        }`}
+        className={`w-full h-full flex flex-col justify-end absolute ${open ? "z-40" : "z-[49]"}`}
       >
         <ul ref={messageBoxRef} className="w-full h-full sm:min-h-[612px] space-y-2 overflow-auto">
           {data?.data?.map((box, index) => {
@@ -88,15 +86,15 @@ const MobileChatCom = () => {
           })}
         </ul>
       </div>
-      <div className={`w-full h-28 fixed bottom-14 ${open ? "z-30" : "z-[46]"}`}>
+      <div className={`w-full h-[86px] fixed bottom-0 ${open ? "z-30" : "z-[46]"}`}>
         <form className="w-full h-full outline-none " onSubmit={handleSubmit(handleonEnter)}>
           <textarea
-            className="w-full h-[86px] sm:h-[86px] pl-8 pt-4 bg-[#F5F5F5] outline-none resize-none"
+            className="w-full h-full pl-[32px] pt-[20px] text-[#B0B0B0] bg-[#F5F5F5] outline-none resize-none"
             onKeyDown={onKeyDown}
             {...(register("text"), { placeholder: "메세지를 입력하세요." })}
           />
           <button
-            className="w-12 h-8 absolute bottom-4 right-2 sm:bottom-16 sm:right-6 text-white bg-3 rounded-[4px] leading-8"
+            className="w-[52px] h-[33px] absolute bottom-10 right-5 text-white bg-3 rounded-[4px]"
             type="submit"
           >
             전송

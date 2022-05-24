@@ -12,11 +12,11 @@ const Header = () => {
       {location.pathname.includes("tool") ? (
         <FramerHeader />
       ) : location.pathname.includes("projectList") || location.pathname.includes("profile") ? (
-        <nav className="w-full h-16 flex justify-between items-center fixed z-50 shadow-md  dark:bg-gray-800">
+        <nav className="w-full h-16 flex justify-between items-center fixed z-50 shadow-md  dark:bg-gray-800 px-[21px]">
           <Link to="/">
             <img className="mt-[3px]" src={HeaderLogo} alt="Logo" />
           </Link>
-          <div className="w-14 flex justify-around">
+          <div className="flex justify-around">
             <Link to="/profile">
               <SvgUser />
             </Link>

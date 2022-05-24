@@ -11,18 +11,18 @@ const Footer = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const location = useLocation();
   const mainMatch = useMatch("/tool/:id");
-  const docMatch = useMatch("/tool/:id/document");
+  const docMatch = useMatch("/tool/:id/document/*");
   const boardMatch = useMatch("/tool/:id/board");
   const ChatMatch = useMatch("/tool/:id/chat");
   const FixDoc = location.pathname.includes("document/add") || location.pathname.includes("edit");
   return (
     <>
-      {location.pathname.includes("tool") && !FixDoc && (
+      {location.pathname.includes("tool") && !FixDoc && !ChatMatch && (
         <nav className="hidden w-full h-20 fixed bottom-0 sm:flex justify-around items-center z-50">
           <Link to={`/tool/${pjId}`}>
             <div
               className={`w-full h-full flex flex-col items-center space-y-2 font-semibold ${
-                mainMatch ? "text-3" : ""
+                mainMatch ? "text-3" : "text-[#666]"
               }`}
             >
               <MHome />
@@ -32,7 +32,7 @@ const Footer = () => {
           <Link to={`/tool/${pjId}/document`}>
             <div
               className={`w-full h-full flex flex-col items-center space-y-2 font-semibold ${
-                docMatch ? "text-3" : ""
+                docMatch ? "text-3" : "text-[#666]"
               }`}
             >
               <MDoc />
@@ -42,7 +42,7 @@ const Footer = () => {
           <Link to={`/tool/${pjId}/board`}>
             <div
               className={`w-full h-full flex flex-col items-center space-y-2 font-semibold ${
-                boardMatch ? "text-3" : ""
+                boardMatch ? "text-3" : "text-[#666]"
               }`}
             >
               <MBoard />
@@ -52,7 +52,7 @@ const Footer = () => {
           <Link to={`/tool/${pjId}/chat`} className="hidden md:block">
             <div
               className={`w-full h-full flex flex-col items-center space-y-2 font-semibold ${
-                ChatMatch ? "text-3" : ""
+                ChatMatch ? "text-3" : "text-[#666]"
               }`}
             >
               <MChat />

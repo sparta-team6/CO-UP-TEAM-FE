@@ -61,14 +61,14 @@ const DocEditor = () => {
   return (
     <React.Fragment>
       <form onSubmit={handleSubmit(onValid)}>
-        <div className="hidden sm:flex justify-between items-center border-b border-solid border-[#BEBEBE] pb-2">
+        <div className="hidden sm:flex justify-between items-center border-b border-solid border-[#BEBEBE] pb-2 sm:mx-[8px]">
           <div
             className="flex justify-center items-center border-none w-[39px] h-[36px] rounded-md bg-5"
             onClick={() => navigate(-1)}
           >
             <ChevronLeft />
           </div>
-          <div>
+          <div className="h-[49px] flex items-center">
             <button
               className="border-none w-[56px] h-[36px] rounded-md text-white bg-3"
               type="submit"

@@ -52,14 +52,14 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
         <div className="w-full h-full flex flex-col">
           {title && contents ? (
             <>
-              <div className="hidden sm:flex justify-between items-center border-b border-solid border-[#BEBEBE] pb-2">
+              <div className="hidden sm:flex justify-between items-center border-b border-solid border-[#BEBEBE] pb-2 sm:mx-[8px]">
                 <div
                   className="flex justify-center items-center border-none w-[39px] h-[36px] rounded-md bg-5"
                   onClick={() => navigate(-1)}
                 >
                   <ChevronLeft />
                 </div>
-                <div>
+                <div className="h-[49px] flex items-center">
                   <button
                     className="border-none w-[56px] h-[36px] rounded-md text-white bg-3"
                     onClick={() =>
@@ -80,7 +80,7 @@ const ViewDoc = ({ title, contents, isLoading, docId }: Docs) => {
               </div>
               <div className="flex flex-col sm:hidden mx-[46px] mt-[60px] mb-[20px]">
                 <div className="flex justify-between items-center h-[47px] pl-[2px]">
-                  <div className="text-[32px] font-bold sm:mt-[30px] sm:mb-[22px] sm:mx-[12px]]">
+                  <div className="text-[32px] font-bold sm:mt-[30px] sm:mb-[22px] sm:mx-[12px]">
                     {title}
                   </div>
                   <div>

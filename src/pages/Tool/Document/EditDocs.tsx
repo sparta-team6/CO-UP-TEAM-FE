@@ -15,7 +15,7 @@ const EditDocs = () => {
   const result = location?.state;
   return (
     <>
-      <div className="w-full h-[calc(100vh-4rem)] bg-white flex absolute bottom-0">
+      <div className="w-full h-[calc(100vh-4rem)] sm:h-screen bg-white flex absolute bottom-0">
         <div className="flex fixed top-0 left-0 mt-16 h-full">
           <div className="sm:hidden">
             <MyProjectList />
