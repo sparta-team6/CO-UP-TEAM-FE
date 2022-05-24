@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Helmet from "react-helmet";
 import { useRecoilValue } from "recoil";
 import { themeState } from "../recoil/DarkMode";
+import Naver from "../servers/Naver";
 
 const Header = lazy(() => import("./Header"));
 const MHeader = lazy(() => import("./MHeader"));
@@ -43,6 +44,7 @@ const Router = () => {
           <Route path="/tool/:id/document/add" element={<AddDocs />} />
           <Route path="/tool/:id/board" element={<ToolBoard />} />
           <Route path="/user/kakao/callback/*" element={<Kakao />} />
+          <Route path="/user/naver/callback/*" element={<Naver />} />
         </Routes>
         <Footer />
       </div>
