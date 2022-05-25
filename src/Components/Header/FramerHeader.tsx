@@ -25,7 +25,7 @@ const FramerHeader = () => {
             {mainMatch && (
               <motion.div
                 transition={{ duration: 0.15 }}
-                className="w-20 h-1 absolute top-9 -right-[26px] bg-3 rounded-t-2xl sm:hidden"
+                className="w-20 h-1 absolute top-9 -right-[23px] bg-3 rounded-t-2xl sm:hidden"
                 layoutId="circle"
               />
             )}
@@ -37,7 +37,7 @@ const FramerHeader = () => {
             {docMatch && (
               <motion.div
                 transition={{ duration: 0.15 }}
-                className="w-20 h-1 absolute top-9 -right-[26px] bg-3 rounded-t-2xl sm:hidden"
+                className="w-20 h-1 absolute top-9 -right-[23px] bg-3 rounded-t-2xl sm:hidden"
                 layoutId="circle"
               />
             )}
@@ -49,7 +49,7 @@ const FramerHeader = () => {
             {boardMatch && (
               <motion.div
                 transition={{ duration: 0.15 }}
-                className="w-20 h-1 absolute top-9 -right-[26px] bg-3 rounded-t-2xl sm:hidden"
+                className="w-20 h-1 absolute top-9 -right-[23px] bg-3 rounded-t-2xl sm:hidden"
                 layoutId="circle"
               />
             )}

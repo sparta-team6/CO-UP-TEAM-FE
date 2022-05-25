@@ -133,7 +133,7 @@ abbr[title]{
 }
 .slick-arrow.slick-prev{
   position: absolute;
-  top: 265px;
+  top: 272px;
   left: -54px;
 }
 .slick-dots li button:before{
