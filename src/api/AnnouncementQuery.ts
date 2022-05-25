@@ -36,7 +36,7 @@ export const useUpdateAnnouncement = () => {
 };
 
 export const useDelAnnouncement = () => {
-  return useMutation(async (post: any) => {
+  return useMutation(async (post: IAnnouncements) => {
     await instance
       .delete("api/notices/", post)
       .then((res) => {

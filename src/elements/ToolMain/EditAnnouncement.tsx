@@ -63,12 +63,14 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
     }
   };
   const onDelete = () => {
-    const a = {
-      noticeId,
-      pjId,
-    };
     if (confirm("공지사항을 삭제하시겠습니까?")) {
-      DELAN(a).then(() => {
+      const Delete = {
+        data: {
+          noticeId: String(noticeId),
+          pjId,
+        },
+      };
+      DELAN(Delete).then(() => {
         queryClient.invalidateQueries("getAnnouncement");
       });
     }

@@ -18,6 +18,7 @@ const ProjectData = () => {
       title: String(roomData?.title),
       summary: String(roomData?.summary),
       inviteCode: String(roomData?.inviteCode),
+      projectRole: String(roomData?.projectRole),
     });
   };
   return (
