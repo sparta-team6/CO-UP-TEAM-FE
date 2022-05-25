@@ -76,6 +76,6 @@ export default MyProjectList;
 
 const Scroll = styled.div`
   &::-webkit-scrollbar-thumb {
-    background: red;
+    background: transparent;
   }
 `;
