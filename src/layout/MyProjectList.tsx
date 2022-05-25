@@ -46,7 +46,7 @@ const MyProjectList = () => {
   };
   return (
     <div className="w-20 h-[calc(100%-4rem)] bg-[#e7ebf2] dark:bg-gray-700 flex flex-col justify-between items-center sm:h-[calc(100vh-5rem)] sm:pt-16">
-      <Scroll className="mt-1 w-full max-h-[calc(100%-190px)] flex flex-col items-center overflow-auto">
+      <Scroll className="mt-1 w-full h-[calc(100%-190px)] flex flex-col items-center overflow-auto">
         {data?.data.map((room, index) => (
           <motion.div whileHover={{ scale: 1.1 }} onClick={() => onClick(room.pjId)} key={index}>
             <img
@@ -57,7 +57,7 @@ const MyProjectList = () => {
           </motion.div>
         ))}
       </Scroll>
-      <div className="sticky sm:bottom-[88px] w-20 h-52 flex flex-col justify-center items-center space-y-[27px]">
+      <div className="w-20 h-52 flex flex-col justify-center items-center space-y-[27px]">
         <span className="cursor-pointer" onClick={onDarkMode}>
           {theme ? <Moon /> : <Sun />}
         </span>
@@ -76,6 +76,6 @@ export default MyProjectList;
 
 const Scroll = styled.div`
   &::-webkit-scrollbar-thumb {
-    background: transparent;
+    background: red;
   }
 `;
