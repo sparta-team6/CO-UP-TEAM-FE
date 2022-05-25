@@ -13,7 +13,7 @@ export interface User {
 }
 
 export interface IUser {
-  data: User;
+  data: User[];
 }
 
 export const useGetProjectUser = (pjId: string) => {
