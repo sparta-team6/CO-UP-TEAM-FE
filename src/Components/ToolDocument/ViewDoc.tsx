@@ -8,7 +8,7 @@ import EmptyFolder from "../../images/Document/EmptyFolder.png";
 import EmptyFolderM from "../../images/Document/EmptyFolder_m.png";
 import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
 
-const ViewDoc = ({ title, contents, isFetching, docId }: Docs) => {
+const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime }: Docs) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { mutateAsync: DelDoc } = useDelDoc(String(docId));
@@ -102,7 +102,9 @@ const ViewDoc = ({ title, contents, isFetching, docId }: Docs) => {
                     </button>
                   </div>
                 </div>
-                <div className="text-lg text-[#999] mt-[15px]">{"2022.05.04  by 작성자"}</div>
+                <div className="text-lg text-[#999] mt-[15px]">
+                  {modifiedTime?.replaceAll("-", ".").slice(0, 10)}
+                </div>
               </div>
               <div className="hidden sm:block text-[32px] font-bold sm:mt-[100px] sm:mb-[22px] sm:mx-[12px]">
                 <span>{title}</span>
@@ -141,7 +143,9 @@ const ViewDoc = ({ title, contents, isFetching, docId }: Docs) => {
                     </button>
                   </div>
                 </div>
-                <div className="text-lg text-[#999] mt-[14px]">{"2022.05.04  by 작성자"}</div>
+                <div className="text-lg text-[#999] mt-[14px]">
+                  {docData.modifiedTime?.replaceAll("-", ".").slice(0, 10)}
+                </div>
               </div>
               <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
                 <MarkdownPreview

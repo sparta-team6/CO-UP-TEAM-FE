@@ -35,7 +35,9 @@ const ProjectData = () => {
               <div className="w-full flex flex-col justify-center items-center">
                 <img className="rounded-full w-24 h-24 mt-16" src={room.thumbnail} alt="" />
                 <span className="mt-3 text-2xl">{room.title}</span>
-                <span className="mt-1 text-sm">2022/05/17</span>
+                <span className="mt-1 text-sm">
+                  {room.modifiedTime?.replaceAll("-", "/").slice(0, 10)}
+                </span>
                 <span className="whitespace-pre-wrap break-all mt-6 text-center text-base leading-6">
                   {room.summary}
                 </span>
