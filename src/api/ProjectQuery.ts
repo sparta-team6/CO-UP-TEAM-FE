@@ -63,7 +63,7 @@ export const useUpdateRoom = (postId: string) => {
 export const useExitRoom = (pjId: string) => {
   return useMutation(async () => {
     await instance
-      .delete(`api/projects/${pjId}`)
+      .delete(`api/projects/exit?pjId=${pjId}`)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   });
