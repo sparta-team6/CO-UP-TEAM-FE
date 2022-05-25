@@ -12,6 +12,7 @@ export const ProjectKey = atom<ProjectRoom>({
     thumbnail: "",
     title: "",
     summary: "",
+    projectRole: "",
   },
   effects_UNSTABLE: [persistAtom],
 });

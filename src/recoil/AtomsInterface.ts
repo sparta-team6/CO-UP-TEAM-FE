@@ -13,4 +13,5 @@ export interface ProjectRoom {
   title: string;
   summary: string;
   inviteCode: string;
+  projectRole: string;
 }
