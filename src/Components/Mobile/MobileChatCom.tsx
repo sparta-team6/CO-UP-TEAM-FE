@@ -47,7 +47,7 @@ const MobileChatCom = () => {
   };
 
   return (
-    <div className="w-full h-[calc(100vh-200px)] flex flex-col justify-end absolute top-16">
+    <div className="w-full h-[calc(100vh-150px)] flex flex-col justify-end absolute top-16">
       <div className={`w-full h-full flex flex-col justify-end absolute "z-[49]"`}>
         <ul ref={messageBoxRef} className="w-full h-full sm:min-h-[612px] space-y-2 overflow-auto">
           {data?.data?.map((box, index) => {
@@ -64,13 +64,13 @@ const MobileChatCom = () => {
           })}
         </ul>
       </div>
-      <div className="w-full h-[120px] bg-[#F5F5F5] fixed bottom-0 z-[50]">
+      <div className="w-full h-[86px] bg-[#F5F5F5] fixed bottom-0 z-[50]">
         <form
           className="w-full h-full outline-none flex items-end"
           onSubmit={handleSubmit(handleonEnter)}
         >
           <textarea
-            className="w-full h-[100px] pl-[32px] pt-[20px] text-[#B0B0B0] bg-[#F5F5F5] outline-none resize-none"
+            className="w-full h-[86px] pl-[32px] pt-[20px] text-[#B0B0B0] bg-[#F5F5F5] outline-none resize-none"
             onKeyDown={onKeyDown}
             {...(register("text"), { placeholder: "메세지를 입력하세요." })}
           />
