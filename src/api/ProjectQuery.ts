@@ -9,6 +9,7 @@ export interface Room {
   summary: string;
   inviteCode?: string;
   projectRole?: string;
+  modifiedTime?: string;
 }
 
 export interface IRoom {
@@ -26,7 +27,7 @@ export const useGetRoom = () => {
 };
 
 export const useGetRoomDetail = (postId: string) => {
-  return useQuery<AxiosResponse, AxiosError, IRoomDetail>("getProjectDetail", () => {
+  return useQuery<AxiosResponse, AxiosError, IRoomDetail>(["getProjectDetail", postId], () => {
     return instance.get(`api/projects/${postId}`);
   });
 };

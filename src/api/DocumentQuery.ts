@@ -9,6 +9,7 @@ export interface Docs {
   contents?: string;
   isFetching?: boolean;
   docId?: string;
+  modifiedTime?: string;
 }
 
 export interface IDocDetail {
