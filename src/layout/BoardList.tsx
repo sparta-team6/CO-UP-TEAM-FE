@@ -84,8 +84,8 @@ const BoardList = () => {
         </DragDropContext>
         {open ? (
           <div className="w-full h-[calc(100%-5rem)]  absolute top-20 flex flex-col justify-center sm:justify-start sm:mt-10 items-center space-y-6 sm:items-center">
-            <img className="block sm:hidden" src={EmptyBoard} alt="" />
-            <img className="hidden sm:block" src={EmptyBoardM} alt="" />
+            <img className="block sm:hidden" width={370} height={337} src={EmptyBoard} alt="" />
+            <img className="hidden sm:block" width={155} height={141} src={EmptyBoardM} alt="" />
             <div className="w-[420px] h-[135px] space-y-4 sm:w-[280px] flex flex-col">
               <div className="text-center font-semibold text-4xl sm:text-3xl mb-4 w-full flex sm:flex-col">
                 <span>새로운 보드를</span> <span>추가해 보세요</span>

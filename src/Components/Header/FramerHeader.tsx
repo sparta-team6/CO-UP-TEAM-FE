@@ -15,7 +15,7 @@ const FramerHeader = () => {
     <React.Fragment>
       <nav className="sm:hidden w-full h-16 flex justify-between items-center fixed z-[1000] shadow-md dark:bg-gray-800 px-[23px]">
         <Link to="/">
-          <img className="mt-[3px]" src={HeaderLogo} alt="Logo" />
+          <img className="mt-[3px]" width={34} height={36} src={HeaderLogo} alt="Logo" />
         </Link>
         <div className="w-[calc(100%-37rem)] min-w-max flex items-end h-10 space-x-20 text-xl pl-28 sm:hidden">
           <div className="relative">

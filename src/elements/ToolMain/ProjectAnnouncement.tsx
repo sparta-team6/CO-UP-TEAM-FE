@@ -118,12 +118,16 @@ const ProjectAnnouncement = () => {
                 <div className="w-2 h-full bg-3" />
                 <div className="w-full h-full ml-4 mr-2 flex flex-col">
                   <div className="flex">
-                    <div className="w-full text-[13px] font-semibold pt-3">{data.title}</div>
+                    <div className="w-full text-[13px] font-semibold pt-3">
+                      <span>{data.title}</span>
+                    </div>
                     <EditAnnouncement {...data} />
                   </div>
                   <div className="flex justify-between pt-1">
                     <div className="flex space-x-5">
-                      <div className="font-normal text-xs text-gray-400">{data.contents}</div>
+                      <div className="font-normal text-xs text-gray-400">
+                        <span>{data.contents}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
