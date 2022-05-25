@@ -81,7 +81,7 @@ const ProjectAnnouncement = () => {
               type="text"
               placeholder="공지 제목을 적어주세요 :)"
             />
-            <div className="mt-[10px] text-[#666]">2022.xx.xx</div>
+            <span className="mt-[10px] text-[#666]">2022.xx.xx</span>
             <ScrollTextArea
               className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
               {...register("content")}
@@ -89,14 +89,14 @@ const ProjectAnnouncement = () => {
             />
             <div className="absolute bottom-0 right-0">
               <button className="text-white bg-3 w-[58px] h-[37px] rounded-md pt-1" type="submit">
-                등록
+                <span>등록</span>
               </button>
               <button
                 onClick={handleClose}
                 className="bg-5 w-[58px] h-[37px] rounded-md ml-2 pt-1"
                 type="button"
               >
-                닫기
+                <span>닫기</span>
               </button>
             </div>
           </form>
