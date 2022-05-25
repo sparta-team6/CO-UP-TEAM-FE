@@ -7,7 +7,7 @@ import { useLogOut, useUpdateUser } from "../../api/UserQuery";
 import { SvgEdit } from "../../elements/Icon/SvgEdit";
 import { resizeFile } from "../../servers/resize";
 import { MyProfile } from "../../recoil/MyProfile";
-import { removeTokenFromCookie } from "../../servers/Cookie";
+import { useCookies } from "react-cookie";
 
 interface IForm {
   id?: string;
@@ -17,6 +17,8 @@ interface IForm {
 }
 
 const EditProfile = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [cookies, _, removeCookie] = useCookies(["accessToken", "refreshToken"]);
   const [user, setUser] = useRecoilState(MyProfile);
   const [imgBase64, setImgBase64] = useState<string>("");
   const fileInput = useRef<HTMLInputElement>(null);
@@ -77,7 +79,8 @@ const EditProfile = () => {
       Logout()
         .then(() => {
           alert("안녕히가세여");
-          removeTokenFromCookie();
+          removeCookie("accessToken");
+          removeCookie("refreshToken");
           navigate("/");
         })
         .catch(() => {
