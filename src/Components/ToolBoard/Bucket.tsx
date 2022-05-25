@@ -97,7 +97,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
             />
             <div className="w-full flex items-center space-x-4">
               <div className="w-[60px] h-7 bg-slate-200 text-base font-semibold rounded-md leading-8">
-                <p className="text-center">{bucketId}</p>
+                <span className="text-center">{bucketId}</span>
               </div>
               {/* <select
                 className="outline-none bg-slate-200 border-0"
