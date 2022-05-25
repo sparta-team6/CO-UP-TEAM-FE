@@ -114,7 +114,7 @@ const DraggableCard = ({
               className="w-[704px] h-[384px] rounded-xl sm:w-[320px] sm:h-[192px] relative"
             >
               <div className="w-full h-full p-6">
-                <h1 className="text-lg font-semibold mb-2">{toDoTitle}</h1>
+                <span className="text-lg font-semibold mb-2">{toDoTitle}</span>
                 <div className="w-full flex items-center space-x-2">
                   <span className="text-xs mr-1">2022.XX.XX</span>
                   <div className="text-xs w-[50px] h-7 rounded-md bg-5 flex justify-center items-center">

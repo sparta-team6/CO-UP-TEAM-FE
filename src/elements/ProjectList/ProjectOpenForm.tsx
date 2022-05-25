@@ -24,7 +24,7 @@ const ProjectOpenForm = () => {
   };
   return (
     <div className="w-[448px] h-[262px] flex flex-col p-12">
-      <h1 className="font-semibold text-2xl">{`코드번호를 입력해주세요 :)`}</h1>
+      <span className="font-semibold text-2xl">{`코드번호를 입력해주세요 :)`}</span>
       <form
         className="w-[352px] h-[262px] flex flex-col items-end mt-7 space-y-8"
         onSubmit={handleSubmit(onSubmit)}

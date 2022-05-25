@@ -81,7 +81,7 @@ const ViewDoc = ({ title, contents, isFetching, docId }: Docs) => {
               <div className="flex flex-col sm:hidden mx-[46px] mt-[39px] mb-[20px]">
                 <div className="flex justify-between items-center pl-[2px]">
                   <div className="text-[32px] font-bold sm:mt-[100px] sm:mb-[22px] sm:mx-[12px]">
-                    {title}
+                    <span>{title}</span>
                   </div>
                   <div>
                     <button
@@ -105,7 +105,7 @@ const ViewDoc = ({ title, contents, isFetching, docId }: Docs) => {
                 <div className="text-lg text-[#999] mt-[15px]">{"2022.05.04  by 작성자"}</div>
               </div>
               <div className="hidden sm:block text-[32px] font-bold sm:mt-[100px] sm:mb-[22px] sm:mx-[12px]">
-                {title}
+                <span>{title}</span>
               </div>
               <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
                 <MarkdownPreview className="whitespace-pre-wrap break-all" source={contents} />
@@ -115,7 +115,9 @@ const ViewDoc = ({ title, contents, isFetching, docId }: Docs) => {
             <>
               <div className="flex flex-col sm:hidden mx-[46px] mt-[37px] mb-[20px]">
                 <div className="flex justify-between items-center h-[47px] pl-[2px]">
-                  <div className="text-[32px] font-bold">{docData.title}</div>
+                  <div className="text-[32px] font-bold">
+                    <span>{docData.title}</span>
+                  </div>
                   <div>
                     <button
                       className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"

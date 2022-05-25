@@ -91,7 +91,7 @@ const EditProfile = () => {
   return (
     <>
       <div className="font-bold text-4xl sm:text-2xl text-left w-full pl-12 pb-12 sm:pl-6">
-        <div>내 프로필 설정</div>
+        <span>내 프로필 설정</span>
       </div>
       <div className="flex flex-col">
         <div className="flex justify-center relative">

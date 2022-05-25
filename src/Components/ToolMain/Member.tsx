@@ -14,7 +14,7 @@ const Member = () => {
     <div className="w-full h-full">
       <div className="flex items-center mt-7">
         <SvgUser />
-        <h3 className="text-lg font-bold mt-1 ml-1 dark:text-white">팀원</h3>
+        <span className="text-lg font-bold mt-1 ml-1 dark:text-white">팀원</span>
       </div>
       <div className="group w-full mt-[20px] relative flex items-center space-x-2">
         <img className="absolute -top-1 left-6" src={imgCrown} alt="" />
@@ -31,11 +31,11 @@ const Member = () => {
                   src={user?.profileImage}
                   alt=""
                 />
-                <div className="ml-[12px] font-semibold ">{user?.nickname}</div>
+                <span className="ml-[12px] font-semibold ">{user?.nickname}</span>
               </div>
               <div className="flex flex-col w-full h-full pl-[28px] pr-2 space-y-1 mt-3">
-                <div>{user?.aboutMe}</div>
-                <div className="text-xs">{user?.url}</div>
+                <span>{user?.aboutMe}</span>
+                <span className="text-xs">{user?.url}</span>
               </div>
             </div>
           </div>
