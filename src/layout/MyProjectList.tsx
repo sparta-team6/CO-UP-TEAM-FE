@@ -58,15 +58,15 @@ const MyProjectList = () => {
         ))}
       </Scroll>
       <div className="w-20 h-52 flex flex-col justify-center items-center space-y-[27px]">
-        <span className="cursor-pointer" onClick={onDarkMode}>
+        <div className="cursor-pointer" onClick={onDarkMode}>
           {theme ? <Moon /> : <Sun />}
-        </span>
+        </div>
         <Link className="cursor-pointer" to="/projectList">
           <Power />
         </Link>
-        <span className="cursor-pointer" onClick={onLogOut}>
+        <div className="cursor-pointer" onClick={onLogOut}>
           <Logout />
-        </span>
+        </div>
       </div>
     </div>
   );

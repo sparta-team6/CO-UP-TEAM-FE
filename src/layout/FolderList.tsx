@@ -55,7 +55,7 @@ const FolderList = () => {
       {data?.data.length === 0 ? (
         <Scroll className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
           <div className="flex justify-between items-center px-[20px] pt-[45px]">
-            <div className="font-bold text-2xl">문서목록</div>
+            <span className="font-bold text-2xl">문서목록</span>
             <div onClick={AddFolder} className="cursor-pointer">
               <Plus />
             </div>
@@ -71,7 +71,7 @@ const FolderList = () => {
       ) : (
         <Scroll className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
           <div className="flex justify-between items-center pt-[45px] px-[20px]">
-            <div className="font-bold text-2xl">문서목록</div>
+            <span className="font-bold text-2xl">문서목록</span>
             <div onClick={AddFolder} className="cursor-pointer">
               <Plus />
             </div>
@@ -112,9 +112,9 @@ const FolderList = () => {
                 {folder.docs?.map((doc) => (
                   <div key={doc.docId} className="flex flex-col ml-[54px] my-[5px]">
                     <div className="flex items-center text-base cursor-pointer">
-                      <div onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}>
+                      <span onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}>
                         {doc.title}
-                      </div>
+                      </span>
                     </div>
                   </div>
                 ))}
