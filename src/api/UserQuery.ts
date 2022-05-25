@@ -17,7 +17,7 @@ export interface IUser {
 }
 
 export const useGetProjectUser = (pjId: string) => {
-  return useQuery<IUser, AxiosError>("getUser", () => {
+  return useQuery<IUser, AxiosError>(["getUser", pjId], () => {
     return instance.get(`api/users/projects?pjId=${pjId}`);
   });
 };
