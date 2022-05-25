@@ -152,8 +152,8 @@ const ViewDoc = ({ title, contents, isFetching, docId }: Docs) => {
             </>
           ) : (
             <div className=" w-full h-full flex flex-col justify-center items-center text-center px-[46px]">
-              <img className="block sm:hidden" src={EmptyFolder} alt="" />
-              <img className="hidden sm:block" src={EmptyFolderM} alt="" />
+              <img width={329} height={287} className="block sm:hidden" src={EmptyFolder} alt="" />
+              <img width={178} height={154} className="hidden sm:block" src={EmptyFolderM} alt="" />
               <div className="font-bold text-3xl pt-[33px] pb-[20px]">
                 <span>새로운 문서를 추가해 보세요</span>
               </div>

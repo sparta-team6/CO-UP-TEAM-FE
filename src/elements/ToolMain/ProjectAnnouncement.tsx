@@ -104,7 +104,7 @@ const ProjectAnnouncement = () => {
       </Modal>
       {Ann?.data.length === 0 ? (
         <div className="flex flex-col items-center -mt-[15px]">
-          <img src={EmptyAnnouncement} alt="" />
+          <img width={271} height={166} src={EmptyAnnouncement} alt="" />
           <span className="text-lg text-[#B0B0B0] mt-[20px]">팀원들에게 메세지를 전달해보세요</span>
         </div>
       ) : (

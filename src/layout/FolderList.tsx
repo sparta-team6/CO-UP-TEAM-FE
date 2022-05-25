@@ -62,7 +62,7 @@ const FolderList = () => {
           </div>
           <div className="border border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
           <div className="flex flex-col justify-center items-center mt-[50px] sm:hidden">
-            <img src={EmptyFile} alt="" />
+            <img width={131} height={130} src={EmptyFile} alt="" />
             <span className="text-lg opacity-50 mt-[30px] sm:text-base sm:mt-5">
               새로운 문서를 추가해 보세요
             </span>
@@ -104,7 +104,7 @@ const FolderList = () => {
                     folder?.docs?.length !== 0 && "hidden"
                   }`}
                 >
-                  <img src={EmptyFile} alt="" />
+                  <img width={131} height={130} src={EmptyFile} alt="" />
                   <span className="text-lg opacity-50 mt-[30px] sm:text-base sm:mt-5">
                     새로운 문서를 추가해 보세요
                   </span>
