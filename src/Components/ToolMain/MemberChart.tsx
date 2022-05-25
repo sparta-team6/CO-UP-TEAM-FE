@@ -56,13 +56,14 @@ const MemberChart = () => {
           </div>
           <Scroll className="overflow-y-auto h-72">
             {result?.map((data, index) => {
-              const sum =
-                data.buckets[0].cards.length +
-                data.buckets[1].cards.length +
-                data.buckets[2].cards.length;
-              const dange = Math.round((data.buckets[0].cards.length / sum) * 1000) / 10;
-              const warning = Math.round((data.buckets[1].cards.length / sum) * 1000) / 10;
-              const success = Math.round((data.buckets[2].cards.length / sum) * 1000) / 10;
+              const a = data.buckets[0] === undefined ? 0 : data.buckets[0].cards.length;
+              const b = data.buckets[1] === undefined ? 0 : data.buckets[0].cards.length;
+              const c = data.buckets[2] === undefined ? 0 : data.buckets[0].cards.length;
+              const sum = a + b + c;
+              const dange = Math.round((a / sum) * 1000) / 10;
+              const warning = Math.round((b / sum) * 1000) / 10;
+              const success = Math.round((c / sum) * 1000) / 10;
+              console.log(dange,warning,success)
               return (
                 <div key={index} className="h-14 flex flex-col items-center mb-3">
                   <div className="w-full flex space-x-4">

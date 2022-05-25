@@ -8,6 +8,7 @@ export interface Room {
   title: string;
   summary: string;
   inviteCode?: string;
+  projectRole?: string;
 }
 
 export interface IRoom {

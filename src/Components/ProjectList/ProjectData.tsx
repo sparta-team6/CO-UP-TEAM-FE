@@ -42,12 +42,16 @@ const ProjectData = () => {
               </div>
             </div>
             <div className="absolute top-0 right-0">
-              <ProjectFixed
-                roomID={room.pjId}
-                roomImg={room.thumbnail}
-                roomTitle={room.title}
-                roomSummary={room.summary}
-              />
+              {room.projectRole === "ADMIN" ? (
+                <ProjectFixed
+                  roomID={room.pjId}
+                  roomImg={room.thumbnail}
+                  roomTitle={room.title}
+                  roomSummary={room.summary}
+                />
+              ) : (
+                ""
+              )}
             </div>
           </div>
         );
