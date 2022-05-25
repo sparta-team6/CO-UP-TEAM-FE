@@ -15,12 +15,6 @@ export const GlobalStyle = createGlobalStyle`
 body {
   background-color: #f0f3f7;
 }
-span{
-  font-family: "AppleSDGothicNeo";
-}
-button{
-  font-family: "AppleSDGothicNeo";
-}
 ul{
   background-color: white;
 }

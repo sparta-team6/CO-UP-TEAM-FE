@@ -28,7 +28,8 @@ const MemberChart = () => {
             </button>
           </div>
           <div className="flex flex-col justify-center items-center pt-5">
-            <img className="sm:w-[198px] sm:h-[88px]" src={EmptyStatus} alt="" />
+            <img className="block sm:hidden" width={320} height={144} src={EmptyStatus} alt="" />
+            <img className="hidden sm:block" width={198} height={88} src={EmptyStatus} alt="" />
             <span className="text-lg mt-[21px] text-gray-400">
               팀원들과 프로젝트 진행 상황을 공유해보세요
             </span>
