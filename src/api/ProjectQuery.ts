@@ -59,3 +59,12 @@ export const useUpdateRoom = (postId: string) => {
       .catch((err) => console.log(err));
   });
 };
+
+export const useExitRoom = (pjId: string) => {
+  return useMutation(async () => {
+    await instance
+      .delete(`api/projects/${pjId}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  });
+};

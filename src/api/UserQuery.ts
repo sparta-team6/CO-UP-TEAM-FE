@@ -52,6 +52,11 @@ export const useMyInfo = () => {
 
 export const useLogOut = () => {
   return useMutation(async () => {
-    await instance.delete("/auth/logout");
+    await instance
+      .delete("/auth/logout/")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
   });
 };
