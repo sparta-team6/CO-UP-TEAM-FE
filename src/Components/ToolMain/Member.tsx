@@ -29,7 +29,7 @@ const Member = () => {
   const projectAdmin = data?.data[0];
   return (
     <div className="w-full h-full">
-      <div className="flex items-center mt-7">
+      <div className="flex items-center mt-[36px]">
         <SvgUser />
         <span className="text-lg font-bold mt-1 ml-1 dark:text-white">팀원</span>
       </div>
@@ -66,7 +66,7 @@ const Member = () => {
       </div>
       {TeamUsers?.map((teamUser, index) => {
         return (
-          <div key={index} className="group w-full mt-[20px] relative flex items-center space-x-2">
+          <div key={index} className="group w-full mt-[12px] relative flex items-center space-x-2">
             <img
               className="rounded-full m-0"
               width={36}
