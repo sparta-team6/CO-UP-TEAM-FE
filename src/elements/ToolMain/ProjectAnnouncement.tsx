@@ -117,7 +117,7 @@ const ProjectAnnouncement = () => {
               >
                 <div className="w-2 h-full bg-3" />
                 <div className="w-full h-full ml-4 mr-2 flex flex-col">
-                  <div className="flex">
+                  <div className="flex relative">
                     <div className="w-full text-[13px] font-semibold pt-3">
                       <span>{data.title}</span>
                     </div>

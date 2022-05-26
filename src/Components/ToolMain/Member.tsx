@@ -5,10 +5,21 @@ import { ProjectKey } from "../../recoil/RoomID";
 import { useGetProjectUser } from "../../api/UserQuery";
 import { useKickRoom } from "../../api/ProjectQuery";
 import Swal from "sweetalert2";
+// import { MyProfile } from "../../recoil/MyProfile";
+// import { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
 
 const Member = () => {
   const { pjId, projectRole } = useRecoilValue(ProjectKey);
   const { data } = useGetProjectUser(pjId);
+  // const { loginId } = useRecoilValue(MyProfile);
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   const myJoinRoom = data?.data.find((id) => id.loginId === loginId);
+  //   if (myJoinRoom === undefined) {
+  //     navigate("/projectList");
+  //   }
+  // }, [data]);
   const TeamUsers = data?.data.slice(1);
   const { mutateAsync: KickUser } = useKickRoom(pjId);
   const onClick = (loginId: string, nickname: string) => {
@@ -95,7 +106,9 @@ const Member = () => {
                   </div>
                   <div className="flex flex-col w-full h-full pl-[28px] pr-2 space-y-1 mt-3">
                     <span>{teamUser.aboutMe}</span>
-                    <span className="text-xs">{teamUser.url}</span>
+                    <a href={teamUser.url} target="_blank" className="text-xs" rel="noreferrer">
+                      {teamUser.url}
+                    </a>
                   </div>
                 </div>
               </div>

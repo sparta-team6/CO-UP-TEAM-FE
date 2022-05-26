@@ -113,16 +113,18 @@ const DraggableCard = ({
           >
             <Box
               sx={style}
-              className="w-[704px] h-[384px] rounded-xl sm:w-[320px] sm:h-[192px] relative"
+              className="w-[704px] h-[384px] rounded-xl sm:w-[320px] sm:min-h-[192px] relative"
             >
               <div className="w-full h-full p-6">
-                <span className="text-lg font-semibold text-[32px] mb-2">{toDoTitle}</span>
-                <div className="w-full flex items-center space-x-2 mt-7 ">
-                  <span className="text-xl mr-1">2022.XX.XX</span>
-                  <div className="text-xl w-[50px] h-7 rounded-md bg-5 flex justify-center items-center">
+                <span className="text-lg sm:text-xl font-semibold text-[32px] mb-2">
+                  {toDoTitle}
+                </span>
+                <div className="w-full flex sm:flex-col sm:items-start sm:space-y-1 sm:mt-2 items-center lg:space-x-2 mt-7 ">
+                  <span className="text-xl sm:text-sm mr-1">2022.XX.XX</span>
+                  <div className="text-xl sm:text-sm w-[50px] h-7 rounded-md bg-5 flex justify-center items-center">
                     <span>{bucketId}</span>
                   </div>
-                  <div className="text-xl min-w-[80px] h-7 rounded-md bg-5 flex px-2 justify-center items-center">
+                  <div className="text-xl sm:text-sm min-w-[80px] h-7 rounded-md bg-5 flex px-2 justify-center items-center">
                     <span>{toDoName}</span>
                   </div>
                 </div>

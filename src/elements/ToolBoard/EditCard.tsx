@@ -93,7 +93,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
                 autoFocus
-                className="w-full text-3xl font-semibold mb-2 rounded-md border-none"
+                className="w-full text-3xl sm:text-lg font-semibold mb-2 rounded-md border-none"
                 {...register("title")}
                 defaultValue={toDoTitle}
               />
