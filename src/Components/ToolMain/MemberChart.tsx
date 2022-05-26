@@ -10,7 +10,7 @@ const MemberChart = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data } = useGetManagers(pjId);
   const result = data?.data;
-  console.log(result)
+  console.log(result);
   return (
     <>
       {result?.length === 0 ? (
@@ -59,9 +59,9 @@ const MemberChart = () => {
               const toDo = data.buckets[0] === undefined ? "" : data.buckets[0].title;
               const doing = data.buckets[1] === undefined ? "" : data.buckets[1].title;
               const done = data.buckets[2] === undefined ? "" : data.buckets[2].title;
-              const one = data.buckets[0] === undefined ? "" : data.buckets[0].position;
-              const two = data.buckets[1] === undefined ? "" : data.buckets[1].position;
-              const three = data.buckets[2] === undefined ? "" : data.buckets[2].position;
+              // const one = data.buckets[0] === undefined ? "" : data.buckets[0].position;
+              // const two = data.buckets[1] === undefined ? "" : data.buckets[1].position;
+              // const three = data.buckets[2] === undefined ? "" : data.buckets[2].position;
               const sum = a + b + c;
               const dange = Math.round((a / sum) * 1000) / 10;
               const warning = Math.round((b / sum) * 1000) / 10;

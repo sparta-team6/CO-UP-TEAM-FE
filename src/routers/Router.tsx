@@ -21,7 +21,6 @@ const Kakao = lazy(() => import("../servers/Kakao"));
 const Google = lazy(() => import("../servers/Google"));
 const Naver = lazy(() => import("../servers/Naver"));
 const EditDocs = lazy(() => import("../pages/Tool/Document/EditDocs"));
-const TestRoom = lazy(() => import("../pages/Tool/TestRoom"));
 
 const Router = () => {
   const theme = useRecoilValue(themeState);
@@ -49,7 +48,6 @@ const Router = () => {
           <Route path="/user/kakao/callback/*" element={<Kakao />} />
           <Route path="/user/naver/callback/*" element={<Naver />} />
           <Route path="/user/google/callback/*" element={<Google />} />
-          <Route path="/tool/:id/Testroom" element={<TestRoom />} />
         </Routes>
         <Footer />
       </div>
