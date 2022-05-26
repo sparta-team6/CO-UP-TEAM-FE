@@ -1,7 +1,9 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { queryClient } from "../..";
 import { usePostOpenRoom } from "../../api/ProjectQuery";
+import { ProjectInvite } from "../../recoil/AtomInvite";
 
 interface IForm {
   inviteCode?: string;
@@ -10,12 +12,13 @@ interface IForm {
 const ProjectOpenForm = () => {
   const { register, handleSubmit } = useForm();
   const { mutateAsync } = usePostOpenRoom();
-  const navigate = useNavigate();
+  const { inviteCode } = useRecoilValue(ProjectInvite);
+  console.log(inviteCode);
   const onSubmit: SubmitHandler<IForm> = (data) => {
     if (confirm("해당 프로젝트로 입장하시겠습니까?")) {
       mutateAsync(String(data.inviteCode))
         .then(() => {
-          navigate(`/tool/${data.inviteCode}`);
+          queryClient.invalidateQueries("getProject");
         })
         .catch((err) => {
           alert(err.response.data);

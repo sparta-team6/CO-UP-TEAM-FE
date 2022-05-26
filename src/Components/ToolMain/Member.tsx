@@ -69,7 +69,9 @@ const Member = () => {
               </div>
               <div className="flex flex-col w-full h-full pl-[28px] pr-2 space-y-1 mt-3">
                 <span>{projectAdmin?.aboutMe}</span>
-                <span className="text-xs">{projectAdmin?.url}</span>
+                <a href={projectAdmin?.url} target="_blank" className="text-xs" rel="noreferrer">
+                  {projectAdmin?.url}
+                </a>
               </div>
             </div>
           </div>
