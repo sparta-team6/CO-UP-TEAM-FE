@@ -13,10 +13,10 @@ const MemberChart = () => {
   console.log(result)
   return (
     <>
-      {!result ? (
+      {result?.length === 0 ? (
         <div className="w-full h-full p-8">
           <div className="flex justify-between items-center">
-            <span className="text-2xl font-semibold sm:text-lg">팀 상태 개요</span>
+            <span className="text-xl font-semibold sm:text-lg">팀 상태 개요</span>
             <button
               onClick={() => navigate(`/tool/${pjId}/board`)}
               className="w-[118px] h-[39px] bg-3 rounded-[4px] text-white"
@@ -33,25 +33,25 @@ const MemberChart = () => {
           </div>
         </div>
       ) : (
-        <div className="w-full h-full px-[32px] py-[28px]">
+        <div className="w-full h-full p-[32px]">
           <div className="flex justify-between items-center">
-            <span className="text-2xl font-semibold sm:text-lg mb-[30px]">팀 상태 개요</span>
-            <div className="flex justify-between items-center sm:w-[150px]">
-              <section className="flex items-center space-x-2 sm:space-x-1">
+            <span className="text-xl font-semibold sm:text-lg mb-[40px]">팀 상태 개요</span>
+            <div className="flex justify-between items-center mr-[5px] sm:w-[150px]">
+              <section className="flex items-center space-x-1">
                 <div className="w-2 h-2 rounded-full bg-5" />
                 <span className="text-xs">대기</span>
               </section>
-              <section className="flex items-center mx-[16px] space-x-2 sm:space-x-1">
+              <section className="flex items-center mx-[16px] space-x-1">
                 <div className="w-2 h-2 rounded-full bg-1" />
                 <span className="text-xs">진행</span>
               </section>
-              <section className="flex items-center space-x-2 sm:space-x-1">
+              <section className="flex items-center space-x-1">
                 <div className="w-2 h-2 rounded-full bg-3" />
                 <span className="text-xs">완료</span>
               </section>
             </div>
           </div>
-          <Scroll className="overflow-y-auto h-72">
+          <Scroll className="overflow-y-auto h-64 -mr-[20px] pr-[20px]">
             {result?.map((data, index) => {
               const a = data.buckets[0] === undefined ? 0 : data.buckets[0].cards.length;
               const b = data.buckets[1] === undefined ? 0 : data.buckets[0].cards.length;
@@ -64,21 +64,21 @@ const MemberChart = () => {
               const warning = Math.round((b / sum) * 1000) / 10;
               const success = Math.round((c / sum) * 1000) / 10;
               return (
-                <div key={index} className="h-14 flex flex-col items-center mb-3">
-                  <div className="w-full flex space-x-4">
+                <div key={index} className="flex flex-col items-center mb-[18px]">
+                  <div className="w-full flex space-x-3">
                     <img
-                      width="40px"
-                      height="40px"
-                      className="rounded-full"
+                      width={44}
+                      height={44}
+                      className="rounded-full min-w-[44px]"
                       src={data.profileImage}
                       alt="1"
                     />
-                    <div className="w-full flex flex-col">
+                    <div className="w-full flex flex-col justify-around">
                       <div className="w-full flex justify-between items-end">
-                        <span className="text-xl font-semibold">{data.nickname}</span>
-                        <div>{`${dange}/${warning}/${success}`}</div>
+                        <span className="font-semibold">{data.nickname}</span>
+                        <span className="text-sm text-[#333] mr-[2px]">{`${dange} / ${warning} / ${success}`}</span>
                       </div>
-                      <div className="w-full h-10 flex">
+                      <div className="w-full flex">
                         <Dange
                           className={`rounded-xl ${!warning || (!success && "mr-[2px]")}`}
                           dange={dange}
