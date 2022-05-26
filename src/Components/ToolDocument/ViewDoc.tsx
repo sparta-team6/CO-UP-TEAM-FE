@@ -7,6 +7,7 @@ import { useAddFolder, useGetFolders } from "../../api/FolderQuery";
 import EmptyFolder from "../../images/Document/EmptyFolder.png";
 import EmptyFolderM from "../../images/Document/EmptyFolder_m.png";
 import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
+import Swal from "sweetalert2";
 
 const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime }: Docs) => {
   const { id } = useParams();
@@ -17,24 +18,39 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime }: Docs) => 
   const folderData = data?.data[data?.data.length - 1];
   const docData = folderData?.docs?.[folderData?.docs.length - 1];
   const { mutateAsync: DelDoc2 } = useDelDoc(String(docData?.docId));
-  console.log(isFetching);
 
   const onDelete = () => {
-    if (confirm("문서를 삭제하시겠습니까?")) {
-      DelDoc().then(() => {
-        queryClient.invalidateQueries("getFolders");
-        navigate(`/tool/${id}/document`);
-      });
-    }
+    Swal.fire({
+      title: "삭제",
+      text: "진짜 삭제하시겠어요?!!",
+      showCancelButton: true,
+      confirmButtonText: "넵!",
+      cancelButtonText: "취소!",
+    }).then((result) => {
+      if (result.value) {
+        DelDoc().then(() => {
+          queryClient.invalidateQueries("getFolders");
+          navigate(`/tool/${id}/document`);
+        });
+      }
+    });
   };
 
   const onDelete2 = () => {
-    if (confirm("문서를 삭제하시겠습니까?")) {
-      DelDoc2().then(() => {
-        queryClient.invalidateQueries("getFolders");
-        navigate(`/tool/${id}/document`);
-      });
-    }
+    Swal.fire({
+      title: "삭제",
+      text: "진짜 삭제하시겠어요?!!",
+      showCancelButton: true,
+      confirmButtonText: "넵!",
+      cancelButtonText: "취소!",
+    }).then((result) => {
+      if (result.value) {
+        DelDoc2().then(() => {
+          queryClient.invalidateQueries("getFolders");
+          navigate(`/tool/${id}/document`);
+        });
+      }
+    });
   };
 
   const AddFolder = () => {
@@ -49,7 +65,7 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime }: Docs) => 
   return (
     <>
       {!isFetching && (
-        <div className="w-full h-full flex flex-col">
+        <div className="w-full h-full flex flex-col overflow-y-auto">
           {title && contents ? (
             <>
               <div className="hidden fixed top-0 left-0 w-full sm:flex justify-between items-center pb-2 px-[16px] pt-[19px]">

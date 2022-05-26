@@ -8,6 +8,7 @@ import { SvgEdit } from "../../elements/Icon/SvgEdit";
 import { resizeFile } from "../../servers/resize";
 import { MyProfile } from "../../recoil/MyProfile";
 import { useCookies } from "react-cookie";
+import Swal from "sweetalert2";
 
 interface IForm {
   id?: string;
@@ -36,12 +37,20 @@ const EditProfile = () => {
       aboutMe: data.about_me,
     };
     if (size === undefined) {
-      if (confirm("프로필을 수정하시겠습니까?")) {
-        mutateAsync(profile).then(() => {
-          setUser(profile);
-          navigate(-1);
-        });
-      }
+      Swal.fire({
+        title: "수정",
+        text: "진짜 수정하시겠어요?!!",
+        showCancelButton: true,
+        confirmButtonText: "넵!",
+        cancelButtonText: "취소!",
+      }).then((result) => {
+        if (result.value) {
+          mutateAsync(profile).then(() => {
+            setUser(profile);
+            navigate(-1);
+          });
+        }
+      });
     } else {
       const image = await resizeFile(size, 244, 244, "base64");
       const profile = {
@@ -51,12 +60,20 @@ const EditProfile = () => {
         url: data.url,
         aboutMe: data.about_me,
       };
-      if (confirm("프로필을 수정하시겠습니까?")) {
-        mutateAsync(profile).then(() => {
-          setUser(profile);
-          navigate(-1);
-        });
-      }
+      Swal.fire({
+        title: "수정",
+        text: "진짜 수정하시겠어요?!!",
+        showCancelButton: true,
+        confirmButtonText: "넵!",
+        cancelButtonText: "취소!",
+      }).then((result) => {
+        if (result.value) {
+          mutateAsync(profile).then(() => {
+            setUser(profile);
+            navigate(-1);
+          });
+        }
+      });
     }
   };
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {

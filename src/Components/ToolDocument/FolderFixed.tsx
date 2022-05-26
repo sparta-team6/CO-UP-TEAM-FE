@@ -7,6 +7,7 @@ import { useDelFolder } from "../../api/FolderQuery";
 import { queryClient } from "../..";
 import { MoreHorizontal } from "../../elements/Icon/MoreHorizontal";
 import { ProjectKey } from "../../recoil/RoomID";
+import Swal from "sweetalert2";
 
 interface IProps {
   dfId?: string;
@@ -34,11 +35,20 @@ const FolderFiexd = ({ dfId, setEditTitle, setDfId }: IProps) => {
   };
 
   const DeleteFolder = () => {
-    if (confirm("폴더를 삭제하시겠습니까?")) {
-      DelFolder().then(() => {
-        queryClient.invalidateQueries("getFolders");
-      });
-    }
+    setAnchorEl(null);
+    Swal.fire({
+      title: "삭제",
+      text: "진짜 삭제하시겠어요?!!",
+      showCancelButton: true,
+      confirmButtonText: "넵!",
+      cancelButtonText: "취소!",
+    }).then((result) => {
+      if (result.value) {
+        DelFolder().then(() => {
+          queryClient.invalidateQueries("getFolders");
+        });
+      }
+    });
   };
 
   const onEdit = () => {

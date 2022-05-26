@@ -63,7 +63,7 @@ const MemberChart = () => {
               const dange = Math.round((a / sum) * 1000) / 10;
               const warning = Math.round((b / sum) * 1000) / 10;
               const success = Math.round((c / sum) * 1000) / 10;
-              console.log(dange,warning,success)
+              console.log(dange, warning, success);
               return (
                 <div key={index} className="h-14 flex flex-col items-center mb-3">
                   <div className="w-full flex space-x-4">
@@ -79,10 +79,21 @@ const MemberChart = () => {
                         <span className="text-xl font-semibold">{`JIHO`}</span>
                         <div>{`${dange}/${warning}/${success}`}</div>
                       </div>
-                      <div className="w-full h-10 flex space-x-1">
-                        <Dange className="rounded-xl" dange={dange} />
-                        <Warning className="rounded-xl" warning={warning} />
-                        <Success className="rounded-xl" success={success} />
+                      <div className="w-full h-10 flex">
+                        <Dange
+                          className={`rounded-xl ${!warning || (!success && "mr-[2px]")}`}
+                          dange={dange}
+                        />
+                        <Warning
+                          className={`rounded-xl mx-[4px] ${!warning && "mx-0"} ${
+                            !success && "ml-[2px] mr-0"
+                          } ${!dange && "ml-0 mr-[2px]"}`}
+                          warning={warning}
+                        />
+                        <Success
+                          className={`rounded-xl ${!warning || (!dange && "ml-[2px]")}`}
+                          success={success}
+                        />
                       </div>
                     </div>
                   </div>
