@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { queryClient } from "../..";
 import { useGetCardDetail } from "../../api/CardQuery";
 import { useUpdateCards } from "../../api/Optimistic";
-import { MyProfile } from "../../recoil/MyProfile";
+import { useGetProjectUser } from "../../api/UserQuery";
 import { ProjectKey } from "../../recoil/RoomID";
 
 import { X } from "../Icon/X";
@@ -35,18 +35,22 @@ const style = {
 };
 
 const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
-  const [name, setName] = useState("");
   const handleClose = () => setEdit(false);
   const { pjId } = useRecoilValue(ProjectKey);
-  const { nickname } = useRecoilValue(MyProfile);
   const { mutateAsync } = useUpdateCards(pjId);
   const { data: Card } = useGetCardDetail(toDoId);
+  const { data: user } = useGetProjectUser(pjId);
+  const [name, setName] = useState(String(Card?.data.manager));
   const { register, handleSubmit } = useForm<IForm>();
   const onSubmit: SubmitHandler<IForm> = (data) => {
+    if (name === "" || name === "담당자 선택") {
+      alert("담당자 선택해주세요");
+      return;
+    }
     const post = {
       kbcId: String(Card?.data.kbcId),
       kbbId: String(Card?.data.kbbId),
-      manager: nickname,
+      manager: name === "undefined" ? String(Card?.data.manager) : name,
       title: data.title,
       contents: data.text,
     };
@@ -96,12 +100,18 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
               <div className="w-full flex items-center space-x-3">
                 <div className="max-w-xs h-7 rounded-sm flex justify-center items-center">
                   <select
-                    className="outline-none bg-slate-200 border-0 rounded-md w-[86px] h-7 text-center"
+                    className="outline-none bg-slate-200 border-0 rounded-md w-[120px] h-7 text-center"
                     value={name}
                     onChange={onChange}
                   >
-                    {/* <option defaultValue="none">=== 선택 ===</option> */}
-                    <option value={nickname}>{nickname}</option>
+                    <option defaultValue="none">{Card?.data.manager}</option>
+                    {user?.data?.map((member, index) => {
+                      return (
+                        <option key={index} value={member.loginId}>
+                          {member.nickname}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
               </div>
@@ -114,7 +124,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                 />
               </div>
               <button
-                className="w-16 h-9 absolute bottom-0 right-0 rounded-md  font-semibold text-base text-white bg-3"
+                className="w-16 h-9 absolute bottom-0 right-0 rounded-md text-base text-white bg-3"
                 type="submit"
               >
                 <span>수정</span>

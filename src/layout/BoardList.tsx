@@ -87,8 +87,8 @@ const BoardList = () => {
             <img className="block sm:hidden" width={370} height={337} src={EmptyBoard} alt="" />
             <img className="hidden sm:block" width={155} height={141} src={EmptyBoardM} alt="" />
             <div className="w-[420px] h-[135px] space-y-4 sm:w-[280px] flex flex-col">
-              <div className="text-center font-semibold text-4xl sm:text-3xl mb-4 w-full flex sm:flex-col">
-                <span>새로운 보드를</span> <span>추가해 보세요</span>
+              <div className="text-center space-x-2 font-semibold text-4xl sm:text-3xl mb-4 w-full flex sm:flex-col">
+                <span>새로운 보드를</span><span>{`추가해 보세요`}</span>
               </div>
               <div className="text-center text-lg sm:text-sm">
                 <span>보드를 사용하여 팀원들과 현재 대기중인, 진행중인,</span>

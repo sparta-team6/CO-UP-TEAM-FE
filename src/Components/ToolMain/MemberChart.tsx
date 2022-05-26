@@ -4,16 +4,12 @@ import { ProjectKey } from "../../recoil/RoomID";
 import EmptyStatus from "../../images/Main/EmptyStatus.png";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import profile1 from "../../images/Profile/COUP_square_대지 1.png";
-import profile2 from "../../images/Profile/COUP_square-02.png";
-import profile3 from "../../images/Profile/COUP_square-03.png";
 
 const MemberChart = () => {
   const navigate = useNavigate();
   const { pjId } = useRecoilValue(ProjectKey);
   const { data } = useGetManagers(pjId);
   const result = data?.data;
-  console.log(result);
   return (
     <>
       {!result ? (
@@ -63,7 +59,6 @@ const MemberChart = () => {
               const dange = Math.round((a / sum) * 1000) / 10;
               const warning = Math.round((b / sum) * 1000) / 10;
               const success = Math.round((c / sum) * 1000) / 10;
-              console.log(dange,warning,success)
               return (
                 <div key={index} className="h-14 flex flex-col items-center mb-3">
                   <div className="w-full flex space-x-4">
@@ -71,17 +66,17 @@ const MemberChart = () => {
                       width="40px"
                       height="40px"
                       className="rounded-full"
-                      src={profile2}
+                      src={data.profileImage}
                       alt="1"
                     />
                     <div className="w-full flex flex-col">
                       <div className="w-full flex justify-between items-end">
-                        <span className="text-xl font-semibold">{`JIHO`}</span>
+                        <span className="text-xl font-semibold">{data.nickname}</span>
                         <div>{`${dange}/${warning}/${success}`}</div>
                       </div>
-                      <div className="w-full h-10 flex space-x-1">
+                      <div className="w-full h-10 flex">
                         <Dange className="rounded-xl" dange={dange} />
-                        <Warning className="rounded-xl" warning={warning} />
+                        <Warning className="rounded-xl mx-1" warning={warning} />
                         <Success className="rounded-xl" success={success} />
                       </div>
                     </div>
@@ -89,38 +84,6 @@ const MemberChart = () => {
                 </div>
               );
             })}
-            <div className="h-14 flex flex-col items-center mb-3">
-              <div className="w-full flex space-x-4">
-                <img width="40px" height="40px" className="rounded-full" src={profile1} alt="1" />
-                <div className="w-full flex flex-col">
-                  <div className="w-full flex justify-between items-end">
-                    <span className="text-xl font-semibold">{`Dog`}</span>
-                    <div>{`${30}/${40}/${30}`}</div>
-                  </div>
-                  <div className="w-full h-10 flex space-x-1">
-                    <Dange className="rounded-xl" dange={20} />
-                    <Warning className="rounded-xl" warning={30} />
-                    <Success className="rounded-xl" success={50} />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="h-14 flex flex-col items-center mb-3">
-              <div className="w-full flex space-x-4">
-                <img width="40px" height="40px" className="rounded-full" src={profile3} alt="1" />
-                <div className="w-full flex flex-col">
-                  <div className="w-full flex justify-between items-end">
-                    <span className="text-xl font-semibold">{`Cat`}</span>
-                    <div>{`${30}/${40}/${30}`}</div>
-                  </div>
-                  <div className="w-full h-10 flex space-x-1">
-                    <Dange className="rounded-xl" dange={30} />
-                    <Warning className="rounded-xl" warning={20} />
-                    <Success className="rounded-xl" success={50} />
-                  </div>
-                </div>
-              </div>
-            </div>
           </Scroll>
         </div>
       )}

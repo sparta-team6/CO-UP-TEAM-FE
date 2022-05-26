@@ -7,7 +7,7 @@ import { Box, Modal } from "@mui/material";
 import { queryClient } from "../..";
 import { Cards, usePostCards } from "../../api/CardQuery";
 import { ProjectKey } from "../../recoil/RoomID";
-import { MyProfile } from "../../recoil/MyProfile";
+import { useGetProjectUser } from "../../api/UserQuery";
 
 const style = {
   position: "absolute",
@@ -34,26 +34,23 @@ interface IForm {
 
 const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoardProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
-  const { nickname, loginId } = useRecoilValue(MyProfile);
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { register, setValue, handleSubmit } = useForm<IForm>();
   const { mutateAsync } = usePostCards();
-  // 여기 URL 확인하기
-  // const { data } = useGetProjectUser(pjId);
-  // console.log(data);
+  const { data: user } = useGetProjectUser(pjId);
   const onValid = ({ toDo, toDoComment }: IForm) => {
-    // if (name === "") {
-    //   alert("담당자 선택해주세요");
-    //   return;
-    // }
+    if (name === "" || name === "담당자 선택") {
+      alert("담당자 선택해주세요");
+      return;
+    }
     const newToDo = {
       kbbId,
       title: toDo,
       contents: toDoComment,
-      manager: loginId,
+      manager: name,
     };
     mutateAsync(newToDo).then(() => {
       queryClient.invalidateQueries(["getBoard", pjId]);
@@ -96,31 +93,22 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
               placeholder="보드의 제목을 적어주세요 :)"
             />
             <div className="w-full flex items-center space-x-4">
-              <div className="w-[60px] h-7 bg-slate-200 text-base font-semibold rounded-md leading-8">
-                <span className="text-center">{bucketId}</span>
+              <div className="w-[60px] h-7 bg-slate-200 text-center text-base rounded-md leading-8">
+                <span>{bucketId}</span>
               </div>
-              {/* <select
-                className="outline-none bg-slate-200 border-0"
+              <select
+                className="outline-none bg-slate-200 border-0 w-[120px] h-7 text-center rounded-md"
                 value={name}
                 onChange={onChange}
               >
-                <option defaultValue="none">=== 선택 ===</option>
+                <option defaultValue="none">담당자 선택</option>
                 {user?.data?.map((member, index) => {
                   return (
-                    <option key={index} value={member.nickname}>
+                    <option key={index} value={member.loginId}>
                       {member.nickname}
                     </option>
                   );
                 })}
-                <option value={nickname}>{nickname}</option>
-              </select> */}
-              <select
-                className="outline-none bg-slate-200 border-0 rounded-md w-[86px] h-7 text-center"
-                value={name}
-                onChange={onChange}
-              >
-                {/* <option defaultValue="none">=== 선택 ===</option> */}
-                <option value={loginId}>{nickname}</option>
               </select>
             </div>
             <input
@@ -130,14 +118,14 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
               placeholder="내용입력"
             />
             <button
-              className="w-16 h-9 absolute bottom-0 right-[70px] rounded-md  font-semibold text-base bg-3 text-white"
+              className="w-16 h-9 absolute bottom-0 right-[70px] rounded-md text-base bg-3 text-white"
               type="submit"
             >
               <span>등록</span>
             </button>
             <button
               onClick={handleClose}
-              className="w-16 h-9 absolute bottom-0 right-0 rounded-md  font-semibold text-base bg-5"
+              className="w-16 h-9 absolute bottom-0 right-0 rounded-md text-base bg-5"
               type="submit"
             >
               <span>닫기</span>
