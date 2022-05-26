@@ -14,7 +14,7 @@ interface IForm {
   message: string;
 }
 
-const sockJS = new SockJS("https://api.cooperate-up.com/ws");
+const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}/ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
 
 export const ChatPresenter = ({ messages, senderLoginId, pjId }: ChatPresenterProps) => {
