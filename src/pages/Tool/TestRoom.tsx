@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
+import { queryClient } from "../..";
 import { useGetChatting } from "../../api/ChatQuery";
 import { MyProfile } from "../../recoil/MyProfile";
 import { ProjectKey } from "../../recoil/RoomID";
@@ -25,18 +26,16 @@ const TestRoom = () => {
   const user = useRecoilValue(MyProfile);
   const senderLoginId = user.loginId;
   const { data } = useGetChatting(String(pjId));
-  console.log(data?.data);
 
   useEffect(() => {
     stompClient.connect({}, (frame) => {
       console.log(frame);
-      // 백엔드에서 설정한 pjId별 채팅 room
-      stompClient.subscribe(`sub/chatting/${pjId}`, (data) => {
+      stompClient.subscribe(`/sub/chatting/${pjId}`, (data) => {
         const newMessage: content = JSON.parse(data.body) as content;
-        console.log(newMessage);
         addMessage(newMessage);
       });
     });
+    queryClient.invalidateQueries("getChatting");
   }, [messages]);
 
   const addMessage = (content: content) => {
@@ -44,7 +43,12 @@ const TestRoom = () => {
   };
   return (
     <div className="w-screen h-screen flex justify-center items-center">
-      <ChatPresenter messages={messages} senderLoginId={senderLoginId} pjId={pjId} />
+      <ChatPresenter
+        messages={messages}
+        contents={data?.data}
+        senderLoginId={senderLoginId}
+        pjId={pjId}
+      />
     </div>
   );
 };
