@@ -3,9 +3,11 @@ import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/RoomID";
 import Swal from "sweetalert2";
 import { useExitRoom } from "../../api/ProjectQuery";
+import { useNavigate } from "react-router-dom";
 
 const CopyURL = () => {
   const { inviteCode } = useRecoilValue(ProjectKey);
+  const navigate = useNavigate();
   const textInput = useRef<HTMLInputElement>(null);
   const { pjId, projectRole } = useRecoilValue(ProjectKey);
   const { mutateAsync } = useExitRoom(pjId);
@@ -32,7 +34,8 @@ const CopyURL = () => {
   };
   const test = () => {
     mutateAsync().then(() => {
-      console.log("성공");
+      alert("나갈거야");
+      navigate("/projectList");
     });
   };
   return (

@@ -10,6 +10,7 @@ const MemberChart = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data } = useGetManagers(pjId);
   const result = data?.data;
+  console.log(result)
   return (
     <>
       {!result ? (
@@ -55,6 +56,9 @@ const MemberChart = () => {
               const a = data.buckets[0] === undefined ? 0 : data.buckets[0].cards.length;
               const b = data.buckets[1] === undefined ? 0 : data.buckets[0].cards.length;
               const c = data.buckets[2] === undefined ? 0 : data.buckets[0].cards.length;
+              const toDo = data.buckets[0] === undefined ? "" : data.buckets[0].title;
+              const doing = data.buckets[1] === undefined ? "" : data.buckets[1].title;
+              const done = data.buckets[2] === undefined ? "" : data.buckets[2].title;
               const sum = a + b + c;
               const dange = Math.round((a / sum) * 1000) / 10;
               const warning = Math.round((b / sum) * 1000) / 10;
@@ -78,16 +82,19 @@ const MemberChart = () => {
                         <Dange
                           className={`rounded-xl ${!warning || (!success && "mr-[2px]")}`}
                           dange={dange}
+                          title={toDo}
                         />
                         <Warning
                           className={`rounded-xl mx-[4px] ${!warning && "mx-0"} ${
                             !success && "ml-[2px] mr-0"
                           } ${!dange && "ml-0 mr-[2px]"}`}
                           warning={warning}
+                          title={doing}
                         />
                         <Success
                           className={`rounded-xl ${!warning || (!dange && "ml-[2px]")}`}
                           success={success}
+                          title={done}
                         />
                       </div>
                     </div>
@@ -104,19 +111,21 @@ const MemberChart = () => {
 
 export default MemberChart;
 
-const Dange = styled.div<{ dange: number }>`
-  background-color: #e7ebfe;
+const Dange = styled.div<{ dange: number; title: string }>`
+  background-color: ${(prop) =>
+    prop.title === "대기" ? "#e7ebfe" : prop.title === "진행" ? "#ff7637" : "#5f99ff"};
   height: 16px;
   width: ${(prop) => prop.dange}%;
 `;
 
-const Warning = styled.div<{ warning: number }>`
-  background-color: #ff7637;
+const Warning = styled.div<{ warning: number; title: string }>`
+  background-color: ${(prop) =>
+    prop.title === "대기" ? "#e7ebfe" : prop.title === "진행" ? "#ff7637" : "#5f99ff"};
   height: 16px;
   width: ${(prop) => prop.warning}%;
 `;
 
-const Success = styled.div<{ success: number }>`
+const Success = styled.div<{ success: number; title: string }>`
   background-color: #5f99ff;
   height: 16px;
   width: ${(prop) => prop.success}%;

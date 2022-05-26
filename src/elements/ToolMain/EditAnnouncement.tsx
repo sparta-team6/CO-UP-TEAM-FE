@@ -94,11 +94,11 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
   };
   return (
     <>
-      <div className="flex pt-2">
-        <button onClick={handleOpen}>
+      <div className="absolute flex pt-2 top-0 right-2">
+        <button className=" top-2 right-6 w-7 h-7 group" onClick={handleOpen}>
           <SvgEdit3 />
         </button>
-        <button onClick={onDelete}>
+        <button className=" top-2 right-0 w-7 h-7 group" onClick={onDelete}>
           <Trash />
         </button>
       </div>
