@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 const Member = () => {
   const { pjId, projectRole } = useRecoilValue(ProjectKey);
   const { data } = useGetProjectUser(pjId);
-  console.log(data?.data);
   const TeamUsers = data?.data.slice(1);
   const { mutateAsync: KickUser } = useKickRoom(pjId);
   const onClick = (loginId: string, nickname: string) => {

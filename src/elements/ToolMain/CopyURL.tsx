@@ -2,13 +2,12 @@ import { useRef } from "react";
 import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/RoomID";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 import { useExitRoom } from "../../api/ProjectQuery";
 
 const CopyURL = () => {
   const { inviteCode } = useRecoilValue(ProjectKey);
   const textInput = useRef<HTMLInputElement>(null);
-  const { pjId } = useRecoilValue(ProjectKey);
+  const { pjId, projectRole } = useRecoilValue(ProjectKey);
   const { mutateAsync } = useExitRoom(pjId);
   const copy = () => {
     const el = textInput.current;
@@ -49,14 +48,15 @@ const CopyURL = () => {
           초대코드
         </button>
       </div>
-      <Link to={`/tool/${pjId}/Testroom`} className="flex text-[#666] cursor-pointer ml-2">
-        <div className="w-[20px] h-[39px] bg-[#D7DCE5] rounded" />
-      </Link>
-      <div className="flex text-[#666] cursor-pointer">
-        <button onClick={test} className="w-[86px] h-[39px] bg-[#D7DCE5] rounded">
-          나가기
-        </button>
-      </div>
+      {projectRole === "ADMIN" ? (
+        ""
+      ) : (
+        <div className="flex text-[#666] cursor-pointer">
+          <button onClick={test} className="w-[86px] h-[39px] bg-[#D7DCE5] rounded">
+            나가기
+          </button>
+        </div>
+      )}
     </div>
   );
 };

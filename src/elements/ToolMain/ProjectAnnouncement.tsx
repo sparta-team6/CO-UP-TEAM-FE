@@ -31,7 +31,7 @@ const ProjectAnnouncement = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const { pjId } = useRecoilValue(ProjectKey);
+  const { pjId, projectRole } = useRecoilValue(ProjectKey);
   const { data: Ann } = useGetAnnouncement(pjId);
   const { mutateAsync: postAn } = usePostAnnouncement();
   const { register, handleSubmit, setValue } = useForm<IForm>();
@@ -62,7 +62,7 @@ const ProjectAnnouncement = () => {
         <div className="w-full flex items-center justify-between mb-[21px] mt-[28px]">
           <span className="font-bold text-xl">공지사항</span>
           <div onClick={handleOpen} className="cursor-pointer">
-            <Plus />
+            {projectRole === "ADMIN" ? <Plus /> : ""}
           </div>
         </div>
       </div>
@@ -121,7 +121,7 @@ const ProjectAnnouncement = () => {
                     <div className="w-full text-[13px] font-semibold pt-3">
                       <span>{data.title}</span>
                     </div>
-                    <EditAnnouncement {...data} />
+                    {projectRole === "ADMIN" ? <EditAnnouncement {...data} /> : ""}
                   </div>
                   <div className="flex justify-between pt-1">
                     <div className="flex space-x-5">
