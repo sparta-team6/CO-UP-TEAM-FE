@@ -47,11 +47,11 @@ const MyProjectList = () => {
   };
   return (
     <div className="w-20 h-[calc(100%-4rem)] bg-[#e7ebf2] dark:bg-gray-700 flex flex-col justify-between items-center sm:h-[calc(100vh-5rem)] sm:pt-16">
-      <Scroll className="mt-1 w-full h-[calc(100%-190px)] flex flex-col items-center overflow-auto">
+      <Scroll className="mt-[8px] w-full h-[calc(100%-190px)] flex flex-col items-center overflow-auto">
         {data?.data.map((room, index) => (
           <motion.div whileHover={{ scale: 1.1 }} onClick={() => onClick(room.pjId)} key={index}>
             <img
-              className="w-[48px] h-[48px] sm:w-[44px] sm:h-[44px] rounded-lg mt-[20px]"
+              className="w-[48px] h-[48px] sm:w-[44px] sm:h-[44px] rounded-md mt-[16px]"
               src={room.thumbnail}
               alt=""
             />

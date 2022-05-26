@@ -12,9 +12,9 @@ const Chart = () => {
     <div className="w-full h-full flex justify-center">
       <div className="w-full h-[310px] flex items-center relative dark:text-white">
         <div className="w-full h-full flex flex-col justify-center items-center absolute bottom-2">
-          <div className="w-full flex justify-center items-center space-x-2">
-            <span className="font-semibold text-5xl">{chartSum !== 0 ? chartSuccess : 0}</span>
-            <small>%</small>
+          <div className="w-full flex justify-center items-center space-x-1">
+            <span className="font-semibold text-[42px]">{chartSum !== 0 ? chartSuccess : 0}</span>
+            <span className="text-[28px]">%</span>
           </div>
           <span className="text-sm">완료율</span>
         </div>
