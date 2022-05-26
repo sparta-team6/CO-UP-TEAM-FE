@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
+import { useGetChatting } from "../../api/ChatQuery";
+import { MyProfile } from "../../recoil/MyProfile";
 import { ProjectKey } from "../../recoil/RoomID";
 import { ChatPresenter } from "./TestRoomPresenter";
 
@@ -19,9 +21,11 @@ stompClient.debug = () => {};
 
 const TestRoom = () => {
   const [messages, setMessages] = React.useState<content[]>([]);
-  const [senderLoginId, setSenderLoginId] = React.useState("");
-  const [content, setContent] = React.useState("");
   const { pjId } = useRecoilValue(ProjectKey);
+  const user = useRecoilValue(MyProfile);
+  const senderLoginId = user.loginId;
+  const { data } = useGetChatting(String(pjId));
+  console.log(data?.data);
 
   useEffect(() => {
     stompClient.connect({}, (frame) => {
@@ -34,27 +38,12 @@ const TestRoom = () => {
     });
   }, [messages]);
 
-  const handleEnter = (senderLoginId: string, message: string, pjId: string) => {
-    const newMessage: content = { senderLoginId, message, pjId };
-    /* 백엔드에서 요청 post 보내는 api 주소 */
-    stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
-    console.log("hi");
-    setContent("");
-  };
-
   const addMessage = (content: content) => {
     setMessages((prev) => [...prev, content]);
   };
   return (
     <div className="w-screen h-screen flex justify-center items-center">
-      <ChatPresenter
-        messages={messages}
-        handleEnter={handleEnter}
-        content={content}
-        setContent={setContent}
-        senderLoginId={senderLoginId}
-        setSenderLoginId={setSenderLoginId}
-      />
+      <ChatPresenter messages={messages} senderLoginId={senderLoginId} pjId={pjId} />
     </div>
   );
 };
