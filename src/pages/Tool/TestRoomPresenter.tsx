@@ -14,7 +14,7 @@ interface IForm {
   message: string;
 }
 
-const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}/ws`);
+const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
 
 export const ChatPresenter = ({ messages, senderLoginId, pjId }: ChatPresenterProps) => {
@@ -22,6 +22,7 @@ export const ChatPresenter = ({ messages, senderLoginId, pjId }: ChatPresenterPr
   const onValid: SubmitHandler<IForm> = (data) => {
     console.log(data.message, senderLoginId, pjId);
     const newMessage = { message: data.message, senderLoginId, pjId };
+    console.log(newMessage);
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
     queryClient.invalidateQueries("getChatting");
   };
