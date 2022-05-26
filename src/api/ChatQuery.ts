@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
+import { instance } from "../servers/axios";
 
 export interface Chat {
   name: string;
@@ -21,5 +22,11 @@ export const useGetChatComment = () => {
 export const useAddChatComment = () => {
   return useMutation(async (post: Chat) => {
     await axios.post("https://627f98ccb1cc1b126257d400.mockapi.io/api/chat", post);
+  });
+};
+
+export const useGetChatting = (pjId: string) => {
+  return useQuery("getChatting", () => {
+    return instance.get(`api/chatting?pjId=${pjId}`);
   });
 };

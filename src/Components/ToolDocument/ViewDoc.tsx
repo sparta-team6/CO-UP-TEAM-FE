@@ -9,7 +9,7 @@ import EmptyFolderM from "../../images/Document/EmptyFolder_m.png";
 import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
 import Swal from "sweetalert2";
 
-const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime }: Docs) => {
+const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime, nickname }: Docs) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { mutateAsync: DelDoc } = useDelDoc(String(docId));
@@ -18,6 +18,7 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime }: Docs) => 
   const folderData = data?.data[data?.data.length - 1];
   const docData = folderData?.docs?.[folderData?.docs.length - 1];
   const { mutateAsync: DelDoc2 } = useDelDoc(String(docData?.docId));
+  console.log(data?.data);
 
   const onDelete = () => {
     Swal.fire({
@@ -119,7 +120,8 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime }: Docs) => 
                   </div>
                 </div>
                 <div className="text-lg text-[#999] mt-[15px]">
-                  {modifiedTime?.replaceAll("-", ".").slice(0, 10)}
+                  <span>{modifiedTime?.replaceAll("-", ".").slice(0, 10)}</span>
+                  <span className="ml-[12px]">{`by ${nickname}`}</span>
                 </div>
               </div>
               <div className="hidden sm:block text-[32px] font-bold sm:mt-[100px] sm:mb-[22px] sm:mx-[12px]">
@@ -159,8 +161,9 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime }: Docs) => 
                     </button>
                   </div>
                 </div>
-                <div className="text-lg text-[#999] mt-[14px]">
-                  {docData.modifiedTime?.replaceAll("-", ".").slice(0, 10)}
+                <div className="text-lg text-[#999] mt-[15px]">
+                  <span>{docData?.modifiedTime?.replaceAll("-", ".").slice(0, 10)}</span>
+                  <span className="ml-[12px]">{`by ${docData?.nickname}`}</span>
                 </div>
               </div>
               <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">

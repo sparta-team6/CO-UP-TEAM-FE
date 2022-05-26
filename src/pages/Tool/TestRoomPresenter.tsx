@@ -1,36 +1,32 @@
-/* eslint-disable @typescript-eslint/ban-types */
-import * as React from "react";
-import { Button, Input } from "antd";
 import { content } from "./TestRoom";
-import "antd/dist/antd.css";
+import { SubmitHandler, useForm } from "react-hook-form";
+import SockJS from "sockjs-client";
+import Stomp from "stompjs";
+import { queryClient } from "../..";
 
 type ChatPresenterProps = {
   messages: Array<content>;
-  content: string;
   senderLoginId: string;
-  setContent: Function;
-  setSenderLoginId: Function;
-  handleEnter: Function;
+  pjId: string;
 };
 
-export const ChatPresenter = ({
-  messages,
-  content,
-  senderLoginId,
-  setContent,
-  setSenderLoginId,
-  handleEnter,
-}: ChatPresenterProps) => {
+interface IForm {
+  message: string;
+}
+
+const sockJS = new SockJS("https://api.cooperate-up.com/ws");
+const stompClient: Stomp.Client = Stomp.over(sockJS);
+
+export const ChatPresenter = ({ messages, senderLoginId, pjId }: ChatPresenterProps) => {
+  const { register, handleSubmit } = useForm<IForm>();
+  const onValid: SubmitHandler<IForm> = (data) => {
+    console.log(data.message, senderLoginId, pjId);
+    const newMessage = { message: data.message, senderLoginId, pjId };
+    stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
+    queryClient.invalidateQueries("getChatting");
+  };
   return (
     <div className="w-[300px] border">
-      <div className="p-[5px] flex flex-row h-[30px] border-b">
-        유저이름 :
-        <Input
-          style={{ flex: 1 }}
-          value={senderLoginId}
-          onChange={(e) => setSenderLoginId(e.target.value)}
-        />
-      </div>
       <div className="h-[400px]">
         {messages.map((content, index) => (
           <div key={index}>
@@ -40,13 +36,10 @@ export const ChatPresenter = ({
         ))}
       </div>
       <div>
-        <Input.Search
-          placeholder="input your messages..."
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          onSearch={(value) => handleEnter(senderLoginId, value)}
-          enterButton={"Enter"}
-        />
+        <form onSubmit={handleSubmit(onValid)}>
+          <input placeholder="메세지를 입력하세요 :)" {...register("message")} />
+          <button>전송</button>
+        </form>
       </div>
     </div>
   );

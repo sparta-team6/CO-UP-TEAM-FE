@@ -10,6 +10,7 @@ export interface Docs {
   isFetching?: boolean;
   docId?: string;
   modifiedTime?: string;
+  nickname?: string;
 }
 
 export interface IDocDetail {
