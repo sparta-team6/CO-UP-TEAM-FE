@@ -55,10 +55,12 @@ const DraggableCard = ({
       showCancelButton: true,
       confirmButtonText: "넵!",
       cancelButtonText: "취소!",
-    }).then(() => {
-      mutateAsync().then(() => {
-        queryClient.invalidateQueries(["getBoard", pjId]);
-      });
+    }).then((result) => {
+      if (result.value) {
+        mutateAsync().then(() => {
+          queryClient.invalidateQueries(["getBoard", pjId]);
+        });
+      }
     });
   };
   return (

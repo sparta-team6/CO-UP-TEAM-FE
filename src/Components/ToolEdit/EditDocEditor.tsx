@@ -20,6 +20,7 @@ import { queryClient } from "../../index";
 import { useNavigate, useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
+import Swal from "sweetalert2";
 
 interface IForm {
   title: string;
@@ -47,12 +48,20 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
     };
-    if (confirm("문서 내용을 수정하시겠습니까?")) {
-      UpdateDoc(doc).then(() => {
-        queryClient.invalidateQueries("getFolders");
-        navigate(`/tool/${id}/document/${docId}`);
-      });
-    }
+    Swal.fire({
+      title: "수정",
+      text: "진짜 수정하시겠어요?!!",
+      showCancelButton: true,
+      confirmButtonText: "넵!",
+      cancelButtonText: "취소!",
+    }).then((result) => {
+      if (result.value) {
+        UpdateDoc(doc).then(() => {
+          queryClient.invalidateQueries("getFolders");
+          navigate(`/tool/${id}/document/${docId}`);
+        });
+      }
+    });
   };
 
   return (

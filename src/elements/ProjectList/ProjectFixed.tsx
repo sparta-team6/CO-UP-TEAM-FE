@@ -8,6 +8,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import ProjectUpdateForm from "./ProjectUpdateForm";
+import Swal from "sweetalert2";
 
 interface IProps {
   roomID?: string;
@@ -43,12 +44,20 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
   };
   const { mutateAsync } = useDelRoom(String(roomID));
   const delProject = () => {
-    if (confirm("프로젝트를 삭제하시겠습니까?")) {
-      mutateAsync().then(() => {
-        queryClient.invalidateQueries("getProject");
-        setAnchorEl(null);
-      });
-    }
+    setAnchorEl(null);
+    Swal.fire({
+      title: "삭제",
+      text: "진짜 삭제하시겠어요?!!",
+      showCancelButton: true,
+      confirmButtonText: "넵!",
+      cancelButtonText: "취소!",
+    }).then((result) => {
+      if (result.value) {
+        mutateAsync().then(() => {
+          queryClient.invalidateQueries("getProject");
+        });
+      }
+    });
   };
   return (
     <>

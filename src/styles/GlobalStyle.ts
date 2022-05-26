@@ -170,4 +170,9 @@ abbr[title]{
     height: 30px;
   }
 }
+
+/* sweetalert2 */
+.swal2-container{
+  z-index: 9999;
+}
 `;
