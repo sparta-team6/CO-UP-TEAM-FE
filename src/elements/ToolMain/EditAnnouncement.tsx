@@ -33,6 +33,7 @@ interface IForm {
 }
 
 const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
+  console.log(title, contents, noticeId);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

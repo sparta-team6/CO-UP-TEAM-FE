@@ -55,6 +55,22 @@ export interface Cards {
 
 export const usePostCards = () => {
   return useMutation(async (post: ICards) => {
-    await instance.post("api/buckets/cards/", post);
+    await instance.post("api/buckets/cards/", post).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "카드 등록 완료😊",
+      });
+    });
   });
 };

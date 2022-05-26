@@ -27,6 +27,9 @@ const Chat = () => {
   const user = useRecoilValue(MyProfile);
   const senderLoginId = user.loginId;
   const { data } = useGetChatting(String(pjId));
+  const result = data?.data.length;
+  const pageNumber = result === 20 ? data?.data[19].id : 0;
+
   useEffect(() => {
     stompClient.connect({}, () => {
       stompClient.subscribe(`/sub/chatting/${pjId}`, (data) => {
@@ -47,6 +50,7 @@ const Chat = () => {
         contents={data?.data}
         senderLoginId={senderLoginId}
         pjId={pjId}
+        pageNumber={pageNumber}
       />
     </div>
   );
