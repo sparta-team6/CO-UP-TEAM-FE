@@ -15,3 +15,7 @@ export interface ProjectRoom {
   inviteCode: string;
   projectRole: string;
 }
+
+export interface ProjectInviteCode {
+  inviteCode: string;
+}
