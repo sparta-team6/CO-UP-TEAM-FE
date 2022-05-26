@@ -75,9 +75,20 @@ const MemberChart = () => {
                         <div>{`${dange}/${warning}/${success}`}</div>
                       </div>
                       <div className="w-full h-10 flex">
-                        <Dange className="rounded-xl" dange={dange} />
-                        <Warning className="rounded-xl mx-1" warning={warning} />
-                        <Success className="rounded-xl" success={success} />
+                        <Dange
+                          className={`rounded-xl ${!warning || (!success && "mr-[2px]")}`}
+                          dange={dange}
+                        />
+                        <Warning
+                          className={`rounded-xl mx-[4px] ${!warning && "mx-0"} ${
+                            !success && "ml-[2px] mr-0"
+                          } ${!dange && "ml-0 mr-[2px]"}`}
+                          warning={warning}
+                        />
+                        <Success
+                          className={`rounded-xl ${!warning || (!dange && "ml-[2px]")}`}
+                          success={success}
+                        />
                       </div>
                     </div>
                   </div>

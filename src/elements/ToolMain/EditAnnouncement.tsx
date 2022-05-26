@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+import Swal from "sweetalert2";
 import { queryClient } from "../..";
 import {
   Announcement,
@@ -55,25 +56,41 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
       title: data.title,
       contents: data.content,
     };
-    if (confirm("수정하시겠습니까?")) {
-      UpdateAN(Update).then(() => {
-        queryClient.invalidateQueries("getAnnouncement");
-      });
-      setOpen(false);
-    }
+    Swal.fire({
+      title: "수정",
+      text: "진짜 수정하시겠어요?!!",
+      showCancelButton: true,
+      confirmButtonText: "넵!",
+      cancelButtonText: "취소!",
+    }).then((result) => {
+      if (result.value) {
+        UpdateAN(Update).then(() => {
+          queryClient.invalidateQueries("getAnnouncement");
+        });
+        setOpen(false);
+      }
+    });
   };
   const onDelete = () => {
-    if (confirm("공지사항을 삭제하시겠습니까?")) {
-      const Delete = {
-        data: {
-          noticeId: String(noticeId),
-          pjId,
-        },
-      };
-      DELAN(Delete).then(() => {
-        queryClient.invalidateQueries("getAnnouncement");
-      });
-    }
+    const Delete = {
+      data: {
+        noticeId: String(noticeId),
+        pjId,
+      },
+    };
+    Swal.fire({
+      title: "삭제",
+      text: "진짜 삭제하시겠어요?!!",
+      showCancelButton: true,
+      confirmButtonText: "넵!",
+      cancelButtonText: "취소!",
+    }).then((result) => {
+      if (result.value) {
+        DELAN(Delete).then(() => {
+          queryClient.invalidateQueries("getAnnouncement");
+        });
+      }
+    });
   };
   return (
     <>

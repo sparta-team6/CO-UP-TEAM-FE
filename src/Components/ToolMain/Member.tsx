@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/RoomID";
 import { useGetProjectUser } from "../../api/UserQuery";
 import { useKickRoom } from "../../api/ProjectQuery";
+import Swal from "sweetalert2";
 
 const Member = () => {
   const { pjId, projectRole } = useRecoilValue(ProjectKey);
@@ -11,11 +12,19 @@ const Member = () => {
   const TeamUsers = data?.data.slice(1);
   const { mutateAsync: KickUser } = useKickRoom(pjId);
   const onClick = (loginId: string, nickname: string) => {
-    if (confirm(`${nickname}님을 추방시키겠습니까?`)) {
-      KickUser(loginId).then((res) => {
-        console.log(res);
-      });
-    }
+    Swal.fire({
+      title: "추방",
+      text: `${nickname}님을 추방시키겠습니까?`,
+      showCancelButton: true,
+      confirmButtonText: "넵!",
+      cancelButtonText: "취소!",
+    }).then((result) => {
+      if (result.value) {
+        KickUser(loginId).then((res) => {
+          console.log(res);
+        });
+      }
+    });
   };
   const projectAdmin = data?.data[0];
   return (
