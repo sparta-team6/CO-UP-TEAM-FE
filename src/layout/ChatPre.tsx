@@ -3,12 +3,15 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
 import { content } from "./Chat";
+import { fetchChatting } from "../api/ChatQuery";
+import { useInfiniteQuery } from "react-query";
 
 type ChatPresenterProps = {
   messages: Array<content>;
   senderLoginId: string;
   pjId: string;
   contents: Array<content>;
+  pageNumber: number;
 };
 
 interface IForm {
@@ -19,8 +22,12 @@ interface IForm {
 
 const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
-
-const ChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) => {
+//isLoading, hasNextPage, fetchNextPage, isFetching, isFetchingNextPage,
+const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterProps) => {
+  const { data } = useInfiniteQuery(["chat", pjId], () => fetchChatting(pjId, pageNumber), {
+    // getNextPageParam: (_lastPage, pages) => {
+    // },
+  });
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
     const newMessage = { message: message, senderLoginId, pjId };
@@ -78,6 +85,14 @@ const ChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) => {
             <span>전송</span>
           </button>
         </form>
+        {/* <button disabled={!hasNextPage || isFetchingNextPage} onClick={() => fetchNextPage}>
+          {isFetchingNextPage
+            ? "Loading more..."
+            : hasNextPage
+            ? "Load More"
+            : "Nothing more to load"}
+        </button>
+        <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div> */}
       </div>
     </>
   );
