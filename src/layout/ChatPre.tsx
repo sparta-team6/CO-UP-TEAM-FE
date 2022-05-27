@@ -5,6 +5,8 @@ import Stomp from "stompjs";
 import { content } from "./Chat";
 import { fetchChatting } from "../api/ChatQuery";
 import { useInfiniteQuery } from "react-query";
+import { useRecoilValue } from "recoil";
+import { MyProfile } from "../recoil/MyProfile";
 
 type ChatPresenterProps = {
   messages: Array<content>;
@@ -18,19 +20,22 @@ interface IForm {
   senderLoginId: string;
   message: string;
   pjId: string;
+  profileImage: string;
+  nickname: string;
 }
 
 const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
 //isLoading, hasNextPage, fetchNextPage, isFetching, isFetchingNextPage,
 const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterProps) => {
+  const { nickname, profileImage } = useRecoilValue(MyProfile);
   const { data } = useInfiniteQuery(["chat", pjId], () => fetchChatting(pjId, pageNumber), {
     // getNextPageParam: (_lastPage, pages) => {
     // },
   });
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
-    const newMessage = { message: message, senderLoginId, pjId };
+    const newMessage = { message: message, senderLoginId, pjId, profileImage, nickname };
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
     setValue("message", "");
   };
@@ -52,10 +57,10 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
         {contents?.map((box, index) => {
           return (
             <div className="w-[366px] min-h-10  flex items-start" key={index}>
-              {/* <img className="w-[36px] h-[36px] rounded-full" src={box.profile} alt="" /> */}
+              <img className="w-[36px] h-[36px] rounded-full" src={box.profileImage} alt="" />
               <div className="flex flex-col pl-[10px]">
-                <span className="font-bold text-lg">{box.senderLoginId}</span>
-                <span className="text-[#AAA] text-xs">{box.pjId}</span>
+                <span className="font-bold text-lg">{box.nickname}</span>
+                <span className="text-[#AAA] text-xs">{box.dateTime.replaceAll("-", ".").slice(0, 10)}</span>
                 <span className="whitespace-pre-wrap break-all mt-2 leading-5 text-sm">
                   {box.message}
                 </span>

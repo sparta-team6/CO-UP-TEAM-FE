@@ -13,6 +13,9 @@ export interface content {
   senderLoginId: string;
   message: string;
   pjId: string;
+  profileImage: string;
+  nickname: string;
+  dateTime: string;
 }
 
 /* 기본 api url 주소 */
@@ -31,8 +34,9 @@ const Chat = () => {
   const pageNumber = result === 20 ? data?.data[19].id : 0;
 
   useEffect(() => {
-    stompClient.connect({}, () => {
+    stompClient.connect({}, (frame) => {
       stompClient.subscribe(`/sub/chatting/${pjId}`, (data) => {
+        console.log(data, frame);
         const newMessage: content = JSON.parse(data.body) as content;
         addMessage(newMessage);
       });
