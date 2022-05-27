@@ -80,7 +80,11 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
                     <span className="text-[#AAA] text-xs">
                       {box.dateTime.replaceAll("-", ".").slice(11, 16)}
                     </span>
-                    <div className="w-[180px] sm:min-h-[40px] bg-[#f5f5f5] p-[10px] rounded-md">
+                    <div
+                      className={`w-[180px] sm:min-h-[40px] bg-[#f5f5f5] p-[10px] rounded-md ${
+                        loginId === box.senderLoginId ? "mt-2" : ""
+                      }`}
+                    >
                       <span
                         className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-gray-500 font-semibold tracking-tight`}
                       >
