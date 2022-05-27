@@ -32,8 +32,6 @@ const Chat = () => {
   const { data } = useGetChatting(String(pjId));
   const result = data?.data;
   const pageNumber = result === 20 ? data?.data[19].id : 0;
-  console.log(messages);
-  console.log(result);
 
   const wsConnectSubscribe = React.useCallback(() => {
     try {
@@ -49,31 +47,21 @@ const Chat = () => {
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [messages, pjId]);
   // 연결해제, 구독해제
-  const wsDisConnectUnsubscribe = React.useCallback(() => {
-    try {
-      stompClient.disconnect(() => {
-        console.log("disconnect");
-        stompClient.unsubscribe(`/sub/chatting/${pjId}`);
-        console.log("unsubscribe");
-      });
-    } catch (err) {
-      console.log(err);
-    }
-    // stompClient.disconnect(
-    //   () => {
-    //     console.log("disconnect");
-    //     stompClient.unsubscribe("sub-0");
-    //   }
-    //   // { token }
-    // );
-  }, [stompClient]);
 
   // 렌더링 될 때마다 연결,구독 다른 방으로 옮길 때 연결, 구독 해제
   useEffect(() => {
     wsConnectSubscribe();
-  }, [wsConnectSubscribe]);
+    setTimeout(() => {
+      stompClient.subscribe(`/sub/chatting/${pjId}`, (data) => {
+        console.log(data);
+        const newMessage: content = JSON.parse(data.body) as content;
+        addMessage(newMessage);
+        queryClient.invalidateQueries("getChatting");
+      });
+    }, 500);
+  }, [wsConnectSubscribe, pjId, messages]);
 
   const addMessage = (content: content) => {
     setMessages((prev) => [...prev, content]);
