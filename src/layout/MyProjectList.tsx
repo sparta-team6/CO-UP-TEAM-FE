@@ -85,10 +85,10 @@ const MyProjectList = () => {
           {theme ? <Moon /> : <Sun />}
         </div>
         <Link onClick={wsDisConnectUnsubscribe} className="cursor-pointer" to="/projectList">
-          <Power />
+          <Logout />
         </Link>
         <div className="cursor-pointer" onClick={onLogOut}>
-          <Logout />
+          <Power />
         </div>
       </div>
     </div>

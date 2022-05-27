@@ -122,20 +122,20 @@ export default MemberChart;
 const Dange = styled.div<{ dange: number; title: string }>`
   background-color: ${(prop) =>
     prop.title === "대기" ? "#e7ebfe" : prop.title === "진행" ? "#ff7637" : "#5f99ff"};
-  height: 16px;
+  height: 12px;
   width: ${(prop) => prop.dange}%;
 `;
 
 const Warning = styled.div<{ warning: number; title: string }>`
   background-color: ${(prop) =>
     prop.title === "대기" ? "#e7ebfe" : prop.title === "진행" ? "#ff7637" : "#5f99ff"};
-  height: 16px;
+  height: 12px;
   width: ${(prop) => prop.warning}%;
 `;
 
 const Success = styled.div<{ success: number; title: string }>`
   background-color: #5f99ff;
-  height: 16px;
+  height: 12px;
   width: ${(prop) => prop.success}%;
 `;
 

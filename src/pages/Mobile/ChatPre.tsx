@@ -30,7 +30,7 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
     setValue("message", "");
   };
-  const messageBoxRef = useRef<HTMLUListElement>(null);
+  const messageBoxRef = useRef<HTMLDivElement>(null);
   const scrollToBottom = () => {
     if (messageBoxRef.current) {
       messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
@@ -42,14 +42,14 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
   return (
     <>
       <div className={`w-full h-full flex flex-col justify-end absolute "z-[49]"`}>
-        <ul
+        <div
           ref={messageBoxRef}
           className="w-full h-full sm:min-h-[612px] space-y-2 overflow-auto flex flex-col-reverse"
         >
           {contents?.map((box, index) => {
             return (
-              <li
-                className={`w-full min-h-[80px] pl-[26px] flex ${
+              <div
+                className={`w-full min-h-10 pl-[26px] flex ${
                   loginId === box.senderLoginId ? "justify-end" : "justify-start"
                 }`}
                 key={index}
@@ -67,15 +67,27 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
                   }`}
                 >
                   <span className="font-bold text-lg">{box.nickname}</span>
-                  <span className="text-[#AAA] text-xs">
-                    {box.dateTime.replaceAll("-", ".").slice(0, 10)}
-                  </span>
-                  <span className="whitespace-pre-wrap break-all mt-2">{box.message}</span>
+                  <div
+                    className={`flex items-end gap-2 ${
+                      loginId === box.senderLoginId ? "" : "flex-row-reverse"
+                    }`}
+                  >
+                    <span className="text-[#AAA] text-xs">
+                      {box.dateTime.replaceAll("-", ".").slice(0, 10)}
+                    </span>
+                    <div className="w-[180px] sm:min-h-[40px] bg-5 p-[10px] rounded-md">
+                      <span
+                        className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-gray-500 font-semibold tracking-tight`}
+                      >
+                        {box.message}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </li>
+              </div>
             );
           })}
-        </ul>
+        </div>
       </div>
       <div className="w-full h-[86px] bg-[#F5F5F5] fixed bottom-0 z-[50]">
         <form
