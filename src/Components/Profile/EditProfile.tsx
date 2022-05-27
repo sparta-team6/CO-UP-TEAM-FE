@@ -52,7 +52,7 @@ const EditProfile = () => {
         }
       });
     } else {
-      const image = await resizeFile(size, 244, 244, "base64");
+      const image = await resizeFile(size, 50, 50, "base64");
       const profile = {
         loginId: user?.loginId,
         nickname: data.nickName,
