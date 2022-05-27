@@ -42,9 +42,9 @@ const Member = () => {
   const projectAdmin = data?.data[0];
   return (
     <div className="w-full h-full">
-      <div className="flex items-center mt-[36px]">
+      <div className="flex items-center mt-[28px]">
         <SvgUser />
-        <span className="text-lg font-bold mt-1 ml-1 dark:text-white">팀원</span>
+        <span className="text-lg font-bold ml-1 dark:text-white">팀원</span>
       </div>
       <div className="group w-full mt-[20px] relative flex items-center space-x-2">
         <img className="absolute -top-1 left-6" src={imgCrown} alt="" />
@@ -56,9 +56,9 @@ const Member = () => {
           alt=""
         />
         <span className="font-semibold dark:text-white">{projectAdmin?.nickname}</span>
-        <div className="hidden w-[344px] min-h-[134px] bg-5 group-hover:flex sm:group-focus:block absolute right-[-330px] top-0 rounded-lg shadow-md">
-          <div className="w-full h-full px-3 py-6 flex flex-col">
-            <div className="w-full h-full flex flex-col space-x-5">
+        <div className="hidden w-[334px] min-h-[120px] bg-5 group-hover:flex sm:group-focus:block absolute right-[-330px] top-0 rounded-lg shadow-md">
+          <div className="w-full h-full px-[20px] py-[13px] flex flex-col">
+            <div className="w-full h-full flex">
               <div className="h-full flex items-center span">
                 <img
                   className="rounded-full"
@@ -67,10 +67,12 @@ const Member = () => {
                   src={projectAdmin?.profileImage}
                   alt=""
                 />
-                <span className="ml-[12px] font-semibold ">{projectAdmin?.nickname}</span>
               </div>
-              <div className="flex flex-col w-full h-full pl-[28px] pr-2 space-y-1 mt-3">
-                <span>{projectAdmin?.aboutMe}</span>
+              <div className="flex flex-col w-full h-full pl-[14px] pt-[14px]">
+                <span className="font-semibold ">{projectAdmin?.nickname}</span>
+                <span className="whitespace-pre-wrap break-all pt-[12px] pb-[18px]">
+                  {projectAdmin?.aboutMe}
+                </span>
                 <a href={projectAdmin?.url} target="_blank" className="text-xs" rel="noreferrer">
                   {projectAdmin?.url}
                 </a>
@@ -95,9 +97,9 @@ const Member = () => {
                 추방
               </button>
             )}
-            <div className="hidden w-[344px] min-h-[134px] bg-5  group-hover:flex sm:group-focus:block absolute right-[-330px] top-0 rounded-lg shadow-md">
-              <div className="w-full h-full px-3 py-6 flex flex-col">
-                <div className="w-full h-full flex flex-col space-x-5">
+            <div className="hidden w-[334px] min-h-[120px] bg-5 group-hover:flex sm:group-focus:block absolute right-[-330px] top-0 rounded-lg shadow-md">
+              <div className="w-full h-full px-[20px] py-[13px] flex flex-col">
+                <div className="w-full h-full flex">
                   <div className="h-full flex items-center span">
                     <img
                       className="rounded-full"
@@ -106,10 +108,12 @@ const Member = () => {
                       src={teamUser.profileImage}
                       alt=""
                     />
-                    <span className="ml-[12px] font-semibold ">{teamUser.nickname}</span>
                   </div>
-                  <div className="flex flex-col w-full h-full pl-[28px] pr-2 space-y-1 mt-3">
-                    <span>{teamUser.aboutMe}</span>
+                  <div className="flex flex-col w-full h-full pl-[14px] pt-[14px]">
+                    <span className="font-semibold">{teamUser.nickname}</span>
+                    <span className="whitespace-pre-wrap break-all pt-[12px] pb-[18px]">
+                      {teamUser.aboutMe}
+                    </span>
                     <a href={teamUser.url} target="_blank" className="text-xs" rel="noreferrer">
                       {teamUser.url}
                     </a>

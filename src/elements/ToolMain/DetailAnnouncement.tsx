@@ -76,7 +76,7 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
         className="w-full min-h-[68px] bg-white border rounded-lg overflow-hidden flex"
       >
         <div className="w-2 h-full bg-3" />
-        <div className="w-full h-full ml-4 mr-2 flex flex-col">
+        <div className="w-full h-full ml-[14px] mr-2 flex flex-col">
           <div className="flex relative">
             <div className="w-full text-[13px] font-semibold pt-3">
               <span>{title}</span>
@@ -92,7 +92,7 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
               </div>
             )}
           </div>
-          <div className="flex justify-start pt-1">
+          <div className="flex justify-start pt-[12px]">
             <div className="flex space-x-5">
               <div className="font-normal text-xs text-gray-400">
                 <div>{modifiedTime?.replaceAll("-", ".").slice(0, 10)}</div>

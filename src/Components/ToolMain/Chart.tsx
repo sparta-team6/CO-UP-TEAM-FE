@@ -11,10 +11,10 @@ const Chart = () => {
   return (
     <div className="w-full h-full flex justify-center">
       <div className="w-full h-[310px] flex items-center relative dark:text-white">
-        <div className="w-full h-full flex flex-col justify-center items-center absolute bottom-2">
-          <div className="w-full flex justify-center items-center space-x-1">
-            <span className="font-semibold text-[42px]">{chartSum !== 0 ? chartSuccess : 0}</span>
-            <span className="text-[28px]">%</span>
+        <div className="w-full h-full flex flex-col justify-center items-center absolute bottom-1">
+          <div className="w-full flex justify-center items-center pl-[2px]">
+            <span className="font-bold text-[48px]">{chartSum !== 0 ? chartSuccess : 0}</span>
+            <span className="text-[32px] pt-[7px]">%</span>
           </div>
           <span className="text-sm">완료율</span>
         </div>
@@ -39,7 +39,7 @@ const Chart = () => {
             },
             legend: {
               position: "bottom",
-              fontWeight: 600,
+              fontWeight: 400,
             },
             stroke: {
               show: true,
