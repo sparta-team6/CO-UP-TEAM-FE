@@ -1,18 +1,12 @@
 import { Box, Modal } from "@mui/material";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { queryClient } from "../..";
-import {
-  Announcement,
-  useDelAnnouncement,
-  useUpdateAnnouncement,
-} from "../../api/AnnouncementQuery";
+import { useUpdateAnnouncement } from "../../api/AnnouncementQuery";
 import { ProjectKey } from "../../recoil/RoomID";
-import { SvgEdit3 } from "../Icon/SvgEdit3";
-import { Trash } from "../Icon/Trash";
 
 const style = {
   position: "absolute",
@@ -26,19 +20,24 @@ const style = {
   p: 4,
 };
 
+interface IProps {
+  edit: boolean;
+  setEdit: Dispatch<SetStateAction<boolean>>;
+  title?: string;
+  contents?: string;
+  noticeId?: string;
+  modifiedTime?: string;
+}
+
 interface IForm {
   title: string;
   content: string;
   contents: string;
 }
 
-const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
-  console.log(title, contents, noticeId);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const EditAnnouncement = ({ title, contents, noticeId, modifiedTime, edit, setEdit }: IProps) => {
+  const handleClose = () => setEdit(false);
   const { pjId } = useRecoilValue(ProjectKey);
-  const { mutateAsync: DELAN } = useDelAnnouncement();
   const { mutateAsync: UpdateAN } = useUpdateAnnouncement();
   const { register, handleSubmit } = useForm<IForm>();
   const onSubmit: SubmitHandler<IForm> = (data) => {
@@ -68,43 +67,14 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
         UpdateAN(Update).then(() => {
           queryClient.invalidateQueries("getAnnouncement");
         });
-        setOpen(false);
-      }
-    });
-  };
-  const onDelete = () => {
-    const Delete = {
-      data: {
-        noticeId: String(noticeId),
-        pjId,
-      },
-    };
-    Swal.fire({
-      title: "삭제",
-      text: "진짜 삭제하시겠어요?!!",
-      showCancelButton: true,
-      confirmButtonText: "넵!",
-      cancelButtonText: "취소!",
-    }).then((result) => {
-      if (result.value) {
-        DELAN(Delete).then(() => {
-          queryClient.invalidateQueries("getAnnouncement");
-        });
+        setEdit(false);
       }
     });
   };
   return (
     <>
-      <div className="absolute flex pt-2 top-0 right-2">
-        <button className=" top-2 right-6 w-7 h-7 group" onClick={handleOpen}>
-          <SvgEdit3 />
-        </button>
-        <button className=" top-2 right-0 w-7 h-7 group" onClick={onDelete}>
-          <Trash />
-        </button>
-      </div>
       <Modal
-        open={open}
+        open={edit}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -119,7 +89,9 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
               placeholder="공지 제목을 적어주세요 :)"
               defaultValue={title}
             />
-            <div className="mt-[10px] text-[#666]">2022.xx.xx</div>
+            <div className="mt-[10px] text-[#666]">
+              {modifiedTime?.replaceAll("-", ".").slice(0, 10)}
+            </div>
             <Scroll
               className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
               {...register("content")}
@@ -129,6 +101,13 @@ const EditAnnouncement = ({ title, contents, noticeId }: Announcement) => {
             <div className="absolute bottom-0 right-0">
               <button className="text-white bg-3 w-[58px] h-[37px] rounded-md pt-1" type="submit">
                 수정
+              </button>
+              <button
+                onClick={handleClose}
+                className="bg-5 w-[58px] h-[37px] rounded-md ml-2 pt-1"
+                type="button"
+              >
+                닫기
               </button>
             </div>
           </form>
