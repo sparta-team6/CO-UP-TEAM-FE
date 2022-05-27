@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useGetRoom } from "../api/ProjectQuery";
 import { useLogOut } from "../api/UserQuery";
 import { HandleOpen } from "../recoil/AtomsInterface";
@@ -11,13 +11,35 @@ import { Sun } from "../elements/Icon/Sun";
 import { ProjectKey } from "../recoil/RoomID";
 import { themeState } from "../recoil/DarkMode";
 import styled from "styled-components";
+import SockJS from "sockjs-client";
+import Stomp from "stompjs";
+import React from "react";
+
+const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
+const stompClient: Stomp.Client = Stomp.over(sockJS);
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+stompClient.debug = () => {};
 
 const MyProjectList = () => {
   const setOpen = useSetRecoilState(HandleOpen);
   const setProject = useSetRecoilState(ProjectKey);
   const [theme, DarkMode] = useRecoilState(themeState);
+  const { pjId } = useRecoilValue(ProjectKey);
   const navigate = useNavigate();
   const { data } = useGetRoom();
+
+  // 연결해제, 구독해제
+  const wsDisConnectUnsubscribe = React.useCallback(() => {
+    try {
+      stompClient.disconnect(() => {
+        console.log("disconnect");
+        stompClient.unsubscribe(`/sub/chatting/${pjId}`);
+        console.log("unsubscribe");
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }, [stompClient]);
   const onClick = (roomID?: string) => {
     navigate(`/tool/${roomID}`);
     setOpen(false);
@@ -62,7 +84,7 @@ const MyProjectList = () => {
         <div className="cursor-pointer" onClick={onDarkMode}>
           {theme ? <Moon /> : <Sun />}
         </div>
-        <Link className="cursor-pointer" to="/projectList">
+        <Link onClick={wsDisConnectUnsubscribe} className="cursor-pointer" to="/projectList">
           <Power />
         </Link>
         <div className="cursor-pointer" onClick={onLogOut}>

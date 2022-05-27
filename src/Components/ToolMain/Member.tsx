@@ -5,6 +5,7 @@ import { ProjectKey } from "../../recoil/RoomID";
 import { useGetProjectUser } from "../../api/UserQuery";
 import { useKickRoom } from "../../api/ProjectQuery";
 import Swal from "sweetalert2";
+import { queryClient } from "../..";
 // import { MyProfile } from "../../recoil/MyProfile";
 // import { useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
@@ -33,6 +34,7 @@ const Member = () => {
       if (result.value) {
         KickUser(loginId).then((res) => {
           console.log(res);
+          queryClient.invalidateQueries("getUser");
         });
       }
     });
