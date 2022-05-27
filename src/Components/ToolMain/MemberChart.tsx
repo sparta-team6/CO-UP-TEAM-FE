@@ -10,7 +10,6 @@ const MemberChart = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data } = useGetManagers(pjId);
   const result = data?.data;
-  console.log(result);
   return (
     <>
       {result?.length === 0 ? (
@@ -53,15 +52,21 @@ const MemberChart = () => {
           </div>
           <Scroll className="overflow-y-auto h-64 -mr-[20px] pr-[20px]">
             {result?.map((data, index) => {
-              const a = data.buckets[0] === undefined ? 0 : data.buckets[0].cards.length;
-              const b = data.buckets[1] === undefined ? 0 : data.buckets[0].cards.length;
-              const c = data.buckets[2] === undefined ? 0 : data.buckets[0].cards.length;
-              const toDo = data.buckets[0] === undefined ? "" : data.buckets[0].title;
-              const doing = data.buckets[1] === undefined ? "" : data.buckets[1].title;
-              const done = data.buckets[2] === undefined ? "" : data.buckets[2].title;
-              // const one = data.buckets[0] === undefined ? "" : data.buckets[0].position;
-              // const two = data.buckets[1] === undefined ? "" : data.buckets[1].position;
-              // const three = data.buckets[2] === undefined ? "" : data.buckets[2].position;
+              const a =
+                data.buckets.filter((data) => data.position === 0)[0]?.cards.length === undefined
+                  ? 0
+                  : data.buckets.filter((data) => data.position === 0)[0]?.cards.length;
+              const b =
+                data.buckets.filter((data) => data.position === 1)[0]?.cards.length === undefined
+                  ? 0
+                  : data.buckets.filter((data) => data.position === 1)[0]?.cards.length;
+              const c =
+                data.buckets.filter((data) => data.position === 2)[0]?.cards.length === undefined
+                  ? 0
+                  : data.buckets.filter((data) => data.position === 2)[0]?.cards.length;
+              const toDo = "대기";
+              const doing = "진행";
+              const done = "완료";
               const sum = a + b + c;
               const dange = Math.round((a / sum) * 1000) / 10;
               const warning = Math.round((b / sum) * 1000) / 10;

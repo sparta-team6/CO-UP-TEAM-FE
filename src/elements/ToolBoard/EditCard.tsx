@@ -42,25 +42,21 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
   const { data: user } = useGetProjectUser(pjId);
   const [name, setName] = useState(String(Card?.data.managerNickname));
   const { register, handleSubmit } = useForm<IForm>();
-  const result = user?.data.filter((data) => console.log(data.nickname));
-  console.log(result)
+  const result = user?.data.filter((data) => data.nickname !== Card?.data.managerNickname);
   const onSubmit: SubmitHandler<IForm> = (data) => {
     if (name === "" || name === "담당자 선택") {
       alert("담당자 선택해주세요");
       return;
     }
-
     const info = name.split(" ");
-    console.log(info[1]);
     const post = {
       kbcId: String(Card?.data.kbcId),
       kbbId: String(Card?.data.kbbId),
-      manager: name === "undefined" ? String(Card?.data.manager) : info[0],
+      manager: info.length === 1 ? String(Card?.data.manager) : info[0],
       managerNickname: info[1] === undefined ? String(Card?.data.managerNickname) : info[1],
       title: data.title,
       contents: data.text,
     };
-    console.log(data, info, post);
     mutateAsync(post).then(() => {
       queryClient.invalidateQueries(["getCard", String(Card?.data.kbbId)]);
       const Toast = Swal.mixin({
