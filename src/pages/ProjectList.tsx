@@ -21,9 +21,9 @@ const ProjectList = () => {
     const accessToken = getAccessTokenFromCookie();
     const refreshToken = getFreshTokenFromCookie();
     if ((accessToken !== undefined && refreshToken !== undefined) === true) {
-      alert("로그인을 해주세요 :)");
       navigate("/projectList");
     } else {
+      alert("로그인을 해주세요 :)");
       navigate("/");
     }
   }, [navigate]);
