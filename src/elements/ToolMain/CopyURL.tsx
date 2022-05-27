@@ -2,15 +2,10 @@ import { useRef } from "react";
 import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/RoomID";
 import Swal from "sweetalert2";
-import { useExitRoom } from "../../api/ProjectQuery";
-import { useNavigate } from "react-router-dom";
 
 const CopyURL = () => {
   const { inviteCode } = useRecoilValue(ProjectKey);
-  const navigate = useNavigate();
   const textInput = useRef<HTMLInputElement>(null);
-  const { pjId, projectRole } = useRecoilValue(ProjectKey);
-  const { mutateAsync } = useExitRoom(pjId);
   const copy = () => {
     const el = textInput.current;
     if (el === null) return;
@@ -32,34 +27,19 @@ const CopyURL = () => {
       title: "초대코드 복사 완료😊",
     });
   };
-  const test = () => {
-    mutateAsync().then(() => {
-      alert("나갈거야");
-      navigate("/projectList");
-    });
-  };
   return (
-    <div className="w-1/5 h-20 flex items-center justify-end">
+    <div className="w-1/5 h-20 flex items-end justify-end">
       <input
         className="w-[100px] opacity-0 pointer-events-none"
         value={inviteCode || ""}
         ref={textInput}
         readOnly
       />
-      <div className="flex text-[#666] cursor-pointer">
+      <div className="flex">
         <button onClick={copy} className="w-[86px] h-[39px] bg-[#D7DCE5] rounded">
           초대코드
         </button>
       </div>
-      {projectRole === "ADMIN" ? (
-        ""
-      ) : (
-        <div className="flex text-[#666] cursor-pointer">
-          <button onClick={test} className="w-[86px] h-[39px] bg-[#D7DCE5] rounded">
-            나가기
-          </button>
-        </div>
-      )}
     </div>
   );
 };
