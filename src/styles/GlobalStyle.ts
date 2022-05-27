@@ -175,4 +175,23 @@ abbr[title]{
 .swal2-container{
   z-index: 9999;
 }
+
+/* apexchart */
+.apexcharts-legend{
+  inset: auto 0 -2px !important;
+}
+.apexcharts-legend-marker{
+  width: 8px !important;
+  height: 8px !important;
+  margin-right: 6px !important;
+}
+.apexcharts-legend-series{
+  margin: 0 10px !important;
+}
+foreignObject{
+  height: 225px !important;
+}
+.apexcharts-svg{
+  height: 225px !important;
+}
 `;
