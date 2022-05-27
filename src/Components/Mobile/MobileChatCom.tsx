@@ -12,6 +12,10 @@ export interface content {
   senderLoginId: string;
   message: string;
   pjId: string;
+  profileImage: string;
+  nickname: string;
+  dateTime: string;
+  loginId: string;
 }
 
 /* 기본 api url 주소 */
