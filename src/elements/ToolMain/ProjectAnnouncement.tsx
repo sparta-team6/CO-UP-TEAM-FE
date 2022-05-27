@@ -108,7 +108,7 @@ const ProjectAnnouncement = () => {
           <span className="text-lg text-[#B0B0B0] mt-[20px]">팀원들에게 메세지를 전달해보세요</span>
         </div>
       ) : (
-        <div className="flex flex-col mb-[20px] overflow-y-auto mr-[15px]">
+        <Scroll className="flex flex-col mb-[20px] overflow-y-auto mr-[15px]">
           {Ann?.data.map((ann, index) => {
             return (
               <DetailAnnouncement
@@ -121,7 +121,7 @@ const ProjectAnnouncement = () => {
               />
             );
           })}
-        </div>
+        </Scroll>
       )}
     </div>
   );
@@ -130,6 +130,12 @@ const ProjectAnnouncement = () => {
 const ScrollTextArea = styled.textarea`
   &::-webkit-scrollbar-thumb {
     background: transparent;
+  }
+`;
+
+const Scroll = styled.div`
+  &::-webkit-scrollbar-thumb {
+    background: #ebebeb;
   }
 `;
 
