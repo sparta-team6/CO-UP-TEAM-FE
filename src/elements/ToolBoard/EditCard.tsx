@@ -90,9 +90,9 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
       >
         <Box
           sx={style}
-          className="w-[704px] h-[384px] rounded-xl sm:w-[320px] sm:h-[448px] pb-[15px] px-[19px] pt-[25px]"
+          className="w-[696px] h-[376px] rounded-xl sm:w-[320px] sm:min-h-[192px]  pb-[15px] px-[30px] pt-[28px]"
         >
-          <div className="w-full h-full relative space-y-[21px]">
+          <div className="w-full h-full relative">
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
                 autoFocus
@@ -127,7 +127,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                 />
               </div>
               <button
-                className="w-16 h-9 absolute bottom-0 right-0 rounded-md text-base text-white bg-3"
+                className="w-16 h-9 absolute bottom-[15px] right-5 sm:right-0 sm:bottom-0 rounded-md text-base text-white bg-3"
                 type="submit"
               >
                 <span>수정</span>

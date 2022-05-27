@@ -61,13 +61,13 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
           // console.log(time.getHours());
           return (
             <div
-              className={`w-[366px] min-h-10  flex ${
+              className={`w-[366px] min-h-10 first:mt-4 flex ${
                 loginId === box.senderLoginId ? "justify-end" : "justify-start"
               }`}
               key={index}
             >
               <img
-                className={`w-[36px] h-[36px] rounded-full ${
+                className={`w-[36px] h-[36px] -mt-2 rounded-full ${
                   loginId === box.senderLoginId ? "hidden" : ""
                 }`}
                 src={box.profileImage}
@@ -85,9 +85,9 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
                   }`}
                 >
                   <span className="text-[#AAA] text-xs">
-                    {box.dateTime.replaceAll("-", ".").slice(0, 10)}
+                    {box.dateTime.replaceAll("-", ".").slice(11, 16)}
                   </span>
-                  <div className="w-[180px] min-h-[40px] bg-5 p-[10px] rounded-md">
+                  <div className={`w-[180px] min-h-[40px] bg-[#f5f5f5] p-[10px] my-2 rounded-md ${loginId === box.senderLoginId ? "mt-2" : ""}`}>
                     <span
                       className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-gray-500 font-semibold tracking-tight`}
                     >

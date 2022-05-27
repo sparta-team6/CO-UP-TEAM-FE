@@ -33,7 +33,7 @@ const ProjectList = () => {
     <div className="w-full h-auto bg-[#f0f3f7] flex flex-col items-center justify-center">
       <div className="w-full h-full flex flex-col items-center pt-36 sm:pt-32">
         <div className=" w-[1188px] flex justify-between items-center mb-8 md:w-[90%]">
-          <span className="text-4xl leading-[50px] sm:text-3xl">팀 리스트</span>
+          <span className="text-4xl leading-[50px] sm:text-3xl">프로젝트 리스트</span>
           <ProjectOpen />
         </div>
         <div className="w-[1188px] h-full flex flex-wrap justify-start sm:justify-center md:w-[90%] md:h-auto">
