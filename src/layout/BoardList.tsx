@@ -30,6 +30,7 @@ const BoardList = () => {
     if (destination?.droppableId === source.droppableId) {
       const boardCopy = [...board?.data[Number(source.droppableId)].cards];
       const taskObj = boardCopy[source.index];
+      console.log(taskObj);
       boardCopy.splice(Number(source.index), 1);
       boardCopy.splice(destination?.index, 0, taskObj);
       const post = {
@@ -37,6 +38,7 @@ const BoardList = () => {
         kbbId: taskObj.kbbId,
         title: taskObj.title,
         manager: taskObj.manager,
+        managerNickname: taskObj.managerNickname,
         contents: taskObj.contents,
         position: destination.index,
       };
@@ -54,6 +56,7 @@ const BoardList = () => {
         kbbId: String(LastKbbId),
         title: taskObj.title,
         manager: taskObj.manager,
+        managerNickname: taskObj.managerNickname,
         contents: taskObj.contents,
         position: destination.index,
       };
@@ -88,7 +91,8 @@ const BoardList = () => {
             <img className="hidden sm:block" width={155} height={141} src={EmptyBoardM} alt="" />
             <div className="w-[420px] h-[135px] space-y-4 sm:w-[280px] flex flex-col">
               <div className="text-center space-x-2 font-semibold text-4xl sm:text-3xl mb-4 w-full flex sm:flex-col">
-                <span>새로운 보드를</span><span>{`추가해 보세요`}</span>
+                <span>새로운 보드를</span>
+                <span>{`추가해 보세요`}</span>
               </div>
               <div className="text-center text-lg sm:text-sm">
                 <span>보드를 사용하여 팀원들과 현재 대기중인, 진행중인,</span>

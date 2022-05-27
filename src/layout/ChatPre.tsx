@@ -28,7 +28,7 @@ const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
 //isLoading, hasNextPage, fetchNextPage, isFetching, isFetchingNextPage,
 const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterProps) => {
-  const { nickname, profileImage } = useRecoilValue(MyProfile);
+  const { nickname, profileImage, loginId } = useRecoilValue(MyProfile);
   const { data } = useInfiniteQuery(["chat", pjId], () => fetchChatting(pjId, pageNumber), {
     // getNextPageParam: (_lastPage, pages) => {
     // },
@@ -56,12 +56,33 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
       >
         {contents?.map((box, index) => {
           return (
-            <div className="w-[366px] min-h-10  flex items-start" key={index}>
-              <img className="w-[36px] h-[36px] rounded-full" src={box.profileImage} alt="" />
-              <div className="flex flex-col pl-[10px]">
+            <div
+              className={`w-[366px] min-h-10  flex ${
+                loginId === box.senderLoginId ? "justify-end" : "justify-start"
+              }`}
+              key={index}
+            >
+              <img
+                className={`w-[36px] h-[36px] rounded-full ${
+                  loginId === box.senderLoginId ? "hidden" : ""
+                }`}
+                src={box.profileImage}
+                alt=""
+              />
+              <div
+                className={`flex flex-col pl-[10px] ${
+                  loginId === box.senderLoginId ? "text-right" : ""
+                }`}
+              >
                 <span className="font-bold text-lg">{box.nickname}</span>
-                <span className="text-[#AAA] text-xs">{box.dateTime.replaceAll("-", ".").slice(0, 10)}</span>
-                <span className="whitespace-pre-wrap break-all mt-2 leading-5 text-sm">
+                <span className="text-[#AAA] text-xs">
+                  {box.dateTime.replaceAll("-", ".").slice(0, 10)}
+                </span>
+                <span
+                  className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm ${
+                    loginId === box.senderLoginId ? "text-right" : ""
+                  }`}
+                >
                   {box.message}
                 </span>
               </div>

@@ -11,6 +11,7 @@ export interface ICards {
   title: string;
   contents?: string;
   position?: number;
+  managerNickname?: string;
 }
 
 export interface ICard {
@@ -51,6 +52,7 @@ export interface Cards {
   title: string;
   manager: string;
   contents: string;
+  managerNickname: string;
 }
 
 export const usePostCards = () => {
