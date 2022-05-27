@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Prism from "prismjs";
 // 여기 css를 수정해서 코드 하이라이팅 커스텀 가능
@@ -32,6 +32,7 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
   const navigate = useNavigate();
   const editorRef = createRef<Editor>();
   const { register, handleSubmit } = useForm<IForm>();
+  const [loading, setLoading] = useState(false);
   const onValid: SubmitHandler<IForm> = (data) => {
     if (editorRef.current === null) return;
     if (!data.title) {
@@ -55,8 +56,10 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
       confirmButtonText: "넵!",
       cancelButtonText: "취소!",
     }).then((result) => {
+      setLoading(true);
       if (result.value) {
         UpdateDoc(doc).then(() => {
+          setLoading(false);
           queryClient.invalidateQueries("getFolders");
           navigate(`/tool/${id}/document/${docId}`);
         });
@@ -76,7 +79,7 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
               className="border-none w-[56px] h-[36px] rounded-md text-white bg-3"
               type="submit"
             >
-              수정
+              {loading ? `수정중..` : `수정`}
             </button>
           </div>
         </div>
@@ -93,7 +96,7 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
               className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
               type="submit"
             >
-              수정
+              {loading ? `수정중..` : `수정`}
             </button>
             <button
               type="button"

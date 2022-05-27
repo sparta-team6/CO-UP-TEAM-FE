@@ -42,7 +42,7 @@ const Member = () => {
   const projectAdmin = data?.data[0];
   return (
     <div className="w-full h-full">
-      <div className="flex items-center mt-[36px]">
+      <div className="flex items-center mt-[30px]">
         <SvgUser />
         <span className="text-lg font-bold mt-1 ml-1 dark:text-white">팀원</span>
       </div>

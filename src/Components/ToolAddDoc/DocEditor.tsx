@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Prism from "prismjs";
 // 여기 css를 수정해서 코드 하이라이팅 커스텀 가능
@@ -36,6 +36,7 @@ const DocEditor = () => {
   const { mutateAsync } = useAddDoc();
   const { register, handleSubmit } = useForm<IForm>();
   const getDfId = useRecoilValue(dfId);
+  const [loading, setLoading] = useState(false);
   const onValid: SubmitHandler<IForm> = (data) => {
     if (editorRef.current === null) return;
     if (!data.title) {
@@ -51,8 +52,9 @@ const DocEditor = () => {
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
     };
-
+    setLoading(true);
     mutateAsync(doc).then(() => {
+      setLoading(false);
       queryClient.invalidateQueries("getFolders");
       navigate(`/tool/${pjId}/document/`);
     });
@@ -70,7 +72,7 @@ const DocEditor = () => {
               className="border-none w-[56px] h-[36px] rounded-md text-white bg-3"
               type="submit"
             >
-              등록
+              {!loading ? `등록` : `등록중..`}
             </button>
             <button
               type="button"
@@ -93,7 +95,7 @@ const DocEditor = () => {
               className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
               type="submit"
             >
-              등록
+              {!loading ? `등록` : `등록중..`}
             </button>
             <button
               type="button"

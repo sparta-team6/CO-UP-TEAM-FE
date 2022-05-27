@@ -73,22 +73,28 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
                 src={box.profileImage}
                 alt=""
               />
-              <div
-                className={`flex flex-col pl-[10px] ${
-                  loginId === box.senderLoginId ? "text-right" : ""
-                }`}
-              >
-                <span className="font-bold text-lg">{box.nickname}</span>
-                <span className="text-[#AAA] text-xs">
-                  {box.dateTime.replaceAll("-", ".").slice(0, 10)}
-                </span>
+              <div className={`flex flex-col pl-[10px] `}>
                 <span
-                  className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm ${
-                    loginId === box.senderLoginId ? "text-right" : ""
+                  className={`font-bold text-lg ${loginId === box.senderLoginId ? "hidden" : ""}`}
+                >
+                  {box.nickname}
+                </span>
+                <div
+                  className={`flex items-end gap-2 ${
+                    loginId === box.senderLoginId ? "" : "flex-row-reverse"
                   }`}
                 >
-                  {box.message}
-                </span>
+                  <span className="text-[#AAA] text-xs">
+                    {box.dateTime.replaceAll("-", ".").slice(0, 10)}
+                  </span>
+                  <div className="w-[180px] min-h-[40px] bg-5 p-[10px] rounded-md">
+                    <span
+                      className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-gray-500 font-semibold tracking-tight`}
+                    >
+                      {box.message}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           );
