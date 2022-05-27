@@ -34,7 +34,7 @@ export default function ProjectOpen() {
         aria-describedby="modal-modal-description"
       >
         <Box className="h-[262px] rounded-xl" sx={style}>
-          <ProjectOpenForm />
+          <ProjectOpenForm setOpen={setOpen}/>
         </Box>
       </Modal>
     </div>

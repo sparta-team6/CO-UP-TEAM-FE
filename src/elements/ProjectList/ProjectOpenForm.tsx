@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
@@ -9,7 +9,11 @@ interface IForm {
   inviteCode?: string;
 }
 
-const ProjectOpenForm = () => {
+interface IProps {
+  setOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const ProjectOpenForm = ({ setOpen }: IProps) => {
   const { register, handleSubmit } = useForm();
   const { mutateAsync } = usePostOpenRoom();
   const { inviteCode } = useRecoilValue(ProjectInvite);
@@ -19,6 +23,7 @@ const ProjectOpenForm = () => {
       mutateAsync(String(data.inviteCode))
         .then(() => {
           queryClient.invalidateQueries("getProject");
+          setOpen(false);
         })
         .catch((err) => {
           alert(err.response.data);
@@ -33,6 +38,7 @@ const ProjectOpenForm = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <input
+          autoFocus
           className="w-[352px] h-10 px-2 rounded-md border-none border border-[#D1D1D1]"
           placeholder="초대코드 입력"
           {...register("inviteCode")}
