@@ -83,9 +83,9 @@ const DraggableCard = ({
                 }  absolute top-0`}
               />
 
-              <div className="w-full h-full pl-6 flex flex-col justify-center space-y-8 font-semibold">
-                <span className="font-NeoB">{toDoTitle}</span>
-                <span className="font-NeoL">{toDoName}</span>
+              <div className="w-full h-full pl-6 flex flex-col justify-center space-y-8 font-bold">
+                <span>{toDoTitle}</span>
+                <span>{toDoName}</span>
               </div>
             </div>
             <div
@@ -113,22 +113,20 @@ const DraggableCard = ({
           >
             <Box
               sx={style}
-              className="w-[704px] h-[384px] rounded-xl sm:w-[320px] sm:min-h-[192px] relative"
+              className="w-[696px] h-[376px] rounded-xl sm:w-[320px] sm:min-h-[192px] relative pb-[15px] px-[30px] pt-[28px]"
             >
-              <div className="w-full h-full p-6">
-                <span className="text-lg sm:text-xl font-semibold text-[32px] mb-2">
-                  {toDoTitle}
-                </span>
-                <div className="w-full flex sm:flex-col sm:items-start sm:space-y-1 sm:mt-2 items-center lg:space-x-2 mt-7 ">
+              <div className="w-full h-full">
+                <span className="text-lg sm:text-xl font-semibold text-[32px]">{toDoTitle}</span>
+                <div className="w-full flex items-center space-x-2 mt-[15px] ">
                   <span className="text-xl sm:text-sm mr-1">2022.XX.XX</span>
-                  <div className="text-xl sm:text-sm w-[50px] h-7 rounded-md bg-5 flex justify-center items-center">
+                  <div className="text-base sm:text-sm w-[50px] h-7 rounded-md bg-5 flex justify-center items-center">
                     <span>{bucketId}</span>
                   </div>
-                  <div className="text-xl sm:text-sm min-w-[80px] h-7 rounded-md bg-5 flex px-2 justify-center items-center">
+                  <div className="text-base sm:text-sm min-w-[80px] h-7 rounded-md bg-5 flex px-2 justify-center items-center">
                     <span>{toDoName}</span>
                   </div>
                 </div>
-                <div className="max-h-64 py-8 sm:py-4 text-lg">
+                <div className="max-h-64 pt-4 pb-8 sm:py-4 text-lg">
                   <span>{toDoText}</span>
                 </div>
               </div>

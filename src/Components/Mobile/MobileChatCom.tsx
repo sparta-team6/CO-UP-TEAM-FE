@@ -45,7 +45,7 @@ const MobileChatCom = () => {
   };
 
   return (
-    <div className="w-full h-[calc(100vh-150px)] flex flex-col justify-end absolute top-16">
+    <div className="w-full h-[calc(100vh-150px)] bg-white flex flex-col justify-end absolute top-16">
       <MobileChatPre
         messages={messages}
         contents={data?.data}

@@ -66,14 +66,14 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
     setName(e.target.value);
   };
   return (
-    <div className="min-w-[280px] sm:max-w-[247px] w-96 lg:mr-7 rounded-md min-h-[870px] flex flex-col sm:ml-[34px]">
+    <div className="min-w-[280px] sm:max-w-[247px] w-96 lg:mr-7 rounded-md min-h-[870px] flex flex-col sm:ml-[10px]">
       <div className="w-full h-6 mt-10 sm:mt-10 flex justify-between">
-        <span className="text-center font-semibold text-lg">{bucketId}</span>
+        <span className="text-center font-bold text-lg">{bucketId}</span>
         <button
           className="h-full border-none bg-transparent flex items-center"
           onClick={handleOpen}
         >
-          <span className=" text-2xl text-black">+</span>
+          <span className="text-2xl font-bold text-black">+</span>
         </button>
       </div>
       <Modal
@@ -84,17 +84,20 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
       >
         <Box
           sx={style}
-          className="w-[704px] h-[384px] rounded-xl sm:w-[320px] sm:h-[448px] pb-[15px] px-[19px] pt-[25px]"
+          className="w-[696px] h-[376px] rounded-xl sm:w-[320px] sm:min-h-[192px]  pb-[15px] px-[30px] pt-[28px]"
         >
-          <form className="w-full h-full relative space-y-[21px]" onSubmit={handleSubmit(onValid)}>
+          <form
+            className="w-full h-full relative space-y-[15px]"
+            onSubmit={handleSubmit(onValid)}
+          >
             <input
               autoFocus
-              className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold font-semibold"
+              className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold text-2xl font-semibold"
               {...register("toDo")}
               type="text"
-              placeholder="보드의 제목을 적어주세요 :)"
+              placeholder="보드 제목을 작성해주세요"
             />
-            <div className="w-full flex items-center space-x-4">
+            <div className="w-full flex items-center space-x-2">
               <div className="w-[60px] h-7 bg-slate-200 text-center text-base rounded-md leading-8">
                 <span>{bucketId}</span>
               </div>
@@ -114,20 +117,20 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
               </select>
             </div>
             <input
-              className="w-full outline-none border-none"
+              className="pt-[15px] w-full outline-none border-none"
               {...register("toDoComment")}
               type="text"
               placeholder="내용입력"
             />
             <button
-              className="w-16 h-9 absolute bottom-0 right-[70px] rounded-md text-base bg-3 text-white"
+              className="w-16 h-9 absolute bottom-[15px] right-[70px] sm:bottom-0 rounded-md text-base bg-3 text-white"
               type="submit"
             >
               <span>등록</span>
             </button>
             <button
               onClick={handleClose}
-              className="w-16 h-9 absolute bottom-0 right-0 rounded-md text-base bg-5"
+              className="w-16 h-9 absolute bottom-[15px] right-0 sm:bottom-0 rounded-md text-base bg-5"
               type="submit"
             >
               <span>닫기</span>

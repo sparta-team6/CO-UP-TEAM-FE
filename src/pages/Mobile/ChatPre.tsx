@@ -5,6 +5,7 @@ import SockJS from "sockjs-client";
 import Stomp from "stompjs";
 import { content } from "../../Components/Mobile/MobileChatCom";
 import { MyProfile } from "../../recoil/MyProfile";
+import EmptyChat from "../../images/Main/EmptyChat.png";
 
 type ChatPresenterProps = {
   messages: Array<content>;
@@ -49,13 +50,13 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
           {contents?.map((box, index) => {
             return (
               <div
-                className={`w-full min-h-10 pl-[26px] flex ${
+                className={`w-full min-h-10 first:my-4 pl-[26px] flex ${
                   loginId === box.senderLoginId ? "justify-end" : "justify-start"
                 }`}
                 key={index}
               >
                 <img
-                  className={`w-[36px] h-[36px] rounded-full ${
+                  className={`w-[36px] h-[36px] -mt-2 rounded-full ${
                     loginId === box.senderLoginId ? "hidden" : ""
                   }`}
                   src={box.profileImage}
@@ -66,16 +67,20 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
                     loginId === box.senderLoginId ? "text-right pr-[26px]" : ""
                   }`}
                 >
-                  <span className="font-bold text-lg">{box.nickname}</span>
+                  <span
+                    className={`font-bold text-lg ${loginId === box.senderLoginId ? "hidden" : ""}`}
+                  >
+                    {box.nickname}
+                  </span>
                   <div
                     className={`flex items-end gap-2 ${
                       loginId === box.senderLoginId ? "" : "flex-row-reverse"
                     }`}
                   >
                     <span className="text-[#AAA] text-xs">
-                      {box.dateTime.replaceAll("-", ".").slice(0, 10)}
+                      {box.dateTime.replaceAll("-", ".").slice(11, 16)}
                     </span>
-                    <div className="w-[180px] sm:min-h-[40px] bg-5 p-[10px] rounded-md">
+                    <div className="w-[180px] sm:min-h-[40px] bg-[#f5f5f5] p-[10px] rounded-md">
                       <span
                         className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-gray-500 font-semibold tracking-tight`}
                       >
@@ -89,6 +94,12 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
           })}
         </div>
       </div>
+      {contents?.length === 0 ? (
+        <div className="h-full flex flex-col justify-center items-center">
+          <img src={EmptyChat} alt="" />
+          <span className="pt-[41px] text-[#B0B0B0]">팀원들에게 메세지를 전달해보세요</span>
+        </div>
+      ) : null}
       <div className="w-full h-[86px] bg-[#F5F5F5] fixed bottom-0 z-[50]">
         <form
           className="w-full h-full outline-none flex items-end"
