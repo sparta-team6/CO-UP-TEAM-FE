@@ -7,6 +7,7 @@ import { fetchChatting } from "../api/ChatQuery";
 import { useInfiniteQuery } from "react-query";
 import { useRecoilValue } from "recoil";
 import { MyProfile } from "../recoil/MyProfile";
+import EmptyChat from "../images/Main/EmptyChat.png";
 
 type ChatPresenterProps = {
   messages: Array<content>;
@@ -48,6 +49,7 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
   useEffect(() => {
     scrollToBottom();
   }, [contents]);
+  console.log(contents);
   return (
     <>
       <div
@@ -55,6 +57,8 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
         className="w-full h-full space-y-[16px] overflow-y-auto flex flex-col-reverse items-center pb-3"
       >
         {contents?.map((box, index) => {
+          // const time = new Date(box.dateTime);
+          // console.log(time.getHours());
           return (
             <div
               className={`w-[366px] min-h-10  flex ${
@@ -90,10 +94,12 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
           );
         })}
       </div>
-      {/* <div className="h-full flex flex-col justify-center items-center">
-  <img src={EmptyChat} alt="" />
-  <span className="pt-[41px] text-[#B0B0B0]">팀원들에게 메세지를 전달해보세요</span>
-</div> */}
+      {contents?.length === 0 ? (
+        <div className="h-full flex flex-col justify-center items-center">
+          <img src={EmptyChat} alt="" />
+          <span className="pt-[41px] text-[#B0B0B0]">팀원들에게 메세지를 전달해보세요</span>
+        </div>
+      ) : null}
       <div className="w-full flex justify-center items-center relative bg-white">
         <form
           className="w-[384px] h-[120px] mb-7 bg-slate-200 outline-none flex items-center justify-center rounded-xl"
