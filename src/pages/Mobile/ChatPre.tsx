@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useRecoilValue } from "recoil";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
 import { content } from "../../Components/Mobile/MobileChatCom";
+import { MyProfile } from "../../recoil/MyProfile";
 
 type ChatPresenterProps = {
   messages: Array<content>;
@@ -21,9 +23,10 @@ const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
 
 const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) => {
+  const { nickname, profileImage, loginId } = useRecoilValue(MyProfile);
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
-    const newMessage = { message: message, senderLoginId, pjId };
+    const newMessage = { message: message, senderLoginId, pjId, profileImage, nickname };
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
     setValue("message", "");
   };
@@ -45,11 +48,28 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
         >
           {contents?.map((box, index) => {
             return (
-              <li className="w-full min-h-[80px] pl-[26px] flex items-start" key={index}>
-                {/* <img className="w-9 h-9 rounded-full" src={box.profile} alt="" /> */}
-                <div className="flex flex-col pl-[10px]">
-                  <span className="font-bold text-lg">{box.senderLoginId}</span>
-                  <span className="text-[#AAA] text-xs">{box.pjId}</span>
+              <li
+                className={`w-full min-h-[80px] pl-[26px] flex ${
+                  loginId === box.senderLoginId ? "justify-end" : "justify-start"
+                }`}
+                key={index}
+              >
+                <img
+                  className={`w-[36px] h-[36px] rounded-full ${
+                    loginId === box.senderLoginId ? "hidden" : ""
+                  }`}
+                  src={box.profileImage}
+                  alt=""
+                />
+                <div
+                  className={`flex flex-col pl-[10px] ${
+                    loginId === box.senderLoginId ? "text-right pr-[26px]" : ""
+                  }`}
+                >
+                  <span className="font-bold text-lg">{box.nickname}</span>
+                  <span className="text-[#AAA] text-xs">
+                    {box.dateTime.replaceAll("-", ".").slice(0, 10)}
+                  </span>
                   <span className="whitespace-pre-wrap break-all mt-2">{box.message}</span>
                 </div>
               </li>

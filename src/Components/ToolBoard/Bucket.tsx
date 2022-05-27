@@ -46,11 +46,13 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
       alert("담당자 선택해주세요");
       return;
     }
+    const info = name.split(" ");
     const newToDo = {
       kbbId,
       title: toDo,
       contents: toDoComment,
-      manager: name,
+      manager: info[0],
+      managerNickname: info[1],
     };
     mutateAsync(newToDo).then(() => {
       queryClient.invalidateQueries(["getBoard", pjId]);
@@ -104,7 +106,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
                 <option defaultValue="none">담당자 선택</option>
                 {user?.data?.map((member, index) => {
                   return (
-                    <option key={index} value={member.loginId}>
+                    <option key={index} value={`${member.loginId} ${member.nickname}`}>
                       {member.nickname}
                     </option>
                   );
@@ -155,7 +157,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
                   index={index}
                   toDoId={toDo.kbcId}
                   toDoText={toDo.contents}
-                  toDoName={toDo.manager}
+                  toDoName={toDo.managerNickname}
                   toDoTitle={toDo.title}
                   bucketId={bucketId}
                 />

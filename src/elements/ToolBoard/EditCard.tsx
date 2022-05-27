@@ -40,20 +40,27 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
   const { mutateAsync } = useUpdateCards(pjId);
   const { data: Card } = useGetCardDetail(toDoId);
   const { data: user } = useGetProjectUser(pjId);
-  const [name, setName] = useState(String(Card?.data.manager));
+  const [name, setName] = useState(String(Card?.data.managerNickname));
   const { register, handleSubmit } = useForm<IForm>();
+  const result = user?.data.filter((data) => console.log(data.nickname));
+  console.log(result)
   const onSubmit: SubmitHandler<IForm> = (data) => {
     if (name === "" || name === "담당자 선택") {
       alert("담당자 선택해주세요");
       return;
     }
+
+    const info = name.split(" ");
+    console.log(info[1]);
     const post = {
       kbcId: String(Card?.data.kbcId),
       kbbId: String(Card?.data.kbbId),
-      manager: name === "undefined" ? String(Card?.data.manager) : name,
+      manager: name === "undefined" ? String(Card?.data.manager) : info[0],
+      managerNickname: info[1] === undefined ? String(Card?.data.managerNickname) : info[1],
       title: data.title,
       contents: data.text,
     };
+    console.log(data, info, post);
     mutateAsync(post).then(() => {
       queryClient.invalidateQueries(["getCard", String(Card?.data.kbbId)]);
       const Toast = Swal.mixin({
@@ -104,10 +111,10 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                     value={name}
                     onChange={onChange}
                   >
-                    <option defaultValue="none">{Card?.data.manager}</option>
-                    {user?.data?.map((member, index) => {
+                    <option defaultValue="none">{Card?.data.managerNickname}</option>
+                    {result?.map((member, index) => {
                       return (
-                        <option key={index} value={member.loginId}>
+                        <option key={index} value={`${member.loginId} ${member.nickname}`}>
                           {member.nickname}
                         </option>
                       );
