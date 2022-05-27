@@ -70,10 +70,10 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
     });
   };
   return (
-    <Scroll className="w-full h-full space-y-2 mt-[8px] px-[34px] sm:px-[20px] overflow-y-auto flex flex-col items-center">
+    <Scroll className="w-full h-full space-y-2 mb-[8px] pl-[20px] pr-[5px] flex flex-col items-center">
       <div
         onClick={handleOpen}
-        className="w-full min-h-[68px] bg-white border rounded-lg overflow-hidden flex"
+        className="w-full max-w-[548px] min-h-[68px] bg-white border rounded-lg overflow-hidden flex"
       >
         <div className="w-2 h-full bg-3" />
         <div className="w-full h-full ml-[14px] mr-2 flex flex-col">

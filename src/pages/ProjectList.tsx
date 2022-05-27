@@ -1,15 +1,15 @@
 import { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { useMyInfo } from "../api/UserQuery";
 import ProjectData from "../Components/ProjectList/ProjectData";
 import ProjectMake from "../Components/ProjectList/ProjectMake";
 import ProjectOpen from "../Components/ProjectList/ProjectOpen";
 import { MyProfile } from "../recoil/MyProfile";
-// import { getAccessTokenFromCookie, getFreshTokenFromCookie } from "../servers/Cookie";
+import { getAccessTokenFromCookie, getFreshTokenFromCookie } from "../servers/Cookie";
 
 const ProjectList = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const SetUser = useSetRecoilState(MyProfile);
   const { data } = useMyInfo();
   const user = data?.data;
@@ -17,17 +17,16 @@ const ProjectList = () => {
     SetUser(user);
   }, [data]);
 
-  // 로컬 테스트를 위해 주석처리
-  // useEffect(() => {
-  //   const accessToken = getAccessTokenFromCookie();
-  //   const refreshToken = getFreshTokenFromCookie();
-  //   if ((accessToken !== undefined && refreshToken !== undefined) === true) {
-  //     alert("로그인을 해주세요 :)");
-  //     navigate("/projectList");
-  //   } else {
-  //     navigate("/");
-  //   }
-  // }, [navigate]);
+  useEffect(() => {
+    const accessToken = getAccessTokenFromCookie();
+    const refreshToken = getFreshTokenFromCookie();
+    if ((accessToken !== undefined && refreshToken !== undefined) === true) {
+      alert("로그인을 해주세요 :)");
+      navigate("/projectList");
+    } else {
+      navigate("/");
+    }
+  }, [navigate]);
 
   return (
     <div className="w-full h-auto bg-[#f0f3f7] flex flex-col items-center justify-center">
