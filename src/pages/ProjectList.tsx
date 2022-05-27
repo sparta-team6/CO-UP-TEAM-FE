@@ -17,16 +17,16 @@ const ProjectList = () => {
     SetUser(user);
   }, [data]);
 
-  useEffect(() => {
-    const accessToken = getAccessTokenFromCookie();
-    const refreshToken = getFreshTokenFromCookie();
-    if ((accessToken !== undefined && refreshToken !== undefined) === true) {
-      navigate("/projectList");
-    } else {
-      alert("로그인을 해주세요 :)");
-      navigate("/");
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const accessToken = getAccessTokenFromCookie();
+  //   const refreshToken = getFreshTokenFromCookie();
+  //   if ((accessToken !== undefined && refreshToken !== undefined) === true) {
+  //     navigate("/projectList");
+  //   } else {
+  //     alert("로그인을 해주세요 :)");
+  //     navigate("/");
+  //   }
+  // }, [navigate]);
 
   return (
     <div className="w-full h-auto bg-[#f0f3f7] flex flex-col items-center justify-center">
