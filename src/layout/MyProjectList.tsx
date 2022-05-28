@@ -12,6 +12,7 @@ import { ProjectKey } from "../recoil/RoomID";
 import { themeState } from "../recoil/DarkMode";
 import styled from "styled-components";
 import React from "react";
+import Swal from "sweetalert2";
 
 const MyProjectList = () => {
   const setOpen = useSetRecoilState(HandleOpen);
@@ -34,14 +35,19 @@ const MyProjectList = () => {
   };
   const { mutateAsync } = useLogOut();
   const onLogOut = () => {
-    mutateAsync()
-      .then(() => {
-        alert("안녕히가세여");
-        navigate("/");
-      })
-      .catch(() => {
-        alert("로그인 실패");
-      });
+    Swal.fire({
+      title: "로그아웃",
+      text: "진짜 로그아웃하시겠어요?!!",
+      showCancelButton: true,
+      confirmButtonText: "넵!",
+      cancelButtonText: "취소!",
+    }).then((result) => {
+      if (result.value) {
+        mutateAsync().then(() => {
+          navigate("/");
+        });
+      }
+    });
   };
   const onDarkMode = () => {
     DarkMode((prev: boolean) => !prev);
@@ -63,12 +69,12 @@ const MyProjectList = () => {
         <div className="cursor-pointer" onClick={onDarkMode}>
           {theme ? <Moon /> : <Sun />}
         </div>
-        <Link className="cursor-pointer" to="/projectList">
-          <Logout />
-        </Link>
         <div className="cursor-pointer" onClick={onLogOut}>
-          <Power />
+          <Logout />
         </div>
+        <Link className="cursor-pointer" to="/projectList">
+          <Power />
+        </Link>
       </div>
     </div>
   );

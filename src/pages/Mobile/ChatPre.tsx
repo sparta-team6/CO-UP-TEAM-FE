@@ -27,7 +27,7 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
   const { nickname, profileImage, loginId } = useRecoilValue(MyProfile);
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
-    if (message.length === 1) return;
+    if (message.trim() === "") return;
     const newMessage = { message: message, senderLoginId, pjId, profileImage, nickname };
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
     setValue("message", "");
@@ -97,7 +97,7 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
                       }`}
                     >
                       <span
-                        className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-gray-500 font-semibold tracking-tight`}
+                        className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] font-semibold tracking-tight`}
                       >
                         {box.message}
                       </span>
