@@ -1,6 +1,7 @@
 import { IconButton } from "@mui/material";
 import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 import { queryClient } from "../..";
 import { useUpdateRoom } from "../../api/ProjectQuery";
 import { resizeFile } from "../../servers/resize";
@@ -39,6 +40,21 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
     if (size === undefined) {
       mutateAsync(project).then(() => {
         queryClient.invalidateQueries("getProject");
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "프로젝트 수정 완료😊",
+        });
         setUpOpen(false);
       });
     } else {
@@ -51,6 +67,25 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
       };
       mutateAsync(project).then(() => {
         queryClient.invalidateQueries("getProject");
+        mutateAsync(project).then(() => {
+          queryClient.invalidateQueries("getProject");
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+          Toast.fire({
+            icon: "success",
+            title: "프로젝트 수정 완료😊",
+          });
+          setUpOpen(false);
+        });
         setUpOpen(false);
       });
     }

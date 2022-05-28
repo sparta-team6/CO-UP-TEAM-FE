@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import ProjectMakeForm from "../../elements/ProjectList/ProjectMakeForm";
-import { Plus } from "../../elements/Icon/Plus";
+import { Plus2 } from "../../elements/Icon/Plus2";
 
 const style = {
   position: "absolute",
@@ -23,7 +23,7 @@ export default function ProjectMake() {
   return (
     <>
       <Button className="w-full h-full bg-slate-100" onClick={handleOpen}>
-        <Plus />
+        <Plus2 />
       </Button>
       <Modal
         open={open}
