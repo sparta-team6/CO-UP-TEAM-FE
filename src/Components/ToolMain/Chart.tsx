@@ -45,7 +45,7 @@ const Chart = () => {
               show: true,
               lineCap: "round",
               width: 3,
-              colors: Dark ? ["#212529"] : ["white"],
+              colors: Dark ? ["#333C46"] : ["white"],
             },
             dataLabels: {
               enabled: false,

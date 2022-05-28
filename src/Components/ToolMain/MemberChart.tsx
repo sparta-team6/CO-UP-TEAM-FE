@@ -50,7 +50,7 @@ const MemberChart = () => {
               </section>
             </div>
           </div>
-          <Scroll className="overflow-y-auto h-64 -mr-[20px] pr-[20px]">
+          <Scroll className="overflow-y-auto h-64 -mr-[20px] pr-[20px] bg-[#ffffff] dark:bg-7">
             {result?.map((data, index) => {
               const a =
                 data.buckets.filter((data) => data.position === 0)[0]?.cards.length === undefined
@@ -84,7 +84,7 @@ const MemberChart = () => {
                     <div className="w-full flex flex-col justify-around">
                       <div className="w-full flex justify-between items-end">
                         <span className="font-semibold">{data.nickname}</span>
-                        <span className="text-sm text-[#333] mr-[2px]">{`${dange} / ${warning} / ${success}`}</span>
+                        <span className="text-sm mr-[2px]">{`${dange} / ${warning} / ${success}`}</span>
                       </div>
                       <div className="w-full flex">
                         <Dange

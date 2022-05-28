@@ -15,8 +15,6 @@ const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
-  width: 704,
-  height: 384,
   transform: "translate(-50%, -50%)",
   bgcolor: "background.paper",
   boxShadow: 2,
@@ -92,7 +90,7 @@ const ProjectAnnouncement = () => {
   };
 
   return (
-    <div className="w-full h-full border border-solid bg-white rounded-2xl pl-[20px] pr-[10px] sm:px-[20px] flex flex-col">
+    <div className="w-full h-full bg-[#ffffff] dark:bg-7 border border-solid rounded-2xl pl-[20px] pr-[10px] sm:px-[20px] flex flex-col">
       <div className="w-full flex justify-center">
         <div className="w-full flex items-center justify-between mb-[21px] px-[10px] sm:px-0 mt-[28px]">
           <span className="font-bold text-xl">공지사항</span>
@@ -107,7 +105,7 @@ const ProjectAnnouncement = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
+        <Box sx={style} className="w-[704px] h-[384px] rounded-xl sm:w-[90%]">
           <form className="w-full h-full relative" onSubmit={handleSubmit(onSubmit)}>
             <input
               autoFocus

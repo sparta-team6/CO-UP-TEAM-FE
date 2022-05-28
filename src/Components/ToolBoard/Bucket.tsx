@@ -92,7 +92,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
           className="h-full border-none bg-transparent flex items-center"
           onClick={handleOpen}
         >
-          <span className="text-2xl font-bold text-black">+</span>
+          <span className="text-2xl font-bold text-[#000000] dark:text-[#ffffff]">+</span>
         </button>
       </div>
       <Modal
