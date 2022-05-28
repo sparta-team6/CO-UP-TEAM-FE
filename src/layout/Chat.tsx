@@ -20,7 +20,6 @@ export interface content {
 /* 기본 api url 주소 */
 const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
-// eslint-disable-next-line @typescript-eslint/no-empty-function
 stompClient.debug = () => {};
 
 const Chat = () => {

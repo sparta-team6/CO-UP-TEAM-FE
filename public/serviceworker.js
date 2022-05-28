@@ -1,7 +1,5 @@
 const CACHE_NAME = "version-1";
-const urlsToCache = [ 'index.html'];
-
-// eslint-disable-next-line @typescript-eslint/no-this-alias
+const urlsToCache = [ 'index.html']; 
 const self = this;
 
 // Install SW
