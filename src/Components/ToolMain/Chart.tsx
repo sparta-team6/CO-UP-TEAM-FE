@@ -16,7 +16,7 @@ const Chart = () => {
             <span className="font-bold text-[48px]">{chartSum !== 0 ? chartSuccess : 0}</span>
             <span className="text-[32px] pt-[7px]">%</span>
           </div>
-          <span className="text-sm">완료율</span>
+          <span className="text-sm -mt-[3px]">완료율</span>
         </div>
         <ReactApexChart
           type="donut"

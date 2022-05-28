@@ -108,35 +108,35 @@ const EditAnnouncement = ({ title, contents, noticeId, modifiedTime, edit, setEd
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
-          <form className="w-full h-full relative space-y-4" onSubmit={handleSubmit(onSubmit)}>
+          <form className="w-full h-full relative" onSubmit={handleSubmit(onSubmit)}>
             <input
               autoFocus
-              className="w-full outline-none border-none text-2xl placeholder:text-black placeholder:font-semibold font-semibold"
+              className="w-full mb-[10px] outline-none border-none text-2xl placeholder:text-[#B0B0B0] placeholder:font-semibold font-semibold"
               {...register("title")}
               type="text"
               placeholder="공지 제목을 적어주세요 :)"
               defaultValue={title}
             />
-            <div className="mt-[10px] text-[#666]">
+            <div className="text-[#666] pl-[2px]">
               {modifiedTime?.replaceAll("-", ".").slice(0, 10)}
             </div>
             <Scroll
-              className="w-full h-[160px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
+              className="w-full h-[160px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg placeholder:text-[#B0B0B0]"
               {...register("content")}
               placeholder="내용을 입력해주세요"
               maxLength={254}
               defaultValue={contents}
             />
             <div className="absolute bottom-0 right-0">
-              <button className="text-white bg-3 w-[58px] h-[37px] rounded-md pt-1" type="submit">
-                수정
+              <button className="text-white bg-3 w-[58px] h-[37px] rounded-md" type="submit">
+                <span className="leading-[21px]">수정</span>
               </button>
               <button
                 onClick={handleClose}
-                className="bg-5 w-[58px] h-[37px] rounded-md ml-2 pt-1"
+                className="bg-5 w-[58px] h-[37px] rounded-md ml-[4px]"
                 type="button"
               >
-                닫기
+                <span className="leading-[21px]">닫기</span>
               </button>
             </div>
           </form>

@@ -65,12 +65,12 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
     <>
       <div
         ref={messageBoxRef}
-        className="w-full h-full space-y-[16px] overflow-y-auto flex flex-col-reverse items-center pb-3"
+        className="w-full h-full space-y-[24px] overflow-y-auto flex flex-col-reverse items-center pb-3"
       >
         {contents?.map((box, index) => {
           return (
             <div
-              className={`w-[366px] min-h-10 first:mt-4 flex ${
+              className={`w-[366px] min-h-10 first:mt-[24px] flex ${
                 loginId === box.senderLoginId ? "justify-end" : "justify-start"
               }`}
               key={index}
@@ -84,7 +84,9 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
               />
               <div className={`flex flex-col pl-[10px] `}>
                 <span
-                  className={`font-bold text-lg ${loginId === box.senderLoginId ? "hidden" : ""}`}
+                  className={`font-bold text-lg pb-1 ${
+                    loginId === box.senderLoginId ? "hidden" : ""
+                  }`}
                 >
                   {box.nickname}
                 </span>
@@ -96,11 +98,7 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
                   <span className="text-[#AAA] text-xs">
                     {box.dateTime.replaceAll("-", ".").slice(11, 16)}
                   </span>
-                  <div
-                    className={`min-w-[25px] min-h-[40px] bg-[#f5f5f5] p-[10px] rounded-md ${
-                      loginId === box.senderLoginId ? "mt-2" : ""
-                    }`}
-                  >
+                  <div className={`min-w-[25px] min-h-[40px] bg-[#f5f5f5] p-[10px] rounded-md`}>
                     <span
                       className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-gray-500 font-semibold tracking-tight`}
                     >

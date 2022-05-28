@@ -14,7 +14,7 @@ const ToolMain = () => {
     setOpen(false);
   }, []);
   return (
-    <div className="w-full h-screen flex justify-between relative pt-16 md:h-full md:justify-start overflow-hidden">
+    <div className="w-full h-screen flex justify-between relative pt-16 md:h-full md:justify-start">
       <SlidingMain />
       <div className="w-[calc(100%-800px)] h-full bg-[#f0f3f6] flex flex-col ml-[368px] md:w-[calc(100%-21rem)] sm:w-full sm:m-0">
         <div className="w-full h-full px-[51px] sm:px-[16px] flex flex-col">
