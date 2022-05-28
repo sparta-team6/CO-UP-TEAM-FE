@@ -15,8 +15,14 @@
   background: none;
   margin-top: 15px;
 }
+.react-calendar__navigation button:disabled {
+  background-color: white;
+}
 .react-calendar__navigation__arrow {
   font-size: 30px;
+}
+.react-calendar__navigation__label {
+  padding-top: 4px;
 }
 .react-calendar__navigation__label span {
   font-size: 20px;
@@ -24,10 +30,7 @@
 }
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
-  background-color: #f8f8fa;
-}
-.react-calendar__navigation button[disabled] {
-  background-color: #f0f0f0;
+  background-color: white;
 }
 abbr[title] {
   text-decoration: none;
