@@ -20,53 +20,44 @@ const ProjectOpenForm = ({ setOpen }: IProps) => {
   const { inviteCode } = useRecoilValue(ProjectInvite);
   console.log(inviteCode);
   const onSubmit: SubmitHandler<IForm> = (data) => {
-    Swal.fire({
-      title: "입장",
-      text: "해당 프로젝트로 입장하시겠습니까?",
-      showCancelButton: true,
-      confirmButtonText: "넵!",
-      cancelButtonText: "취소!",
-    }).then((result) => {
-      if (result.value) {
-        mutateAsync(String(data.inviteCode))
-          .then(() => {
-            queryClient.invalidateQueries("getProject");
-            setOpen(false);
-            const Toast = Swal.mixin({
-              toast: true,
-              position: "top",
-              showConfirmButton: false,
-              timer: 1000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener("mouseenter", Swal.stopTimer);
-                toast.addEventListener("mouseleave", Swal.resumeTimer);
-              },
-            });
-            Toast.fire({
-              icon: "success",
-              title: "프로젝트 참여 완료😊",
-            });
-          })
-          .catch((err) => {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: "top",
-              showConfirmButton: false,
-              timer: 1000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener("mouseenter", Swal.stopTimer);
-                toast.addEventListener("mouseleave", Swal.resumeTimer);
-              },
-            });
-            Toast.fire({
-              icon: "error",
-              title: err.response.data,
-            });
-          });
-      }
-    });
+    mutateAsync(String(data.inviteCode))
+      .then(() => {
+        queryClient.invalidateQueries("getProject");
+        setOpen(false);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "프로젝트 참여 완료😊",
+        });
+      })
+      .catch((err) => {
+        setOpen(false);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: "error",
+          title: err.response.data,
+        });
+      });
   };
   return (
     <div className="w-[448px] h-[262px] flex flex-col p-12">

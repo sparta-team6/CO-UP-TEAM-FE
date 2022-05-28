@@ -10,7 +10,7 @@ const TeamList = () => {
           <Chart />
           <div className="w-[248px] h-[1px] bg-gray-200 -mt-1" />
         </div>
-        <div className="w-full h-[calc(100%-24rem)] px-4">
+        <div className="w-full h-[calc(100%-29rem)] px-4 sm:overflow-auto">
           <Member />
         </div>
       </div>

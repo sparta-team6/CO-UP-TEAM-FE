@@ -23,6 +23,9 @@ button{
   outline: none;
   border: none;
   background-color: transparent;
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  appearance:none;
   padding: 0;
 }
 /* span {
