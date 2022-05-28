@@ -77,21 +77,10 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
       title: data.title,
       contents: editorRef.current.getInstance().getMarkdown(),
     };
-    Swal.fire({
-      title: "수정",
-      text: "진짜 수정하시겠어요?!!",
-      showCancelButton: true,
-      confirmButtonText: "넵!",
-      cancelButtonText: "취소!",
-    }).then((result) => {
-      setLoading(true);
-      if (result.value) {
-        UpdateDoc(doc).then(() => {
-          setLoading(false);
-          queryClient.invalidateQueries("getFolders");
-          navigate(`/tool/${id}/document/${docId}`);
-        });
-      }
+    UpdateDoc(doc).then(() => {
+      setLoading(false);
+      queryClient.invalidateQueries("getFolders");
+      navigate(`/tool/${id}/document/${docId}`);
     });
   };
 

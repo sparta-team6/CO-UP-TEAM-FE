@@ -1,7 +1,6 @@
 import { IconButton } from "@mui/material";
 import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Swal from "sweetalert2";
 import { queryClient } from "../..";
 import { useUpdateRoom } from "../../api/ProjectQuery";
 import { resizeFile } from "../../servers/resize";
@@ -38,19 +37,9 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
       pjId: roomID,
     };
     if (size === undefined) {
-      Swal.fire({
-        title: "수정",
-        text: "진짜 수정하시겠어요?!!",
-        showCancelButton: true,
-        confirmButtonText: "넵!",
-        cancelButtonText: "취소!",
-      }).then((result) => {
-        if (result.value) {
-          mutateAsync(project).then(() => {
-            queryClient.invalidateQueries("getProject");
-            setUpOpen(false);
-          });
-        }
+      mutateAsync(project).then(() => {
+        queryClient.invalidateQueries("getProject");
+        setUpOpen(false);
       });
     } else {
       const image = await resizeFile(size, 100, 100, "base64");
@@ -60,19 +49,9 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
         thumbnail: String(image),
         pjId: roomID,
       };
-      Swal.fire({
-        title: "수정",
-        text: "진짜 수정하시겠어요?!!",
-        showCancelButton: true,
-        confirmButtonText: "넵!",
-        cancelButtonText: "취소!",
-      }).then((result) => {
-        if (result.value) {
-          mutateAsync(project).then(() => {
-            queryClient.invalidateQueries("getProject");
-            setUpOpen(false);
-          });
-        }
+      mutateAsync(project).then(() => {
+        queryClient.invalidateQueries("getProject");
+        setUpOpen(false);
       });
     }
   };
