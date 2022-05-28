@@ -89,18 +89,18 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
           <form className="w-full h-full relative space-y-[15px]" onSubmit={handleSubmit(onValid)}>
             <input
               autoFocus
-              className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold text-2xl font-semibold"
+              className="w-full outline-none border-none placeholder:text-[#B0B0B0] placeholder:font-semibold text-2xl font-semibold"
               {...register("toDo")}
               type="text"
               maxLength={25}
               placeholder="보드 제목을 작성해주세요"
             />
             <div className="w-full flex items-center space-x-2">
-              <div className="w-[60px] h-7 bg-slate-200 text-center text-base rounded-md leading-8">
+              <div className="w-[78px] h-7 bg-slate-200 text-base rounded-md flex justify-center items-center">
                 <span>{bucketId}</span>
               </div>
               <select
-                className="outline-none bg-slate-200 border-0 w-[120px] h-7 text-center rounded-md"
+                className="outline-none bg-slate-200 border-0 w-[162px] h-7 text-center rounded-md"
                 value={name}
                 onChange={onChange}
               >
@@ -115,7 +115,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
               </select>
             </div>
             <textarea
-              className="pt-[15px] w-full h-[200px] outline-none border-none resize-none"
+              className="pt-[15px] w-full h-[200px] placeholder:text-[#B0B0B0] outline-none border-none resize-none"
               {...register("toDoComment")}
               maxLength={500}
               placeholder="내용입력"

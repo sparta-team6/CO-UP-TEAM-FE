@@ -102,16 +102,22 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                 maxLength={25}
               />
               <div className="w-full flex items-center space-x-3">
-                <div className="max-w-xs h-7 rounded-sm flex justify-center items-center">
+                <div className="min-w-[162px] h-7 rounded-md flex justify-center items-center bg-slate-200">
                   <select
-                    className="outline-none bg-slate-200 border-0 rounded-md w-[120px] h-7 text-center"
+                    className="outline-none bg-transparent border-0 rounded-md w-[162px] h-7 text-center"
                     value={name}
                     onChange={onChange}
                   >
-                    <option defaultValue="none">{Card?.data.managerNickname}</option>
+                    <option defaultValue="none" className="bg-slate-200 rounded-md ">
+                      {Card?.data.managerNickname}
+                    </option>
                     {result?.map((member, index) => {
                       return (
-                        <option key={index} value={`${member.loginId} ${member.nickname}`}>
+                        <option
+                          className="bg-slate-200"
+                          key={index}
+                          value={`${member.loginId} ${member.nickname}`}
+                        >
                           {member.nickname}
                         </option>
                       );
@@ -121,7 +127,6 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
               </div>
               <div className="w-full max-h-64 py-8">
                 <textarea
-                  autoFocus
                   className="w-full h-[200px] rounded-md border-none resize-none outline-none"
                   {...register("text")}
                   defaultValue={toDoText}
@@ -129,7 +134,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                 />
               </div>
               <button
-                className="w-16 h-9 absolute bottom-[15px] right-5 sm:right-0 sm:bottom-0 rounded-md text-base text-white bg-3"
+                className="w-16 h-9 absolute bottom-[8px] -right-3 sm:right-0 sm:bottom-0 rounded-md text-base text-white bg-3"
                 type="submit"
               >
                 <span>수정</span>

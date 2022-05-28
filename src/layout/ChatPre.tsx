@@ -67,6 +67,12 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
         ref={messageBoxRef}
         className="w-full h-full space-y-[16px] overflow-y-auto flex flex-col-reverse items-center pb-3"
       >
+        {contents?.length === 0 ? (
+          <div className="h-full flex flex-col justify-center items-center">
+            <img src={EmptyChat} alt="" />
+            <span className="pt-[41px] text-[#B0B0B0]">팀원들에게 메세지를 전달해보세요</span>
+          </div>
+        ) : null}
         {contents?.map((box, index) => {
           return (
             <div
@@ -113,12 +119,6 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
           );
         })}
       </div>
-      {contents?.length === 0 ? (
-        <div className="h-full flex flex-col justify-center items-center">
-          <img src={EmptyChat} alt="" />
-          <span className="pt-[41px] text-[#B0B0B0]">팀원들에게 메세지를 전달해보세요</span>
-        </div>
-      ) : null}
       <div className="w-full flex justify-center items-center relative bg-white">
         <form
           className="w-[384px] h-[120px] mb-7 bg-slate-200 outline-none flex items-center justify-center rounded-xl"

@@ -121,7 +121,7 @@ const DraggableCard = ({
                 <span className="text-lg sm:text-xl font-semibold text-[32px]">{toDoTitle}</span>
                 <div className="w-full flex items-center space-x-2 mt-[15px] ">
                   <span className="text-xl sm:text-sm mr-1">2022.XX.XX</span>
-                  <div className="text-base sm:text-sm w-[50px] h-7 rounded-md bg-5 flex justify-center items-center">
+                  <div className="text-basesm:text-sm w-[50px] h-7 rounded-md bg-5 flex justify-center items-center">
                     <span>{bucketId}</span>
                   </div>
                   <div className="text-base sm:text-sm min-w-[80px] h-7 rounded-md bg-5 flex px-2 justify-center items-center">
