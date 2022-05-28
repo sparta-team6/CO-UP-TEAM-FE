@@ -120,7 +120,7 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime, nickname }:
                   </div>
                 </div>
                 <div className="text-lg text-[#999] mt-[15px]">
-                  <span>{modifiedTime?.replaceAll("-", ".").slice(0, 10)}</span>
+                  <span>{modifiedTime?.replaceAll("-", ".").replace("T", "  ").slice(0, 17)}</span>
                   <span className="ml-[12px]">{`by ${nickname}`}</span>
                 </div>
               </div>
@@ -162,7 +162,9 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime, nickname }:
                   </div>
                 </div>
                 <div className="text-lg text-[#999] mt-[15px]">
-                  <span>{docData?.modifiedTime?.replaceAll("-", ".").slice(0, 10)}</span>
+                  <span>
+                    {docData?.modifiedTime?.replaceAll("-", ".").replace("T", "  ").slice(0, 17)}
+                  </span>
                   <span className="ml-[12px]">{`by ${docData?.nickname}`}</span>
                 </div>
               </div>

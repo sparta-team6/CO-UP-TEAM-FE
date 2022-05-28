@@ -44,7 +44,7 @@ const ProjectAnnouncement = () => {
   const dateString = year + "." + month + "." + day;
 
   const onSubmit: SubmitHandler<IForm> = (data) => {
-    if (!data.title) {
+    if (data.title.trim() === "") {
       const Toast = Swal.mixin({
         toast: true,
         position: "top",
