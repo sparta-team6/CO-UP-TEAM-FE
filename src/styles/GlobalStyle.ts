@@ -69,9 +69,9 @@ footer, header, hgroup, menu, nav, section {
 /* section {
   background-color: ${(prop) => prop.theme.bgColor};
 } */
-/* span {
+span {
   color: ${(prop) => prop.theme.textColor};
-} */
+}
 body {
 	line-height: 1;
 }
@@ -105,6 +105,27 @@ a{
     display: none;
   }
 }
+
+/* calendar */
+
+
+.react-calendar__navigation button:disabled {
+  background-color: ${(props) => props.theme.bgColor}
+}
+
+.react-calendar__navigation button {
+  color: ${(prop) => prop.theme.textColor};
+  min-width: 44px;
+  background: none;
+  margin-top: 15px;
+}
+
+abbr[title] {
+  text-decoration: none;
+  cursor: auto;
+  color: ${(prop) => prop.theme.textColor};
+}
+
 
 /* projectlist */
 .pjList:nth-child(4n+4){
@@ -197,5 +218,8 @@ foreignObject{
 }
 .apexcharts-svg{
   height: 225px !important;
+}
+SvgjsFeFuncR1393{
+  color: red;
 }
 `;
