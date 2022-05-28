@@ -1,5 +1,6 @@
 import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
+import Swal from "sweetalert2";
 import { instance } from "../servers/axios";
 
 export interface Announcement {
@@ -32,25 +33,66 @@ export const useGetOneAnnouncement = (noticeId: string) => {
 
 export const usePostAnnouncement = () => {
   return useMutation(async (post: Announcement) => {
-    await instance.post("api/notices/", post);
+    await instance.post("api/notices/", post).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "공지사항 등록 완료😊",
+      });
+    });
   });
 };
 
 export const useUpdateAnnouncement = () => {
   return useMutation(async (post: Announcement) => {
-    await instance.patch("api/notices/", post);
+    await instance.patch("api/notices/", post).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "공지사항 수정 완료😊",
+      });
+    });
   });
 };
 
 export const useDelAnnouncement = () => {
   return useMutation(async (post: IAnnouncements) => {
-    await instance
-      .delete("api/notices/", post)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
+    await instance.delete("api/notices/", post).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
       });
+      Toast.fire({
+        icon: "error",
+        title: "공지사항 삭제 완료😊",
+      });
+    });
   });
 };

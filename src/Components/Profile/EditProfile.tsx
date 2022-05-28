@@ -91,18 +91,21 @@ const EditProfile = () => {
   };
   const { mutateAsync: Logout } = useLogOut();
   const onLogOut = () => {
-    if (confirm("로그아웃 하시겠습니까?")) {
-      Logout()
-        .then(() => {
-          alert("안녕히가세여");
+    Swal.fire({
+      title: "로그아웃",
+      text: "진짜 로그아웃하시겠어요?!!",
+      showCancelButton: true,
+      confirmButtonText: "넵!",
+      cancelButtonText: "취소!",
+    }).then((result) => {
+      if (result.value) {
+        Logout().then(() => {
           removeCookie("accessToken");
           removeCookie("refreshToken");
           navigate("/");
-        })
-        .catch(() => {
-          alert("로그인 실패");
         });
-    }
+      }
+    });
   };
   return (
     <>

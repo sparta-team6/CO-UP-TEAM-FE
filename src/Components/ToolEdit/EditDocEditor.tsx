@@ -36,11 +36,39 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
   const onValid: SubmitHandler<IForm> = (data) => {
     if (editorRef.current === null) return;
     if (!data.title) {
-      alert("제목을 입력해주세요!");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "제목을 입력해주세요😊",
+      });
       return;
     }
     if (!editorRef.current.getInstance().getMarkdown()) {
-      alert("내용을 입력해주세요!");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "내용을 입력해주세요😊",
+      });
       return;
     }
 
@@ -85,11 +113,12 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
         </div>
         <div className="flex h-[calc(100%-4rem)] items-center justify-between mx-[46px] pt-[60px] sm:pt-[115px] sm:mx-[10px]">
           <input
-            className="text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-black sm:w-full sm:text-left"
+            className="w-3/5 text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-black sm:w-full sm:text-left"
             {...register("title")}
             placeholder="제목을 적어보세요 :)"
             defaultValue={title}
             autoFocus
+            maxLength={20}
           />
           <div className="sm:hidden">
             <button

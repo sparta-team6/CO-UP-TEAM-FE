@@ -29,7 +29,7 @@ export const useUpdateUser = () => {
         toast: true,
         position: "top",
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1000,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.addEventListener("mouseenter", Swal.stopTimer);
@@ -54,9 +54,39 @@ export const useLogOut = () => {
   return useMutation(async () => {
     await instance
       .delete("/auth/logout/")
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "로그아웃 성공😊",
+        });
       })
-      .catch((err) => console.log(err));
+      .catch(() => {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: "error",
+          title: "로그아웃 실패😊",
+        });
+      });
   });
 };
