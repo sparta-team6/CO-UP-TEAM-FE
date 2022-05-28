@@ -56,7 +56,7 @@ const Chat = () => {
     setMessages((prev) => [...prev, content]);
   };
   return (
-    <div className="w-[432px] h-[calc(100%-4rem)] bg-white flex flex-col justify-end absolute top-16 right-0 border-l border-[#E7EBF2] border-solid md:hidden">
+    <div className="w-[432px] h-[calc(100%-4rem)] bg-[#fff] dark:bg-6 flex flex-col justify-end absolute top-16 right-0 border-l border-[#E7EBF2] border-solid md:hidden">
       <ChatPre
         messages={messages}
         contents={data?.data}

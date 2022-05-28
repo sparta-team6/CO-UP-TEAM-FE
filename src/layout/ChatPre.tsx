@@ -103,9 +103,11 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
                   <span className="text-[#AAA] text-xs">
                     {box.dateTime.replaceAll("-", ".").slice(11, 16)}
                   </span>
-                  <div className={`min-w-[25px] min-h-[40px] bg-[#f5f5f5] p-[10px] rounded-md`}>
+                  <div
+                    className={`min-w-[25px] min-h-[40px] bg-[#f5f5f5] dark:bg-[#3D4853] p-[10px] rounded-md`}
+                  >
                     <span
-                      className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] font-semibold tracking-tight`}
+                      className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-[#B0B0B0] font-semibold tracking-tight`}
                     >
                       {box.message}
                     </span>
@@ -116,13 +118,13 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
           );
         })}
       </div>
-      <div className="w-full flex justify-center items-center relative bg-white">
+      <div className="w-full flex justify-center items-center relative bg-[#fff] dark:bg-6">
         <form
           className="w-[384px] h-[120px] mb-7 bg-slate-200 outline-none flex items-center justify-center rounded-xl"
           onSubmit={handleSubmit(handleonEnter)}
         >
           <textarea
-            className="w-full h-full p-[18px] rounded-xl border outline-none resize-none relative bg-[#F5F5F5]"
+            className="w-full h-full p-[18px] rounded-xl border-[#E7EBF2] dark:border dark:border-[#666] outline-none resize-none relative bg-[#F5F5F5] dark:bg-[#3D4853] dark:placeholder:text-[#B0B0B0]"
             onKeyUp={onKeyDown}
             autoComplete="off"
             placeholder="메세지를 입력하세요."
