@@ -140,13 +140,14 @@ const EditProfile = () => {
             className="text-center text-2xl h-14 rounded-md border-none sm:h-[36px] sm:text-base "
             placeholder="닉네임"
             defaultValue={user?.nickname}
+            maxLength={12}
             {...register("nickName")}
           />
           <input
             className="text-center text-2xl h-14 rounded-md border-none sm:h-[36px] sm:text-base "
             placeholder="URL"
             defaultValue={user?.url}
-            maxLength={80}
+            maxLength={40}
             {...register("url")}
           />
           <textarea

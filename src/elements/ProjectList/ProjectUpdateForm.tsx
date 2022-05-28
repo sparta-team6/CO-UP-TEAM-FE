@@ -113,6 +113,7 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
             <span className="w-14 mr-4 sm:hidden">팀 이름</span>
             <input
               autoFocus
+              maxLength={40}
               className="w-[352px] h-10 p-2 rounded-md border-none border border-[#D1D1D1]"
               defaultValue={roomTitle}
               {...register("title")}
@@ -122,6 +123,7 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
             <span className="w-14 mr-4 mt-2 sm:hidden">소개</span>
             <textarea
               rows={5}
+              maxLength={254}
               className="w-[352px] h-[95px] outline-none resize-none p-2 rounded-md border-none border border-[#D1D1D1]"
               defaultValue={roomSummary}
               {...register("summary")}

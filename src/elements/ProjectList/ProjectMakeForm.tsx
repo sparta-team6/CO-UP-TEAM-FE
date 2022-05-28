@@ -90,6 +90,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
               autoFocus
               className="w-[352px] h-10 p-2 rounded-md border-none border border-[#D1D1D1]"
               placeholder="팀 이름"
+              maxLength={40}
               {...register("title")}
             />
           </div>
