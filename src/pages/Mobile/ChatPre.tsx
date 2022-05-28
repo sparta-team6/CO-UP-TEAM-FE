@@ -27,6 +27,7 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
   const { nickname, profileImage, loginId } = useRecoilValue(MyProfile);
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
+    if (message.length === 1) return;
     const newMessage = { message: message, senderLoginId, pjId, profileImage, nickname };
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
     setValue("message", "");
@@ -40,6 +41,16 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
   useEffect(() => {
     scrollToBottom();
   }, [contents]);
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    const data = { text: e.currentTarget.value };
+    const newMessage = { message: data.text, senderLoginId, pjId, profileImage, nickname };
+    if (e.key === "Enter") {
+      if (!e.shiftKey) {
+        handleonEnter(newMessage);
+      }
+    }
+  };
   return (
     <>
       <div className={`w-full h-full flex flex-col justify-end absolute "z-[49]"`}>
@@ -73,7 +84,7 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
                     {box.nickname}
                   </span>
                   <div
-                    className={`flex items-end gap-2 ${
+                    className={`flex items-end justify-end gap-2 ${
                       loginId === box.senderLoginId ? "" : "flex-row-reverse"
                     }`}
                   >
@@ -81,7 +92,7 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
                       {box.dateTime.replaceAll("-", ".").slice(11, 16)}
                     </span>
                     <div
-                      className={`w-[180px] sm:min-h-[40px] bg-[#f5f5f5] p-[10px] rounded-md ${
+                      className={`text-left min-w-[25px] sm:min-h-[40px] bg-[#f5f5f5] p-[10px] rounded-md ${
                         loginId === box.senderLoginId ? "mt-2" : ""
                       }`}
                     >
@@ -109,10 +120,12 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
           className="w-full h-full outline-none flex items-end"
           onSubmit={handleSubmit(handleonEnter)}
         >
-          <input
+          <textarea
             className="w-full h-[86px] pl-[32px] pt-[20px] text-[#B0B0B0] bg-[#F5F5F5] outline-none resize-none border-0"
-            // onKeyDown={onKeyDown}
+            onKeyUp={onKeyDown}
             {...register("message")}
+            autoComplete="off"
+            placeholder="메세지를 입력하세요."
           />
           <button
             className="w-[52px] h-[33px] absolute bottom-5 right-5 text-white bg-3 rounded-[4px]"

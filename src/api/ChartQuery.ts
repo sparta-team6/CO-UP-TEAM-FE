@@ -11,9 +11,9 @@ export interface Charts {
 
 export interface buckets {
   buckets: Charts[];
-  loginId: any;
-  nickname: any;
-  profileImage: any;
+  loginId: string;
+  nickname: string;
+  profileImage: string;
 }
 
 export interface IChart {

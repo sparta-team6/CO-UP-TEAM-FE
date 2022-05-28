@@ -147,12 +147,14 @@ const EditProfile = () => {
             className="text-center text-2xl h-14 rounded-md border-none sm:h-[36px] sm:text-base "
             placeholder="URL"
             defaultValue={user?.url}
+            maxLength={80}
             {...register("url")}
           />
           <textarea
             className="text-center text-2xl h-[150px] sm:h-[74px] sm:text-base rounded-md border-none resize-none"
             placeholder="자기소개"
             defaultValue={user?.aboutMe}
+            maxLength={254}
             {...register("about_me")}
           />
           <div className="text-center sm:pt-[10px]">

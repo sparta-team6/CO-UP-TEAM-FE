@@ -40,6 +40,16 @@ const MobileChatCom = () => {
     queryClient.invalidateQueries("getChatting");
   }, [messages]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      stompClient.subscribe(`/sub/chatting/${pjId}`, async (data) => {
+        const newMessage: content = (await JSON.parse(data.body)) as content;
+        addMessage(newMessage);
+        queryClient.invalidateQueries("getChatting");
+      });
+    }, 500);
+  }, [pjId, messages]);
+
   const addMessage = (content: content) => {
     setMessages((prev) => [...prev, content]);
   };

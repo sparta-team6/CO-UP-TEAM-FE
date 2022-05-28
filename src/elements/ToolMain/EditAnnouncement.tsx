@@ -93,9 +93,10 @@ const EditAnnouncement = ({ title, contents, noticeId, modifiedTime, edit, setEd
               {modifiedTime?.replaceAll("-", ".").slice(0, 10)}
             </div>
             <Scroll
-              className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
+              className="w-full h-[160px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
               {...register("content")}
               placeholder="내용을 입력해주세요"
+              maxLength={254}
               defaultValue={contents}
             />
             <div className="absolute bottom-0 right-0">

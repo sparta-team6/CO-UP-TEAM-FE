@@ -36,6 +36,12 @@ const ProjectAnnouncement = () => {
   const { mutateAsync: postAn } = usePostAnnouncement();
   const { register, handleSubmit, setValue } = useForm<IForm>();
 
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = ("0" + (today.getMonth() + 1)).slice(-2);
+  const day = ("0" + today.getDate()).slice(-2);
+  const dateString = year + "." + month + "." + day;
+
   const onSubmit: SubmitHandler<IForm> = (data) => {
     if (!data.title) {
       alert("공지 제목을 적어주세요 :)");
@@ -81,10 +87,11 @@ const ProjectAnnouncement = () => {
               type="text"
               placeholder="공지 제목을 적어주세요 :)"
             />
-            <span className="mt-[10px] text-[#666]">2022.xx.xx</span>
+            <span className="mt-[10px] text-[#666]">{dateString}</span>
             <ScrollTextArea
-              className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
+              className="w-full h-[160px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
               {...register("content")}
+              maxLength={254}
               placeholder="내용을 입력해주세요"
             />
             <div className="absolute bottom-0 right-0">
@@ -108,7 +115,7 @@ const ProjectAnnouncement = () => {
           <span className="text-lg text-[#B0B0B0] mt-[20px]">팀원들에게 메세지를 전달해보세요</span>
         </div>
       ) : (
-        <Scroll className="flex flex-col mb-[20px] overflow-y-auto mr-[15px]">
+        <Scroll className="flex flex-col-reverse mb-[20px] overflow-y-auto mr-[15px]">
           {Ann?.data.map((ann, index) => {
             return (
               <DetailAnnouncement
@@ -129,7 +136,7 @@ const ProjectAnnouncement = () => {
 
 const ScrollTextArea = styled.textarea`
   &::-webkit-scrollbar-thumb {
-    background: transparent;
+    background: #ebebeb;
   }
 `;
 
