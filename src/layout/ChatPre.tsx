@@ -129,7 +129,7 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
             onKeyUp={onKeyDown}
             autoComplete="off"
             placeholder="메세지를 입력하세요."
-            maxLength={254}
+            maxLength={300}
             {...register("message")}
           />
           <button

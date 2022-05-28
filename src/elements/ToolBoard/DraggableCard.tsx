@@ -84,7 +84,9 @@ const DraggableCard = ({
               />
 
               <div className="w-full h-full pl-6 flex flex-col justify-center space-y-8 font-bold">
-                <span>{toDoTitle}</span>
+                <span className="sm:w-[150px] text-ellipsis overflow-hidden whitespace-nowrap">
+                  {toDoTitle}
+                </span>
                 <span>{toDoName}</span>
               </div>
             </div>

@@ -99,6 +99,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                 className="w-full text-3xl sm:text-lg font-semibold mb-2 rounded-md border-none"
                 {...register("title")}
                 defaultValue={toDoTitle}
+                maxLength={25}
               />
               <div className="w-full flex items-center space-x-3">
                 <div className="max-w-xs h-7 rounded-sm flex justify-center items-center">
@@ -119,11 +120,12 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                 </div>
               </div>
               <div className="w-full max-h-64 py-8">
-                <input
+                <textarea
                   autoFocus
-                  className="w-full rounded-md border-none"
+                  className="w-full h-[200px] rounded-md border-none resize-none outline-none"
                   {...register("text")}
                   defaultValue={toDoText}
+                  maxLength={500}
                 />
               </div>
               <button
