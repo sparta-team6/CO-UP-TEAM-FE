@@ -86,15 +86,13 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
           sx={style}
           className="w-[696px] h-[376px] rounded-xl sm:w-[320px] sm:min-h-[192px]  pb-[15px] px-[30px] pt-[28px]"
         >
-          <form
-            className="w-full h-full relative space-y-[15px]"
-            onSubmit={handleSubmit(onValid)}
-          >
+          <form className="w-full h-full relative space-y-[15px]" onSubmit={handleSubmit(onValid)}>
             <input
               autoFocus
               className="w-full outline-none border-none placeholder:text-black placeholder:font-semibold text-2xl font-semibold"
               {...register("toDo")}
               type="text"
+              maxLength={25}
               placeholder="보드 제목을 작성해주세요"
             />
             <div className="w-full flex items-center space-x-2">
@@ -116,10 +114,10 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
                 })}
               </select>
             </div>
-            <input
-              className="pt-[15px] w-full outline-none border-none"
+            <textarea
+              className="pt-[15px] w-full h-[200px] outline-none border-none resize-none"
               {...register("toDoComment")}
-              type="text"
+              maxLength={500}
               placeholder="내용입력"
             />
             <button

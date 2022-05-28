@@ -123,6 +123,7 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
           <textarea
             className="w-full h-[86px] pl-[32px] pt-[20px] text-[#B0B0B0] bg-[#F5F5F5] outline-none resize-none border-0"
             onKeyUp={onKeyDown}
+            maxLength={300}
             {...register("message")}
             autoComplete="off"
             placeholder="메세지를 입력하세요."
