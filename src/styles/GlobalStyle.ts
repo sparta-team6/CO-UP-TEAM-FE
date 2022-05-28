@@ -26,6 +26,7 @@ button{
   -moz-appearance:none; /* Firefox */
   -webkit-appearance:none; /* Safari and Chrome */
   appearance:none;
+  padding: 0;
 }
 /* span {
   color: ${(props) => props.theme.textColor}
