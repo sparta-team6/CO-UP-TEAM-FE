@@ -1,6 +1,7 @@
 import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
 import { useSetRecoilState } from "recoil";
+import Swal from "sweetalert2";
 import { dfId } from "../recoil/AtomDocument";
 import { instance } from "../servers/axios";
 import { Docs } from "./DocumentQuery";
@@ -35,12 +36,44 @@ export const useAddFolder = () => {
 
 export const useDelFolder = (dfId: string) => {
   return useMutation(async () => {
-    await instance.delete(`api/folders/?dfId=${dfId}`);
+    await instance.delete(`api/folders/?dfId=${dfId}`).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "폴더 삭제 완료😊",
+      });
+    });
   });
 };
 
 export const useUpdateFolder = (dfId: string) => {
   return useMutation(async (Folder: Folders) => {
-    await instance.patch(`api/folders/?dfId=${dfId}`, Folder);
+    await instance.patch(`api/folders/?dfId=${dfId}`, Folder).then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "폴더 제목 수정 완료😊",
+      });
+    });
   });
 };

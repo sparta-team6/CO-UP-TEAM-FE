@@ -11,6 +11,7 @@ import { SvgFolder } from "../elements/Icon/SvgFolder";
 import { Plus } from "../elements/Icon/Plus";
 import { ProjectKey } from "../recoil/RoomID";
 import styled from "styled-components";
+import Swal from "sweetalert2";
 
 const FolderList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
@@ -28,12 +29,20 @@ const FolderList = () => {
       dfId,
       title: title,
     };
-    if (confirm("폴더 제목을 바꾸시겠습니까?")) {
-      UpdateFol(folder).then(() => {
-        queryClient.invalidateQueries("getFolders");
-        setEditTitle(false);
-      });
-    }
+    Swal.fire({
+      title: "수정",
+      text: "진짜 수정하시겠어요?!!",
+      showCancelButton: true,
+      confirmButtonText: "넵!",
+      cancelButtonText: "취소!",
+    }).then((result) => {
+      if (result.value) {
+        UpdateFol(folder).then(() => {
+          queryClient.invalidateQueries("getFolders");
+          setEditTitle(false);
+        });
+      }
+    });
   };
 
   const AddFolder = () => {
@@ -95,7 +104,7 @@ const FolderList = () => {
                     }`}
                     onSubmit={onSubmit}
                   >
-                    <input defaultValue={folder.title} onChange={onChange} />
+                    <input maxLength={11} defaultValue={folder.title} onChange={onChange} />
                   </form>
                   <FolderFixed dfId={folder.dfId} setEditTitle={setEditTitle} setDfId={setDfId} />
                 </div>
@@ -110,9 +119,12 @@ const FolderList = () => {
                   </span>
                 </div>
                 {folder.docs?.map((doc) => (
-                  <div key={doc.docId} className="flex flex-col ml-[54px] my-[5px]">
+                  <div key={doc.docId} className="flex flex-col ml-[54px] mr-[41px] my-[5px]">
                     <div className="flex items-center text-base cursor-pointer">
-                      <span onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}>
+                      <span
+                        className="text-ellipsis overflow-hidden whitespace-nowrap"
+                        onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}
+                      >
                         {doc.title}
                       </span>
                     </div>

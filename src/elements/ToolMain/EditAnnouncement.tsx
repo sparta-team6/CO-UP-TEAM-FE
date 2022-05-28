@@ -42,11 +42,39 @@ const EditAnnouncement = ({ title, contents, noticeId, modifiedTime, edit, setEd
   const { register, handleSubmit } = useForm<IForm>();
   const onSubmit: SubmitHandler<IForm> = (data) => {
     if (!data.title) {
-      alert("공지 제목을 적어주세요 :)");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "공지 제목을 적어주세요😊",
+      });
       return;
     }
     if (!data.content) {
-      alert("내용을 입력해주세요 :)");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "공지 내용을 적어주세요😊",
+      });
       return;
     }
 

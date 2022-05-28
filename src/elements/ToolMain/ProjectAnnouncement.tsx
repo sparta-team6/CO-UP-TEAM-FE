@@ -9,6 +9,7 @@ import { ProjectKey } from "../../recoil/RoomID";
 import styled from "styled-components";
 import EmptyAnnouncement from "../../images/Main/EmptyAnnouncement.png";
 import DetailAnnouncement from "./DetailAnnouncement";
+import Swal from "sweetalert2";
 
 const style = {
   position: "absolute",
@@ -44,11 +45,39 @@ const ProjectAnnouncement = () => {
 
   const onSubmit: SubmitHandler<IForm> = (data) => {
     if (!data.title) {
-      alert("공지 제목을 적어주세요 :)");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "공지 제목을 적어주세요😊",
+      });
       return;
     }
     if (!data.content) {
-      alert("내용을 입력해주세요 :)");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "공지 내용을 적어주세요😊",
+      });
       return;
     }
     const post = {
@@ -63,9 +92,9 @@ const ProjectAnnouncement = () => {
   };
 
   return (
-    <div className="w-full h-full border border-solid bg-white rounded-2xl flex flex-col">
-      <div className="w-full flex justify-center px-[34px] sm:px-[20px]">
-        <div className="w-full flex items-center justify-between mb-[21px] mt-[28px]">
+    <div className="w-full h-full border border-solid bg-white rounded-2xl pl-[20px] pr-[10px] sm:px-[16px] flex flex-col">
+      <div className="w-full flex justify-center">
+        <div className="w-full flex items-center justify-between mb-[21px] px-[10px] mt-[28px]">
           <span className="font-bold text-xl">공지사항</span>
           <div onClick={handleOpen} className="cursor-pointer">
             {projectRole === "ADMIN" ? <Plus /> : ""}
@@ -86,6 +115,7 @@ const ProjectAnnouncement = () => {
               {...register("title")}
               type="text"
               placeholder="공지 제목을 적어주세요 :)"
+              maxLength={17}
             />
             <span className="mt-[10px] text-[#666]">{dateString}</span>
             <ScrollTextArea
@@ -115,7 +145,7 @@ const ProjectAnnouncement = () => {
           <span className="text-lg text-[#B0B0B0] mt-[20px]">팀원들에게 메세지를 전달해보세요</span>
         </div>
       ) : (
-        <Scroll className="flex flex-col-reverse mb-[20px] overflow-y-auto mr-[15px]">
+        <Scroll className="w-full flex flex-col-reverse mb-[20px] pl-[10px] sm:p-0 overflow-y-auto">
           {Ann?.data.map((ann, index) => {
             return (
               <DetailAnnouncement

@@ -96,7 +96,7 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime, nickname }:
                 </div>
               </div>
               <div className="flex flex-col sm:hidden mx-[46px] mt-[39px] mb-[20px]">
-                <div className="flex justify-between items-center pl-[2px]">
+                <div className="flex justify-between items-center">
                   <div className="text-[32px] font-bold sm:mt-[100px] sm:mb-[22px] sm:mx-[12px]">
                     <span>{title}</span>
                   </div>
@@ -134,7 +134,7 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime, nickname }:
           ) : docData ? (
             <>
               <div className="flex flex-col sm:hidden mx-[46px] mt-[37px] mb-[20px]">
-                <div className="flex justify-between items-center h-[47px] pl-[2px]">
+                <div className="flex justify-between items-center h-[47px]">
                   <div className="text-[32px] font-bold">
                     <span>{docData.title}</span>
                   </div>
