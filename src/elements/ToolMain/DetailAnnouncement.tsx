@@ -70,10 +70,10 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
     });
   };
   return (
-    <div className="max-w-[548px] h-full space-y-2 mb-[8px] flex flex-col items-center">
+    <div className="w-full h-full space-y-2 mb-[8px] flex flex-col items-center">
       <div
         onClick={handleOpen}
-        className="w-full max-w-[548px] sm:w-[288px] min-h-[68px] bg-white border rounded-lg overflow-hidden flex"
+        className="w-full min-h-[68px] bg-white border rounded-lg overflow-hidden flex"
       >
         <div className="w-2 h-full bg-3" />
         <div className="w-full h-full ml-[14px] mr-2 flex flex-col">

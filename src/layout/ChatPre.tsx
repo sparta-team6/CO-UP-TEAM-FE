@@ -81,7 +81,7 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
               key={index}
             >
               <img
-                className={`w-[36px] h-[36px] -mt-2 rounded-full ${
+                className={`w-[36px] h-[36px] min-w-[36px] min-h-[36px] -mt-2 rounded-full ${
                   loginId === box.senderLoginId ? "hidden" : ""
                 }`}
                 src={box.profileImage}
