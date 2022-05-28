@@ -6,21 +6,10 @@ import { useGetProjectUser } from "../../api/UserQuery";
 import { useKickRoom } from "../../api/ProjectQuery";
 import Swal from "sweetalert2";
 import { queryClient } from "../..";
-// import { MyProfile } from "../../recoil/MyProfile";
-// import { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
 
 const Member = () => {
   const { pjId, projectRole } = useRecoilValue(ProjectKey);
   const { data } = useGetProjectUser(pjId);
-  // const { loginId } = useRecoilValue(MyProfile);
-  // const navigate = useNavigate();
-  // useEffect(() => {
-  //   const myJoinRoom = data?.data.find((id) => id.loginId === loginId);
-  //   if (myJoinRoom === undefined) {
-  //     navigate("/projectList");
-  //   }
-  // }, [data]);
   const TeamUsers = data?.data.slice(1);
   const { mutateAsync: KickUser } = useKickRoom(pjId);
   const onClick = (loginId: string, nickname: string) => {
@@ -56,7 +45,7 @@ const Member = () => {
           alt=""
         />
         <span className="font-semibold dark:text-white">{projectAdmin?.nickname}</span>
-        <div className="hidden w-[334px] min-h-[120px] bg-5 group-hover:flex sm:group-focus:block absolute right-[-330px] top-0 rounded-lg shadow-md">
+        <div className="sm:left-[-30%] sm:top-[-350px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 group-hover:flex sm:group-focus:block absolute right-[-330px] top-[-100px] rounded-lg shadow-md">
           <div className="w-full h-full px-[20px] py-[13px] flex flex-col">
             <div className="w-full h-full flex">
               <div className="h-full flex items-center span">
@@ -97,7 +86,7 @@ const Member = () => {
                 추방
               </button>
             )}
-            <div className="hidden w-[334px] min-h-[120px] bg-5 group-hover:flex sm:group-focus:block absolute right-[-330px] top-0 rounded-lg shadow-md">
+            <div className="sm:left-[-30%] sm:top-[-400px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 group-hover:flex sm:group-focus:block absolute right-[-330px] top-[-100px] rounded-lg shadow-md">
               <div className="w-full h-full px-[20px] py-[13px] flex flex-col">
                 <div className="w-full h-full flex">
                   <div className="h-full flex items-center span">
