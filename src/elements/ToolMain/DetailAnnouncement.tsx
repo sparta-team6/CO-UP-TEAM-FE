@@ -1,5 +1,5 @@
 import { Box, Modal } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import Swal from "sweetalert2";
@@ -35,19 +35,19 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
   const { mutateAsync: DELAN } = useDelAnnouncement();
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
-  const handleOpen = (e: any) => {
+  const handleOpen = (e: React.MouseEvent) => {
     e.stopPropagation();
     setOpen(true);
   };
-  const handleClose = (e: any) => {
+  const handleClose = (e: React.MouseEvent) => {
     e.stopPropagation();
     setOpen(false);
   };
-  const EditOpen = (e: any) => {
+  const EditOpen = (e: React.MouseEvent) => {
     e.stopPropagation();
     setEdit(true);
   };
-  const onDelete = (e: any) => {
+  const onDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
     const Delete = {
       data: {

@@ -36,6 +36,8 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
   });
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
+    if (message.length === 1) return;
+    console.log(message.length);
     const newMessage = { message: message, senderLoginId, pjId, profileImage, nickname };
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
     setValue("message", "");
@@ -49,6 +51,16 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
   useEffect(() => {
     scrollToBottom();
   }, [contents]);
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    const data = { text: e.currentTarget.value };
+    const newMessage = { message: data.text, senderLoginId, pjId, profileImage, nickname };
+    if (e.key === "Enter") {
+      if (!e.shiftKey) {
+        handleonEnter(newMessage);
+      }
+    }
+  };
   return (
     <>
       <div
@@ -56,8 +68,6 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
         className="w-full h-full space-y-[16px] overflow-y-auto flex flex-col-reverse items-center pb-3"
       >
         {contents?.map((box, index) => {
-          // const time = new Date(box.dateTime);
-          // console.log(time.getHours());
           return (
             <div
               className={`w-[366px] min-h-10 first:mt-4 flex ${
@@ -79,15 +89,15 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
                   {box.nickname}
                 </span>
                 <div
-                  className={`flex items-end gap-2 ${
+                  className={`flex items-end justify-end gap-2 ${
                     loginId === box.senderLoginId ? "" : "flex-row-reverse"
                   }`}
                 >
-                  <span className="text-[#AAA] text-xs mb-2">
+                  <span className="text-[#AAA] text-xs">
                     {box.dateTime.replaceAll("-", ".").slice(11, 16)}
                   </span>
                   <div
-                    className={`w-[180px] min-h-[40px] bg-[#f5f5f5] p-[10px] rounded-md ${
+                    className={`min-w-[25px] min-h-[40px] bg-[#f5f5f5] p-[10px] rounded-md ${
                       loginId === box.senderLoginId ? "mt-2" : ""
                     }`}
                   >
@@ -114,9 +124,12 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
           className="w-[384px] h-[120px] mb-7 bg-slate-200 outline-none flex items-center justify-center rounded-xl"
           onSubmit={handleSubmit(handleonEnter)}
         >
-          <input
+          <textarea
             className="w-full h-full p-[18px] rounded-xl border outline-none resize-none relative bg-[#F5F5F5]"
-            // onKeyDown={onKeyDown}
+            onKeyUp={onKeyDown}
+            autoComplete="off"
+            placeholder="메세지를 입력하세요."
+            maxLength={254}
             {...register("message")}
           />
           <button

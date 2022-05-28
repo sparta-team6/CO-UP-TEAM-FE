@@ -7,7 +7,6 @@ import { useGetChatting } from "../api/ChatQuery";
 import { MyProfile } from "../recoil/MyProfile";
 import { ProjectKey } from "../recoil/RoomID";
 import ChatPre from "./ChatPre";
-// import EmptyChat from "../images/Main/EmptyChat.png";
 
 export interface content {
   senderLoginId: string;
@@ -33,35 +32,26 @@ const Chat = () => {
   const result = data?.data;
   const pageNumber = result === 20 ? data?.data[19].id : 0;
 
-  const wsConnectSubscribe = React.useCallback(() => {
-    try {
-      stompClient.connect({}, () => {
-        console.log("connect");
-        stompClient.subscribe(`/sub/chatting/${pjId}`, (data) => {
-          console.log(data);
-          const newMessage: content = JSON.parse(data.body) as content;
-          addMessage(newMessage);
-          queryClient.invalidateQueries("getChatting");
-        });
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }, [messages, pjId]);
-  // 연결해제, 구독해제
-
-  // 렌더링 될 때마다 연결,구독 다른 방으로 옮길 때 연결, 구독 해제
   useEffect(() => {
-    wsConnectSubscribe();
-    setTimeout(() => {
+    stompClient.connect({}, () => {
+      console.log("connect");
       stompClient.subscribe(`/sub/chatting/${pjId}`, (data) => {
-        console.log(data);
         const newMessage: content = JSON.parse(data.body) as content;
         addMessage(newMessage);
         queryClient.invalidateQueries("getChatting");
       });
+    });
+  }, [messages]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      stompClient.subscribe(`/sub/chatting/${pjId}`, async (data) => {
+        const newMessage: content = (await JSON.parse(data.body)) as content;
+        addMessage(newMessage);
+        queryClient.invalidateQueries("getChatting");
+      });
     }, 500);
-  }, [wsConnectSubscribe, pjId, messages]);
+  }, [pjId, messages]);
 
   const addMessage = (content: content) => {
     setMessages((prev) => [...prev, content]);
