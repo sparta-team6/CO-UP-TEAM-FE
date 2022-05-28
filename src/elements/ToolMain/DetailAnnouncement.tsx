@@ -78,7 +78,7 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
         <div className="w-2 h-full bg-3" />
         <div className="w-full h-full ml-[14px] mr-2 flex flex-col">
           <div className="flex relative">
-            <div className="w-full text-[13px] font-semibold pt-3">
+            <div className="w-full sm:w-[190px] text-ellipsis overflow-hidden whitespace-nowrap text-[13px] font-semibold pt-3">
               <span>{title}</span>
             </div>
             {projectRole === "ADMIN" && (
@@ -114,21 +114,21 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
               defaultValue={title}
               readOnly
             />
-            <div className="mt-[10px] text-[#666]">
+            <div className="mt-[10px] text-[#666] pl-[2px]  ">
               {modifiedTime?.replaceAll("-", ".").slice(0, 10)}
             </div>
             <ScrollTextArea
-              className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
+              className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg"
               defaultValue={contents}
               readOnly
             />
             <div className="absolute bottom-0 right-0">
               <button
                 onClick={handleClose}
-                className="bg-5 w-[58px] h-[37px] rounded-md ml-2 pt-1"
+                className="bg-5 w-[58px] h-[37px] rounded-md ml-[4px]"
                 type="button"
               >
-                <span>닫기</span>
+                <span className="leading-[21px]">닫기</span>
               </button>
             </div>
           </div>

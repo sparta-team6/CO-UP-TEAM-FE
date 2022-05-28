@@ -175,12 +175,12 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime, nickname }:
             </>
           ) : (
             <div className=" w-full h-full flex flex-col justify-center items-center text-center px-[46px]">
-              <img width={329} height={287} className="block sm:hidden" src={EmptyFolder} alt="" />
+              <img width={328} height={286} className="block sm:hidden" src={EmptyFolder} alt="" />
               <img width={178} height={154} className="hidden sm:block" src={EmptyFolderM} alt="" />
-              <div className="font-bold text-3xl pt-[33px] pb-[20px]">
+              <div className="font-bold text-3xl pt-[44px] pb-[22px]">
                 <span>새로운 문서를 추가해 보세요</span>
               </div>
-              <div className="w-full flex flex-col space-y-1 text-gray-500">
+              <div className="w-full flex flex-col space-y-2 text-[#666]">
                 <span>미팅 노트, 제품 요구사항, 결정 사항 또는 기타 콘텐츠를 만들어</span>
                 <span>팀원들과 공유해보세요</span>
               </div>
@@ -189,7 +189,7 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime, nickname }:
                   AddFolder();
                   navigate(`/tool/${id}/document/add`);
                 }}
-                className="border-none w-[192px] h-[52px] mt-[36px] rounded-lg text-white bg-3 font-bold"
+                className="border-none text-xl w-[192px] h-[52px] mt-[46px] rounded-[4px] text-white bg-3 font-bold"
               >
                 첫 페이지 만들기
               </button>

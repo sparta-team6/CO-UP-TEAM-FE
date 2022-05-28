@@ -111,29 +111,29 @@ const ProjectAnnouncement = () => {
           <form className="w-full h-full relative" onSubmit={handleSubmit(onSubmit)}>
             <input
               autoFocus
-              className="w-full outline-none text-2xl border-none placeholder:text-black placeholder:font-semibold font-semibold"
+              className="w-full mb-[10px] outline-none text-2xl border-none placeholder:text-[#B0B0B0] placeholder:font-semibold font-semibold"
               {...register("title")}
               type="text"
               placeholder="공지 제목을 적어주세요 :)"
-              maxLength={17}
+              maxLength={30}
             />
-            <span className="mt-[10px] text-[#666]">{dateString}</span>
+            <span className="text-[#666] pl-[2px]">{dateString}</span>
             <ScrollTextArea
-              className="w-full h-[160px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg text-[#999]"
+              className="w-full h-[160px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg placeholder:text-[#B0B0B0]"
               {...register("content")}
               maxLength={254}
               placeholder="내용을 입력해주세요"
             />
             <div className="absolute bottom-0 right-0">
-              <button className="text-white bg-3 w-[58px] h-[37px] rounded-md pt-1" type="submit">
-                <span>등록</span>
+              <button className="text-white bg-3 w-[58px] h-[37px] rounded-md" type="submit">
+                <span className="leading-[21px]">등록</span>
               </button>
               <button
                 onClick={handleClose}
-                className="bg-5 w-[58px] h-[37px] rounded-md ml-2 pt-1"
+                className="bg-5 w-[58px] h-[37px] rounded-md ml-[4px]"
                 type="button"
               >
-                <span>닫기</span>
+                <span className="leading-[21px]">닫기</span>
               </button>
             </div>
           </form>
@@ -145,7 +145,7 @@ const ProjectAnnouncement = () => {
           <span className="text-lg text-[#B0B0B0] mt-[20px]">팀원들에게 메세지를 전달해보세요</span>
         </div>
       ) : (
-        <Scroll className="w-full flex flex-col-reverse mb-[20px] pl-[10px] sm:p-0 overflow-y-auto">
+        <Scroll className="w-full flex flex-col-reverse mb-[20px] px-[10px] sm:p-0 overflow-y-auto">
           {Ann?.data.map((ann, index) => {
             return (
               <DetailAnnouncement
