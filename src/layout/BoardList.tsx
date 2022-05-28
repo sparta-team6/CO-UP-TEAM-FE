@@ -64,7 +64,7 @@ const BoardList = () => {
     }
   };
   return (
-    <div className="w-full h-full bg-[#F0F3F7] overflow-auto">
+    <div className="w-full h-full bg-[#F0F3F7] dark:bg-8 overflow-auto">
       <div className="max-w-[1300px] sm:h-auto h-full ml-16 sm:ml-2 flex justify-center items-center relative sm:pb-36">
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="w-full h-full flex">

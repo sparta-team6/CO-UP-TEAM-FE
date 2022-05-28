@@ -75,7 +75,7 @@ const DraggableCard = ({
           >
             <div
               onClick={handleOpen}
-              className={`relative h-24 overflow-hidden min-w-[256px] mb-2 rounded-md bg-white`}
+              className={`relative h-24 overflow-hidden min-w-[256px] mb-2 rounded-md bg-[#ffffff] dark:bg-6`}
             >
               <div
                 className={`w-[10px] h-full ${

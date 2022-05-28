@@ -51,7 +51,7 @@ const FolderList = () => {
   return (
     <>
       {data?.data.length === 0 ? (
-        <Scroll className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
+        <Scroll className="w-72 h-full bg-[#F0F3F7] dark:bg-7 sm:w-full overflow-auto">
           <div className="flex justify-between items-center px-[20px] pt-[45px]">
             <span className="font-bold text-2xl">문서목록</span>
             <div onClick={AddFolder} className="cursor-pointer">
@@ -67,7 +67,7 @@ const FolderList = () => {
           </div>
         </Scroll>
       ) : (
-        <Scroll className="w-72 h-full bg-[#F0F3F7] sm:w-full overflow-auto">
+        <Scroll className="w-72 h-full bg-[#F0F3F7] dark:bg-7 sm:w-full overflow-auto">
           <div className="flex justify-between items-center pt-[45px] px-[20px]">
             <span className="font-bold text-2xl">문서목록</span>
             <div onClick={AddFolder} className="cursor-pointer">

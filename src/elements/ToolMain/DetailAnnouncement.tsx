@@ -14,8 +14,6 @@ const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
-  width: 704,
-  height: 384,
   transform: "translate(-50%, -50%)",
   bgcolor: "background.paper",
   boxShadow: 2,
@@ -73,7 +71,7 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
     <div className="w-full h-full space-y-2 mb-[8px] flex flex-col items-center">
       <div
         onClick={handleOpen}
-        className="w-full min-h-[68px] bg-white border rounded-lg overflow-hidden flex"
+        className="w-full min-h-[68px] bg-[#ffffff] dark:bg-7 border rounded-lg overflow-hidden flex"
       >
         <div className="w-2 h-full bg-3" />
         <div className="w-full h-full ml-[14px] mr-2 flex flex-col">
@@ -107,7 +105,7 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="w-[690px] h-[370px] rounded-xl sm:w-full">
+        <Box sx={style} className="w-[704px] h-[384px] sm:w-[90%] rounded-xl">
           <div className="w-full h-full relative">
             <input
               className="w-full outline-none text-2xl border-none placeholder:text-black placeholder:font-semibold font-semibold"
@@ -118,7 +116,7 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
               {modifiedTime?.replaceAll("-", ".").slice(0, 10)}
             </div>
             <ScrollTextArea
-              className="w-full h-[124px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg"
+              className="w-full h-[150px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg"
               defaultValue={contents}
               readOnly
             />

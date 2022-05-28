@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import SockJS from "sockjs-client";
@@ -6,6 +6,7 @@ import Stomp from "stompjs";
 import { content } from "../../Components/Mobile/MobileChatCom";
 import { MyProfile } from "../../recoil/MyProfile";
 import EmptyChat from "../../images/Main/EmptyChat.png";
+import Swal from "sweetalert2";
 
 type ChatPresenterProps = {
   messages: Array<content>;
@@ -28,6 +29,25 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
     if (message.trim() === "") return;
+    if (send === true) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "도배 금지 ❌",
+      });
+      setValue("message", "");
+      return;
+    }
     const newMessage = { message: message, senderLoginId, pjId, profileImage, nickname };
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
     setValue("message", "");
@@ -38,15 +58,19 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
       messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
     }
   };
+  const [send, setSend] = useState(false);
   useEffect(() => {
     scrollToBottom();
+    setTimeout(() => {
+      setSend(false);
+    }, 500);
   }, [contents]);
-
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     const data = { text: e.currentTarget.value };
     const newMessage = { message: data.text, senderLoginId, pjId, profileImage, nickname };
     if (e.key === "Enter") {
       if (!e.shiftKey) {
+        setSend(true);
         handleonEnter(newMessage);
       }
     }
