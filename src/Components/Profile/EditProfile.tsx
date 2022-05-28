@@ -27,6 +27,24 @@ const EditProfile = () => {
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<IForm> = async (data) => {
     if (fileInput?.current?.files === null) return;
+    if (data.nickName.trim() === "") {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "닉네임을 입력해주세요😊",
+      });
+      return;
+    }
     const size = fileInput?.current?.files[0];
     const profile = {
       loginId: user?.loginId,

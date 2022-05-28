@@ -48,6 +48,24 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
       alert("담당자 선택해주세요");
       return;
     }
+    if (data.title.trim() === "") {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "제목을 입력해주세요😊",
+      });
+      return;
+    }
     const info = name.split(" ");
     const post = {
       kbcId: String(Card?.data.kbcId),
@@ -93,10 +111,10 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
           className="w-[696px] h-[376px] rounded-xl sm:w-[320px] sm:min-h-[192px]  pb-[15px] px-[30px] pt-[28px]"
         >
           <div className="w-full h-full relative">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-[15px]">
               <input
                 autoFocus
-                className="w-full text-3xl sm:text-lg font-semibold mb-2 rounded-md border-none"
+                className="w-full text-3xl sm:text-lg font-medium rounded-md border-none"
                 {...register("title")}
                 defaultValue={toDoTitle}
                 maxLength={25}
@@ -108,7 +126,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                     value={name}
                     onChange={onChange}
                   >
-                    <option defaultValue="none" className="bg-slate-200 rounded-md ">
+                    <option defaultValue="none" className="bg-slate-200 rounded-md">
                       {Card?.data.managerNickname}
                     </option>
                     {result?.map((member, index) => {
@@ -125,7 +143,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                   </select>
                 </div>
               </div>
-              <div className="w-full max-h-64 py-8">
+              <div className="w-full max-h-64 py-3">
                 <textarea
                   className="w-full h-[200px] rounded-md border-none resize-none outline-none"
                   {...register("text")}

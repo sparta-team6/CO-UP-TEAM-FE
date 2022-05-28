@@ -6,6 +6,7 @@ import { resizeFile } from "../../servers/resize";
 import { SvgEdit } from "../Icon/SvgEdit";
 import DefaultImg from "../../images/logo_50x50.png";
 import { IconButton } from "@mui/material";
+import Swal from "sweetalert2";
 
 interface IForm {
   title: string;
@@ -24,9 +25,22 @@ const ProjectMakeForm = ({ open }: IProp) => {
   const { register, handleSubmit } = useForm<IForm>();
   const onSubmit: SubmitHandler<IForm> = async (data) => {
     if (fileInput.current?.files === null) return;
-    if (data.summary === "" || data.title === "") {
-      /*sweetDuck */
-      alert("이름과 소개를 모두 입력해주세요");
+    if (data.title.trim() === "" || data.summary.trim() === "") {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "이름과 소개 모두 입력해주세요",
+      });
       return;
     }
     const size = fileInput?.current?.files[0];
@@ -37,6 +51,22 @@ const ProjectMakeForm = ({ open }: IProp) => {
         thumbnail: imgBase64,
       }).then(() => {
         queryClient.invalidateQueries("getProject");
+        queryClient.invalidateQueries("getProject");
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "프로젝트 생성 완료😊",
+        });
         open(false);
       });
     } else {
@@ -47,6 +77,21 @@ const ProjectMakeForm = ({ open }: IProp) => {
         thumbnail: String(image),
       }).then(() => {
         queryClient.invalidateQueries("getProject");
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "프로젝트 생성 완료😊",
+        });
         open(false);
       });
     }

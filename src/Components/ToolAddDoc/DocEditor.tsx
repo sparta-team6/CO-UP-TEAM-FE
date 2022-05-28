@@ -40,7 +40,7 @@ const DocEditor = () => {
   const [loading, setLoading] = useState(false);
   const onValid: SubmitHandler<IForm> = (data) => {
     if (editorRef.current === null) return;
-    if (!data.title) {
+    if (data.title.trim() === "") {
       const Toast = Swal.mixin({
         toast: true,
         position: "top",

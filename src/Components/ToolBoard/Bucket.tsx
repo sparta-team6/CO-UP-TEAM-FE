@@ -8,6 +8,7 @@ import { queryClient } from "../..";
 import { Cards, usePostCards } from "../../api/CardQuery";
 import { ProjectKey } from "../../recoil/RoomID";
 import { useGetProjectUser } from "../../api/UserQuery";
+import Swal from "sweetalert2";
 
 const style = {
   position: "absolute",
@@ -44,6 +45,24 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
   const onValid = ({ toDo, toDoComment }: IForm) => {
     if (name === "" || name === "담당자 선택") {
       alert("담당자 선택해주세요");
+      return;
+    }
+    if (toDo.trim() === "") {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "제목을 입력해주세요😊",
+      });
       return;
     }
     const info = name.split(" ");
@@ -97,7 +116,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
             />
             <div className="w-full flex items-center space-x-2">
               <div className="w-[78px] h-7 bg-slate-200 text-base rounded-md flex justify-center items-center">
-                <span>{bucketId}</span>
+                <span className="leading-[21px]">{bucketId}</span>
               </div>
               <select
                 className="outline-none bg-slate-200 border-0 w-[162px] h-7 text-center rounded-md"
@@ -124,14 +143,14 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
               className="w-16 h-9 absolute bottom-[15px] right-[70px] sm:bottom-0 rounded-md text-base bg-3 text-white"
               type="submit"
             >
-              <span>등록</span>
+              <span className="leading-[21px]">등록</span>
             </button>
             <button
               onClick={handleClose}
               className="w-16 h-9 absolute bottom-[15px] right-0 sm:bottom-0 rounded-md text-base bg-5"
               type="submit"
             >
-              <span>닫기</span>
+              <span className="leading-[21px]">닫기</span>
             </button>
           </form>
         </Box>

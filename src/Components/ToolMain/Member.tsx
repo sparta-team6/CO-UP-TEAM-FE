@@ -45,7 +45,7 @@ const Member = () => {
           alt=""
         />
         <span className="font-semibold dark:text-white">{projectAdmin?.nickname}</span>
-        <div className="sm:left-[-30%] sm:top-[-350px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 group-hover:flex sm:group-focus:block absolute right-[-330px] top-[-100px] rounded-lg shadow-md">
+        <div className="sm:left-[-30%] sm:top-[-350px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
           <div className="w-full h-full px-[20px] py-[13px] flex flex-col">
             <div className="w-full h-full flex">
               <div className="h-full flex items-center span">
@@ -86,7 +86,7 @@ const Member = () => {
                 추방
               </button>
             )}
-            <div className="sm:left-[-30%] sm:top-[-400px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 group-hover:flex sm:group-focus:block absolute right-[-330px] top-[-100px] rounded-lg shadow-md">
+            <div className="sm:left-[-30%] sm:top-[-400px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
               <div className="w-full h-full px-[20px] py-[13px] flex flex-col">
                 <div className="w-full h-full flex">
                   <div className="h-full flex items-center span">
