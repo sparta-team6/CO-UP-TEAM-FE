@@ -84,20 +84,10 @@ const EditAnnouncement = ({ title, contents, noticeId, modifiedTime, edit, setEd
       title: data.title,
       contents: data.content,
     };
-    Swal.fire({
-      title: "수정",
-      text: "진짜 수정하시겠어요?!!",
-      showCancelButton: true,
-      confirmButtonText: "넵!",
-      cancelButtonText: "취소!",
-    }).then((result) => {
-      if (result.value) {
-        UpdateAN(Update).then(() => {
-          queryClient.invalidateQueries("getAnnouncement");
-        });
-        setEdit(false);
-      }
+    UpdateAN(Update).then(() => {
+      queryClient.invalidateQueries("getAnnouncement");
     });
+    setEdit(false);
   };
   return (
     <>

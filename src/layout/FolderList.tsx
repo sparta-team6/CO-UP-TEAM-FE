@@ -11,7 +11,6 @@ import { SvgFolder } from "../elements/Icon/SvgFolder";
 import { Plus } from "../elements/Icon/Plus";
 import { ProjectKey } from "../recoil/RoomID";
 import styled from "styled-components";
-import Swal from "sweetalert2";
 
 const FolderList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
@@ -29,19 +28,9 @@ const FolderList = () => {
       dfId,
       title: title,
     };
-    Swal.fire({
-      title: "수정",
-      text: "진짜 수정하시겠어요?!!",
-      showCancelButton: true,
-      confirmButtonText: "넵!",
-      cancelButtonText: "취소!",
-    }).then((result) => {
-      if (result.value) {
-        UpdateFol(folder).then(() => {
-          queryClient.invalidateQueries("getFolders");
-          setEditTitle(false);
-        });
-      }
+    UpdateFol(folder).then(() => {
+      queryClient.invalidateQueries("getFolders");
+      setEditTitle(false);
     });
   };
 
