@@ -23,6 +23,7 @@ button{
   outline: none;
   border: none;
   background-color: transparent;
+  padding: 0;
 }
 /* span {
   color: ${(props) => props.theme.textColor}
