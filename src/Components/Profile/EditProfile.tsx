@@ -18,7 +18,6 @@ interface IForm {
 }
 
 const EditProfile = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, _, removeCookie] = useCookies(["accessToken", "refreshToken"]);
   const [user, setUser] = useRecoilState(MyProfile);
   const [imgBase64, setImgBase64] = useState<string>("");
