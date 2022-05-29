@@ -9,6 +9,7 @@ import { Cards, usePostCards } from "../../api/CardQuery";
 import { ProjectKey } from "../../recoil/RoomID";
 import { useGetProjectUser } from "../../api/UserQuery";
 import Swal from "sweetalert2";
+import { SweetAlertHook } from "../../servers/Sweet";
 
 const style = {
   position: "absolute",
@@ -48,21 +49,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
       return;
     }
     if (toDo.trim() === "") {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: "제목을 입력해주세요😊",
-      });
+      SweetAlertHook(1000, "error", "제목을 입력해주세요😕");
       return;
     }
     const info = name.split(" ");

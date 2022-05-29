@@ -170,7 +170,7 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime, nickname }:
               </div>
               <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
                 <MarkdownPreview
-                  className="whitespace-pre-wrap break-all"
+                  className="whitespace-pre-wrap break-all text-8 dark:text-[#ffffff]"
                   source={docData.contents}
                 />
               </div>

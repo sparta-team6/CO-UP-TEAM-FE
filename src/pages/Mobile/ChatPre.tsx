@@ -7,6 +7,7 @@ import { content } from "../../Components/Mobile/MobileChatCom";
 import { MyProfile } from "../../recoil/MyProfile";
 import EmptyChat from "../../images/Main/EmptyChat.png";
 import Swal from "sweetalert2";
+import { SweetAlertHook } from "../../servers/Sweet";
 
 type ChatPresenterProps = {
   messages: Array<content>;
@@ -30,21 +31,7 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
     if (message.trim() === "") return;
     if (send === true) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: "도배 금지 ❌",
-      });
+      SweetAlertHook(1000, "error", "😡 도배 금지 😡");
       setValue("message", "");
       return;
     }
@@ -77,7 +64,9 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
   };
   return (
     <>
-      <div className={`w-full h-full flex flex-col bg-[#ffffff] dark:bg-8 justify-end absolute "z-[49]"`}>
+      <div
+        className={`w-full h-full flex flex-col bg-[#ffffff] dark:bg-8 justify-end absolute "z-[49]"`}
+      >
         <div
           ref={messageBoxRef}
           className="w-full h-full sm:min-h-[612px] space-y-2 overflow-auto flex flex-col-reverse"
@@ -91,9 +80,9 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
                 key={index}
               >
                 <img
-                  className={`w-[36px] h-[36px] -mt-2 rounded-full ${
-                    loginId === box.senderLoginId ? "hidden" : ""
-                  }`}
+                  width={36}
+                  height={36}
+                  className={`-mt-2 rounded-full ${loginId === box.senderLoginId ? "hidden" : ""}`}
                   src={box.profileImage}
                   alt=""
                 />

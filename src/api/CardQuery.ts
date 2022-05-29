@@ -3,6 +3,7 @@ import { useMutation, useQuery } from "react-query";
 import Swal from "sweetalert2";
 
 import { instance } from "../servers/axios";
+import { SweetAlertHook } from "../servers/Sweet";
 
 export interface ICards {
   kbbId?: string;
@@ -27,21 +28,7 @@ export const useGetCardDetail = (kbcId: string) => {
 export const useDeleteCards = (post: string) => {
   return useMutation(async () => {
     await instance.delete(`api/buckets/cards?kbcId=${post}`).then(() => {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: "카드 삭제 완료😊",
-      });
+      SweetAlertHook(1000, "error", "카드 삭제 완료😊");
     });
   });
 };
@@ -58,21 +45,7 @@ export interface Cards {
 export const usePostCards = () => {
   return useMutation(async (post: ICards) => {
     await instance.post("api/buckets/cards/", post).then(() => {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: "카드 등록 완료😊",
-      });
+      SweetAlertHook(1000, "success", "카드 등록 완료😊");
     });
   });
 };

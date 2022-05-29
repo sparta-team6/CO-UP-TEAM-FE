@@ -8,6 +8,7 @@ import { useGetCardDetail } from "../../api/CardQuery";
 import { useUpdateCards } from "../../api/Optimistic";
 import { useGetProjectUser } from "../../api/UserQuery";
 import { ProjectKey } from "../../recoil/RoomID";
+import { SweetAlertHook } from "../../servers/Sweet";
 
 import { X } from "../Icon/X";
 
@@ -49,21 +50,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
       return;
     }
     if (data.title.trim() === "") {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: "제목을 입력해주세요😊",
-      });
+      SweetAlertHook(1000, "error", "제목을 입력해주세요😕");
       return;
     }
     const info = name.split(" ");
@@ -77,21 +64,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
     };
     mutateAsync(post).then(() => {
       queryClient.invalidateQueries(["getCard", String(Card?.data.kbbId)]);
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: "카드 수정 완료😊",
-      });
+      SweetAlertHook(1000, "success", "카드 수정 완료😊");
     });
     setEdit(false);
   };

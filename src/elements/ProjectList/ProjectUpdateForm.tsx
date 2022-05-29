@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { queryClient } from "../..";
 import { useUpdateRoom } from "../../api/ProjectQuery";
 import { resizeFile } from "../../servers/resize";
+import { SweetAlertHook } from "../../servers/Sweet";
 import { SvgEdit } from "../Icon/SvgEdit";
 
 interface IForm {
@@ -40,21 +41,7 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
     if (size === undefined) {
       mutateAsync(project).then(() => {
         queryClient.invalidateQueries("getProject");
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top",
-          showConfirmButton: false,
-          timer: 1000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-        Toast.fire({
-          icon: "success",
-          title: "프로젝트 수정 완료😊",
-        });
+        SweetAlertHook(1000, "success", "프로젝트 수정 완료😊");
         setUpOpen(false);
       });
     } else {
@@ -69,21 +56,7 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
         queryClient.invalidateQueries("getProject");
         mutateAsync(project).then(() => {
           queryClient.invalidateQueries("getProject");
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top",
-            showConfirmButton: false,
-            timer: 1000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
-          Toast.fire({
-            icon: "success",
-            title: "프로젝트 수정 완료😊",
-          });
+          SweetAlertHook(1000, "success", "프로젝트 수정 완료😊");
           setUpOpen(false);
         });
         setUpOpen(false);
@@ -137,7 +110,7 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
             <span className="w-14 mr-4 mt-2 sm:hidden">소개</span>
             <textarea
               rows={5}
-              maxLength={254}
+              maxLength={150}
               className="w-[352px] h-[95px] outline-none resize-none p-2 rounded-md border-none border border-[#D1D1D1]"
               defaultValue={roomSummary}
               {...register("summary")}

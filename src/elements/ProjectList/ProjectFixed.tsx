@@ -9,6 +9,7 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import ProjectUpdateForm from "./ProjectUpdateForm";
 import Swal from "sweetalert2";
+import { SweetAlertHook } from "../../servers/Sweet";
 
 interface IProps {
   roomID?: string;
@@ -55,21 +56,7 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
       if (result.value) {
         mutateAsync().then(() => {
           queryClient.invalidateQueries("getProject");
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top",
-            showConfirmButton: false,
-            timer: 1000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
-          Toast.fire({
-            icon: "error",
-            title: "프로젝트 삭제 완료😊",
-          });
+          SweetAlertHook(1000, "error", "프로젝트 삭제 완료😊");
         });
       }
     });
