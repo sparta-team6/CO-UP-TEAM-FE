@@ -28,7 +28,7 @@ const SlidingMain = () => {
       </div>
       <div className="hidden sm:block">
         <SlidingPanel type={"left"} onClose={() => setOpen(false)} isOpen={open} size={100}>
-          <div className="flex overflow-hidden">
+          <div className="flex overflow-hidden relative">
             <MyProjectList />
             <TeamList />
           </div>

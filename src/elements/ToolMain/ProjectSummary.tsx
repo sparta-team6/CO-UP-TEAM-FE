@@ -10,7 +10,7 @@ const ProjectSummary = () => {
         <div className="w-full flex items-center">
           <span className="text-3xl sm:text-2xl font-bold">{Project.title}</span>
         </div>
-        <span className="text-base">{Project.summary}</span>
+        <span className="text-base break-all">{Project.summary}</span>
       </div>
     </div>
   );
