@@ -9,7 +9,6 @@ import { ProjectKey } from "../../recoil/RoomID";
 import styled from "styled-components";
 import EmptyAnnouncement from "../../images/Main/EmptyAnnouncement.png";
 import DetailAnnouncement from "./DetailAnnouncement";
-import Swal from "sweetalert2";
 import { SweetAlertHook } from "../../servers/Sweet";
 
 const style = {

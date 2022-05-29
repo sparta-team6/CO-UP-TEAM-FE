@@ -1,6 +1,5 @@
 import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
-import Swal from "sweetalert2";
 
 import { instance } from "../servers/axios";
 import { SweetAlertHook } from "../servers/Sweet";

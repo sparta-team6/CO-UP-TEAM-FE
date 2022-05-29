@@ -1,7 +1,6 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { useMutation, useQuery } from "react-query";
 import { useSetRecoilState } from "recoil";
-import Swal from "sweetalert2";
 import { docId } from "../recoil/AtomDocument";
 import { instance } from "../servers/axios";
 import { SweetAlertHook } from "../servers/Sweet";

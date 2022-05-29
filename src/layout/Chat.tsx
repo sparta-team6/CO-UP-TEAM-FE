@@ -29,8 +29,8 @@ const Chat = () => {
   const senderLoginId = user.loginId;
   const { data } = useGetChatting(String(pjId));
   const result = data?.data;
-  const pageNumber = result === 20 ? data?.data[19].id : 0;
-
+  const pageNumber = result === undefined ? 0 : result[result?.length - 1]?.id;
+  // console.log(pageNumber);
   useEffect(() => {
     stompClient.connect({}, () => {
       console.log("connect");
@@ -58,7 +58,6 @@ const Chat = () => {
   return (
     <div className="w-[432px] h-[calc(100%-4rem)] bg-[#fff] dark:bg-6 border-[#E7EBF2] dark:border-[#606468] border-l-[1px] border-solid flex flex-col justify-end absolute top-16 right-0 md:hidden">
       <ChatPre
-        messages={messages}
         contents={data?.data}
         senderLoginId={senderLoginId}
         pjId={pjId}

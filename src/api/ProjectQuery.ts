@@ -42,7 +42,6 @@ export const usePostOpenRoom = () => {
   return useMutation(async (RoomId: string) => {
     await instance
       .post(`api/projects/invite?inviteCode=${RoomId}`, RoomId)
-      .then((res) => console.log(res));
   });
 };
 
@@ -59,8 +58,6 @@ export const useUpdateRoom = (postId: string) => {
   return useMutation(async (post: Room) => {
     await instance
       .patch(`api/projects/${postId}`, post)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
   });
 };
 
@@ -68,8 +65,6 @@ export const useExitRoom = (pjId: string) => {
   return useMutation(async () => {
     await instance
       .delete(`api/projects/exit/${pjId}`)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
   });
 };
 
@@ -77,7 +72,5 @@ export const useKickRoom = (pjId: string) => {
   return useMutation(async (loginId: string) => {
     await instance
       .delete(`api/projects/kick/${pjId}&${loginId}`)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
   });
 };

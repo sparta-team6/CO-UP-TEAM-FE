@@ -18,7 +18,6 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime, nickname }:
   const folderData = data?.data[data?.data.length - 1];
   const docData = folderData?.docs?.[folderData?.docs.length - 1];
   const { mutateAsync: DelDoc2 } = useDelDoc(String(docData?.docId));
-  console.log(data?.data);
 
   const onDelete = () => {
     Swal.fire({

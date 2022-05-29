@@ -30,7 +30,6 @@ const BoardList = () => {
     if (destination?.droppableId === source.droppableId) {
       const boardCopy = [...board?.data[Number(source.droppableId)].cards];
       const taskObj = boardCopy[source.index];
-      console.log(taskObj);
       boardCopy.splice(Number(source.index), 1);
       boardCopy.splice(destination?.index, 0, taskObj);
       const post = {

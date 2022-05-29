@@ -11,7 +11,6 @@ import { Sun } from "../elements/Icon/Sun";
 import { ProjectKey } from "../recoil/RoomID";
 import { themeState } from "../recoil/DarkMode";
 import styled from "styled-components";
-import React from "react";
 import Swal from "sweetalert2";
 
 const MyProjectList = () => {

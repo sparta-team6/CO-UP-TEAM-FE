@@ -10,13 +10,12 @@ import { MyProfile } from "../recoil/MyProfile";
 import EmptyChat from "../images/Main/EmptyChat.png";
 import { SweetAlertHook } from "../servers/Sweet";
 
-type ChatPresenterProps = {
-  messages: Array<content>;
+interface ChatPresenterProps {
   senderLoginId: string;
   pjId: string;
   contents: Array<content>;
   pageNumber: number;
-};
+}
 
 interface IForm {
   senderLoginId: string;
@@ -26,18 +25,20 @@ interface IForm {
   nickname: string;
 }
 
+// 주석 풀고 테스트
 const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
-//isLoading, hasNextPage, fetchNextPage, isFetching, isFetchingNextPage,
 const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterProps) => {
   const { nickname, profileImage, loginId } = useRecoilValue(MyProfile);
-  const { data } = useInfiniteQuery(["chat", pjId], () => fetchChatting(pjId, pageNumber), {
-    // getNextPageParam: (_lastPage, pages) => {
-    // },
-  });
+  const { data, isLoading, hasNextPage, fetchNextPage, isFetching, isFetchingNextPage } =
+    useInfiniteQuery(["chat", pjId], () => fetchChatting(pjId, pageNumber), {
+      getNextPageParam: (_lastPage, pages: any) => {
+        // contents.push(pages);
+        // console.log(pages);
+      },
+    });
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
-    console.log(send);
     if (message.trim() === "") return;
     if (send === true) {
       SweetAlertHook(1000, "error", "😡 도배 금지 😡");
@@ -115,7 +116,7 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
                   }`}
                 >
                   <span className="text-[#AAA] text-xs">
-                    {box.dateTime.replaceAll("-", ".").slice(11, 16)}
+                    {/* {box.dateTime.replaceAll("-", ".").slice(11, 16)} */}
                   </span>
                   <div
                     className={`min-w-[25px] min-h-[40px] bg-[#f5f5f5] dark:bg-[#3D4853] p-[10px] rounded-md`}
@@ -152,12 +153,13 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
             전송
           </button>
         </form>
-        {/* <button disabled={!hasNextPage || isFetchingNextPage} onClick={() => fetchNextPage}>
-          {isFetchingNextPage
-            ? "Loading more..."
-            : hasNextPage
-            ? "Load More"
-            : "Nothing more to load"}
+        {/* 여기서 테스트 hidden 제거 */}
+        {/* <button
+          className="hidden absolute bottom-10 w-24 h-10 bg-3 text-black"
+          disabled={!hasNextPage || isFetchingNextPage}
+          onClick={() => fetchNextPage}
+        >
+          {isFetchingNextPage ? "Loading.." : hasNextPage ? "Load More" : "Test"}
         </button>
         <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div> */}
       </div>

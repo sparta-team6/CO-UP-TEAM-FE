@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/RoomID";
-import Swal from "sweetalert2";
 import { SweetAlertHook } from "../../servers/Sweet";
 
 const CopyURL = () => {
