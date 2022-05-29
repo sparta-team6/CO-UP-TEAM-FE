@@ -27,11 +27,11 @@ const ProjectData = () => {
         return (
           <div
             key={index}
-            className="pjList relative w-[288px] h-[320px] bg-white rounded-lg flex flex-col justify-center items-center mb-[17px] sm:w-full sm:max-h-[290px] sm:mr-0 mr-[12px]"
+            className="pjList relative w-[288px] h-[320px] bg-[#ffffff] dark:bg-6 rounded-lg flex flex-col justify-center items-center mb-[17px] sm:w-full sm:max-h-[290px] sm:mr-0 mr-[12px]"
           >
             <div
               onClick={() => onClick(room.pjId)}
-              className="hover:bg-gray-200 rounded-lg w-full h-full"
+              className="hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg w-full h-full"
             >
               <div className="w-full flex flex-col justify-center items-center">
                 <img className="rounded-full w-24 h-24 mt-16" src={room.thumbnail} alt="" />

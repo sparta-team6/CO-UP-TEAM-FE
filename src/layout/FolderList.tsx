@@ -74,7 +74,7 @@ const FolderList = () => {
               <Plus />
             </div>
           </div>
-          <div className="border border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
+          <div className="border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
           {data?.data?.map((folder) => {
             return (
               <div key={folder.dfId}>
@@ -93,7 +93,13 @@ const FolderList = () => {
                     }`}
                     onSubmit={onSubmit}
                   >
-                    <input maxLength={11} defaultValue={folder.title} onChange={onChange} />
+                    <input
+                      maxLength={11}
+                      autoFocus
+                      className="border-none dark:bg-white dark:text-black dark:caret-8"
+                      defaultValue={folder.title}
+                      onChange={onChange}
+                    />
                   </form>
                   <FolderFixed dfId={folder.dfId} setEditTitle={setEditTitle} setDfId={setDfId} />
                 </div>
@@ -119,7 +125,7 @@ const FolderList = () => {
                     </div>
                   </div>
                 ))}
-                <div className="border border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
+                <div className="border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
               </div>
             );
           })}

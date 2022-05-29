@@ -31,7 +31,7 @@ export default function ProjectMake() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="rounded-xl w-[704px] h-[384px] sm:w-[320px] sm:h-[420px]">
+        <Box sx={style} className="rounded-xl w-[704px] h-[400px] sm:w-[320px] sm:h-[420px]">
           <ProjectMakeForm open={setOpen} />
         </Box>
       </Modal>

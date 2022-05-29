@@ -31,7 +31,7 @@ const Member = () => {
   const projectAdmin = data?.data[0];
   return (
     <div className="test4 w-full h-full">
-      <div className="flex items-center mt-[28px]">
+      <div className="flex items-center mt-[28px] sm:mt-[15px]">
         <SvgUser />
         <span className="text-lg font-bold ml-1 dark:text-white">팀원</span>
       </div>
@@ -45,7 +45,7 @@ const Member = () => {
           alt=""
         />
         <span className="font-semibold dark:text-white">{projectAdmin?.nickname}</span>
-        <div className="sm:left-[-30%] sm:top-[-350px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 dark:bg-8 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
+        <div className="sm:left-[-30%] sm:top-[-300px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 dark:bg-8 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
           <div className="w-full h-full px-[20px] py-[13px] flex flex-col">
             <div className="w-full h-full flex">
               <div className="h-full flex items-center span">
@@ -86,7 +86,7 @@ const Member = () => {
                 추방
               </button>
             )}
-            <div className="sm:left-[-30%] sm:top-[-400px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 dark:bg-8 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
+            <div className="sm:left-[-30%] sm:top-[-350px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 dark:bg-8 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
               <div className="w-full h-full px-[20px] py-[13px] flex flex-col">
                 <div className="w-full h-full flex">
                   <div className="h-full flex items-center span">

@@ -32,17 +32,17 @@ export default function LoginModal() {
     <div>
       <motion.div
         whileHover={{ scale: 1.05 }}
-        className="hidden w-44 rounded-md p-3 font-extrabold justify-center items-center sm:flex bg-3 text-white"
+        className="hidden w-44 rounded-md p-3 font-extrabold justify-center items-center sm:block bg-3 text-white"
         onClick={onClick}
       >
-        <span>CO-UP 시작하기</span>
+        CO-UP 시작하기
       </motion.div>
       <motion.button
         whileHover={{ scale: 1.05 }}
-        className="w-[280px] h-[80px] rounded-xl text-[32px] flex justify-center items-center mt-[70px] font-extrabold sm:hidden bg-3 text-white"
+        className="w-[194px] h-[60px] rounded-xl text-[20px] flex justify-center items-center mt-[70px] font-extrabold sm:hidden bg-3 text-white"
         onClick={handleOpen}
       >
-        <span>CO-UP 시작하기</span>
+        CO-UP 시작하기
       </motion.button>
       <Modal
         open={open}
@@ -53,7 +53,9 @@ export default function LoginModal() {
         {/* h-[370px]입니다 */}
         <Box sx={style} className="rounded-xl">
           <div className="flex flex-col items-center relative">
-            <span className="font-bold text-2xl pt-[25px]">{`로그인을 해주세요:)`}</span>
+            <div className="font-bold text-2xl pt-[25px]">
+              <span>{`로그인을 해주세요:)`}</span>
+            </div>
             <KakaoLogin />
             <GoogleLogin />
             <NaverLogin />

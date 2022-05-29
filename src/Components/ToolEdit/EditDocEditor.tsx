@@ -102,7 +102,7 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
         </div>
         <div className="flex h-[calc(100%-4rem)] items-center justify-between mx-[46px] pt-[60px] sm:pt-[115px] sm:mx-[10px]">
           <input
-            className="w-3/5 text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-black sm:w-full sm:text-left"
+            className="w-3/5 text-[32px] font-bold border-none outline-none bg-transparent placeholder:text-gray-400 text-8 dark:text-[#ffffff] sm:w-full sm:text-left"
             {...register("title")}
             placeholder="제목을 적어보세요 :)"
             defaultValue={title}

@@ -155,7 +155,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                 className="w-16 h-9 absolute bottom-[8px] -right-3 sm:right-0 sm:bottom-0 rounded-md text-base text-white bg-3"
                 type="submit"
               >
-                <span>수정</span>
+                수정
               </button>
             </form>
           </div>

@@ -1,5 +1,10 @@
 import Slider from "react-slick";
-import slider1 from "../../images/Group_26.png";
+import slider1 from "../../images/Intro/intro1.png";
+import slider2 from "../../images/Intro/intro2.png";
+import slider3 from "../../images/Intro/intro3.png";
+import slider4 from "../../images/Intro/intro4.png";
+import slider5 from "../../images/Intro/intro5.png";
+import slider6 from "../../images/Intro/intro6.png";
 
 const IntroSlider = () => {
   const settings = {
@@ -13,10 +18,12 @@ const IntroSlider = () => {
   };
   return (
     <Slider {...settings}>
-      <img width={1180} height={540} src={slider1} alt="1" />
-      <img width={1180} height={540} src={slider1} alt="2" />
-      <img width={1180} height={540} src={slider1} alt="3" />
-      <img width={1180} height={540} src={slider1} alt="4" />
+      <img width={1244} height={604} src={slider1} alt="1" />
+      <img width={1244} height={604} src={slider2} alt="2" />
+      <img width={1244} height={604} src={slider3} alt="3" />
+      <img width={1244} height={604} src={slider4} alt="4" />
+      <img width={1244} height={604} src={slider5} alt="5" />
+      <img width={1244} height={604} src={slider6} alt="6" />
     </Slider>
   );
 };

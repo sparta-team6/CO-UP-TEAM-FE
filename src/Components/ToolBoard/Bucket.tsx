@@ -116,7 +116,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
             />
             <div className="w-full flex items-center space-x-2">
               <div className="w-[78px] h-7 bg-slate-200 text-base rounded-md flex justify-center items-center">
-                <span className="leading-[21px]">{bucketId}</span>
+                <div className="leading-[21px]">{bucketId}</div>
               </div>
               <select
                 className="outline-none bg-slate-200 border-0 w-[162px] h-7 text-center rounded-md"
@@ -140,17 +140,17 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
               placeholder="내용입력"
             />
             <button
-              className="w-16 h-9 absolute bottom-[15px] right-[70px] sm:bottom-0 rounded-md text-base bg-3 text-white"
+              className="w-16 h-9 absolute bottom-[15px] right-[70px] sm:bottom-0 rounded-md text-base bg-3 text-white leading-[21px]"
               type="submit"
             >
-              <span className="leading-[21px]">등록</span>
+              등록
             </button>
             <button
               onClick={handleClose}
-              className="w-16 h-9 absolute bottom-[15px] right-0 sm:bottom-0 rounded-md text-base bg-5"
+              className="w-16 h-9 absolute bottom-[15px] right-0 sm:bottom-0 rounded-md text-base bg-5 leading-[21px]"
               type="submit"
             >
-              <span className="leading-[21px]">닫기</span>
+              닫기
             </button>
           </form>
         </Box>
@@ -164,9 +164,9 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
                   ? "bg-gray-200"
                   : info.draggingFromThisWith
                   ? "bg-gray-100"
-                  : "bg-[#E7EBF2]"
+                  : "bg-[#E7EBF2] dark:bg-7"
               } ${
-                boardOpen ? "bg-transparent" : "bg-[#E7EBF2]"
+                boardOpen ? "bg-transparent" : "bg-[#E7EBF2] dark:bg-7"
               } lg:overflow-y-scroll lg:overflow-x-hidden lg:h-[750px] sm:h-auto md:min-h-[600px] p-2 mt-3 rounded-lg w-full flex flex-col transition-colors ease-in-out delay-100`}
               ref={magic.innerRef}
               {...magic.droppableProps}
