@@ -23,7 +23,6 @@ const stompClient: Stomp.Client = Stomp.over(sockJS);
 stompClient.debug = () => {};
 
 const Chat = () => {
-  const [messages, setMessages] = React.useState<content[]>([]);
   const { pjId } = useRecoilValue(ProjectKey);
   const user = useRecoilValue(MyProfile);
   const senderLoginId = user.loginId;
@@ -34,27 +33,19 @@ const Chat = () => {
   useEffect(() => {
     stompClient.connect({}, () => {
       console.log("connect");
-      stompClient.subscribe(`/sub/chatting/${pjId}`, (data) => {
-        const newMessage: content = JSON.parse(data.body) as content;
-        addMessage(newMessage);
+      stompClient.subscribe(`/sub/chatting/${pjId}`, () => {
         queryClient.invalidateQueries("getChatting");
       });
     });
-  }, [messages]);
+  }, [result]);
 
   useEffect(() => {
     setTimeout(() => {
-      stompClient.subscribe(`/sub/chatting/${pjId}`, async (data) => {
-        const newMessage: content = (await JSON.parse(data.body)) as content;
-        addMessage(newMessage);
+      stompClient.subscribe(`/sub/chatting/${pjId}`, async () => {
         queryClient.invalidateQueries("getChatting");
       });
     }, 500);
-  }, [pjId, messages]);
-
-  const addMessage = (content: content) => {
-    setMessages((prev) => [...prev, content]);
-  };
+  }, [pjId, result]);
   return (
     <div className="w-[432px] h-[calc(100%-4rem)] bg-[#fff] dark:bg-6 border-[#E7EBF2] dark:border-[#606468] border-l-[1px] border-solid flex flex-col justify-end absolute top-16 right-0 md:hidden">
       <ChatPre

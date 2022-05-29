@@ -327,12 +327,14 @@ abbr[title]{
   left: -54px;
 } */
 .slick-dots li button:before{
+  margin-top: 35px;
   font-size: 10px;
   width: 10px;
   height: 10px;
+  
 }
 .slick-dots li.slick-active button:before{
-  color: #5F99FF;
+  color: ${(props) => props.theme.textColor} !important;
 }
 
 .slick-dots {
@@ -350,6 +352,20 @@ abbr[title]{
   padding-top: 14px !important;
   font-size: 16px !important;
 }
+
+.toastui-editor-tooltip > .text{
+  color:white
+}
+
+#toastuiAltTextInput {
+  background-color: white;
+}
+
+.wmde-markdown > p > img {
+  max-width: 500px;
+  max-height: 500px;
+}
+
 @media screen and (max-width: 768px) {
   .toastui-editor-defaultUI .ProseMirror{
     padding-left: 10px !important;
@@ -361,6 +377,24 @@ abbr[title]{
     height: 30px;
   }
 }
+
+@media only screen and (max-width: 480px){
+  .toastui-editor-popup {
+    max-width: 300px;
+    margin-left: -10px;
+}
+.toastui-editor-dropdown-toolbar {
+  display: flex;
+  flex-direction: column;
+} .toastui-editor-toolbar-group {
+  background-color: #f0f3f7;
+}
+.wmde-markdown > p > img {
+  max-width: 300px;
+  max-height: 300px;
+}
+}
+
 
 /* sweetalert2 */
 .swal2-container{
@@ -385,7 +419,8 @@ foreignObject{
 .apexcharts-svg{
   height: 225px !important;
 }
-SvgjsFeFuncR1393{
-  color: red;
+
+.apexcharts-tooltip-y-group > span {
+  color:black !important
 }
 `;

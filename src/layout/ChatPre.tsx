@@ -116,7 +116,7 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
                   }`}
                 >
                   <span className="text-[#AAA] text-xs">
-                    {/* {box.dateTime.replaceAll("-", ".").slice(11, 16)} */}
+                    {box.dateTime.replaceAll("-", ".").slice(11, 16)}
                   </span>
                   <div
                     className={`min-w-[25px] min-h-[40px] bg-[#f5f5f5] dark:bg-[#3D4853] p-[10px] rounded-md`}
