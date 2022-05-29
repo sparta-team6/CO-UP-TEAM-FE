@@ -77,6 +77,7 @@ body {
 }
 textarea {
   border-width: 0px;
+  caret-color: ${(props) => props.theme.textColor};
 }
 ol, ul {
 	list-style: none;
@@ -108,9 +109,21 @@ a{
 
 /* calendar */
 
-
-.react-calendar__navigation button:disabled {
+.react-calendar {
   background-color: ${(props) => props.theme.bgColor}
+}
+
+
+.react-calendar__tile ,.react-calendar__month-view__days__day {
+  color: ${(prop) => prop.theme.textColor};
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: red;
+}
+
+.react-calendar__tile--active {
+  color:white;
 }
 
 .react-calendar__navigation button {
@@ -118,6 +131,10 @@ a{
   min-width: 44px;
   background: none;
   margin-top: 15px;
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: ${(props) => props.theme.bgColor}
 }
 
 abbr[title] {
