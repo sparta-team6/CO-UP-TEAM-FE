@@ -108,13 +108,13 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
         <Box sx={style} className="w-[704px] h-[384px] sm:w-[90%] rounded-xl">
           <div className="w-full h-full relative">
             <input
-              className="w-full outline-none text-2xl border-none placeholder:text-black placeholder:font-semibold font-semibold"
+              className="w-full outline-none text-2xl mb-[10px] border-none placeholder:text-black placeholder:font-semibold font-semibold"
               defaultValue={title}
               readOnly
             />
-            <div className="mt-[10px] text-[#666] pl-[2px]  ">
+            <span className="pl-[2px] text-[#999999]">
               {modifiedTime?.replaceAll("-", ".").slice(0, 10)}
-            </div>
+            </span>
             <ScrollTextArea
               className="w-full h-[150px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg"
               defaultValue={contents}
@@ -126,7 +126,7 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
                 className="bg-5 w-[58px] h-[37px] rounded-md ml-[4px]"
                 type="button"
               >
-                <span className="leading-[21px]">닫기</span>
+                닫기
               </button>
             </div>
           </div>

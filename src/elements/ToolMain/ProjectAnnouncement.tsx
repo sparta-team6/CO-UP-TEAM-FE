@@ -1,5 +1,5 @@
 import { Box, Modal } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
@@ -90,7 +90,7 @@ const ProjectAnnouncement = () => {
   };
 
   return (
-    <div className="w-full h-full bg-[#ffffff] dark:bg-7 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid rounded-2xl pl-[20px] pr-[10px] sm:px-[20px] flex flex-col">
+    <div className="w-full h-full bg-[#ffffff] dark:bg-7 border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid rounded-2xl pl-[20px] pr-[10px] sm:px-[20px] flex flex-col">
       <div className="w-full flex justify-center">
         <div className="w-full flex items-center justify-between mb-[21px] px-[10px] sm:px-0 mt-[28px]">
           <span className="font-bold text-xl">공지사항</span>
@@ -109,29 +109,32 @@ const ProjectAnnouncement = () => {
           <form className="w-full h-full relative" onSubmit={handleSubmit(onSubmit)}>
             <input
               autoFocus
-              className="w-full mb-[10px] outline-none text-2xl border-none placeholder:text-[#B0B0B0] placeholder:font-semibold font-semibold"
+              className="w-full mb-[10px] outline-none text-2xl border-none placeholder:font-semibold font-semibold"
               {...register("title")}
               type="text"
               placeholder="공지 제목을 적어주세요 :)"
               maxLength={30}
             />
-            <span className="text-[#666] pl-[2px]">{dateString}</span>
+            <span className="pl-[2px] text-[#999999]">{dateString}</span>
             <ScrollTextArea
-              className="w-full h-[160px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg placeholder:text-[#B0B0B0]"
+              className="w-full h-[160px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg"
               {...register("content")}
               maxLength={254}
               placeholder="내용을 입력해주세요"
             />
             <div className="absolute bottom-0 right-0">
-              <button className="text-white bg-3 w-[58px] h-[37px] rounded-md" type="submit">
-                <span className="leading-[21px]">등록</span>
+              <button
+                className="text-white bg-3 w-[58px] h-[37px] rounded-md leading-[21px]"
+                type="submit"
+              >
+                등록
               </button>
               <button
                 onClick={handleClose}
-                className="bg-5 w-[58px] h-[37px] rounded-md ml-[4px]"
+                className="bg-5 w-[58px] h-[37px] rounded-md ml-[4px] leading-[21px]"
                 type="button"
               >
-                <span className="leading-[21px]">닫기</span>
+                닫기
               </button>
             </div>
           </form>
@@ -143,7 +146,7 @@ const ProjectAnnouncement = () => {
           <span className="text-lg text-[#B0B0B0] mt-[20px]">팀원들에게 메세지를 전달해보세요</span>
         </div>
       ) : (
-        <Scroll className="w-full flex flex-col-reverse mb-[20px] px-[10px] sm:p-0 overflow-y-auto">
+        <Scroll className="w-full flex flex-col mb-[20px] px-[10px] sm:p-0 overflow-y-auto">
           {Ann?.data.map((ann, index) => {
             return (
               <DetailAnnouncement

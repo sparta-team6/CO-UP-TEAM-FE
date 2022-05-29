@@ -122,10 +122,10 @@ const DraggableCard = ({
                 <div className="w-full flex items-center space-x-2 mt-[28px] ">
                   <span className="text-xl sm:text-sm mr-1">2022.XX.XX</span>
                   <div className="text-basesm:text-sm w-[50px] h-7 rounded-md bg-5 flex justify-center items-center">
-                    <span className="mt-[3px] text-base">{bucketId}</span>
+                    <div className="mt-[3px] text-base">{bucketId}</div>
                   </div>
                   <div className="text-base sm:text-sm min-w-[80px] h-7 rounded-md bg-5 flex px-2 justify-center items-center">
-                    <span className="mt-[3px] text-base">{toDoName}</span>
+                    <div className="mt-[3px] text-base">{toDoName}</div>
                   </div>
                 </div>
                 <div className="max-h-64 pt-4 pb-8 sm:py-4 text-lg">

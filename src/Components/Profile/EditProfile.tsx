@@ -69,7 +69,7 @@ const EditProfile = () => {
         }
       });
     } else {
-      const image = await resizeFile(size, 50, 50, "base64");
+      const image = await resizeFile(size, 100, 100, "base64");
       const profile = {
         loginId: user?.loginId,
         nickname: data.nickName,
@@ -158,21 +158,21 @@ const EditProfile = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <input
-            className="text-center text-2xl h-14 rounded-md border-none sm:h-[36px] sm:text-base "
+            className="text-center text-2xl h-14 rounded-md border-none sm:h-[36px] sm:text-base  bg-6"
             placeholder="닉네임"
             defaultValue={user?.nickname}
             maxLength={12}
             {...register("nickName")}
           />
           <input
-            className="text-center text-2xl h-14 rounded-md border-none sm:h-[36px] sm:text-base "
+            className="text-center text-2xl h-14 rounded-md border-none sm:h-[36px] sm:text-base  bg-6"
             placeholder="URL"
             defaultValue={user?.url}
             maxLength={40}
             {...register("url")}
           />
           <textarea
-            className="text-center text-2xl h-[150px] sm:h-[74px] sm:text-base rounded-md border-none resize-none"
+            className="text-center text-2xl h-[150px] sm:h-[74px] sm:text-base rounded-md border-none resize-none bg-6"
             placeholder="자기소개"
             defaultValue={user?.aboutMe}
             maxLength={254}
@@ -181,10 +181,10 @@ const EditProfile = () => {
           <div className="text-center sm:pt-[10px]">
             <button
               onClick={onLogOut}
-              className="w-[160px] h-[48px] sm:w-[124px] sm:h-[40px] bg-[#D7DCE5] rounded-xl sm:rounded-[4px] mr-[27px] sm:mr-[6px]"
+              className="w-[160px] h-[48px] sm:w-[124px] sm:h-[40px] bg-[#D7DCE5] rounded-xl sm:rounded-[4px] mr-[27px] sm:mr-[6px] text-lg sm:text-base"
               type="button"
             >
-              <span className="text-white text-lg sm:text-base">로그아웃</span>
+              로그아웃
             </button>
             <button
               className="w-[160px] h-[48px] sm:w-[124px] sm:h-[40px] bg-3 rounded-xl sm:rounded-[4px]"

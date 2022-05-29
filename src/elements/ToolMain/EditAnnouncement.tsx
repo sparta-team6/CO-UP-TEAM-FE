@@ -105,7 +105,7 @@ const EditAnnouncement = ({ title, contents, noticeId, modifiedTime, edit, setEd
               placeholder="공지 제목을 적어주세요 :)"
               defaultValue={title}
             />
-            <div className="text-[#666] pl-[2px]">
+            <div className="text-[#999999] pl-[2px]">
               {modifiedTime?.replaceAll("-", ".").slice(0, 10)}
             </div>
             <Scroll
@@ -116,15 +116,15 @@ const EditAnnouncement = ({ title, contents, noticeId, modifiedTime, edit, setEd
               defaultValue={contents}
             />
             <div className="absolute bottom-0 right-0">
-              <button className="text-white bg-3 w-[58px] h-[37px] rounded-md" type="submit">
-                <span className="leading-[21px]">수정</span>
+              <button className="text-white bg-3 w-[58px] h-[37px] rounded-md leading-[21px]" type="submit">
+                수정
               </button>
               <button
                 onClick={handleClose}
-                className="bg-5 w-[58px] h-[37px] rounded-md ml-[4px]"
+                className="bg-5 w-[58px] h-[37px] rounded-md ml-[4px] leading-[21px]"
                 type="button"
               >
-                <span className="leading-[21px]">닫기</span>
+                닫기
               </button>
             </div>
           </form>

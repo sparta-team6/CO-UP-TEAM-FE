@@ -18,7 +18,7 @@ const Footer = () => {
   return (
     <>
       {location.pathname.includes("tool") && !FixDoc && !ChatMatch && (
-        <nav className="hidden w-full h-20 fixed bottom-0 sm:flex justify-around items-center z-[1000]">
+        <nav className="hidden w-full h-[70px] fixed bottom-0 sm:flex justify-around items-center z-[1000]">
           <Link to={`/tool/${pjId}`}>
             <div
               className={`w-full h-full flex flex-col items-center space-y-2 font-semibold ${

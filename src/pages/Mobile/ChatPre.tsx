@@ -77,7 +77,7 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
   };
   return (
     <>
-      <div className={`w-full h-full flex flex-col justify-end absolute "z-[49]"`}>
+      <div className={`w-full h-full flex flex-col bg-[#ffffff] dark:bg-8 justify-end absolute "z-[49]"`}>
         <div
           ref={messageBoxRef}
           className="w-full h-full sm:min-h-[612px] space-y-2 overflow-auto flex flex-col-reverse"
@@ -145,7 +145,7 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
           onSubmit={handleSubmit(handleonEnter)}
         >
           <textarea
-            className="w-full h-[86px] pl-[32px] pt-[20px] text-[#B0B0B0] bg-[#F5F5F5] outline-none resize-none border-0"
+            className="w-full h-[86px] pl-[32px] pt-[20px] text-[#B0B0B0] outline-none resize-none border-0 border-[#E7EBF2] dark:text-white dark:border dark:border-[#666] bg-[#F5F5F5] dark:bg-[#3D4853] dark:placeholder:text-[#B0B0B0]"
             onKeyUp={onKeyDown}
             maxLength={300}
             {...register("message")}

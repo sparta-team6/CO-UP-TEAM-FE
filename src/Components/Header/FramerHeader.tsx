@@ -5,6 +5,7 @@ import React from "react";
 import { Link, useMatch } from "react-router-dom";
 import { SvgUser } from "../../elements/Icon/SvgUser";
 import { ProjectKey } from "../../recoil/RoomID";
+import { MChat } from "../../elements/Icon/mobile/MChat";
 
 const FramerHeader = () => {
   const { pjId } = useRecoilValue(ProjectKey);
@@ -56,11 +57,13 @@ const FramerHeader = () => {
           </div>
         </div>
         <nav className="h-full flex justify-around items-center sm:hidden dark:bg-6">
-          <Link to={`/tool/${pjId}/chat`} className="hidden md:block">
-            <span className="dark:text-white">채팅</span>
+          <Link to={`/tool/${pjId}/chat`} className="hidden md:flex mr-5 w-8 h-8 justify-center items-center rounded-full bg-2">
+            <span className="dark:text-white">
+              <MChat />
+            </span>
           </Link>
           <Link to="/profile" className="sm:hidden">
-            <div className="w-8 h-8 flex justify-center items-center rounded-full bg-3">
+            <div className="w-8 h-8 flex justify-center items-center rounded-full">
               <SvgUser />
             </div>
           </Link>

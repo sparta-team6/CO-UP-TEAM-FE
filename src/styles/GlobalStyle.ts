@@ -78,12 +78,20 @@ body {
 textarea {
   border-width: 0px;
   caret-color: ${(props) => props.theme.textColor};
-}
-ol, ul {
-	list-style: none;
+  background-color: ${(props) => props.theme.bgColor};
+  color : ${(props) => props.theme.textColor};
 }
 input {
   outline:none;
+  caret-color: ${(props) => props.theme.textColor};
+  background-color: ${(props) => props.theme.bgColor};
+  color : ${(props) => props.theme.textColor};
+}
+textarea::placeholder , input::placeholder {
+  color:${(props) => props.theme.placeColor};
+}
+ol, ul {
+	list-style: none;
 }
 blockquote, q {
 	quotes: none;
@@ -108,14 +116,148 @@ a{
 }
 
 /* calendar */
+.react-calendar__navigation {
+  height: 35px;
+}
+.react-calendar {
+  width: 320px;
+  height: 310px;
+  max-width: 100%;
+  border: none;
+  border-radius: 0.8em;
+  background-color: white;
+}
+.react-calendar__navigation__arrow {
+  font-size: 30px;
+}
+.react-calendar__navigation__label {
+  padding-top: 4px;
+}
+.react-calendar__navigation__label span {
+  font-size: 20px;
+  color: #5f99ff;
+}
+.react-calendar__navigation button:disabled {
+  background-color: white
+}
+
+.react-calendar__tile ,.react-calendar__month-view__days__day {
+  color: black
+}
+
+.react-calendar__navigation button {
+  color: black;
+  min-width: 44px;
+  background: none;
+  margin-top: 15px;
+}
+.react-calendar__navigation {
+display: flex;
+margin-bottom: 20px;
+}
+
+abbr[title] {
+  text-decoration: none;
+  cursor: auto;
+  color: black;
+}
+
+.react-calendar__month-view__days {
+  width: 320px;
+}
+.react-calendar__month-view__days__day {
+  padding: 14px 0;
+}
+.react-calendar__month-view__days__day--weekend {
+  color: #d10000;
+}
+.react-calendar__month-view__weekdays__weekday {
+  padding: 5px 3px;
+    text-align: center;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background: #f8f8fa;
+  color: #5f99ff;
+  border-radius: 30px;
+}
+.react-calendar__tile--now {
+  background: #f8f8fa;
+  border-radius: 30px;
+  color: black;
+}
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #f8f8fa;
+  border-radius: 30px;
+  color: #5f99ff;
+}
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+  background: #f8f8fa;
+}
+.react-calendar__tile--active {
+  background: #5f99ff;
+  border-radius: 30px;
+  color: white;
+}
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #5f99ff;
+  color: white;
+}
+
+@media screen and (max-width: 1300px) {
+  .react-calendar {
+    width: 100%;
+    max-width: 300px;
+    max-height: 300px;
+    padding: 0;
+  }
+  .react-calendar__month-view__days {
+    width: 300px;
+  }
+  .react-calendar__navigation {
+    margin-bottom: 10px;
+    display: flex;
+  }
+  .react-calendar__month-view__days__day {
+    padding: 14px 0;
+  }
+  .react-calendar__month-view__weekdays {
+    display: flex;
+  }
+  .react-calendar__month-view__weekdays__weekday {
+    padding: 5px 3px;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .react-calendar {
+    width: 100%;
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 0.8em;
+  }
+  .react-calendar__month-view__days {
+    width: 250px;
+  }
+  .react-calendar__navigation {
+    margin-bottom: 5px;
+  }
+  .react-calendar__month-view__days__day {
+    padding: 9px 0;
+  }
+}
 
 .react-calendar {
   background-color: ${(props) => props.theme.bgColor}
 }
 
-
 .react-calendar__tile ,.react-calendar__month-view__days__day {
   color: ${(prop) => prop.theme.textColor};
+  /* font-weight: 600; */
 }
 
 .react-calendar__month-view__days__day--weekend {
@@ -169,20 +311,25 @@ abbr[title]{
   cursor: auto;
 }
 
+.MuiBox-root {
+  background-color: ${(props) => props.theme.bgColor}
+}
+
 /* react-slick */
 .slick-arrow::before{
   font-size: 50px;
+  color:transparent;
+  cursor:default
 }
-.slick-arrow.slick-prev{
+/* .slick-arrow.slick-prev{
   position: absolute;
   top: 272px;
   left: -54px;
-}
+} */
 .slick-dots li button:before{
-  line-height: 4;
-  font-size: 14px;
-  width: 17px;
-  height: 17px;
+  font-size: 10px;
+  width: 10px;
+  height: 10px;
 }
 .slick-dots li.slick-active button:before{
   color: #5F99FF;
@@ -193,9 +340,11 @@ abbr[title]{
 }
 
 /* editor */
+ 
 .toastui-editor-defaultUI{
   border: none;
 }
+
 .toastui-editor-defaultUI .ProseMirror{
   padding-left: 44px !important;
   padding-top: 14px !important;

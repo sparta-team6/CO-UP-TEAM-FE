@@ -124,7 +124,7 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
           onSubmit={handleSubmit(handleonEnter)}
         >
           <textarea
-            className="w-full h-full p-[18px] rounded-xl border-[#E7EBF2] dark:border dark:border-[#666] outline-none resize-none relative bg-[#F5F5F5] dark:bg-[#3D4853] dark:placeholder:text-[#B0B0B0]"
+            className="w-full h-full p-[18px] rounded-xl border-[#E7EBF2] dark:text-white dark:border dark:border-[#666] outline-none resize-none relative bg-[#F5F5F5] dark:bg-[#3D4853] dark:placeholder:text-[#B0B0B0]"
             onKeyUp={onKeyDown}
             autoComplete="off"
             placeholder="메세지를 입력하세요."
@@ -135,7 +135,7 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
             className="w-[56px] h-[36px] absolute right-9 bottom-10 text-white bg-3 rounded-[4px]"
             type="submit"
           >
-            <span>전송</span>
+            전송
           </button>
         </form>
         {/* <button disabled={!hasNextPage || isFetchingNextPage} onClick={() => fetchNextPage}>

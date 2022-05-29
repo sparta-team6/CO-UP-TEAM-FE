@@ -8,7 +8,7 @@
   max-width: 100%;
   border: none;
   border-radius: 0.8em;
-
+  background-color: white;
 }
 .react-calendar__navigation__arrow {
   font-size: 30px;
@@ -20,6 +20,27 @@
   font-size: 20px;
   color: #5f99ff;
 }
+.react-calendar__navigation button:disabled {
+  background-color: white
+}
+
+.react-calendar__tile ,.react-calendar__month-view__days__day {
+  color: black
+}
+
+.react-calendar__navigation button {
+  color: black;
+  min-width: 44px;
+  background: none;
+  margin-top: 15px;
+}
+
+abbr[title] {
+  text-decoration: none;
+  cursor: auto;
+  color: black;
+}
+
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
   background-color: white;
