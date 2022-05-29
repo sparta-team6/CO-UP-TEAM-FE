@@ -7,7 +7,7 @@ const GoogleLogin = () => {
   };
   return (
     <div onClick={onClick} className="relative">
-      <button className="w-[314px] h-[54px] text-black bg-white mt-[24px] rounded-lg">
+      <button className="w-[314px] h-[54px] text-black bg-white border mt-[24px] rounded-lg">
         구글 로그인
       </button>
       <img width={40} height={40} src={Google} alt="" className="top-[31px] left-10 absolute" />

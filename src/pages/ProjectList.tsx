@@ -31,7 +31,7 @@ const ProjectList = () => {
   // }, [navigate]);
 
   return (
-    <div className="w-full min-h-screen bg-[#f0f3f7] dark:bg-7">
+    <div className="pl1 w-full min-h-screen bg-[#f0f3f7] dark:bg-7">
       <div className="w-full h-auto  flex flex-col items-center justify-center relative">
         <div className="w-full h-full flex flex-col items-center pt-36 sm:pt-32">
           <div className=" w-[1188px] flex justify-between items-center mb-8 md:w-[90%]">
@@ -40,7 +40,7 @@ const ProjectList = () => {
           </div>
           <div className="w-[1188px] h-full flex flex-wrap justify-start sm:justify-center md:w-[90%] md:h-auto">
             <ProjectData />
-            <div className="w-[288px] h-[320px] rounded-lg border-[1px] border-solid border-gray-300 flex justify-center items-center sm:w-full mb-[20px]">
+            <div className="pl2 w-[288px] h-[320px] rounded-lg border-[1px] border-solid border-gray-300 flex justify-center items-center sm:w-full mb-[20px]">
               <ProjectMake />
             </div>
           </div>

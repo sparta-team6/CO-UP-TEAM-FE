@@ -11,7 +11,7 @@ const MemberChart = () => {
   const { data } = useGetManagers(pjId);
   const result = data?.data;
   return (
-    <>
+    <div className="test7">
       {result?.length === 0 ? (
         <div className="w-full h-full p-8">
           <div className="flex justify-between items-center">
@@ -113,7 +113,7 @@ const MemberChart = () => {
           </Scroll>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

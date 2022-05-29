@@ -7,7 +7,7 @@ import Calendar from "react-calendar";
 const CalendarEL = () => {
   const [value, onChange] = useState(new Date());
   return (
-    <div className="w-full h-[332px] bg-[#ffffff] dark:bg-7 border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid md:w-full md:h-full sm:h-full md:mt-4 rounded-xl flex justify-center items-center">
+    <div className="test6 w-full h-[332px] bg-[#ffffff] dark:bg-7 border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid md:w-full md:h-full sm:h-full md:mt-4 rounded-xl flex justify-center items-center">
       <Calendar
         onChange={onChange}
         value={value}

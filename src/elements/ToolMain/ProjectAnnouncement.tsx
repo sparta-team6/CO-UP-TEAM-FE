@@ -62,7 +62,7 @@ const ProjectAnnouncement = () => {
   };
 
   return (
-    <div className="w-full h-full bg-[#ffffff] dark:bg-7 border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid rounded-2xl pl-[20px] pr-[10px] sm:px-[20px] flex flex-col">
+    <div className="test5 w-full h-full bg-[#ffffff] dark:bg-7 border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid rounded-2xl pl-[20px] pr-[10px] sm:px-[20px] flex flex-col">
       <div className="w-full flex justify-center">
         <div className="w-full flex items-center justify-between mb-[21px] px-[10px] sm:px-0 mt-[28px]">
           <span className="font-bold text-xl">공지사항</span>
