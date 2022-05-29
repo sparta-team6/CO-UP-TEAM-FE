@@ -4,19 +4,25 @@ import MemberChart from "../../Components/ToolMain/MemberChart";
 import ProjectAnnouncement from "../../elements/ToolMain/ProjectAnnouncement";
 import ProjectMain from "../../Components/ToolMain/ProjectMain";
 import SlidingMain from "../../Components/ToolMain/SlidingMain";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { HandleOpen } from "../../recoil/AtomsInterface";
 import { useEffect } from "react";
 import JoyrideContainer from "../../Components/Tutorial/JoyrideContainer";
 import { mainSteps } from "../../Components/Tutorial/Steps";
+import { Helmet } from "react-helmet";
+import { ProjectKey } from "../../recoil/RoomID";
 
 const ToolMain = () => {
+  const { title } = useRecoilValue(ProjectKey);
   const setOpen = useSetRecoilState(HandleOpen);
   useEffect(() => {
     setOpen(false);
   }, []);
   return (
     <>
+      <Helmet>
+        <title>CO-UP | {title}</title>
+      </Helmet>
       <JoyrideContainer run={false} steps={mainSteps} />
       <div className="test w-full h-screen flex justify-between relative pt-16 md:h-full md:justify-start">
         <SlidingMain />
