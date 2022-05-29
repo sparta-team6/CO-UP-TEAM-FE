@@ -312,7 +312,7 @@ abbr[title]{
 }
 
 .MuiBox-root {
-  background-color: ${(props) => props.theme.bgColor}
+  background-color: ${(props) => props.theme.bgColor} !important;
 }
 
 /* react-slick */
