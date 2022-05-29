@@ -3,17 +3,18 @@ import { GlobalStyle } from "./styles/GlobalStyle";
 import "./styles/tailwind.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Suspense } from "react";
-import Spinner from "./layout/Spinner";
 import { useRecoilValue } from "recoil";
 import { themeState } from "./recoil/DarkMode";
 import { ThemeProvider } from "styled-components";
 import { Darktheme, LightTheme } from "./styles/theme";
+import SpinnerDark from "./layout/SpinnerDark";
+import SpinnerLigth from "./layout/SpinnerLigth";
 
 const App = () => {
   const theme = useRecoilValue(themeState);
   return (
     <ThemeProvider theme={theme ? Darktheme : LightTheme}>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={theme ? <SpinnerDark /> : <SpinnerLigth />}>
         <GlobalStyle />
         <Router />
       </Suspense>
