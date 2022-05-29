@@ -11,8 +11,8 @@ import { Helmet } from "react-helmet";
 import { ProjectKey } from "../../recoil/RoomID";
 
 const ToolMain = () => {
-  const { title } = useRecoilValue(ProjectKey);
   const setOpen = useSetRecoilState(HandleOpen);
+  const { title } = useRecoilValue(ProjectKey);
   useEffect(() => {
     setOpen(false);
   }, []);
@@ -34,17 +34,14 @@ const ToolMain = () => {
                 <CalendarEL />
               </div>
             </div>
-            <div className="w-full max-w-[396px] min-w-max h-full ml-[12px] md:ml-0 md:max-w-full md:h-full sm:h-full">
-              <CalendarEL />
+            <div className="w-full max-w-[1018px] h-[381px] mt-[10px] sm:mt-4 sm:mb-[100px]">
+              <div className="w-full bg-[#ffffff] dark:bg-7 border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid rounded-2xl h-full">
+                <MemberChart />
+              </div>
             </div>
           </div>
-          <div className="w-full max-w-[1018px] h-[381px] mt-[10px] sm:mt-4 sm:mb-[100px]">
-            <div className="w-full bg-[#ffffff] dark:bg-7 border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid rounded-2xl h-full">
-              <MemberChart />
-            </div>
-          </div>
+          <Chat />
         </div>
-        <Chat />
       </div>
     </>
   );
