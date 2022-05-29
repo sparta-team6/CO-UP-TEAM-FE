@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <React.Fragment>
-      <JoyrideContainer run={open} steps={projectListSteps} />
+      <JoyrideContainer run={open} setOpen={setOpen} steps={projectListSteps} />
       {location.pathname.includes("tool") ? (
         <FramerHeader />
       ) : location.pathname.includes("projectList") || location.pathname.includes("profile") ? (
@@ -29,9 +29,11 @@ const Header = () => {
             <div onClick={onClick}>
               <HelpCircle />
             </div>
-            <Link to="/profile">
-              <SvgUser />
-            </Link>
+            <div className="pl4">
+              <Link to="/profile">
+                <SvgUser />
+              </Link>
+            </div>
           </div>
         </nav>
       ) : null}
