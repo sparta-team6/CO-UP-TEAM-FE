@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { queryClient } from "../..";
 import { useUpdateAnnouncement } from "../../api/AnnouncementQuery";
 import { ProjectKey } from "../../recoil/RoomID";
+import { SweetAlertHook } from "../../servers/Sweet";
 
 const style = {
   position: "absolute",
@@ -40,39 +41,11 @@ const EditAnnouncement = ({ title, contents, noticeId, modifiedTime, edit, setEd
   const { register, handleSubmit } = useForm<IForm>();
   const onSubmit: SubmitHandler<IForm> = (data) => {
     if (!data.title) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: "공지 제목을 적어주세요😊",
-      });
+      SweetAlertHook(1000, "error", "공지 제목을 적어주세요😕");
       return;
     }
     if (!data.content) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: "공지 내용을 적어주세요😊",
-      });
+      SweetAlertHook(1000, "error", "공지 내용을 적어주세요😕");
       return;
     }
 
@@ -116,7 +89,10 @@ const EditAnnouncement = ({ title, contents, noticeId, modifiedTime, edit, setEd
               defaultValue={contents}
             />
             <div className="absolute bottom-0 right-0">
-              <button className="text-white bg-3 w-[58px] h-[37px] rounded-md leading-[21px]" type="submit">
+              <button
+                className="text-white bg-3 w-[58px] h-[37px] rounded-md leading-[21px]"
+                type="submit"
+              >
                 수정
               </button>
               <button

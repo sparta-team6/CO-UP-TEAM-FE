@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
@@ -8,6 +8,7 @@ import { useInfiniteQuery } from "react-query";
 import { useRecoilValue } from "recoil";
 import { MyProfile } from "../recoil/MyProfile";
 import EmptyChat from "../images/Main/EmptyChat.png";
+import { SweetAlertHook } from "../servers/Sweet";
 
 type ChatPresenterProps = {
   messages: Array<content>;
@@ -36,7 +37,13 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
   });
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
+    console.log(send);
     if (message.trim() === "") return;
+    if (send === true) {
+      SweetAlertHook(1000, "error", "😡 도배 금지 😡");
+      setValue("message", "");
+      return;
+    }
     const newMessage = { message: message, senderLoginId, pjId, profileImage, nickname };
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
     setValue("message", "");
@@ -47,8 +54,12 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
       messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
     }
   };
+  const [send, setSend] = useState(false);
   useEffect(() => {
     scrollToBottom();
+    setTimeout(() => {
+      setSend(false);
+    }, 500);
   }, [contents]);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -56,6 +67,7 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
     const newMessage = { message: data.text, senderLoginId, pjId, profileImage, nickname };
     if (e.key === "Enter") {
       if (!e.shiftKey) {
+        setSend(true);
         handleonEnter(newMessage);
       }
     }
@@ -81,7 +93,9 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
               key={index}
             >
               <img
-                className={`w-[36px] h-[36px] min-w-[36px] min-h-[36px] -mt-2 rounded-full ${
+                width={36}
+                height={36}
+                className={`min-w-[36px] min-h-[36px] -mt-2 rounded-full ${
                   loginId === box.senderLoginId ? "hidden" : ""
                 }`}
                 src={box.profileImage}

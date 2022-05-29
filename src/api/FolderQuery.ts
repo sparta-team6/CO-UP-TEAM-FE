@@ -4,6 +4,7 @@ import { useSetRecoilState } from "recoil";
 import Swal from "sweetalert2";
 import { dfId } from "../recoil/AtomDocument";
 import { instance } from "../servers/axios";
+import { SweetAlertHook } from "../servers/Sweet";
 import { Docs } from "./DocumentQuery";
 
 export interface Folders {
@@ -37,21 +38,7 @@ export const useAddFolder = () => {
 export const useDelFolder = (dfId: string) => {
   return useMutation(async () => {
     await instance.delete(`api/folders/?dfId=${dfId}`).then(() => {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: "폴더 삭제 완료😊",
-      });
+      SweetAlertHook(1000, "error", "폴더 삭제 완료😊");
     });
   });
 };
@@ -59,21 +46,7 @@ export const useDelFolder = (dfId: string) => {
 export const useUpdateFolder = (dfId: string) => {
   return useMutation(async (Folder: Folders) => {
     await instance.patch(`api/folders/?dfId=${dfId}`, Folder).then(() => {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: "폴더 제목 수정 완료😊",
-      });
+      SweetAlertHook(1000, "success", "폴더 수정 완료😊");
     });
   });
 };

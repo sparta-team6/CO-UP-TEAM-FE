@@ -21,6 +21,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
 import Swal from "sweetalert2";
+import { SweetAlertHook } from "../../servers/Sweet";
 
 interface IForm {
   title: string;
@@ -36,39 +37,11 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
   const onValid: SubmitHandler<IForm> = (data) => {
     if (editorRef.current === null) return;
     if (!data.title) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: "제목을 입력해주세요😊",
-      });
+      SweetAlertHook(1000, "error", "제목을 입력해주세요😕");
       return;
     }
     if (!editorRef.current.getInstance().getMarkdown()) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: "내용을 입력해주세요😊",
-      });
+      SweetAlertHook(1000, "error", "내용을 입력해주세요😕");
       return;
     }
 
@@ -107,7 +80,7 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
             placeholder="제목을 적어보세요 :)"
             defaultValue={title}
             autoFocus
-            maxLength={20}
+            maxLength={30}
           />
           <div className="sm:hidden">
             <button

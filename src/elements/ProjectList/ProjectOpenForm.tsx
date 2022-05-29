@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { queryClient } from "../..";
 import { usePostOpenRoom } from "../../api/ProjectQuery";
 import { ProjectInvite } from "../../recoil/AtomInvite";
+import { SweetAlertHook } from "../../servers/Sweet";
 
 interface IForm {
   inviteCode?: string;
@@ -24,39 +25,11 @@ const ProjectOpenForm = ({ setOpen }: IProps) => {
       .then(() => {
         queryClient.invalidateQueries("getProject");
         setOpen(false);
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top",
-          showConfirmButton: false,
-          timer: 1000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-        Toast.fire({
-          icon: "success",
-          title: "프로젝트 참여 완료😊",
-        });
+        SweetAlertHook(1000, "success", "프로젝트 참여 완료😊");
       })
       .catch((err) => {
         setOpen(false);
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top",
-          showConfirmButton: false,
-          timer: 1000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-        Toast.fire({
-          icon: "error",
-          title: err.response.data,
-        });
+        SweetAlertHook(1000, "error", err.response.data);
       });
   };
   return (

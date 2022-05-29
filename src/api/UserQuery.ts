@@ -2,6 +2,7 @@ import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
 import Swal from "sweetalert2";
 import { instance } from "../servers/axios";
+import { SweetAlertHook } from "../servers/Sweet";
 
 export interface User {
   loginId?: string;
@@ -25,21 +26,7 @@ export const useGetProjectUser = (pjId: string) => {
 export const useUpdateUser = () => {
   return useMutation(async (post: User) => {
     await instance.put("api/users/update", post).then(() => {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: "프로필 수정 완료😊",
-      });
+      SweetAlertHook(1000, "success", "프로필 수정 완료😊");
     });
   });
 };
@@ -55,38 +42,10 @@ export const useLogOut = () => {
     await instance
       .delete("/auth/logout/")
       .then(() => {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top",
-          showConfirmButton: false,
-          timer: 1000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-        Toast.fire({
-          icon: "success",
-          title: "로그아웃 성공😊",
-        });
+        SweetAlertHook(1000, "success", "로그아웃 성공😊");
       })
       .catch(() => {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top",
-          showConfirmButton: false,
-          timer: 1000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-        Toast.fire({
-          icon: "error",
-          title: "로그아웃 실패😊",
-        });
+        SweetAlertHook(1000, "error", "로그아웃 실패😥");
       });
   });
 };

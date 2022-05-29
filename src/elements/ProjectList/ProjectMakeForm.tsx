@@ -4,9 +4,14 @@ import { queryClient } from "../..";
 import { usePostRoom } from "../../api/ProjectQuery";
 import { resizeFile } from "../../servers/resize";
 import { SvgEdit } from "../Icon/SvgEdit";
-import DefaultImg from "../../images/logo_50x50.png";
+import DefaultImg1 from "../../images/Profile/COUP_square_대지 1.png";
+import DefaultImg2 from "../../images/Profile/COUP_square-02.png";
+import DefaultImg3 from "../../images/Profile/COUP_square-03.png";
+import DefaultImg4 from "../../images/Profile/COUP_square-04.png";
+import DefaultImg5 from "../../images/Profile/COUP_square-05.png";
 import { IconButton } from "@mui/material";
 import Swal from "sweetalert2";
+import { SweetAlertHook } from "../../servers/Sweet";
 
 interface IForm {
   title: string;
@@ -19,7 +24,9 @@ interface IProp {
 }
 
 const ProjectMakeForm = ({ open }: IProp) => {
-  const [imgBase64, setImgBase64] = useState<string>(DefaultImg);
+  const RandomImg = [DefaultImg1, DefaultImg2, DefaultImg3, DefaultImg4, DefaultImg5];
+  const DefaultImg = Math.floor(Math.random() * RandomImg.length);
+  const [imgBase64, setImgBase64] = useState<string>(RandomImg[DefaultImg]);
   const fileInput = useRef<HTMLInputElement>(null);
   const { mutateAsync } = usePostRoom();
   const { register, handleSubmit } = useForm<IForm>();
@@ -52,21 +59,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
       }).then(() => {
         queryClient.invalidateQueries("getProject");
         queryClient.invalidateQueries("getProject");
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top",
-          showConfirmButton: false,
-          timer: 1000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-        Toast.fire({
-          icon: "success",
-          title: "프로젝트 생성 완료😊",
-        });
+        SweetAlertHook(1000, "success", "프로젝트 생성 완료😊");
         open(false);
       });
     } else {
@@ -77,21 +70,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
         thumbnail: String(image),
       }).then(() => {
         queryClient.invalidateQueries("getProject");
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top",
-          showConfirmButton: false,
-          timer: 1000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-        Toast.fire({
-          icon: "success",
-          title: "프로젝트 생성 완료😊",
-        });
+        SweetAlertHook(1000, "success", "프로젝트 생성 완료😊");
         open(false);
       });
     }
@@ -145,7 +124,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
               rows={5}
               className="w-[352px] h-[95px] outline-none resize-none p-2 rounded-md border-none border border-[#D1D1D1]"
               placeholder="소개"
-              maxLength={254}
+              maxLength={150}
               {...register("summary")}
             />
           </div>
