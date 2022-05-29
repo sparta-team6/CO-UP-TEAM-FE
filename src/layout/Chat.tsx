@@ -47,7 +47,7 @@ const Chat = () => {
     }, 500);
   }, [pjId, result]);
   return (
-    <div className="w-[432px] h-[calc(100%-4rem)] bg-[#fff] dark:bg-6 border-[#E7EBF2] dark:border-[#606468] border-l-[1px] border-solid flex flex-col justify-end absolute top-16 right-0 md:hidden">
+    <div className="test8 w-[432px] h-[calc(100%-4rem)] bg-[#fff] dark:bg-6 border-[#E7EBF2] dark:border-[#606468] border-l-[1px] border-solid flex flex-col justify-end absolute top-16 right-0 md:hidden">
       <ChatPre
         contents={data?.data}
         senderLoginId={senderLoginId}

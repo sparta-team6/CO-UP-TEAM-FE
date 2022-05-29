@@ -17,7 +17,7 @@ const ToolBoard = () => {
   }, []);
   return (
     <>
-      <div className="w-full h-[calc(100vh-4rem)] bg-slate-100 flex absolute bottom-0">
+      <div className="board1 w-full h-[calc(100vh-4rem)] bg-slate-100 flex absolute bottom-0">
         <div className="flex fixed top-0 left-0 mt-16 h-full sm:h-[calc(100%-134px)] z-[60]">
           <div className="sm:hidden">
             <MyProjectList />

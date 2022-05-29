@@ -1,19 +1,38 @@
 import { motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
 import HeaderLogo from "../../images/Header/HeaderLogo.png";
-import React from "react";
-import { Link, useMatch } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useMatch } from "react-router-dom";
 import { SvgUser } from "../../elements/Icon/SvgUser";
 import { ProjectKey } from "../../recoil/RoomID";
 import { MChat } from "../../elements/Icon/mobile/MChat";
+import { HelpCircle } from "../../elements/Icon/HelpCircle";
+import JoyrideContainer from "../Tutorial/JoyrideContainer";
+import { boardSteps, documentSteps, mainSteps } from "../Tutorial/Steps";
 
 const FramerHeader = () => {
+  const location = useLocation();
   const { pjId } = useRecoilValue(ProjectKey);
   const mainMatch = useMatch("/tool/:id");
   const docMatch = useMatch("/tool/:id/document/*");
   const boardMatch = useMatch("/tool/:id/board");
+  const [open, setOpen] = useState(false);
+  const onClick = () => {
+    setOpen(true);
+  };
   return (
     <React.Fragment>
+      <JoyrideContainer
+        run={open}
+        steps={
+          location.pathname.includes("document")
+            ? documentSteps
+            : location.pathname.includes("board")
+            ? boardSteps
+            : mainSteps
+        }
+        setOpen={setOpen}
+      />
       <nav className="sm:hidden w-full h-16 flex justify-between items-center fixed z-[1000] shadow-md dark:bg-6 px-[23px]">
         <Link to="/">
           <img className="mt-[3px]" width={34} height={36} src={HeaderLogo} alt="Logo" />
@@ -57,16 +76,22 @@ const FramerHeader = () => {
           </div>
         </div>
         <nav className="h-full flex justify-around items-center sm:hidden dark:bg-6">
-          <Link to={`/tool/${pjId}/chat`} className="hidden md:flex mr-5 w-8 h-8 justify-center items-center rounded-full bg-2">
+          <Link
+            to={`/tool/${pjId}/chat`}
+            className="hidden md:flex mr-5 w-8 h-8 justify-center items-center rounded-full bg-2"
+          >
             <span className="dark:text-white">
               <MChat />
             </span>
           </Link>
-          <Link to="/profile" className="sm:hidden">
-            <div className="w-8 h-8 flex justify-center items-center rounded-full">
-              <SvgUser />
+          <div className="flex justify-between space-x-4">
+            <div onClick={onClick}>
+              <HelpCircle />
             </div>
-          </Link>
+            <Link to="/profile" className="sm:hidden">
+              <SvgUser />
+            </Link>
+          </div>
         </nav>
       </nav>
     </React.Fragment>

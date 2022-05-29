@@ -65,13 +65,13 @@ const MyProjectList = () => {
         ))}
       </Scroll>
       <div className="w-20 h-52 flex flex-col justify-center items-center space-y-[27px]">
-        <div className="cursor-pointer" onClick={onDarkMode}>
+        <div className="test9 cursor-pointer" onClick={onDarkMode}>
           {theme ? <Moon /> : <Sun />}
         </div>
-        <div className="cursor-pointer" onClick={onLogOut}>
+        <div className="test10 cursor-pointer" onClick={onLogOut}>
           <Logout />
         </div>
-        <Link className="cursor-pointer" to="/projectList">
+        <Link className="test11 cursor-pointer" to="/projectList">
           <Power />
         </Link>
       </div>
