@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import LoadingPage from "../layout/LoadingPage";
 import { instance } from "./axios";
 
 const Google = () => {
@@ -23,7 +24,7 @@ const Google = () => {
     }
   }, [code, navigate]);
 
-  return <div>??</div>;
+  return <LoadingPage/>;
 };
 
 export default Google;
