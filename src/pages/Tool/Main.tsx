@@ -32,7 +32,7 @@ const ToolMain = () => {
               </div>
             </div>
             <div className="w-full max-w-[1018px] h-[381px] mt-[10px] sm:mt-4 sm:mb-[100px]">
-              <div className="w-full bg-[#ffffff] dark:bg-7 border-[#E7EBF2] dark:border dark:border-[#666] rounded-2xl h-full">
+              <div className="w-full bg-[#ffffff] dark:bg-7 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid rounded-2xl h-full">
                 <MemberChart />
               </div>
             </div>

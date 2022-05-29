@@ -71,7 +71,7 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
     <div className="w-full h-full space-y-2 mb-[8px] flex flex-col items-center">
       <div
         onClick={handleOpen}
-        className="w-full min-h-[68px] bg-[#ffffff] dark:bg-7 border rounded-lg overflow-hidden flex"
+        className="w-full min-h-[68px] bg-[#ffffff] dark:bg-7 border-[#E7EBF2] dark:border-[#606468] border-[1px] border-solid rounded-lg overflow-hidden flex"
       >
         <div className="w-2 h-full bg-3" />
         <div className="w-full h-full ml-[14px] mr-2 flex flex-col">

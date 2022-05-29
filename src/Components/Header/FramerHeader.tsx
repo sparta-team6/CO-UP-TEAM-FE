@@ -60,7 +60,7 @@ const FramerHeader = () => {
             <span className="dark:text-white">채팅</span>
           </Link>
           <Link to="/profile" className="sm:hidden">
-            <div className="w-8 h-8 flex justify-center items-center rounded-full bg-3 opacity-70">
+            <div className="w-8 h-8 flex justify-center items-center rounded-full bg-3">
               <SvgUser />
             </div>
           </Link>
