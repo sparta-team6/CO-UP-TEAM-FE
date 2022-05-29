@@ -6,15 +6,13 @@ import Stomp from "stompjs";
 import { content } from "../../Components/Mobile/MobileChatCom";
 import { MyProfile } from "../../recoil/MyProfile";
 import EmptyChat from "../../images/Main/EmptyChat.png";
-import Swal from "sweetalert2";
 import { SweetAlertHook } from "../../servers/Sweet";
 
-type ChatPresenterProps = {
-  messages: Array<content>;
+interface ChatPresenterProps {
   senderLoginId: string;
   pjId: string;
   contents: Array<content>;
-};
+}
 
 interface IForm {
   senderLoginId: string;
