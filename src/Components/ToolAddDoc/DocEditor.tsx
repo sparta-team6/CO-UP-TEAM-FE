@@ -23,7 +23,6 @@ import { useRecoilValue } from "recoil";
 import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
 import { ProjectKey } from "../../recoil/RoomID";
 import { dfId } from "../../recoil/AtomDocument";
-import Swal from "sweetalert2";
 import { SweetAlertHook } from "../../servers/Sweet";
 
 interface IForm {

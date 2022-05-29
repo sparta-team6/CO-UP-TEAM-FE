@@ -3,7 +3,6 @@ import React, { Dispatch, SetStateAction } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import Swal from "sweetalert2";
 import { queryClient } from "../..";
 import { useUpdateAnnouncement } from "../../api/AnnouncementQuery";
 import { ProjectKey } from "../../recoil/RoomID";

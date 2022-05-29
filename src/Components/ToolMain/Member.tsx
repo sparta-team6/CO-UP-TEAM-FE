@@ -22,7 +22,6 @@ const Member = () => {
     }).then((result) => {
       if (result.value) {
         KickUser(loginId).then((res) => {
-          console.log(res);
           queryClient.invalidateQueries("getUser");
         });
       }

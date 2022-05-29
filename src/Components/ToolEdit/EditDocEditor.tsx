@@ -20,7 +20,6 @@ import { queryClient } from "../../index";
 import { useNavigate, useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
-import Swal from "sweetalert2";
 import { SweetAlertHook } from "../../servers/Sweet";
 
 interface IForm {

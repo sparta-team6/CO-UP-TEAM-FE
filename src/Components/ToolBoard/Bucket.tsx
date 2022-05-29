@@ -8,7 +8,6 @@ import { queryClient } from "../..";
 import { Cards, usePostCards } from "../../api/CardQuery";
 import { ProjectKey } from "../../recoil/RoomID";
 import { useGetProjectUser } from "../../api/UserQuery";
-import Swal from "sweetalert2";
 import { SweetAlertHook } from "../../servers/Sweet";
 
 const style = {

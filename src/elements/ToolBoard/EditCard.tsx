@@ -2,7 +2,6 @@ import { Box, Modal } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
-import Swal from "sweetalert2";
 import { queryClient } from "../..";
 import { useGetCardDetail } from "../../api/CardQuery";
 import { useUpdateCards } from "../../api/Optimistic";

@@ -1,7 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
-import Swal from "sweetalert2";
 import { queryClient } from "../..";
 import { usePostOpenRoom } from "../../api/ProjectQuery";
 import { ProjectInvite } from "../../recoil/AtomInvite";
@@ -19,7 +18,6 @@ const ProjectOpenForm = ({ setOpen }: IProps) => {
   const { register, handleSubmit } = useForm();
   const { mutateAsync } = usePostOpenRoom();
   const { inviteCode } = useRecoilValue(ProjectInvite);
-  console.log(inviteCode);
   const onSubmit: SubmitHandler<IForm> = (data) => {
     mutateAsync(String(data.inviteCode))
       .then(() => {
