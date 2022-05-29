@@ -18,12 +18,12 @@ const IntroSlider = () => {
   };
   return (
     <Slider {...settings}>
-      <img width={1244} height={604} src={slider1} alt="1" />
-      <img width={1244} height={604} src={slider2} alt="2" />
-      <img width={1244} height={604} src={slider3} alt="3" />
-      <img width={1244} height={604} src={slider4} alt="4" />
-      <img width={1244} height={604} src={slider5} alt="5" />
-      <img width={1244} height={604} src={slider6} alt="6" />
+      <img width={1184} height={544} src={slider1} alt="1" />
+      <img width={1184} height={544} src={slider2} alt="2" />
+      <img width={1184} height={544} src={slider3} alt="3" />
+      <img width={1184} height={544} src={slider4} alt="4" />
+      <img width={1184} height={544} src={slider5} alt="5" />
+      <img width={1184} height={544} src={slider6} alt="6" />
     </Slider>
   );
 };
