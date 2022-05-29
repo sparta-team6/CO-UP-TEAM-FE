@@ -7,8 +7,6 @@ import SlidingMain from "../../Components/ToolMain/SlidingMain";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { HandleOpen } from "../../recoil/AtomsInterface";
 import { useEffect } from "react";
-import JoyrideContainer from "../../Components/Tutorial/JoyrideContainer";
-import { mainSteps } from "../../Components/Tutorial/Steps";
 import { Helmet } from "react-helmet";
 import { ProjectKey } from "../../recoil/RoomID";
 
@@ -48,7 +46,7 @@ const ToolMain = () => {
         </div>
         <Chat />
       </div>
-    </div>
+    </>
   );
 };
 
