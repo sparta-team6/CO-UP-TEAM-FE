@@ -45,7 +45,7 @@ const Member = () => {
           alt=""
         />
         <span className="font-semibold dark:text-white">{projectAdmin?.nickname}</span>
-        <div className="sm:left-[-30%] sm:top-[-350px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
+        <div className="sm:left-[-30%] sm:top-[-350px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 dark:bg-8 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
           <div className="w-full h-full px-[20px] py-[13px] flex flex-col">
             <div className="w-full h-full flex">
               <div className="h-full flex items-center span">
@@ -62,7 +62,7 @@ const Member = () => {
                 <span className="whitespace-pre-wrap break-all pt-[12px] pb-[18px]">
                   {projectAdmin?.aboutMe}
                 </span>
-                <a href={projectAdmin?.url} target="_blank" className="text-xs" rel="noreferrer">
+                <a href={projectAdmin?.url} target="_blank" className="text-xs text-8 dark:text-2" rel="noreferrer">
                   {projectAdmin?.url}
                 </a>
               </div>
@@ -86,7 +86,7 @@ const Member = () => {
                 추방
               </button>
             )}
-            <div className="sm:left-[-30%] sm:top-[-400px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
+            <div className="sm:left-[-30%] sm:top-[-400px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 dark:bg-8 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
               <div className="w-full h-full px-[20px] py-[13px] flex flex-col">
                 <div className="w-full h-full flex">
                   <div className="h-full flex items-center span">
@@ -103,7 +103,7 @@ const Member = () => {
                     <span className="whitespace-pre-wrap break-all pt-[12px] pb-[18px]">
                       {teamUser.aboutMe}
                     </span>
-                    <a href={teamUser.url} target="_blank" className="text-xs" rel="noreferrer">
+                    <a href={teamUser.url} target="_blank" className="text-[12px] text-8 dark:text-2" rel="noreferrer">
                       {teamUser.url}
                     </a>
                   </div>
