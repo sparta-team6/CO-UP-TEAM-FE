@@ -4,6 +4,8 @@ import React from "react";
 import ProjectFixed from "../../elements/ProjectList/ProjectFixed";
 import { useSetRecoilState } from "recoil";
 import { ProjectKey } from "../../recoil/RoomID";
+import ProjectMake from "./ProjectMake";
+import family from "../../images/ProjectList/coup_family.png";
 
 const ProjectData = () => {
   const setProject = useSetRecoilState(ProjectKey);
@@ -61,6 +63,10 @@ const ProjectData = () => {
           </div>
         );
       })}
+      <div className="tutorial-pl1 w-[288px] h-[320px] rounded-lg border-[1px] border-solid border-gray-300 flex justify-center items-center sm:w-full mb-[20px]">
+        <ProjectMake />
+      </div>
+      {!data?.data && <img src={family} width={288} height={320} alt="" className="ml-3" />}
     </React.Fragment>
   );
 };

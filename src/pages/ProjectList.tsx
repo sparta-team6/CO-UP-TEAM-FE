@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { useMyInfo } from "../api/UserQuery";
 import ProjectData from "../Components/ProjectList/ProjectData";
-import ProjectMake from "../Components/ProjectList/ProjectMake";
 import ProjectOpen from "../Components/ProjectList/ProjectOpen";
 import JoyrideContainer from "../Components/Tutorial/JoyrideContainer";
 import { projectListSteps } from "../Components/Tutorial/Steps";
@@ -12,7 +11,6 @@ import { HelpCircle } from "../elements/Icon/HelpCircle";
 import { HelpProjectList } from "../recoil/AtomHelpCircle";
 import { MyProfile } from "../recoil/MyProfile";
 import { getAccessTokenFromCookie, getFreshTokenFromCookie } from "../servers/Cookie";
-import family from "../images/ProjectList/coup_family.png";
 
 const ProjectList = () => {
   const navigate = useNavigate();
@@ -65,10 +63,6 @@ const ProjectList = () => {
             </div>
             <div className="w-[1188px] h-full flex flex-wrap justify-start sm:justify-center md:w-[90%] md:h-auto">
               <ProjectData />
-              <div className="tutorial-pl1 w-[288px] h-[320px] rounded-lg border-[1px] border-solid border-gray-300 flex justify-center items-center sm:w-full mb-[20px]">
-                <ProjectMake />
-              </div>
-              <img src={family} width={288} height={320} alt="" className="ml-3" />
             </div>
           </div>
         </div>
