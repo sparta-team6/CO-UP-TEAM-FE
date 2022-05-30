@@ -110,16 +110,6 @@ const FolderList = () => {
                           setDfId={setDfId}
                         />
                       </div>
-                      <div
-                        className={`flex flex-col justify-center items-center pt-2 sm:hidden ${
-                          folder?.docs?.length !== 0 && "hidden"
-                        }`}
-                      >
-                        <img width={131} height={130} src={EmptyFile} alt="" />
-                        <span className="text-lg opacity-50 mt-[30px] sm:text-base sm:mt-5">
-                          새로운 문서를 추가해 보세요
-                        </span>
-                      </div>
                       {folder.docs?.map((doc) => (
                         <div key={doc.docId} className="flex flex-col ml-[54px] mr-[41px] my-[5px]">
                           <div className="flex items-center text-base cursor-pointer">
