@@ -7,7 +7,7 @@ const TeamAdmin = ({ profileImage, nickname, aboutMe, url }: User) => {
       <img className="absolute -top-1 left-6" src={imgCrown} alt="" />
       <img className="rounded-full m-0" width={36} height={36} src={profileImage} alt="" />
       <span className="font-semibold dark:text-white">{nickname}</span>
-      <div className="sm:left-[-30%] sm:top-[-300px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 dark:bg-8 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
+      <div className="sm:left-[-13%] sm:top-[-300px] hidden w-[334px] sm:w-[275px] min-h-[120px] sm:z-50 bg-5 dark:bg-8 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
         <div className="w-full h-full px-[20px] py-[13px] flex flex-col">
           <div className="w-full h-full flex">
             <div className="h-full flex items-center span">

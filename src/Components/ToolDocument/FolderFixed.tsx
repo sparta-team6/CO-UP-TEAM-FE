@@ -49,6 +49,7 @@ const FolderFiexd = ({ dfId, setEditTitle, setDfId }: IProps) => {
       if (result.value) {
         DelFolder().then(() => {
           queryClient.invalidateQueries("getFolders");
+          queryClient.invalidateQueries("getNewDoc");
         });
       }
     });
