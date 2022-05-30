@@ -11,12 +11,6 @@ const Login = () => {
         <KakaoLogin />
         <GoogleLogin />
         <NaverLogin />
-        <Link
-          className="w-[314px] h-[54px] text-white bg-black mt-9 rounded-lg flex justify-center items-center"
-          to="/projectList"
-        >
-          프론트 테스트 접속
-        </Link>
       </div>
     </div>
   );

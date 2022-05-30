@@ -11,6 +11,7 @@ import { HelpCircle } from "../elements/Icon/HelpCircle";
 import { HelpProjectList } from "../recoil/AtomHelpCircle";
 import { MyProfile } from "../recoil/MyProfile";
 import { getAccessTokenFromCookie, getFreshTokenFromCookie } from "../servers/Cookie";
+import { SweetAlertHook } from "../servers/Sweet";
 
 const ProjectList = () => {
   const navigate = useNavigate();
@@ -27,16 +28,14 @@ const ProjectList = () => {
     SetUser(user);
   }, [data]);
 
-  // useEffect(() => {
-  //   const accessToken = getAccessTokenFromCookie();
-  //   const refreshToken = getFreshTokenFromCookie();
-  //   if ((accessToken !== undefined && refreshToken !== undefined) === true) {
-  //     navigate("/projectList");
-  //   } else {
-  //     alert("로그인을 해주세요 :)");
-  //     navigate("/");
-  //   }
-  // }, [navigate]);
+  useEffect(() => {
+    const accessToken = getAccessTokenFromCookie();
+    const refreshToken = getFreshTokenFromCookie();
+    if ((accessToken === undefined && refreshToken === undefined) === true) {
+      SweetAlertHook(1000, "error", "로그인을 해주세요 :)");
+      navigate("/");
+    }
+  }, [navigate]);
 
   return (
     <>

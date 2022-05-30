@@ -52,14 +52,6 @@ export default function LoginModal() {
             <KakaoLogin />
             <GoogleLogin />
             <NaverLogin />
-            <div className="absolute right-0 bottom-0">
-              <Link
-                className="w-[50px] h-[50px] text-white bg-4 mt-[24px] rounded-full flex justify-center items-center"
-                to="/projectList"
-              >
-                <span>테스트</span>
-              </Link>
-            </div>
           </div>
         </Box>
       </Modal>
