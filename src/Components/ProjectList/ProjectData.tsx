@@ -6,6 +6,7 @@ import { useSetRecoilState } from "recoil";
 import { ProjectKey } from "../../recoil/RoomID";
 import ProjectMake from "./ProjectMake";
 import family from "../../images/ProjectList/coup_family.png";
+import ProjectExit from "../../elements/ProjectList/ProjectExit";
 
 const ProjectData = () => {
   const setProject = useSetRecoilState(ProjectKey);
@@ -57,7 +58,7 @@ const ProjectData = () => {
                   roomSummary={room.summary}
                 />
               ) : (
-                ""
+                <ProjectExit roomID={room.pjId} />
               )}
             </div>
           </div>
