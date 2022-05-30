@@ -2,9 +2,9 @@ import loading from "../images/Lazy/Loading.gif";
 
 const LoadingPage = () => {
   return (
-    <>
-      <img width="100%" height="100%" className="absolute bg-[#ffffff] dark:bg-7" src={loading} alt="" />
-    </>
+    <div className="w-full h-screen bg-[#ffffff] dark:bg-7 flex justify-center items-center">
+      <img width={656} height={374} src={loading} alt="" />
+    </div>
   );
 };
 
