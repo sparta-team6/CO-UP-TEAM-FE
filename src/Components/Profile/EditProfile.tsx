@@ -123,9 +123,12 @@ const EditProfile = () => {
     <>
       <div className="font-bold text-4xl sm:text-2xl text-left w-full px-12 pb-12 sm:px-6 flex justify-between">
         <span>내 프로필 설정</span>
-        <span onClick={() => navigate(-1)} className="hover:text-3 cursor-pointer mr-10 sm:mr-1">
+        <button
+          onClick={() => navigate(-1)}
+          className="w-[160px] h-[48px] sm:w-[80px] sm:h-[32px] hover:text-3 text-xl sm:text-sm cursor-pointer bg-[#D7DcE5] rounded-md"
+        >
           뒤로가기
-        </span>
+        </button>
       </div>
       <div className="flex flex-col">
         <div className="flex justify-center relative">
