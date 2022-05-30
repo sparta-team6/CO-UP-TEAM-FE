@@ -6,6 +6,7 @@ import GoogleLogin from "../../elements/IntroHome/GoogleLogin";
 import NaverLogin from "../../elements/IntroHome/NaverLogin";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import MIntro from "../../pages/Mobile/MIntro";
 
 /* h-[480px] 입니다 */
 const style = {
@@ -24,19 +25,11 @@ export default function LoginModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const navigate = useNavigate();
-  const onClick = () => {
-    navigate("/login");
-  };
   return (
     <div>
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        className="hidden w-44 rounded-md p-3 font-extrabold justify-center items-center sm:block bg-3 text-white"
-        onClick={onClick}
-      >
-        CO-UP 시작하기
-      </motion.div>
+      <div className="hidden max-w-[768px] min-h-full sm:flex justify-center">
+        <MIntro />
+      </div>
       <motion.button
         whileHover={{ scale: 1.05 }}
         className="w-[194px] h-[60px] rounded-xl text-[20px] flex justify-center items-center mt-[70px] font-extrabold sm:hidden bg-3 text-white"
