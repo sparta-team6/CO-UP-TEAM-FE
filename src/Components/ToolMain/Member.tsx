@@ -23,12 +23,12 @@ const Member = () => {
   };
   const onClick = (loginId: string, nickname: string) => {
     Swal.fire({
-      title: `${nickname}님을 추방시키겠습니까?`,
-      text: "추방시키면 다시 프로젝트에 참가할 수 없습니다.",
+      title: `${nickname}님을 내보내시겠습니까?`,
+      text: "내보내면 다시 프로젝트에 참가할 수 없습니다.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "추방하자",
-      cancelButtonText: "취소하자",
+      confirmButtonText: "내보내기",
+      cancelButtonText: "돌아가기",
       confirmButtonColor: "#5F99FF",
       cancelButtonColor: "#D7DCE5",
     }).then((result) => {
