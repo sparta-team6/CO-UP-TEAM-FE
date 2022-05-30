@@ -10,6 +10,7 @@ export interface Folders {
   title?: string;
   dfId?: string;
   docs?: Docs[];
+  isFetching?: boolean;
 }
 
 export interface IFolders {
