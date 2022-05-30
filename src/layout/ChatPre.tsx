@@ -129,7 +129,7 @@ const ChatPre = ({
                     className={`min-w-[25px] min-h-[40px] bg-[#f5f5f5] dark:bg-[#3D4853] p-[10px] rounded-md`}
                   >
                     <span
-                      className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-[#B0B0B0] font-semibold tracking-tight`}
+                      className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-[#B0B0B0] font-normal tracking-tight`}
                     >
                       {box.message}
                     </span>

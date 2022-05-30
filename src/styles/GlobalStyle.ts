@@ -262,7 +262,7 @@ abbr[title] {
 }
 
 .react-calendar__month-view__days__day--weekend {
-  color: red;
+  color: #fa373a;
 }
 
 .react-calendar__tile--active {
@@ -434,5 +434,13 @@ foreignObject{
 .react-joyride__tooltip{
   width: 300px !important;
   padding: 10px !important;
+}
+
+.react-joyride__tooltip > div> button[title="Next"]{
+  background-color: #5F99FF !important;
+}
+
+.react-joyride__tooltip > div> button > span{
+  color: white !important;
 }
 `;
