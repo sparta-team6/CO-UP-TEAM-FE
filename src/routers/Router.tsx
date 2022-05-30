@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Helmet from "react-helmet";
 import { useRecoilValue } from "recoil";
 import { themeState } from "../recoil/DarkMode";
-import LoadingPage from "../layout/LoadingPage";
+
 const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
 const Header = lazy(() => import("./Header"));
 const MHeader = lazy(() => import("./MHeader"));
