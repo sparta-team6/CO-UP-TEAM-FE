@@ -1,5 +1,6 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
+import { Docs } from "../api/DocumentQuery";
 
 const { persistAtom } = recoilPersist();
 
@@ -19,4 +20,16 @@ export const dfId = atom({
 export const docId = atom({
   key: "docId",
   default: "",
+});
+
+export const NewDoc = atom<Docs>({
+  key: "newDoc",
+  default: {
+    title: "",
+    contents: "",
+    docId: "",
+    modifiedTime: "",
+    nickname: "",
+    isFetching: true,
+  },
 });
