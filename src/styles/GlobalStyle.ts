@@ -393,7 +393,7 @@ abbr[title]{
   .toastui-editor-popup {
     max-width: 300px;
     margin-left: 0px;
-    left: 170px;
+    left: 170px !important;
 }   
 .toastui-editor-dropdown-toolbar {
   display: flex;
@@ -446,5 +446,8 @@ foreignObject{
 }
 .react-joyride__tooltip button[title="Last"] span{
   color: #fff;
+}
+.react-joyride__tooltip button[title="Close"]{
+  display: none;
 }
 `;
