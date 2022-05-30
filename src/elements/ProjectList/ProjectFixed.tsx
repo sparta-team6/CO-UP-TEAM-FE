@@ -47,11 +47,14 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
   const delProject = () => {
     setAnchorEl(null);
     Swal.fire({
-      title: "삭제",
-      text: "진짜 삭제하시겠어요?!!",
+      title: "프로젝트를 삭제하시겠습니까?",
+      text: "삭제된 프로젝트는 복구되지 않습니다.",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "넵!",
-      cancelButtonText: "취소!",
+      confirmButtonText: "삭제하기",
+      cancelButtonText: "돌아가기",
+      confirmButtonColor: "#5F99FF",
+      cancelButtonColor: "#D7DCE5",
     }).then((result) => {
       if (result.value) {
         mutateAsync().then(() => {

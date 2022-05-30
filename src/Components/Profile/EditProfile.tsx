@@ -48,19 +48,9 @@ const EditProfile = () => {
       aboutMe: data.about_me,
     };
     if (size === undefined) {
-      Swal.fire({
-        title: "수정",
-        text: "진짜 수정하시겠어요?!!",
-        showCancelButton: true,
-        confirmButtonText: "넵!",
-        cancelButtonText: "취소!",
-      }).then((result) => {
-        if (result.value) {
-          mutateAsync(profile).then(() => {
-            setUser(profile);
-            navigate(-1);
-          });
-        }
+      mutateAsync(profile).then(() => {
+        setUser(profile);
+        navigate(-1);
       });
     } else {
       const image = await resizeFile(size, 36, 36, "base64");
@@ -71,19 +61,9 @@ const EditProfile = () => {
         url: data.url,
         aboutMe: data.about_me,
       };
-      Swal.fire({
-        title: "수정",
-        text: "진짜 수정하시겠어요?!!",
-        showCancelButton: true,
-        confirmButtonText: "넵!",
-        cancelButtonText: "취소!",
-      }).then((result) => {
-        if (result.value) {
-          mutateAsync(profile).then(() => {
-            setUser(profile);
-            navigate(-1);
-          });
-        }
+      mutateAsync(profile).then(() => {
+        setUser(profile);
+        navigate(-1);
       });
     }
   };
@@ -104,11 +84,13 @@ const EditProfile = () => {
   const { mutateAsync: Logout } = useLogOut();
   const onLogOut = () => {
     Swal.fire({
-      title: "로그아웃",
-      text: "진짜 로그아웃하시겠어요?!!",
+      title: "로그아웃 하시겠습니까?",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "넵!",
-      cancelButtonText: "취소!",
+      confirmButtonText: "로그아웃",
+      cancelButtonText: "돌아가기",
+      confirmButtonColor: "#5F99FF",
+      cancelButtonColor: "#D7DCE5",
     }).then((result) => {
       if (result.value) {
         Logout().then(() => {

@@ -35,11 +35,13 @@ const MyProjectList = () => {
   const { mutateAsync } = useLogOut();
   const onLogOut = () => {
     Swal.fire({
-      title: "로그아웃",
-      text: "진짜 로그아웃하시겠어요?!!",
+      title: "로그아웃 하시겠습니까?",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "넵!",
-      cancelButtonText: "취소!",
+      confirmButtonText: "로그아웃",
+      cancelButtonText: "돌아가기",
+      confirmButtonColor: "#5F99FF",
+      cancelButtonColor: "#D7DCE5",
     }).then((result) => {
       if (result.value) {
         mutateAsync().then(() => {
