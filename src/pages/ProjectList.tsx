@@ -52,7 +52,7 @@ const ProjectList = () => {
                 <span className="text-4xl leading-[50px] sm:text-3xl">프로젝트 리스트</span>
                 <div
                   className={`cursor-pointer ml-[20px] sm:hidden ${
-                    isHelp ? "mb-[7px]" : "animate-bounce"
+                    isHelp ? "mb-[7px] hidden" : "animate-bounce"
                   }`}
                   onClick={onClick}
                 >
