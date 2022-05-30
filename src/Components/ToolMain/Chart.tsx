@@ -9,7 +9,7 @@ const Chart = () => {
   const chartSum = chartLength.reduce((a, b) => a + b, 0);
   const chartSuccess = Math.round((chartLength[2] / chartSum) * 100);
   return (
-    <div className="test3 w-full h-full flex justify-center">
+    <div className="tutorial-main2 w-full h-full flex justify-center">
       <div className="w-full h-[310px] sm:h-[250px] flex items-center relative dark:text-white">
         <div className="w-full h-full flex flex-col justify-center items-center absolute bottom-2">
           <div className="w-full flex justify-center items-center pl-[2px]">

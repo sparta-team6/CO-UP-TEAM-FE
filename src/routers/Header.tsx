@@ -14,16 +14,11 @@ import { Sun } from "../elements/Icon/Sun";
 const Header = () => {
   const location = useLocation();
   const [theme, DarkMode] = useRecoilState(themeState);
-  const [open, setOpen] = useState(false);
-  const onClick = () => {
-    setOpen(true);
-  };
   const onDarkMode = () => {
     DarkMode((prev: boolean) => !prev);
   };
   return (
     <React.Fragment>
-      <JoyrideContainer run={open} setOpen={setOpen} steps={projectListSteps} />
       {location.pathname.includes("tool") ? (
         <FramerHeader />
       ) : location.pathname.includes("projectList") || location.pathname.includes("profile") ? (
@@ -32,13 +27,10 @@ const Header = () => {
             <img className="mt-[3px]" src={HeaderLogo} alt="Logo" />
           </Link>
           <div className="flex justify-between space-x-4">
-            <div className="cursor-pointer" onClick={onDarkMode}>
+            <div className="tutorial-pl3 cursor-pointer" onClick={onDarkMode}>
               {theme ? <Moon /> : <Sun />}
             </div>
-            <div onClick={onClick}>
-              <HelpCircle />
-            </div>
-            <div className="pl4">
+            <div className="tutorial-pl4">
               <Link to="/profile">
                 <SvgUser />
               </Link>

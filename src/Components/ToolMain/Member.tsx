@@ -29,7 +29,7 @@ const Member = () => {
   };
   const projectAdmin = data?.data[0];
   return (
-    <div className="test4 w-full h-full">
+    <div className="tutorial-main3 w-full h-full">
       <div className="flex items-center mt-[28px] sm:mt-[15px]">
         <SvgUser />
         <span className="text-lg font-bold ml-1 dark:text-white">팀원</span>
@@ -61,7 +61,12 @@ const Member = () => {
                 <span className="whitespace-pre-wrap break-all pt-[12px] pb-[18px]">
                   {projectAdmin?.aboutMe}
                 </span>
-                <a href={projectAdmin?.url} target="_blank" className="text-xs text-8 dark:text-2" rel="noreferrer">
+                <a
+                  href={projectAdmin?.url}
+                  target="_blank"
+                  className="text-xs text-8 dark:text-2"
+                  rel="noreferrer"
+                >
                   {projectAdmin?.url}
                 </a>
               </div>
@@ -102,7 +107,12 @@ const Member = () => {
                     <span className="whitespace-pre-wrap break-all pt-[12px] pb-[18px]">
                       {teamUser.aboutMe}
                     </span>
-                    <a href={teamUser.url} target="_blank" className="text-[12px] text-8 dark:text-2" rel="noreferrer">
+                    <a
+                      href={teamUser.url}
+                      target="_blank"
+                      className="text-[12px] text-8 dark:text-2"
+                      rel="noreferrer"
+                    >
                       {teamUser.url}
                     </a>
                   </div>

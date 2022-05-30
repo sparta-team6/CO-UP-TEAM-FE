@@ -1,5 +1,7 @@
 import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
+import { useSetRecoilState } from "recoil";
+import { HelpProjectList, HelpToolMain } from "../recoil/AtomHelpCircle";
 import { instance } from "../servers/axios";
 import { SweetAlertHook } from "../servers/Sweet";
 
@@ -37,11 +39,15 @@ export const useMyInfo = () => {
 };
 
 export const useLogOut = () => {
+  const setHelpProject = useSetRecoilState(HelpProjectList);
+  const setHelpToolMain = useSetRecoilState(HelpToolMain);
   return useMutation(async () => {
     await instance
       .delete("/auth/logout/")
       .then(() => {
         SweetAlertHook(1000, "success", "로그아웃 성공😊");
+        setHelpProject(false);
+        setHelpToolMain(false);
       })
       .catch(() => {
         SweetAlertHook(1000, "error", "로그아웃 실패😥");

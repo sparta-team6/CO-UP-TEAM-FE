@@ -31,6 +31,7 @@ const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }
       if (result.value) {
         DelDoc().then(() => {
           queryClient.invalidateQueries("getFolders");
+          queryClient.invalidateQueries("getNewDoc");
           navigate(`/tool/${id}/document`);
         });
       }
@@ -48,6 +49,7 @@ const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }
       if (result.value) {
         DelDoc2().then(() => {
           queryClient.invalidateQueries("getFolders");
+          queryClient.invalidateQueries("getNewDoc");
           navigate(`/tool/${id}/document`);
         });
       }
