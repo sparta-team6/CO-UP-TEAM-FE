@@ -165,6 +165,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
                   toDoText={toDo.contents}
                   toDoName={toDo.managerNickname}
                   toDoTitle={toDo.title}
+                  toDoTime={String(toDo.modifiedTime)}
                   bucketId={bucketId}
                 />
               ))}

@@ -28,7 +28,7 @@ const MobileChatCom = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const user = useRecoilValue(MyProfile);
   const senderLoginId = user.loginId;
-  const { data } = useGetChatting(String(pjId));
+  const { data } = useGetChatting(String(pjId), 20);
   useEffect(() => {
     stompClient.connect({}, () => {
       stompClient.subscribe(`/sub/chatting/${pjId}`, (data) => {
@@ -55,7 +55,7 @@ const MobileChatCom = () => {
 
   return (
     <div className="w-full h-[calc(100vh-150px)] bg-white flex flex-col justify-end absolute top-16">
-      <MobileChatPre contents={data?.data} senderLoginId={senderLoginId} pjId={pjId} />
+      <MobileChatPre contents={data?.data} senderLoginId={String(senderLoginId)} pjId={pjId} />
     </div>
   );
 };

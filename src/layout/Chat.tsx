@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
@@ -26,33 +26,25 @@ const Chat = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const user = useRecoilValue(MyProfile);
   const senderLoginId = user.loginId;
-  const { data } = useGetChatting(String(pjId));
+  const [pageParams, setPageParams] = useState<number>(100);
+  const { data } = useGetChatting(String(pjId), pageParams);
   const result = data?.data;
-  const pageNumber = result === undefined ? 0 : result[result?.length - 1]?.id;
-  // console.log(pageNumber);
   useEffect(() => {
-    stompClient.connect({}, () => {
-      console.log("connect");
-      stompClient.subscribe(`/sub/chatting/${pjId}`, () => {
-        queryClient.invalidateQueries("getChatting");
-      });
-    });
-  }, [result]);
-
-  useEffect(() => {
+    stompClient.connect({}, () => {});
     setTimeout(() => {
       stompClient.subscribe(`/sub/chatting/${pjId}`, async () => {
-        queryClient.invalidateQueries("getChatting");
+        queryClient.invalidateQueries(["getChatting", pjId]);
       });
     }, 500);
-  }, [pjId, result]);
+  }, [pjId, result, pageParams]);
   return (
     <div className="test8 w-[432px] h-[calc(100%-4rem)] bg-[#fff] dark:bg-6 border-[#E7EBF2] dark:border-[#606468] border-l-[1px] border-solid flex flex-col justify-end absolute top-16 right-0 md:hidden">
       <ChatPre
+        pageParams={pageParams}
+        setPageParams={setPageParams}
         contents={data?.data}
-        senderLoginId={senderLoginId}
+        senderLoginId={String(senderLoginId)}
         pjId={pjId}
-        pageNumber={pageNumber}
       />
     </div>
   );

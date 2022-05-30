@@ -12,6 +12,7 @@ export interface ICards {
   contents?: string;
   position?: number;
   managerNickname?: string;
+  modifiedTime?: string;
 }
 
 export interface ICard {
@@ -39,6 +40,7 @@ export interface Cards {
   manager: string;
   contents: string;
   managerNickname: string;
+  modifiedTime?: string;
 }
 
 export const usePostCards = () => {
