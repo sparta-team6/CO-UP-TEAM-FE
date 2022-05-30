@@ -431,16 +431,15 @@ foreignObject{
   color:black !important
 }
 
+/* joyride */
 .react-joyride__tooltip{
   width: 300px !important;
   padding: 10px !important;
 }
-
-.react-joyride__tooltip > div> button[title="Next"]{
-  background-color: #5F99FF !important;
+.react-joyride__tooltip button[title="Next"] span{
+  color: #fff;
 }
-
-.react-joyride__tooltip > div> button > span{
-  color: white !important;
+.react-joyride__tooltip button[title="Last"] span{
+  color: #fff;
 }
 `;

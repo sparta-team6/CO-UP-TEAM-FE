@@ -53,7 +53,7 @@ const ProjectList = () => {
               <div className="flex items-center">
                 <span className="text-4xl leading-[50px] sm:text-3xl">프로젝트 리스트</span>
                 <div
-                  className={`cursor-pointer ml-[20px] mb-[7px] ${isHelp ? "" : "animate-bounce"}`}
+                  className={`cursor-pointer ml-[20px] ${isHelp ? "mb-[7px]" : "animate-bounce"}`}
                   onClick={onClick}
                 >
                   <HelpCircle />

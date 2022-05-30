@@ -1,6 +1,20 @@
 import { useState } from "react";
 import ReactJoyride, { ACTIONS, CallBackProps, EVENTS, STATUS } from "react-joyride";
 
+const buttonNext = {
+  backgroundColor: "#5F99FF",
+  color: "#fff",
+  fontSize: "14px",
+};
+
+const buttonBack = {
+  backgroundColor: "#D7DCE5",
+  color: "#333",
+  paddingTop: "10px",
+  borderRadius: "4px",
+  fontSize: "14px",
+};
+
 const JoyrideContainer = ({ run, steps, setOpen }: any) => {
   const [stepIndex, setStepIndex] = useState(0);
   const handleJoyrideCallback = (data: CallBackProps) => {
@@ -28,6 +42,7 @@ const JoyrideContainer = ({ run, steps, setOpen }: any) => {
       callback={handleJoyrideCallback}
       stepIndex={stepIndex}
       showSkipButton={true}
+      styles={{ buttonNext: buttonNext, buttonBack: buttonBack }}
     />
   );
 };
