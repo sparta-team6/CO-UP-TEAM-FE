@@ -80,7 +80,7 @@ const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }
                 </div>
                 <div className="flex items-center">
                   <button
-                    className="border-none w-[56px] h-[36px] rounded-md text-white bg-3"
+                    className="border-none w-[56px] h-[36px] rounded-md text-white hover:bg-h1 bg-3"
                     onClick={() =>
                       navigate(`/tool/${id}/document/${docId}/edit`, {
                         state: { docId, title, contents },
@@ -90,7 +90,7 @@ const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }
                     수정
                   </button>
                   <button
-                    className="border-none ml-2 w-[56px] h-[36px] rounded-md bg-5"
+                    className="border-none ml-2 w-[56px] h-[36px] rounded-md hover:bg-h2 bg-5"
                     onClick={onDelete}
                   >
                     삭제
@@ -104,7 +104,7 @@ const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }
                   </div>
                   <div>
                     <button
-                      className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
+                      className="border-none w-[62px] h-[44px] rounded-md text-white hover:bg-h1 bg-3"
                       onClick={() =>
                         navigate(`/tool/${id}/document/${docId}/edit`, {
                           state: { docId, title, contents },
@@ -114,7 +114,7 @@ const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }
                       수정
                     </button>
                     <button
-                      className="border-none ml-[16px] w-[62px] h-[44px] rounded-md bg-5"
+                      className="border-none ml-[16px] w-[62px] h-[44px] rounded-md hover:bg-h2 bg-5"
                       onClick={onDelete}
                     >
                       삭제
@@ -147,7 +147,7 @@ const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }
                       </div>
                       <div>
                         <button
-                          className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
+                          className="border-none w-[62px] h-[44px] rounded-md text-white hover:bg-h1 bg-3"
                           onClick={() =>
                             navigate(`/tool/${id}/document/${docData.docId}/edit`, {
                               state: {
@@ -161,7 +161,7 @@ const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }
                           수정
                         </button>
                         <button
-                          className="border-none ml-[16px] w-[62px] h-[44px] rounded-md bg-5"
+                          className="border-none ml-[16px] w-[62px] h-[44px] rounded-md hover:bg-h2 bg-5"
                           onClick={onDelete2}
                         >
                           삭제

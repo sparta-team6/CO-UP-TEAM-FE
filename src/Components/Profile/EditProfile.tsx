@@ -192,7 +192,7 @@ const EditProfile = () => {
               로그아웃
             </button>
             <button
-              className="w-[160px] h-[48px] sm:w-[124px] sm:h-[40px] bg-3 rounded-xl sm:rounded-[4px]"
+              className="w-[160px] h-[48px] sm:w-[124px] sm:h-[40px] hover:bg-h1 bg-3 rounded-xl sm:rounded-[4px]"
               type="submit"
             >
               <span className="text-white text-lg sm:text-base">저장하기</span>

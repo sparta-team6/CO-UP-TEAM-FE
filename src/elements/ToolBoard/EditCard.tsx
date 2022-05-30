@@ -124,7 +124,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
                 />
               </div>
               <button
-                className="w-16 h-9 absolute bottom-[8px] -right-3 sm:right-0 sm:bottom-0 rounded-md text-base text-white bg-3"
+                className="w-16 h-9 absolute bottom-[8px] -right-3 sm:right-0 sm:bottom-0 rounded-md text-base text-white hover:bg-h1 bg-3"
                 type="submit"
               >
                 수정

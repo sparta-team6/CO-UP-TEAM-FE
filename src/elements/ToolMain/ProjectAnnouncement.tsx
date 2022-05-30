@@ -96,14 +96,14 @@ const ProjectAnnouncement = () => {
             />
             <div className="absolute bottom-0 right-0">
               <button
-                className="text-white bg-3 w-[58px] h-[37px] rounded-md leading-[21px]"
+                className="text-white hover:bg-h1 bg-3 w-[58px] h-[37px] rounded-md leading-[21px]"
                 type="submit"
               >
                 등록
               </button>
               <button
                 onClick={handleClose}
-                className="bg-5 w-[58px] h-[37px] rounded-md ml-[4px] leading-[21px]"
+                className="hover:bg-h2 bg-5 w-[58px] h-[37px] rounded-md ml-[4px] leading-[21px]"
                 type="button"
               >
                 닫기

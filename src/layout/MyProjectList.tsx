@@ -68,12 +68,12 @@ const MyProjectList = () => {
         <div className="tutorial-main8 cursor-pointer" onClick={onDarkMode}>
           {theme ? <Moon /> : <Sun />}
         </div>
-        <div className="tutorial-main9 cursor-pointer" onClick={onLogOut}>
-          <Logout />
-        </div>
         <Link className="tutorial-main10 cursor-pointer" to="/projectList">
-          <Power />
+          <Logout />
         </Link>
+        <div className="tutorial-main9 cursor-pointer" onClick={onLogOut}>
+          <Power />
+        </div>
       </div>
     </div>
   );
