@@ -20,11 +20,11 @@ const IntroHome = () => {
       <Helmet>
         <title>CO-UP</title>
       </Helmet>
-      <div className="w-full h-screen bg-[url('../images/Intro/IntroBg.png')]  dark:bg-7 flex flex-col items-center">
+      <div className="w-full h-screen bg-[url('../images/Intro/IntroBg.png')]  dark:bg-8 flex flex-col items-center">
         <div className="w-[1192px] sm:w-full mb-9 flex justify-end items-center rounded-sm">
           <LoginModal />
         </div>
-        <div className="w-[1192px] h-[552px] rounded-xl bg-white sm:w-full sm:mt-10 p-1">
+        <div className="w-[1192px] h-[552px] rounded-xl bg-[#ffffff] dark:bg-8 sm:w-full sm:mt-10 p-1">
           <IntroSlider />
         </div>
       </div>

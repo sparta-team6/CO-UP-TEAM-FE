@@ -1,11 +1,9 @@
 import { Link, useLocation, useMatch, useNavigate } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
 import { useRecoilState } from "recoil";
 import { HandleOpen } from "../recoil/AtomsInterface";
 import { SvgUser } from "../elements/Icon/SvgUser";
 import { ChevronLeft } from "../elements/Icon/ChevronLeft";
-
-const style = { width: 40, height: 40, marginLeft: 1 };
+import { Menu } from "../elements/Icon/mobile/Menu";
 
 const MHeader = () => {
   const navigate = useNavigate();
@@ -27,11 +25,11 @@ const MHeader = () => {
                 <ChevronLeft />
               </div>
             ) : (
-              <MenuIcon className="dark:text-white" onClick={onClick} sx={style} />
+              <Menu onClick={onClick} />
             )}
           </div>
           <Link to="/profile">
-            <div className="w-8 h-8 flex justify-center items-center rounded-full opacity-70">
+            <div className="w-8 h-8 flex justify-center items-center rounded-full">
               <SvgUser />
             </div>
           </Link>
