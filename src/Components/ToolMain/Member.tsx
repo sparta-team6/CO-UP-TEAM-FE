@@ -49,7 +49,10 @@ const Member = () => {
         </div>
         {projectRole === "ADMIN" && (
           <div>
-            <button onClick={handleKick} className="w-[62px] h-[24px] hover:bg-h2 bg-[#E7EBF2] rounded text-xs">
+            <button
+              onClick={handleKick}
+              className="w-[62px] h-[24px] hover:bg-h2 bg-[#E7EBF2] rounded text-xs"
+            >
               내보내기
             </button>
           </div>
@@ -59,7 +62,10 @@ const Member = () => {
       {projectRole !== "ADMIN" && <TeamMe {...User} />}
       {TeamUsers?.map((teamUser, index) => {
         return (
-          <div key={index} className="group w-full mt-[12px] relative flex items-center space-x-2">
+          <div
+            key={index}
+            className="group w-full mt-[12px] relative flex items-center space-x-2 last:pb-[80px]"
+          >
             <div className="w-full flex justify-between">
               <div className="flex items-center space-x-2">
                 <img
@@ -84,7 +90,7 @@ const Member = () => {
                 )}
               </div>
             </div>
-            <div className="sm:left-[-30%] sm:top-[-350px] hidden w-[334px] min-h-[120px] sm:z-50 bg-5 dark:bg-8 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
+            <div className="sm:left-[-13%] sm:top-[-350px] hidden w-[334px] sm:w-[275px] min-h-[120px] sm:z-50 bg-5 dark:bg-8 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid group-hover:flex sm:group-focus:block absolute right-[-315px] top-[-80px] rounded-lg shadow-md">
               <div className="w-full h-full px-[20px] py-[13px] flex flex-col">
                 <div className="w-full h-full flex">
                   <div className="h-full flex items-center span">
