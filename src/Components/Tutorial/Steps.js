@@ -5,9 +5,9 @@ export const mainSteps = [
         <strong>[내 프로젝트 리스트]</strong>
         <br />
         <br />
-        내가 속해있는 프로젝트 목록
+        등록된 프로젝트 목록 리스트입니다.
         <br />
-        클릭해서 다른 프로젝트 이동하자
+        썸네일을 클릭하여 다른 프로젝트로 이동할 수 있어요!
       </div>
     ),
     target: ".tutorial-main1",
@@ -21,7 +21,7 @@ export const mainSteps = [
         <strong>[프로젝트 완료율]</strong>
         <br />
         <br />
-        프로젝트 전체 완료율을 확인하자
+        현재 접속한 프로젝트의 전체 완료율을 확인할 수 있어요!
       </div>
     ),
     target: ".tutorial-main2",
@@ -32,10 +32,10 @@ export const mainSteps = [
   {
     content: (
       <div className="text-left">
-        <strong>[팀원 목록]</strong>
+        <strong>[팀원 리스트]</strong>
         <br />
         <br />
-        현재 프로젝트에 참가한 팀원목록
+        현재 프로젝트에 참가한 팀원 리스트입니다.
       </div>
     ),
     target: ".tutorial-main3",
@@ -49,7 +49,7 @@ export const mainSteps = [
         <strong>[초대코드]</strong>
         <br />
         <br />
-        프로젝트 초대코드를 복사하여 팀원에게 전달하자
+        프로젝트 초대코드를 복사하여 팀원을 초대할 수 있어요!
       </div>
     ),
     target: ".tutorial-main4",
@@ -63,7 +63,7 @@ export const mainSteps = [
         <strong>[공지사항]</strong>
         <br />
         <br />
-        프로젝트 관리자만 작성, 수정, 삭제 가능
+        프로젝트 생성자(관리자)가 공지사항을 작성, 수정, 삭제할 수 있어요.
       </div>
     ),
     target: ".tutorial-main5",
@@ -76,8 +76,7 @@ export const mainSteps = [
       <div className="text-left">
         <strong>[팀 상태 개요]</strong>
         <br />
-        <br />
-        보드탭에서 작성된 카드들로 각 팀원의 진행도를 확인하자
+        <br />각 팀원의 진행도를 파악할 수 있어요! 보드 탭에서 작성된 카드의 상태를 반영합니다.
       </div>
     ),
     target: ".tutorial-main6",
@@ -91,7 +90,7 @@ export const mainSteps = [
         <strong>[실시간 채팅]</strong>
         <br />
         <br />
-        프로젝트에 속한 팀원들과의 실시간 채팅
+        프로젝트에 함께하는 팀원들과 실시간 채팅이 가능해요.
       </div>
     ),
     target: ".tutorial-main7",
@@ -104,7 +103,8 @@ export const mainSteps = [
       <div className="text-left">
         <strong>[다크모드]</strong>
         <br />
-        <br />색 반전을 통해 눈의 피로도를 챙기자
+        <br />
+        {`어두운 컬러스킴의 색 반전으로 눈의 피로도를 낮출 수 있습니다 :)`}
       </div>
     ),
     target: ".tutorial-main8",
@@ -115,13 +115,13 @@ export const mainSteps = [
   {
     content: (
       <div className="text-left">
-        <strong>[로그아웃]</strong>
+        <strong>[프로젝트 리스트]</strong>
         <br />
         <br />
-        안녕히가세여
+        프로젝트 리스트로 돌아갈 수 있어요.
       </div>
     ),
-    target: ".tutorial-main9",
+    target: ".tutorial-main10",
     placement: "auto",
     disableBeacon: true,
     disableScrolling: true,
@@ -129,13 +129,13 @@ export const mainSteps = [
   {
     content: (
       <div className="text-left">
-        <strong>[프로젝트 리스트]</strong>
+        <strong>[로그아웃]</strong>
         <br />
         <br />
-        프로젝트 리스트로 가기 버튼
+        로그아웃 버튼입니다.
       </div>
     ),
-    target: ".tutorial-main10",
+    target: ".tutorial-main9",
     placement: "top",
     disableBeacon: true,
     disableScrolling: true,
@@ -149,7 +149,7 @@ export const projectListSteps = [
         <strong>[프로젝트 만들기]</strong>
         <br />
         <br />
-        팀원들과 함께할 프로젝트를 만들자
+        팀원들과 함께할 프로젝트를 만들어보세요!
       </div>
     ),
     target: ".tutorial-pl1",
@@ -163,7 +163,7 @@ export const projectListSteps = [
         <strong>[초대코드]</strong>
         <br />
         <br />
-        팀원에게 받은 초대코드를 입력하자
+        팀원에게 받은 초대코드를 입력하여 프로젝트에 입장해보세요!
       </div>
     ),
     target: ".tutorial-pl2",
@@ -176,7 +176,8 @@ export const projectListSteps = [
       <div className="text-left">
         <strong>[다크모드]</strong>
         <br />
-        <br />색 반전을 통해 눈의 피로도를 챙기자
+        <br />
+        {`어두운 컬러스킴의 색 반전으로 눈의 피로도를 낮출 수 있습니다 :)`}
       </div>
     ),
     target: ".tutorial-pl3",
@@ -189,7 +190,8 @@ export const projectListSteps = [
       <div className="text-left">
         <strong>[내 프로필 설정]</strong>
         <br />
-        <br />내 프로필을 꾸미자
+        <br />
+        자신만의 프로필을 설정해보세요!
       </div>
     ),
     target: ".tutorial-pl4",
