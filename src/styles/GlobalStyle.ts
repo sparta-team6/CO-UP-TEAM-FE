@@ -39,6 +39,13 @@ nav {
   background-color: ${(props) => props.theme.bgColor}
 }
 
+img {
+  image-rendering:-moz-auto;
+  image-rendering: -o-auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
+}
+
 details > summary::-webkit-details-marker {
   display: none;
 }
