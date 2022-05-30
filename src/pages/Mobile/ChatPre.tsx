@@ -108,7 +108,7 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
                       }`}
                     >
                       <span
-                        className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-[#B0B0B0] font-semibold tracking-tight`}
+                        className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-[#B0B0B0] font-normal tracking-tight`}
                       >
                         {box.message}
                       </span>

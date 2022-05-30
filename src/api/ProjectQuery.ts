@@ -9,7 +9,7 @@ export interface Room {
   summary: string;
   inviteCode?: string;
   projectRole?: string;
-  modifiedTime?: string;
+  createdTime?: string;
 }
 
 export interface IRoom {
@@ -40,8 +40,7 @@ export const usePostRoom = () => {
 
 export const usePostOpenRoom = () => {
   return useMutation(async (RoomId: string) => {
-    await instance
-      .post(`api/projects/invite?inviteCode=${RoomId}`, RoomId)
+    await instance.post(`api/projects/invite?inviteCode=${RoomId}`, RoomId);
   });
 };
 
@@ -56,21 +55,18 @@ export const useDelRoom = (postId: string) => {
 
 export const useUpdateRoom = (postId: string) => {
   return useMutation(async (post: Room) => {
-    await instance
-      .patch(`api/projects/${postId}`, post)
+    await instance.patch(`api/projects/${postId}`, post);
   });
 };
 
 export const useExitRoom = (pjId: string) => {
   return useMutation(async () => {
-    await instance
-      .delete(`api/projects/exit/${pjId}`)
+    await instance.delete(`api/projects/exit/${pjId}`);
   });
 };
 
 export const useKickRoom = (pjId: string) => {
   return useMutation(async (loginId: string) => {
-    await instance
-      .delete(`api/projects/kick/${pjId}&${loginId}`)
+    await instance.delete(`api/projects/kick/${pjId}&${loginId}`);
   });
 };
