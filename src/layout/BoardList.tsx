@@ -94,7 +94,7 @@ const BoardList = () => {
                 <span>{`추가해 보세요`}</span>
               </div>
               <div className="text-center text-lg sm:text-sm">
-                <span>보드를 사용하여 팀원들과 현재 대기중인, 진행중인,</span>
+                <span>보드를 사용하여 팀원들과 현재 대기중인, 진행중인, </span>
                 <span>완료된 보드의 작업 상태를 공유할 수 있습니다.</span>
               </div>
             </div>

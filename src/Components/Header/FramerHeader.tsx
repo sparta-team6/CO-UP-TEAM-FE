@@ -9,10 +9,13 @@ import { MChat } from "../../elements/Icon/mobile/MChat";
 import { HelpCircle } from "../../elements/Icon/HelpCircle";
 import JoyrideContainer from "../Tutorial/JoyrideContainer";
 import { mainSteps } from "../Tutorial/Steps";
+import { MDChat } from "../../elements/Icon/mobile/MDChat";
+import { MyProfile } from "../../recoil/MyProfile";
 
 const FramerHeader = () => {
   const location = useLocation();
   const { pjId } = useRecoilValue(ProjectKey);
+  const { profileImage } = useRecoilValue(MyProfile);
   const mainMatch = useMatch("/tool/:id");
   const docMatch = useMatch("/tool/:id/document/*");
   const boardMatch = useMatch("/tool/:id/board");
@@ -68,18 +71,28 @@ const FramerHeader = () => {
         <nav className="h-full flex justify-around items-center sm:hidden dark:bg-6">
           <Link
             to={`/tool/${pjId}/chat`}
-            className="hidden md:flex mr-5 w-8 h-8 justify-center items-center rounded-full bg-2"
+            className="hidden md:flex mr-3 w-8 h-8 justify-center items-center rounded-full"
           >
             <span className="dark:text-white">
-              <MChat />
+              <MDChat />
             </span>
           </Link>
-          <div className="flex justify-between space-x-4">
+          <div className="flex justify-between space-x-4 items-center">
             <div onClick={onClick}>
               <HelpCircle />
             </div>
             <Link to="/profile" className="sm:hidden">
-              <SvgUser />
+              {profileImage === "" ? (
+                <SvgUser />
+              ) : (
+                <img
+                  className="rounded-full lg:m-1"
+                  width={36}
+                  height={36}
+                  src={profileImage}
+                  alt=""
+                />
+              )}
             </Link>
           </div>
         </nav>

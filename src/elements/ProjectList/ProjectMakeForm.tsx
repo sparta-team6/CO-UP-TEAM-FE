@@ -114,17 +114,17 @@ const ProjectMakeForm = ({ open }: IProp) => {
               autoFocus
               className="w-[352px] h-10 p-2 rounded-md border-none border border-[#D1D1D1]"
               placeholder="팀 이름"
-              maxLength={40}
+              maxLength={30}
               {...register("title")}
             />
           </div>
           <div className="flex">
             <span className="w-14 mr-4 mt-2 sm:hidden">소개</span>
             <textarea
-              rows={5}
+              rows={4}
               className="w-[352px] h-[95px] outline-none resize-none p-2 rounded-md border-none border border-[#D1D1D1]"
               placeholder="소개"
-              maxLength={150}
+              maxLength={100}
               {...register("summary")}
             />
           </div>

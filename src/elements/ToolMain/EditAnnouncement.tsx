@@ -74,6 +74,7 @@ const EditAnnouncement = ({ title, contents, noticeId, modifiedTime, edit, setEd
               className="w-full mb-[10px] outline-none border-none text-2xl placeholder:text-[#B0B0B0] placeholder:font-semibold font-semibold"
               {...register("title")}
               type="text"
+              maxLength={30}
               placeholder="공지 제목을 적어주세요 :)"
               defaultValue={title}
             />

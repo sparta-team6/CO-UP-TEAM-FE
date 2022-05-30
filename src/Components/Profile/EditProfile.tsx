@@ -10,6 +10,11 @@ import { MyProfile } from "../../recoil/MyProfile";
 import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
 import { SweetAlertHook } from "../../servers/Sweet";
+import DefaultImg1 from "../../images/Profile/COUP_square_대지 1.png";
+import DefaultImg2 from "../../images/Profile/COUP_square-02.png";
+import DefaultImg3 from "../../images/Profile/COUP_square-03.png";
+import DefaultImg4 from "../../images/Profile/COUP_square-04.png";
+import DefaultImg5 from "../../images/Profile/COUP_square-05.png";
 
 interface IForm {
   id?: string;
@@ -21,7 +26,9 @@ interface IForm {
 const EditProfile = () => {
   const [cookies, _, removeCookie] = useCookies(["accessToken", "refreshToken"]);
   const [user, setUser] = useRecoilState(MyProfile);
-  const [imgBase64, setImgBase64] = useState<string>("");
+  const RandomImg = [DefaultImg1, DefaultImg2, DefaultImg3, DefaultImg4, DefaultImg5];
+  const DefaultImg = Math.floor(Math.random() * RandomImg.length);
+  const [imgBase64, setImgBase64] = useState<string>(RandomImg[DefaultImg]);
   const fileInput = useRef<HTMLInputElement>(null);
   const { register, handleSubmit } = useForm<IForm>();
   const { mutateAsync } = useUpdateUser();
@@ -36,7 +43,7 @@ const EditProfile = () => {
     const profile = {
       loginId: user?.loginId,
       nickname: data.nickName,
-      profileImage: String(user?.profileImage),
+      profileImage: imgBase64,
       url: data.url,
       aboutMe: data.about_me,
     };
@@ -56,7 +63,7 @@ const EditProfile = () => {
         }
       });
     } else {
-      const image = await resizeFile(size, 244, 244, "base64");
+      const image = await resizeFile(size, 36, 36, "base64");
       const profile = {
         loginId: user?.loginId,
         nickname: data.nickName,
@@ -114,8 +121,14 @@ const EditProfile = () => {
   };
   return (
     <>
-      <div className="font-bold text-4xl sm:text-2xl text-left w-full pl-12 pb-12 sm:pl-6">
+      <div className="font-bold text-4xl sm:text-2xl text-left w-full px-12 pb-12 sm:px-6 flex justify-between">
         <span>내 프로필 설정</span>
+        <button
+          onClick={() => navigate(-1)}
+          className="w-[160px] h-[48px] sm:w-[80px] sm:h-[32px] hover:text-3 text-xl sm:text-sm cursor-pointer bg-[#D7DcE5] rounded-md"
+        >
+          뒤로가기
+        </button>
       </div>
       <div className="flex flex-col">
         <div className="flex justify-center relative">
@@ -141,9 +154,14 @@ const EditProfile = () => {
           </label>
         </div>
         <form
-          className="flex flex-col space-y-6 mt-14 sm:mt-6 w-[440px] sm:w-[288px]"
+          className="flex flex-col space-y-6 mt-14 sm:mt-6 w-[440px] sm:w-[288px] relative"
           onSubmit={handleSubmit(onSubmit)}
         >
+          <img
+            className="rounded-full w-[36px] h-[36px] absolute top-8 left-4 sm:top-6"
+            alt=""
+            src={user?.profileImage}
+          />
           <input
             className="text-center text-2xl h-14 rounded-md border-none sm:h-[36px] sm:text-base  dark:bg-6"
             placeholder="닉네임"
