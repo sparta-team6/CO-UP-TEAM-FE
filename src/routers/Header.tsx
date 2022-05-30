@@ -6,15 +6,21 @@ import { HelpCircle } from "../elements/Icon/HelpCircle";
 import HeaderLogo from "../images/Header/HeaderLogo.png";
 import JoyrideContainer from "../Components/Tutorial/JoyrideContainer";
 import { projectListSteps } from "../Components/Tutorial/Steps";
+import { themeState } from "../recoil/DarkMode";
+import { useRecoilState } from "recoil";
+import { Moon } from "../elements/Icon/Moon";
+import { Sun } from "../elements/Icon/Sun";
 
 const Header = () => {
   const location = useLocation();
-
+  const [theme, DarkMode] = useRecoilState(themeState);
   const [open, setOpen] = useState(false);
   const onClick = () => {
     setOpen(true);
   };
-
+  const onDarkMode = () => {
+    DarkMode((prev: boolean) => !prev);
+  };
   return (
     <React.Fragment>
       <JoyrideContainer run={open} setOpen={setOpen} steps={projectListSteps} />
@@ -26,6 +32,9 @@ const Header = () => {
             <img className="mt-[3px]" src={HeaderLogo} alt="Logo" />
           </Link>
           <div className="flex justify-between space-x-4">
+            <div className="cursor-pointer" onClick={onDarkMode}>
+              {theme ? <Moon /> : <Sun />}
+            </div>
             <div onClick={onClick}>
               <HelpCircle />
             </div>

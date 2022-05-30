@@ -67,7 +67,7 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
       >
         <div
           ref={messageBoxRef}
-          className="w-full h-full sm:min-h-[612px] space-y-2 overflow-auto flex flex-col-reverse"
+          className="w-full h-full sm:min-h-[612px] space-y-5 overflow-auto flex flex-col-reverse"
         >
           {contents?.map((box, index) => {
             return (
@@ -103,12 +103,12 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
                       {box.dateTime.replaceAll("-", ".").slice(11, 16)}
                     </span>
                     <div
-                      className={`text-left min-w-[25px] sm:min-h-[40px] bg-[#f5f5f5] p-[10px] rounded-md ${
+                      className={`text-left min-w-[25px] sm:min-h-[40px] bg-[#f5f5f5] dark:bg-[#3D4853] p-[10px] rounded-md ${
                         loginId === box.senderLoginId ? "mt-2" : ""
                       }`}
                     >
                       <span
-                        className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] font-semibold tracking-tight`}
+                        className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-[#B0B0B0] font-semibold tracking-tight`}
                       >
                         {box.message}
                       </span>

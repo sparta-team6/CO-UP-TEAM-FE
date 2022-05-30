@@ -1,20 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
 import { content } from "./Chat";
-import { fetchChatting } from "../api/ChatQuery";
-import { useInfiniteQuery } from "react-query";
 import { useRecoilValue } from "recoil";
 import { MyProfile } from "../recoil/MyProfile";
 import EmptyChat from "../images/Main/EmptyChat.png";
 import { SweetAlertHook } from "../servers/Sweet";
+import { queryClient } from "..";
 
 interface ChatPresenterProps {
   senderLoginId: string;
   pjId: string;
   contents: Array<content>;
-  pageNumber: number;
+  setPageParams: Dispatch<SetStateAction<number>>;
+  pageParams: number;
 }
 
 interface IForm {
@@ -25,18 +25,16 @@ interface IForm {
   nickname: string;
 }
 
-// 주석 풀고 테스트
 const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
-const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterProps) => {
+const ChatPre = ({
+  contents,
+  senderLoginId,
+  pjId,
+  pageParams,
+  setPageParams,
+}: ChatPresenterProps) => {
   const { nickname, profileImage, loginId } = useRecoilValue(MyProfile);
-  const { data, isLoading, hasNextPage, fetchNextPage, isFetching, isFetchingNextPage } =
-    useInfiniteQuery(["chat", pjId], () => fetchChatting(pjId, pageNumber), {
-      getNextPageParam: (_lastPage, pages: any) => {
-        // contents.push(pages);
-        // console.log(pages);
-      },
-    });
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
     if (message.trim() === "") return;
@@ -65,13 +63,22 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     const data = { text: e.currentTarget.value };
-    const newMessage = { message: data.text, senderLoginId, pjId, profileImage, nickname };
+    const newMessage = {
+      message: data.text,
+      senderLoginId: String(senderLoginId),
+      pjId,
+      profileImage: String(profileImage),
+      nickname: String(nickname),
+    };
     if (e.key === "Enter") {
       if (!e.shiftKey) {
         setSend(true);
         handleonEnter(newMessage);
       }
     }
+  };
+  const onScroll = () => {
+    setPageParams(pageParams + 20);
   };
   return (
     <>
@@ -132,6 +139,9 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
             </div>
           );
         })}
+        {/* <div onClick={onScroll} className="w-full h-4 bg-1">
+          더보기
+        </div> */}
       </div>
       <div className="w-full flex justify-center items-center relative bg-[#fff] dark:bg-6">
         <form
@@ -153,15 +163,6 @@ const ChatPre = ({ contents, senderLoginId, pjId, pageNumber }: ChatPresenterPro
             전송
           </button>
         </form>
-        {/* 여기서 테스트 hidden 제거 */}
-        {/* <button
-          className="hidden absolute bottom-10 w-24 h-10 bg-3 text-black"
-          disabled={!hasNextPage || isFetchingNextPage}
-          onClick={() => fetchNextPage}
-        >
-          {isFetchingNextPage ? "Loading.." : hasNextPage ? "Load More" : "Test"}
-        </button>
-        <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div> */}
       </div>
     </>
   );

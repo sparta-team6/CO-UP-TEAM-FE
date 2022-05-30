@@ -26,6 +26,7 @@ interface IDragabbleCardProps {
   toDoId: string;
   toDoText: string;
   toDoTitle: string;
+  toDoTime: string;
   index: number;
 }
 
@@ -35,6 +36,7 @@ const DraggableCard = ({
   toDoId,
   toDoText,
   toDoTitle,
+  toDoTime,
   index,
 }: IDragabbleCardProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
@@ -120,7 +122,9 @@ const DraggableCard = ({
               <div className="w-full h-full">
                 <span className="text-lg sm:text-xl font-semibold text-[32px]">{toDoTitle}</span>
                 <div className="w-full flex items-center space-x-2 mt-[28px] ">
-                  <span className="text-xl sm:text-sm mr-1">2022.XX.XX</span>
+                  <span className="text-xl sm:text-sm mr-1">
+                    {toDoTime.replaceAll("-", ".").slice(0, 10)}
+                  </span>
                   <div className="text-basesm:text-sm w-[50px] h-7 rounded-md bg-5 flex justify-center items-center">
                     <div className="mt-[3px] text-base">{bucketId}</div>
                   </div>

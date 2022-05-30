@@ -41,6 +41,7 @@ nav {
 details > summary::-webkit-details-marker {
   display: none;
 }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -357,8 +358,14 @@ abbr[title]{
   color:white
 }
 
-#toastuiAltTextInput {
-  background-color: white;
+#toastuiAltTextInput{
+  background-color: white !important;
+}
+
+#toastuiLinkUrlInput {
+  background-color: white !important;
+}#toastuiLinkTextInput {
+  background-color: white !important;
 }
 
 .wmde-markdown > p > img {
@@ -381,8 +388,8 @@ abbr[title]{
 @media only screen and (max-width: 480px){
   .toastui-editor-popup {
     max-width: 300px;
-    margin-left: -10px;
-}
+    margin-left: 0px;
+}   
 .toastui-editor-dropdown-toolbar {
   display: flex;
   flex-direction: column;

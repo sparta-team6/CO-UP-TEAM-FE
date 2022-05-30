@@ -9,7 +9,7 @@ const Profile = () => {
         <title>CO-UP | 프로필</title>
       </Helmet>
       <div className="w-full h-[calc(100vh-4rem)] bg-[#F0F3F6] dark:bg-7 flex flex-col items-center justify-center absolute bottom-0">
-        <div className="w-[1300px] h-full p-4 flex flex-col justify-center items-center md:w-full sm:justify-start">
+        <div className="w-[1100px] h-full p-4 flex flex-col justify-center items-center md:w-full sm:justify-start">
           <EditProfile />
         </div>
       </div>
