@@ -85,7 +85,7 @@ const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
         PaperProps={{
           style: {
             width: "120px",
-            height: "65px",
+            height: "64px",
             textAlign: "center",
             backgroundColor: "#E7EBF2",
             display: "flex",

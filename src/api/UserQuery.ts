@@ -9,9 +9,9 @@ export interface User {
   loginId?: string;
   social?: string;
   profileImage?: string;
-  url: string;
-  nickname: string;
-  aboutMe: string;
+  url?: string;
+  nickname?: string;
+  aboutMe?: string;
 }
 
 export interface IUser {
