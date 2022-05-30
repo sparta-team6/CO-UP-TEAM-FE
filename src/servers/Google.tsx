@@ -15,8 +15,8 @@ const Google = () => {
         .then(() => {
           navigate("/projectList");
         })
-        .catch((err) => {
-          alert(err);
+        .catch(() => {
+          navigate("/")
         });
     };
     if (code) {
