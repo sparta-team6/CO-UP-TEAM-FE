@@ -73,7 +73,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
   };
   return (
     <div className="min-w-[280px] sm:max-w-[247px] w-96 lg:mr-7 rounded-md min-h-[870px] flex flex-col sm:ml-[10px]">
-      <div className="w-full h-6 mt-10 sm:mt-10 flex justify-between">
+      <div className="w-full h-6 mt-10 sm:mt-8 flex justify-between">
         <span className="text-center font-bold text-lg">{bucketId}</span>
         <button
           className="h-full border-none bg-transparent flex items-center"
