@@ -1,7 +1,7 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { useMutation, useQuery } from "react-query";
 import { useSetRecoilState } from "recoil";
-import { docId } from "../recoil/AtomDocument";
+import { docId, NewDoc } from "../recoil/AtomDocument";
 import { instance } from "../servers/axios";
 import { SweetAlertHook } from "../servers/Sweet";
 
@@ -9,6 +9,7 @@ export interface Docs {
   title?: string;
   contents?: string;
   isFetching?: boolean;
+  isFetchingg?: boolean;
   docId?: string;
   modifiedTime?: string;
   nickname?: string;
@@ -21,6 +22,13 @@ export interface IDocDetail {
 export const useGetOneDoc = (docId: string) => {
   return useQuery<AxiosResponse, AxiosError, IDocDetail>(["getOneDoc", docId], () => {
     return instance.get(`api/folders/docs/?docId=${docId}`);
+  });
+};
+
+export const useGetNewDoc = (pjId: string) => {
+  const setNewDoc = useSetRecoilState(NewDoc);
+  return useQuery("getNewDoc", async () => {
+    await instance.get(`api/folders/docs/new?pjId=${pjId}`).then((res) => setNewDoc(res.data));
   });
 };
 

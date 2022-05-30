@@ -17,7 +17,7 @@ const DetailDocs = () => {
           <DocumentList />
         </div>
         <div className="w-[calc(100%-800px)] h-full flex ml-[368px] md:w-[calc(100%-21rem)] sm:w-full sm:p-2 sm:m-0">
-          <ViewDoc {...DocData} isFetching={isFetching} />
+          <ViewDoc {...DocData} isFetchingg={isFetching} />
         </div>
       </div>
       <Chat />

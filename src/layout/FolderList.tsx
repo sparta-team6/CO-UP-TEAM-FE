@@ -14,7 +14,7 @@ import styled from "styled-components";
 
 const FolderList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
-  const { data } = useGetFolders(pjId);
+  const { data, isFetching } = useGetFolders(pjId);
   const { mutateAsync: AddFol } = useAddFolder();
   const navigate = useNavigate();
   const [editTitle, setEditTitle] = useState(false);
@@ -75,60 +75,70 @@ const FolderList = () => {
             </div>
           </div>
           <div className="border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
-          {data?.data?.map((folder) => {
-            return (
-              <div key={folder.dfId}>
-                <div className="flex justify-between items-center pl-6 pr-5 mt-[16px]">
-                  <div
-                    className={`font-bold text-lg ${
-                      editTitle && dfId === folder.dfId ? "hidden" : "block"
-                    }`}
-                  >
-                    {folder?.docs?.length === 0 ? <SvgFolder /> : <FolderPlus />}
-                    <span className="ml-[15px]">{folder.title}</span>
-                  </div>
-                  <form
-                    className={`w-full font-bold text-lg items-center justify-between ${
-                      editTitle && dfId === folder.dfId ? "flex" : "hidden"
-                    }`}
-                    onSubmit={onSubmit}
-                  >
-                    <input
-                      maxLength={11}
-                      autoFocus
-                      className="border-none dark:bg-white dark:text-black dark:caret-8"
-                      defaultValue={folder.title}
-                      onChange={onChange}
-                    />
-                  </form>
-                  <FolderFixed dfId={folder.dfId} setEditTitle={setEditTitle} setDfId={setDfId} />
-                </div>
-                <div
-                  className={`flex flex-col justify-center items-center pt-2 sm:hidden ${
-                    folder?.docs?.length !== 0 && "hidden"
-                  }`}
-                >
-                  <img width={131} height={130} src={EmptyFile} alt="" />
-                  <span className="text-lg opacity-50 mt-[30px] sm:text-base sm:mt-5">
-                    새로운 문서를 추가해 보세요
-                  </span>
-                </div>
-                {folder.docs?.map((doc) => (
-                  <div key={doc.docId} className="flex flex-col ml-[54px] mr-[41px] my-[5px]">
-                    <div className="flex items-center text-base cursor-pointer">
-                      <span
-                        className="text-ellipsis overflow-hidden whitespace-nowrap"
-                        onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}
+          <>
+            {!isFetching && (
+              <>
+                {data?.data?.map((folder) => {
+                  return (
+                    <div key={folder.dfId}>
+                      <div className="flex justify-between items-center pl-6 pr-5 mt-[16px]">
+                        <div
+                          className={`font-bold text-lg ${
+                            editTitle && dfId === folder.dfId ? "hidden" : "block"
+                          }`}
+                        >
+                          {folder?.docs?.length === 0 ? <SvgFolder /> : <FolderPlus />}
+                          <span className="ml-[15px]">{folder.title}</span>
+                        </div>
+                        <form
+                          className={`w-full font-bold text-lg items-center justify-between ${
+                            editTitle && dfId === folder.dfId ? "flex" : "hidden"
+                          }`}
+                          onSubmit={onSubmit}
+                        >
+                          <input
+                            maxLength={11}
+                            autoFocus
+                            className="border-none dark:bg-white dark:text-black dark:caret-8"
+                            defaultValue={folder.title}
+                            onChange={onChange}
+                          />
+                        </form>
+                        <FolderFixed
+                          dfId={folder.dfId}
+                          setEditTitle={setEditTitle}
+                          setDfId={setDfId}
+                        />
+                      </div>
+                      <div
+                        className={`flex flex-col justify-center items-center pt-2 sm:hidden ${
+                          folder?.docs?.length !== 0 && "hidden"
+                        }`}
                       >
-                        {doc.title}
-                      </span>
+                        <img width={131} height={130} src={EmptyFile} alt="" />
+                        <span className="text-lg opacity-50 mt-[30px] sm:text-base sm:mt-5">
+                          새로운 문서를 추가해 보세요
+                        </span>
+                      </div>
+                      {folder.docs?.map((doc) => (
+                        <div key={doc.docId} className="flex flex-col ml-[54px] mr-[41px] my-[5px]">
+                          <div className="flex items-center text-base cursor-pointer">
+                            <span
+                              className="text-ellipsis overflow-hidden whitespace-nowrap"
+                              onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}
+                            >
+                              {doc.title}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                      <div className="border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
                     </div>
-                  </div>
-                ))}
-                <div className="border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
-              </div>
-            );
-          })}
+                  );
+                })}
+              </>
+            )}
+          </>
         </Scroll>
       )}
     </>

@@ -1,22 +1,23 @@
 import { useNavigate, useParams } from "react-router-dom";
 import MarkdownPreview from "@uiw/react-markdown-preview";
-import { Docs, useDelDoc } from "../../api/DocumentQuery";
+import { Docs, useDelDoc, useGetNewDoc } from "../../api/DocumentQuery";
 import "../../styles/ViewDoc.css";
 import { queryClient } from "../..";
-import { useAddFolder, useGetFolders } from "../../api/FolderQuery";
+import { useAddFolder } from "../../api/FolderQuery";
 import EmptyFolder from "../../images/Document/EmptyFolder.png";
 import EmptyFolderM from "../../images/Document/EmptyFolder_m.png";
 import { ChevronLeft } from "../../elements/Icon/ChevronLeft";
 import Swal from "sweetalert2";
+import { useRecoilValue } from "recoil";
+import { NewDoc } from "../../recoil/AtomDocument";
 
-const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime, nickname }: Docs) => {
+const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }: Docs) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { mutateAsync: DelDoc } = useDelDoc(String(docId));
   const { mutateAsync: AddFol } = useAddFolder();
-  const { data } = useGetFolders(String(id));
-  const folderData = data?.data[data?.data.length - 1];
-  const docData = folderData?.docs?.[folderData?.docs.length - 1];
+  const docData = useRecoilValue(NewDoc);
+  const { isFetching } = useGetNewDoc(String(id));
   const { mutateAsync: DelDoc2 } = useDelDoc(String(docData?.docId));
 
   const onDelete = () => {
@@ -64,7 +65,7 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime, nickname }:
   };
   return (
     <>
-      {!isFetching && (
+      {!isFetchingg && (
         <div className="w-full h-full flex flex-col overflow-y-auto">
           {title && contents ? (
             <>
@@ -127,52 +128,62 @@ const ViewDoc = ({ title, contents, isFetching, docId, modifiedTime, nickname }:
                 <span>{title}</span>
               </div>
               <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
-                <MarkdownPreview className="whitespace-pre-wrap break-all text-8 dark:text-[#ffffff]" source={contents} />
+                <MarkdownPreview
+                  className="whitespace-pre-wrap break-all text-8 dark:text-[#ffffff]"
+                  source={contents}
+                />
               </div>
             </>
           ) : docData ? (
             <>
-              <div className="flex flex-col sm:hidden mx-[46px] mt-[37px] mb-[20px]">
-                <div className="flex justify-between items-center h-[47px]">
-                  <div className="text-[32px] font-bold">
-                    <span>{docData.title}</span>
+              {!isFetching && (
+                <>
+                  <div className="flex flex-col sm:hidden mx-[46px] mt-[37px] mb-[20px]">
+                    <div className="flex justify-between items-center h-[47px]">
+                      <div className="text-[32px] font-bold">
+                        <span>{docData.title}</span>
+                      </div>
+                      <div>
+                        <button
+                          className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
+                          onClick={() =>
+                            navigate(`/tool/${id}/document/${docData.docId}/edit`, {
+                              state: {
+                                docId: docData.docId,
+                                title: docData.title,
+                                contents: docData.contents,
+                              },
+                            })
+                          }
+                        >
+                          수정
+                        </button>
+                        <button
+                          className="border-none ml-[16px] w-[62px] h-[44px] rounded-md bg-5"
+                          onClick={onDelete2}
+                        >
+                          삭제
+                        </button>
+                      </div>
+                    </div>
+                    <div className="text-lg text-[#999] mt-[15px]">
+                      <span>
+                        {docData?.modifiedTime
+                          ?.replaceAll("-", ".")
+                          .replace("T", "  ")
+                          .slice(0, 17)}
+                      </span>
+                      <span className="ml-[12px]">{`by ${docData?.nickname}`}</span>
+                    </div>
                   </div>
-                  <div>
-                    <button
-                      className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
-                      onClick={() =>
-                        navigate(`/tool/${id}/document/${docData.docId}/edit`, {
-                          state: {
-                            docId: docData.docId,
-                            title: docData.title,
-                            contents: docData.contents,
-                          },
-                        })
-                      }
-                    >
-                      수정
-                    </button>
-                    <button
-                      className="border-none ml-[16px] w-[62px] h-[44px] rounded-md bg-5"
-                      onClick={onDelete2}
-                    >
-                      삭제
-                    </button>
+                  <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
+                    <MarkdownPreview
+                      className="whitespace-pre-wrap break-all text-8 dark:text-[#ffffff]"
+                      source={docData.contents}
+                    />
                   </div>
-                </div>
-                <div className="text-lg text-[#999] mt-[15px]">
-                  <span>
-                    {docData?.modifiedTime?.replaceAll("-", ".").replace("T", "  ").slice(0, 17)}
-                  </span>
-                  <span className="ml-[12px]">{`by ${docData?.nickname}`}</span>
-                </div>
-              </div>
-              <div className="mx-[46px] mt-[20px] sm:mx-[12px] sm:mt-0">
-                <MarkdownPreview
-                  className="whitespace-pre-wrap break-all text-8 dark:text-[#ffffff]"
-                  source={docData.contents}
-                />
-              </div>
+                </>
+              )}
             </>
           ) : (
             <div className=" w-full h-full flex flex-col justify-center items-center text-center px-[46px]">
