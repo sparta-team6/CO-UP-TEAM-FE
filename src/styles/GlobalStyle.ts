@@ -423,4 +423,9 @@ foreignObject{
 .apexcharts-tooltip-y-group > span {
   color:black !important
 }
+
+.react-joyride__tooltip{
+  width: 300px !important;
+  padding: 10px !important;
+}
 `;

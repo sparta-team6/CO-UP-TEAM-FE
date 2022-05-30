@@ -36,7 +36,7 @@ const ProjectList = () => {
       <Helmet>
         <title>CO-UP | 프로젝트 리스트</title>
       </Helmet>
-      <div className="pl1 w-full min-h-screen bg-[#f0f3f7] dark:bg-7">
+      <div className="w-full min-h-screen bg-[#f0f3f7] dark:bg-7">
         <div className="w-full h-auto  flex flex-col items-center justify-center relative">
           <div className="w-full h-full flex flex-col items-center pt-36 sm:pt-32">
             <div className=" w-[1188px] flex justify-between items-center mb-8 md:w-[90%]">

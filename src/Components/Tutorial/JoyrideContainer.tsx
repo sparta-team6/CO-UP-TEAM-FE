@@ -13,6 +13,7 @@ const JoyrideContainer = ({ run, steps, setOpen }: any) => {
       }, 100);
     } else if (([STATUS.FINISHED, STATUS.SKIPPED] as string[]).includes(status)) {
       setOpen(false);
+      setStepIndex(0);
     }
   };
   return (
@@ -26,6 +27,7 @@ const JoyrideContainer = ({ run, steps, setOpen }: any) => {
       disableScrollParentFix={true}
       callback={handleJoyrideCallback}
       stepIndex={stepIndex}
+      showSkipButton={true}
     />
   );
 };

@@ -8,7 +8,7 @@ import { ProjectKey } from "../../recoil/RoomID";
 import { MChat } from "../../elements/Icon/mobile/MChat";
 import { HelpCircle } from "../../elements/Icon/HelpCircle";
 import JoyrideContainer from "../Tutorial/JoyrideContainer";
-import { boardSteps, documentSteps, mainSteps } from "../Tutorial/Steps";
+import { mainSteps } from "../Tutorial/Steps";
 
 const FramerHeader = () => {
   const location = useLocation();
@@ -22,17 +22,7 @@ const FramerHeader = () => {
   };
   return (
     <React.Fragment>
-      <JoyrideContainer
-        run={open}
-        steps={
-          location.pathname.includes("document")
-            ? documentSteps
-            : location.pathname.includes("board")
-            ? boardSteps
-            : mainSteps
-        }
-        setOpen={setOpen}
-      />
+      <JoyrideContainer run={open} steps={mainSteps} setOpen={setOpen} />
       <nav className="sm:hidden w-full h-16 flex justify-between items-center fixed z-[1000] shadow-md dark:bg-6 px-[23px]">
         <Link to="/">
           <img className="mt-[3px]" width={34} height={36} src={HeaderLogo} alt="Logo" />

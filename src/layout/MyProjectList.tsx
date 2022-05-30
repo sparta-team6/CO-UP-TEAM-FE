@@ -52,8 +52,8 @@ const MyProjectList = () => {
     DarkMode((prev: boolean) => !prev);
   };
   return (
-    <div className="test2 w-20 h-[calc(100%-4rem)] bg-[#e7ebf2] dark:bg-[#444C54] flex flex-col justify-between items-center sm:h-[calc(100vh-4rem)] sm:pt-16">
-      <Scroll className="mt-[8px] w-full h-[calc(100%-190px)] flex flex-col items-center overflow-auto">
+    <div className="w-20 h-[calc(100%-4rem)] bg-[#e7ebf2] dark:bg-[#444C54] flex flex-col justify-between items-center sm:h-[calc(100vh-4rem)] sm:pt-16">
+      <Scroll className="test2 mt-[8px] w-full h-[calc(100%-190px)] flex flex-col items-center overflow-auto">
         {data?.data.map((room, index) => (
           <motion.div whileHover={{ scale: 1.1 }} onClick={() => onClick(room.pjId)} key={index}>
             <img
