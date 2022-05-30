@@ -53,7 +53,7 @@ const MyProjectList = () => {
   };
   return (
     <div className="w-20 h-[calc(100%-4rem)] bg-[#e7ebf2] dark:bg-[#444C54] flex flex-col justify-between items-center sm:h-[calc(100vh-4rem)] sm:pt-16">
-      <Scroll className="test2 mt-[8px] w-full h-[calc(100%-190px)] flex flex-col items-center overflow-auto">
+      <Scroll className="tutorial-main1 mt-[8px] w-full h-[calc(100%-190px)] flex flex-col items-center overflow-auto">
         {data?.data.map((room, index) => (
           <motion.div whileHover={{ scale: 1.1 }} onClick={() => onClick(room.pjId)} key={index}>
             <img
@@ -65,13 +65,13 @@ const MyProjectList = () => {
         ))}
       </Scroll>
       <div className="w-20 h-52 flex flex-col justify-center items-center space-y-[27px]">
-        <div className="test9 cursor-pointer" onClick={onDarkMode}>
+        <div className="tutorial-main8 cursor-pointer" onClick={onDarkMode}>
           {theme ? <Moon /> : <Sun />}
         </div>
-        <div className="test10 cursor-pointer" onClick={onLogOut}>
+        <div className="tutorial-main9 cursor-pointer" onClick={onLogOut}>
           <Logout />
         </div>
-        <Link className="test11 cursor-pointer" to="/projectList">
+        <Link className="tutorial-main10 cursor-pointer" to="/projectList">
           <Power />
         </Link>
       </div>

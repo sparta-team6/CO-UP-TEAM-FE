@@ -7,8 +7,6 @@ import { SvgUser } from "../../elements/Icon/SvgUser";
 import { ProjectKey } from "../../recoil/RoomID";
 import { MChat } from "../../elements/Icon/mobile/MChat";
 import { HelpCircle } from "../../elements/Icon/HelpCircle";
-import JoyrideContainer from "../Tutorial/JoyrideContainer";
-import { mainSteps } from "../Tutorial/Steps";
 import { MDChat } from "../../elements/Icon/mobile/MDChat";
 import { MyProfile } from "../../recoil/MyProfile";
 
@@ -25,7 +23,6 @@ const FramerHeader = () => {
   };
   return (
     <React.Fragment>
-      <JoyrideContainer run={open} steps={mainSteps} setOpen={setOpen} />
       <nav className="sm:hidden w-full h-16 flex justify-between items-center fixed z-[1000] shadow-md dark:bg-6 px-[23px]">
         <Link to="/">
           <img className="mt-[3px]" width={34} height={36} src={HeaderLogo} alt="Logo" />
@@ -78,9 +75,6 @@ const FramerHeader = () => {
             </span>
           </Link>
           <div className="flex justify-between space-x-4 items-center">
-            <div onClick={onClick}>
-              <HelpCircle />
-            </div>
             <Link to="/profile" className="sm:hidden">
               {profileImage === "" ? (
                 <SvgUser />
