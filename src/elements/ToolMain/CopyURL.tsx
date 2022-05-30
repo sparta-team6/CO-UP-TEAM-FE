@@ -34,7 +34,10 @@ const CopyURL = () => {
           readOnly
         />
         <div className="flex flex-col items-center">
-          <div className={`cursor-pointer ${isHelp ? "" : "animate-bounce"}`} onClick={onClick}>
+          <div
+            className={`cursor-pointer sm:hidden ${isHelp ? "" : "animate-bounce"}`}
+            onClick={onClick}
+          >
             <HelpCircle />
           </div>
           <button

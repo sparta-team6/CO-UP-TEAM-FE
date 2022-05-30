@@ -280,6 +280,10 @@ abbr[title] {
   background-color: ${(props) => props.theme.bgColor}
 }
 
+.react-calendar__navigation button {
+    margin-top: 0px !important;
+  }
+
 abbr[title] {
   text-decoration: none;
   cursor: auto;
@@ -389,6 +393,7 @@ abbr[title]{
   .toastui-editor-popup {
     max-width: 300px;
     margin-left: 0px;
+    left: 170px;
 }   
 .toastui-editor-dropdown-toolbar {
   display: flex;
