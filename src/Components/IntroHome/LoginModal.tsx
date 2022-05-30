@@ -4,11 +4,9 @@ import Modal from "@mui/material/Modal";
 import KakaoLogin from "../../elements/IntroHome/KakaoLogin";
 import GoogleLogin from "../../elements/IntroHome/GoogleLogin";
 import NaverLogin from "../../elements/IntroHome/NaverLogin";
-import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import MIntro from "../../pages/Mobile/MIntro";
 
-/* h-[480px] 입니다 */
 const style = {
   position: "absolute",
   top: "50%",
@@ -43,7 +41,6 @@ export default function LoginModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        {/* h-[370px]입니다 */}
         <Box sx={style} className="rounded-xl">
           <div className="flex flex-col items-center relative">
             <div className="font-bold text-2xl pt-[25px]">
