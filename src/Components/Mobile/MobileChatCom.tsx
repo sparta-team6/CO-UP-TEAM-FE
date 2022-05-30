@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
@@ -28,34 +28,27 @@ const MobileChatCom = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const user = useRecoilValue(MyProfile);
   const senderLoginId = user.loginId;
-  const { data } = useGetChatting(String(pjId), 20);
+  const [pageParams, setPageParams] = useState<number>(100);
+  const { data } = useGetChatting(String(pjId), pageParams);
+  const result = data?.data;
   useEffect(() => {
-    stompClient.connect({}, () => {
-      stompClient.subscribe(`/sub/chatting/${pjId}`, (data) => {
-        const newMessage: content = JSON.parse(data.body) as content;
-        addMessage(newMessage);
-      });
-    });
-    queryClient.invalidateQueries("getChatting");
-  }, [messages]);
-
-  useEffect(() => {
+    stompClient.connect({}, () => {});
     setTimeout(() => {
-      stompClient.subscribe(`/sub/chatting/${pjId}`, async (data) => {
-        const newMessage: content = (await JSON.parse(data.body)) as content;
-        addMessage(newMessage);
-        queryClient.invalidateQueries("getChatting");
+      stompClient.subscribe(`/sub/chatting/${pjId}`, async () => {
+        queryClient.invalidateQueries(["getChatting", pjId]);
       });
     }, 500);
-  }, [pjId, messages]);
-
-  const addMessage = (content: content) => {
-    setMessages((prev) => [...prev, content]);
-  };
+  }, [pjId, result, pageParams]);
 
   return (
     <div className="w-full h-[calc(100vh-150px)] bg-white flex flex-col justify-end absolute top-16">
-      <MobileChatPre contents={data?.data} senderLoginId={String(senderLoginId)} pjId={pjId} />
+      <MobileChatPre
+        pageParams={pageParams}
+        setPageParams={setPageParams}
+        contents={data?.data}
+        senderLoginId={String(senderLoginId)}
+        pjId={pjId}
+      />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import SockJS from "sockjs-client";
@@ -12,6 +12,8 @@ interface ChatPresenterProps {
   senderLoginId: string;
   pjId: string;
   contents: Array<content>;
+  setPageParams: Dispatch<SetStateAction<number>>;
+  pageParams: number;
 }
 
 interface IForm {
@@ -23,7 +25,13 @@ interface IForm {
 const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
 
-const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) => {
+const MobileChatPre = ({
+  contents,
+  senderLoginId,
+  pjId,
+  pageParams,
+  setPageParams,
+}: ChatPresenterProps) => {
   const { nickname, profileImage, loginId } = useRecoilValue(MyProfile);
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
@@ -52,13 +60,22 @@ const MobileChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) =>
   }, [contents]);
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     const data = { text: e.currentTarget.value };
-    const newMessage = { message: data.text, senderLoginId, pjId, profileImage, nickname };
+    const newMessage = {
+      message: data.text,
+      senderLoginId: String(senderLoginId),
+      pjId,
+      profileImage: String(profileImage),
+      nickname: String(nickname),
+    };
     if (e.key === "Enter") {
       if (!e.shiftKey) {
         setSend(true);
         handleonEnter(newMessage);
       }
     }
+  };
+  const onScroll = () => {
+    setPageParams(pageParams + 20);
   };
   return (
     <>
