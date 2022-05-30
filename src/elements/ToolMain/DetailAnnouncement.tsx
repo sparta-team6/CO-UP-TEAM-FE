@@ -126,7 +126,7 @@ const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnoun
             <div className="absolute bottom-0 right-0">
               <button
                 onClick={handleClose}
-                className="bg-5 w-[58px] h-[37px] rounded-md ml-[4px]"
+                className="hover:bg-h2 bg-5 w-[58px] h-[37px] rounded-md ml-[4px]"
                 type="button"
               >
                 닫기

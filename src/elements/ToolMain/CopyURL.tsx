@@ -27,7 +27,7 @@ const CopyURL = () => {
             onClick={copy}
             className="tutorial-main4 w-[86px] h-[39px] bg-[#D7DCE5] dark:bg-[#323942] rounded mt-[10px]"
           >
-            <span>초대코드</span>
+            <span className="hover:text-3">초대코드</span>
           </button>
         </div>
       </div>

@@ -9,6 +9,7 @@ import { Cards, usePostCards } from "../../api/CardQuery";
 import { ProjectKey } from "../../recoil/RoomID";
 import { useGetProjectUser } from "../../api/UserQuery";
 import { SweetAlertHook } from "../../servers/Sweet";
+import { Plus } from "../../elements/Icon/Plus";
 
 const style = {
   position: "absolute",
@@ -78,7 +79,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
           className="h-full border-none bg-transparent flex items-center"
           onClick={handleOpen}
         >
-          <span className="text-2xl font-bold text-[#000000] dark:text-[#ffffff]">+</span>
+          <Plus />
         </button>
       </div>
       <Modal
@@ -126,14 +127,14 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
               placeholder="내용입력"
             />
             <button
-              className="w-16 h-9 absolute bottom-[15px] right-[70px] sm:bottom-0 rounded-md text-base bg-3 text-white leading-[21px]"
+              className="w-16 h-9 absolute bottom-[15px] right-[70px] sm:bottom-0 rounded-md text-base hover:bg-h1 bg-3 text-white leading-[21px]"
               type="submit"
             >
               등록
             </button>
             <button
               onClick={handleClose}
-              className="w-16 h-9 absolute bottom-[15px] right-0 sm:bottom-0 rounded-md text-base bg-5 leading-[21px]"
+              className="w-16 h-9 absolute bottom-[15px] right-0 sm:bottom-0 rounded-md text-base hover:bg-h2 bg-5 leading-[21px]"
               type="submit"
             >
               닫기

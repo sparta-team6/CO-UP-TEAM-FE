@@ -157,7 +157,7 @@ const ChatPre = ({
             {...register("message")}
           />
           <button
-            className="w-[56px] h-[36px] absolute right-9 bottom-10 text-white bg-3 rounded-[4px]"
+            className="w-[56px] h-[36px] absolute right-9 bottom-10 text-white hover:bg-h1 bg-3 rounded-[4px]"
             type="submit"
           >
             전송

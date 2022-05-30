@@ -114,7 +114,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
               autoFocus
               className="w-[352px] h-10 p-2 rounded-md border-none border border-[#D1D1D1]"
               placeholder="팀 이름"
-              maxLength={30}
+              maxLength={15}
               {...register("title")}
             />
           </div>
@@ -124,7 +124,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
               rows={4}
               className="w-[352px] h-[95px] outline-none resize-none p-2 rounded-md border-none border border-[#D1D1D1]"
               placeholder="소개"
-              maxLength={100}
+              maxLength={70}
               {...register("summary")}
             />
           </div>

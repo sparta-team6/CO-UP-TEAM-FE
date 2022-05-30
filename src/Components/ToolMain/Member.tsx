@@ -49,7 +49,7 @@ const Member = () => {
         </div>
         {projectRole === "ADMIN" && (
           <div>
-            <button onClick={handleKick} className="w-[62px] h-[24px] bg-[#E7EBF2] rounded text-xs">
+            <button onClick={handleKick} className="w-[62px] h-[24px] hover:bg-h2 bg-[#E7EBF2] rounded text-xs">
               내보내기
             </button>
           </div>
@@ -73,7 +73,7 @@ const Member = () => {
                   {teamUser.nickname}
                 </span>
               </div>
-              <div>
+              <div className="flex items-center">
                 {kickOpen && (
                   <button
                     className="flex justify-center items-center text-2xl w-[24px] h-[24px] bg-[#DE4A06] rounded-full text-white mr-[38px]"

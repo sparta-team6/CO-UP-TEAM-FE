@@ -21,10 +21,10 @@ export default function ProjectOpen() {
   return (
     <div>
       <button
-        className="tutorial-pl2 px-[22px] py-[12px] text-white bg-3 rounded-[4px] md:mr-[12px] sm:mr-0"
+        className="tutorial-pl2 px-[22px] py-[12px] text-white hover:bg-h1 bg-3 rounded-[4px] md:mr-[12px] sm:mr-0"
         onClick={handleOpen}
       >
-        초대 코드
+        초대코드
       </button>
       <Modal
         open={open}

@@ -157,7 +157,7 @@ const MobileChatPre = ({
             placeholder="메세지를 입력하세요."
           />
           <button
-            className="w-[52px] h-[33px] absolute bottom-5 right-5 text-white bg-3 rounded-[4px]"
+            className="w-[52px] h-[33px] absolute bottom-5 right-5 text-white hover:bg-h1 bg-3 rounded-[4px]"
             type="submit"
           >
             전송

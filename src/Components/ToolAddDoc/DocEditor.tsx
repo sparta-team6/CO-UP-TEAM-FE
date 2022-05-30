@@ -70,14 +70,14 @@ const DocEditor = () => {
           </div>
           <div className="flex items-center">
             <button
-              className="border-none w-[56px] h-[36px] rounded-md text-white bg-3"
+              className="border-none w-[56px] h-[36px] rounded-md text-white hover:bg-h1 bg-3"
               type="submit"
             >
               {!loading ? `등록` : `등록중..`}
             </button>
             <button
               type="button"
-              className="border-none ml-2 w-[56px] h-[36px] rounded-md bg-5"
+              className="border-none ml-2 w-[56px] h-[36px] rounded-md hover:bg-h2 bg-5"
               onClick={() => navigate(-1)}
             >
               닫기
@@ -94,14 +94,14 @@ const DocEditor = () => {
           />
           <div className="sm:hidden">
             <button
-              className="border-none w-[62px] h-[44px] rounded-md text-white bg-3"
+              className="border-none w-[62px] h-[44px] rounded-md text-white hover:bg-h1 bg-3"
               type="submit"
             >
               {!loading ? `등록` : `등록중..`}
             </button>
             <button
               type="button"
-              className="border-none ml-[16px] w-[62px] h-[44px] rounded-md bg-5"
+              className="border-none ml-[16px] w-[62px] h-[44px] rounded-md hover:bg-h2 bg-5"
               onClick={() => navigate(-1)}
             >
               닫기
