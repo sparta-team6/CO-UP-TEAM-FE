@@ -56,7 +56,7 @@ const Member = () => {
         )}
       </div>
       <TeamAdmin {...projectAdmin} />
-      <TeamMe {...User} />
+      {projectRole !== "ADMIN" && <TeamMe {...User} />}
       {TeamUsers?.map((teamUser, index) => {
         return (
           <div key={index} className="group w-full mt-[12px] relative flex items-center space-x-2">
