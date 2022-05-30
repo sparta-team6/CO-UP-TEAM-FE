@@ -188,6 +188,10 @@ abbr[title] {
   border-radius: 30px;
   color: black;
 }
+.react-calendar__tile--now {
+  background-color: ${(props) => props.theme.bgColor};
+}
+
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
   background: #f8f8fa;
