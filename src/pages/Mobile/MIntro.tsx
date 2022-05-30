@@ -18,7 +18,7 @@ const MIntro = () => {
   };
   return (
     <>
-      <div className="w-full h-full fixed flex top-[88%] justify-center items-start">
+      <div className=" h-full fixed flex top-[88%] justify-center items-start">
         <motion.div
           whileHover={{ scale: 1.05 }}
           className=" w-[192px] h-[48px] rounded-md font-extrabold justify-center items-center flex bg-3 text-white"
@@ -27,17 +27,17 @@ const MIntro = () => {
           CO-UP 시작하기
         </motion.div>
       </div>
-      <div className="w-full min-h-full flex flex-col justify-center">
+      <div className="w-[360px] min-h-full flex flex-col justify-center">
         {Dark ? (
-          <img width={360} height={282} src={MDIntro1} alt="11" />
+          <img width={360} height={282} src={MDIntro1} alt="111" />
         ) : (
-          <img width={360} height={282} src={MIntro1} alt="1" />
+          <img width={360} height={282} src={MIntro1} alt="112" />
         )}
-        <img width={360} height={291} src={MIntro2} alt="2" />
-        <img width={360} height={718} src={MIntro3} alt="3" />
-        <img width={360} height={671} src={MIntro4} alt="4" />
-        <img width={360} height={432} src={MIntro5} alt="5" />
-        <img width={360} height={563} src={MIntro6} alt="6" />
+        <img width={360} height={291} src={MIntro2} alt="113" />
+        <img width={360} height={718} src={MIntro3} alt="114" />
+        <img width={360} height={671} src={MIntro4} alt="115" />
+        <img width={360} height={432} src={MIntro5} alt="116" />
+        <img width={360} height={563} src={MIntro6} alt="117" />
       </div>
     </>
   );
