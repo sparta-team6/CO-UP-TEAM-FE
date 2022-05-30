@@ -20,7 +20,7 @@ const IntroHome = () => {
       <Helmet>
         <title>CO-UP</title>
       </Helmet>
-      <div className="w-full h-screen bg-[#F0F3F7] dark:bg-7 flex flex-col items-center">
+      <div className="w-full h-screen bg-[url('../images/Intro/IntroBg.png')]  dark:bg-7 flex flex-col items-center">
         <div className="w-[1192px] sm:w-full mb-9 flex justify-end items-center rounded-sm">
           <LoginModal />
         </div>
