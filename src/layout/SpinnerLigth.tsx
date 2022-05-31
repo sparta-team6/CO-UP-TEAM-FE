@@ -7,7 +7,6 @@ const SpinnerLigth = () => {
   return (
     <React.Fragment>
       <nav className="w-full h-16 flex justify-between items-center fixed z-50 shadow-md px-[23px]">
-        <img className="mt-[3px]" src={HeaderLogo} alt="Logo" />
         <div className="flex justify-between space-x-4">
           <div>
             <HelpCircle />

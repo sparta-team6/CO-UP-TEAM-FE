@@ -8,7 +8,6 @@ const SpinnerDark = () => {
     <React.Fragment>
       <div className="w-full h-screen bg-7 fixed top-0">
         <nav className="w-full h-16 flex justify-between items-center fixed bg-7 z-50 shadow-md px-[23px]">
-          <img className="mt-[3px]" src={HeaderLogo} alt="Logo" />
           <div className="flex justify-between space-x-4">
             <div>
               <HelpCircle />
