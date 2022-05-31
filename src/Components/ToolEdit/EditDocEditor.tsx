@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import Prism from "prismjs";
-// 여기 css를 수정해서 코드 하이라이팅 커스텀 가능
 import "prismjs/themes/prism.css";
 
 import "@toast-ui/editor/dist/toastui-editor.css";
