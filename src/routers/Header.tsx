@@ -22,9 +22,9 @@ const Header = () => {
       {location.pathname.includes("tool") ? (
         <FramerHeader />
       ) : location.pathname.includes("projectList") || location.pathname.includes("profile") ? (
-        <nav className="w-full h-16 flex justify-between items-center fixed z-50 shadow-md  dark:bg-gray-800 px-[23px]">
-          <Link to="/">
-            <img className="mt-[3px]" src={HeaderLogo} alt="Logo" />
+        <nav className="w-full h-16 flex justify-between items-center fixed z-50 shadow-md  dark:bg-gray-800 px-[22px]">
+          <Link to="/" className="mr-[4px]">
+            <img width={51} height={54} className="mt-[3px]" src={HeaderLogo} alt="Logo" />
           </Link>
           <div className="flex justify-between space-x-4">
             <div className="tutorial-pl3 cursor-pointer" onClick={onDarkMode}>
