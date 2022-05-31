@@ -36,11 +36,11 @@ const MobileChatPre = ({
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
     if (message.trim() === "") return;
-    if (send === true) {
-      SweetAlertHook(1000, "error", "😡 도배 금지 😡");
-      setValue("message", "");
-      return;
-    }
+    // if (send === true) {
+    //   SweetAlertHook(1000, "error", "😡 도배 금지 😡");
+    //   setValue("message", "");
+    //   return;
+    // }
     const newMessage = { message: message, senderLoginId, pjId, profileImage, nickname };
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
     setValue("message", "");
@@ -51,12 +51,12 @@ const MobileChatPre = ({
       messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
     }
   };
-  const [send, setSend] = useState(false);
+  // const [send, setSend] = useState(false);
   useEffect(() => {
     scrollToBottom();
-    setTimeout(() => {
-      setSend(false);
-    }, 500);
+    // setTimeout(() => {
+    //   setSend(false);
+    // }, 500);
   }, [contents]);
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     const data = { text: e.currentTarget.value };
@@ -69,7 +69,7 @@ const MobileChatPre = ({
     };
     if (e.key === "Enter") {
       if (!e.shiftKey) {
-        setSend(true);
+        // setSend(true);
         handleonEnter(newMessage);
       }
     }
@@ -125,7 +125,7 @@ const MobileChatPre = ({
                       }`}
                     >
                       <span
-                        className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-[#B0B0B0] font-normal tracking-tight`}
+                        className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-5 font-normal tracking-tight`}
                       >
                         {box.message}
                       </span>
@@ -154,7 +154,7 @@ const MobileChatPre = ({
             maxLength={300}
             {...register("message")}
             autoComplete="off"
-            placeholder="메세지를 입력하세요."
+            placeholder="메세지를 입력하세요. (300자 이내)"
           />
           <button
             className="w-[52px] h-[33px] absolute bottom-5 right-5 text-white hover:bg-h1 bg-3 rounded-[4px]"

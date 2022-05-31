@@ -38,11 +38,11 @@ const ChatPre = ({
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
     if (message.trim() === "") return;
-    if (send === true) {
-      SweetAlertHook(1000, "error", "😡 도배 금지 😡");
-      setValue("message", "");
-      return;
-    }
+    // if (send === true) {
+    //   SweetAlertHook(1000, "error", "😡 도배 금지 😡");
+    //   setValue("message", "");
+    //   return;
+    // }
     const newMessage = { message: message, senderLoginId, pjId, profileImage, nickname };
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
     setValue("message", "");
@@ -53,12 +53,12 @@ const ChatPre = ({
       messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
     }
   };
-  const [send, setSend] = useState(false);
+  // const [send, setSend] = useState(false);
   useEffect(() => {
     scrollToBottom();
-    setTimeout(() => {
-      setSend(false);
-    }, 500);
+    // setTimeout(() => {
+    //   setSend(false);
+    // }, 500);
   }, [contents]);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -72,7 +72,7 @@ const ChatPre = ({
     };
     if (e.key === "Enter") {
       if (!e.shiftKey) {
-        setSend(true);
+        // setSend(true);
         handleonEnter(newMessage);
       }
     }
@@ -129,7 +129,7 @@ const ChatPre = ({
                     className={`min-w-[25px] min-h-[40px] bg-[#f5f5f5] dark:bg-[#3D4853] p-[10px] rounded-md`}
                   >
                     <span
-                      className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-[#B0B0B0] font-normal tracking-tight`}
+                      className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-5 font-normal tracking-tight`}
                     >
                       {box.message}
                     </span>
@@ -152,7 +152,7 @@ const ChatPre = ({
             className="w-full h-full p-[18px] rounded-xl border-[#E7EBF2] dark:text-white dark:border dark:border-[#666] outline-none resize-none relative bg-[#F5F5F5] dark:bg-[#3D4853] dark:placeholder:text-[#B0B0B0]"
             onKeyUp={onKeyDown}
             autoComplete="off"
-            placeholder="메세지를 입력하세요."
+            placeholder="메세지를 입력하세요 (300자 이내)"
             maxLength={300}
             {...register("message")}
           />
