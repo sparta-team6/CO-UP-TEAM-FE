@@ -10,6 +10,7 @@ import { ProjectKey } from "../../recoil/RoomID";
 import { useGetProjectUser } from "../../api/UserQuery";
 import { SweetAlertHook } from "../../servers/Sweet";
 import { Plus } from "../../elements/Icon/Plus";
+import styled from "styled-components";
 
 const style = {
   position: "absolute",
@@ -145,7 +146,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
       {!isFetching && (
         <Droppable droppableId={String(index)}>
           {(magic, info) => (
-            <div
+            <Scroll
               className={`${
                 info.isDraggingOver
                   ? "bg-gray-200"
@@ -171,7 +172,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
                 />
               ))}
               {magic.placeholder}
-            </div>
+            </Scroll>
           )}
         </Droppable>
       )}
@@ -180,3 +181,9 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
 };
 
 export default React.memo(Bucket);
+
+const Scroll = styled.ul`
+  &::-webkit-scrollbar-thumb {
+    background: #ebebeb;
+  }
+`
