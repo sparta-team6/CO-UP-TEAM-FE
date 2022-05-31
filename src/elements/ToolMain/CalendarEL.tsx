@@ -1,8 +1,6 @@
 import moment from "moment";
 import React, { useState } from "react";
 import Calendar from "react-calendar";
-// import "react-calendar/dist/Calendar.css";
-// import "../../styles/CalendarEL.css";
 
 const CalendarEL = () => {
   const [value, onChange] = useState(new Date());
