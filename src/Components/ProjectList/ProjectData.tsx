@@ -67,7 +67,10 @@ const ProjectData = () => {
       <div className="tutorial-pl1 w-[288px] h-[320px] rounded-lg border-[1px] border-solid border-gray-300 flex justify-center items-center sm:w-full mb-[20px]">
         <ProjectMake />
       </div>
-      {!data?.data && <img src={family} width={288} height={320} alt="" className="ml-3" />}
+      {!data?.data ||
+        (data?.data.length === 0 && (
+          <img src={family} width={288} height={320} alt="" className="ml-3" />
+        ))}
     </React.Fragment>
   );
 };
