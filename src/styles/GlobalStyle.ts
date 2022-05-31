@@ -381,6 +381,11 @@ abbr[title]{
   max-height: 500px;
 }
 
+.ProseMirror .placeholder {
+  background-color: transparent;
+  color: black;
+}
+
 @media screen and (max-width: 768px) {
   .toastui-editor-defaultUI .ProseMirror{
     padding-left: 10px !important;

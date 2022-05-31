@@ -100,7 +100,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
               {...register("toDo")}
               type="text"
               maxLength={25}
-              placeholder="보드 제목을 작성해주세요"
+              placeholder="보드 제목을 작성해주세요 (25자 이내)"
             />
             <div className="w-full flex items-center space-x-2">
               <div className="w-[78px] h-7 bg-slate-200 text-base rounded-md flex justify-center items-center">
@@ -125,7 +125,7 @@ const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoard
               className="pt-[15px] w-full h-[200px] placeholder:text-[#B0B0B0] outline-none border-none resize-none"
               {...register("toDoComment")}
               maxLength={500}
-              placeholder="내용입력"
+              placeholder="내용입력 (500자 이내)"
             />
             <button
               className="w-16 h-9 absolute bottom-[15px] right-[70px] sm:bottom-0 rounded-md text-base hover:bg-h1 bg-3 text-white leading-[21px]"

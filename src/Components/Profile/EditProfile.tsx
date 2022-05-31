@@ -146,21 +146,21 @@ const EditProfile = () => {
           />
           <input
             className="text-center text-2xl h-14 rounded-md border-none sm:h-[36px] sm:text-base  dark:bg-6"
-            placeholder="닉네임"
+            placeholder="닉네임 (12자 이내)"
             defaultValue={user?.nickname}
             maxLength={12}
             {...register("nickName")}
           />
           <input
             className="text-center text-2xl h-14 rounded-md border-none sm:h-[36px] sm:text-base  dark:bg-6"
-            placeholder="URL"
+            placeholder="URL (40자 이내)"
             defaultValue={user?.url}
             maxLength={40}
             {...register("url")}
           />
           <textarea
             className="text-center text-2xl h-[150px] sm:h-[74px] sm:text-base rounded-md border-none resize-none dark:bg-6"
-            placeholder="자기소개"
+            placeholder="자기소개 (254자 이내)"
             defaultValue={user?.aboutMe}
             maxLength={254}
             {...register("about_me")}

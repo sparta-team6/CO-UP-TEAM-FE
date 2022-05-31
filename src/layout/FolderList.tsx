@@ -112,11 +112,11 @@ const FolderList = () => {
                       </div>
                       {folder.docs?.map((doc) => (
                         <div key={doc.docId} className="flex flex-col ml-[54px] mr-[41px] my-[5px]">
-                          <div className="flex items-center text-base cursor-pointer">
-                            <span
-                              className="text-ellipsis overflow-hidden whitespace-nowrap"
-                              onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}
-                            >
+                          <div
+                            onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}
+                            className="flex items-center text-base cursor-pointer rounded-md p-[1px]"
+                          >
+                            <span className="text-ellipsis overflow-hidden whitespace-nowrap hover:text-3">
                               {doc.title}
                             </span>
                           </div>

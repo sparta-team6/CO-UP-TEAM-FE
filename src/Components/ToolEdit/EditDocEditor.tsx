@@ -43,6 +43,10 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
       SweetAlertHook(1000, "error", "내용을 입력해주세요😕");
       return;
     }
+    if (editorRef.current.getInstance().getMarkdown().length > 10000) {
+      SweetAlertHook(1000, "error", "입력 제한 수는 10000자 입니다😕");
+      return;
+    }
 
     const doc = {
       docId,
@@ -99,6 +103,7 @@ const DocEditor = ({ title, contents, docId }: Docs) => {
         </div>
       </form>
       <Editor
+        placeholder="10000자 이내 작성"
         height="70%"
         previewStyle="vertical"
         initialEditType="wysiwyg"

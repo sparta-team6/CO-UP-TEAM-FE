@@ -26,7 +26,7 @@ const ToolMain = () => {
         <div className="w-[calc(100%-800px)] h-full bg-[#f0f3f6] flex flex-col ml-[368px] md:w-[calc(100%-21rem)] sm:w-full sm:m-0">
           <div className="w-full h-full px-[51px] dark:bg-8 sm:px-[16px] flex flex-col">
             <ProjectMain />
-            <div className="w-full lg:max-h-[332px] flex md:flex-col md:h-full">
+            <div className="w-full flex md:flex-col md:h-full">
               <div className="w-full max-w-[612px] h-[332px] md:max-w-full md:h-[300px]">
                 <ProjectAnnouncement />
               </div>

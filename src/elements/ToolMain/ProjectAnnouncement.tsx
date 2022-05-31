@@ -84,7 +84,7 @@ const ProjectAnnouncement = () => {
               className="w-full mb-[10px] outline-none text-2xl border-none placeholder:font-semibold font-semibold"
               {...register("title")}
               type="text"
-              placeholder="공지 제목을 적어주세요 :)"
+              placeholder="공지 제목을 적어주세요 :) (30자 이내)"
               maxLength={30}
             />
             <span className="pl-[2px] text-[#999999]">{dateString}</span>
@@ -92,7 +92,7 @@ const ProjectAnnouncement = () => {
               className="w-full h-[160px] outline-none border-none resize-none overflow-y-auto mt-[22px] text-lg"
               {...register("content")}
               maxLength={254}
-              placeholder="내용을 입력해주세요"
+              placeholder="내용을 입력해주세요 (254자 이내)"
             />
             <div className="absolute bottom-0 right-0">
               <button

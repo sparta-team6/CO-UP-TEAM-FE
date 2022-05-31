@@ -113,7 +113,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
             <input
               autoFocus
               className="w-[352px] h-10 p-2 rounded-md border-none border border-[#D1D1D1]"
-              placeholder="팀 이름"
+              placeholder="팀 이름 (15자 이내)"
               maxLength={15}
               {...register("title")}
             />
@@ -123,7 +123,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
             <textarea
               rows={4}
               className="w-[352px] h-[95px] outline-none resize-none p-2 rounded-md border-none border border-[#D1D1D1]"
-              placeholder="소개"
+              placeholder="소개 (70자 이내)"
               maxLength={70}
               {...register("summary")}
             />

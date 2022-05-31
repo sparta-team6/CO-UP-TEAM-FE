@@ -48,6 +48,10 @@ const DocEditor = () => {
       SweetAlertHook(1000, "error", "내용을 입력해주세요😕");
       return;
     }
+    if (editorRef.current.getInstance().getMarkdown().length > 10000) {
+      SweetAlertHook(1000, "error", "입력 제한 수는 10000자 입니다😕");
+      return;
+    }
     const doc = {
       dfId: state === null ? getDfId : state,
       title: data.title,
@@ -56,6 +60,7 @@ const DocEditor = () => {
     setLoading(true);
     mutateAsync(doc).then(() => {
       setLoading(false);
+
       queryClient.invalidateQueries("getFolders");
       navigate(`/tool/${pjId}/document/`);
     });
@@ -110,6 +115,7 @@ const DocEditor = () => {
         </div>
       </form>
       <Editor
+        placeholder="10000자 이내 작성"
         height="70%"
         previewStyle="vertical"
         initialEditType="wysiwyg"
