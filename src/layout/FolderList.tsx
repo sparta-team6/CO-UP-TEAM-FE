@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
@@ -13,6 +13,7 @@ import { ProjectKey } from "../recoil/RoomID";
 import styled from "styled-components";
 
 const FolderList = () => {
+  const { postId } = useParams();
   const { pjId } = useRecoilValue(ProjectKey);
   const { data, isFetching } = useGetFolders(pjId);
   const { mutateAsync: AddFol } = useAddFolder();
@@ -116,7 +117,11 @@ const FolderList = () => {
                             onClick={() => navigate(`/tool/${pjId}/document/${doc.docId}`)}
                             className="flex items-center text-base cursor-pointer rounded-md p-[1px]"
                           >
-                            <span className="text-ellipsis overflow-hidden whitespace-nowrap hover:text-3">
+                            <span
+                              className={`text-ellipsis overflow-hidden whitespace-nowrap hover:text-3 ${
+                                postId === doc.docId && "text-3"
+                              }`}
+                            >
                               {doc.title}
                             </span>
                           </div>
