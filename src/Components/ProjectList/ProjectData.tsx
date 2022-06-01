@@ -30,7 +30,7 @@ const ProjectData = () => {
         return (
           <div
             key={index}
-            className="pjList relative w-[288px] h-[320px] bg-[#ffffff] dark:bg-6 rounded-lg flex flex-col justify-center items-center mb-[17px] sm:w-full sm:max-h-[290px] sm:mr-0 mr-[12px]"
+            className="pjList relative w-[288px] h-[320px] bg-[#ffffff] dark:bg-6 rounded-lg flex flex-col justify-center items-center mb-[17px] sm:w-full sm:max-h-[290px] sm:mr-0 mr-[12px] cursor-pointer"
           >
             <div
               onClick={() => onClick(room.pjId)}
