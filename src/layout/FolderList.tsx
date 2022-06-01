@@ -11,6 +11,7 @@ import { SvgFolder } from "../elements/Icon/SvgFolder";
 import { Plus } from "../elements/Icon/Plus";
 import { ProjectKey } from "../recoil/RoomID";
 import styled from "styled-components";
+import { FolderOpen } from "../elements/Icon/FolderOpen";
 
 const FolderList = () => {
   const { postId } = useParams();
@@ -56,7 +57,7 @@ const FolderList = () => {
           <div className="flex justify-between items-center px-[20px] pt-[45px]">
             <span className="font-bold text-2xl">문서목록</span>
             <div onClick={AddFolder} className="cursor-pointer">
-              <Plus />
+              <FolderPlus />
             </div>
           </div>
           <div className="border border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
@@ -72,7 +73,7 @@ const FolderList = () => {
           <div className="flex justify-between items-center pt-[36px] px-[20px]">
             <span className="font-bold text-2xl">문서목록</span>
             <div onClick={AddFolder} className="cursor-pointer">
-              <Plus />
+              <FolderPlus />
             </div>
           </div>
           <div className="border-[#D7DCE5] dark:border-[#666666] border-[1px] border-solid w-[264px] mx-auto mt-[10px] sm:w-[90%]"></div>
@@ -88,8 +89,8 @@ const FolderList = () => {
                             editTitle && dfId === folder.dfId ? "hidden" : "block"
                           }`}
                         >
-                          {folder?.docs?.length === 0 ? <SvgFolder /> : <FolderPlus />}
-                          <span className="ml-[15px]">{folder.title}</span>
+                          {folder?.docs?.length === 0 ? <SvgFolder /> : <FolderOpen />}
+                          <span className="ml-[12px]">{folder.title}</span>
                         </div>
                         <form
                           className={`w-full font-bold text-lg items-center justify-between ${
