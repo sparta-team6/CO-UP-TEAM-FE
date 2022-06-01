@@ -126,10 +126,18 @@ const ChatPre = ({
                     {box.dateTime.replaceAll("-", ".").slice(11, 16)}
                   </span>
                   <div
-                    className={`min-w-[25px] min-h-[40px] bg-[#f5f5f5] dark:bg-[#3D4853] p-[10px] rounded-md`}
+                    className={`min-w-[25px] min-h-[40px] bg-[#f5f5f5] dark:bg-[#3D4853]  ${
+                      loginId === box.senderLoginId
+                        ? "bg-[#C5DAFF] dark:bg-[#C5DAFF]"
+                        : ""
+                    } p-[10px] rounded-md`}
                   >
                     <span
-                      className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-5 font-normal tracking-tight`}
+                      className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-5 ${
+                        loginId === box.senderLoginId
+                          ? "bg-[#C5DAFF] dark:bg-[#C5DAFF] dark:text-[#666666]"
+                          : ""
+                      } font-normal tracking-tight`}
                     >
                       {box.message}
                     </span>
