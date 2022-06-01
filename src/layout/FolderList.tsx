@@ -12,6 +12,7 @@ import { Plus } from "../elements/Icon/Plus";
 import { ProjectKey } from "../recoil/RoomID";
 import styled from "styled-components";
 import { FolderOpen } from "../elements/Icon/FolderOpen";
+import { NewDoc } from "../recoil/AtomDocument";
 
 const FolderList = () => {
   const { postId } = useParams();
@@ -23,6 +24,7 @@ const FolderList = () => {
   const [dfId, setDfId] = useState("");
   const [title, setTitle] = useState("");
   const { mutateAsync: UpdateFol } = useUpdateFolder(dfId);
+  const docData = useRecoilValue(NewDoc);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -120,7 +122,11 @@ const FolderList = () => {
                           >
                             <span
                               className={`text-ellipsis overflow-hidden whitespace-nowrap hover:text-3 ${
-                                postId === doc.docId && "text-3"
+                                postId === doc.docId
+                                  ? "text-3"
+                                  : !postId && docData.docId === doc.docId
+                                  ? "text-3"
+                                  : ""
                               }`}
                             >
                               {doc.title}
