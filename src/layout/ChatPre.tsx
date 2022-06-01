@@ -135,7 +135,7 @@ const ChatPre = ({
                     <span
                       className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-5 ${
                         loginId === box.senderLoginId
-                          ? "bg-[#C5DAFF] dark:bg-[#C5DAFF] dark:text-[#666666]"
+                          ? "bg-[#C5DAFF] dark:bg-[#C5DAFF] dark:text-6"
                           : ""
                       } font-normal tracking-tight`}
                     >
