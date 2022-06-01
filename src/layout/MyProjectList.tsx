@@ -62,7 +62,7 @@ const MyProjectList = () => {
         {data?.data.map((room, index) => (
           <motion.div whileHover={{ scale: 1.05 }} onClick={() => onClick(room.pjId)} key={index}>
             <img
-              className="w-[48px] h-[48px] sm:w-[44px] sm:h-[44px] rounded-md mt-[16px]"
+              className="w-[48px] h-[48px] sm:w-[44px] sm:h-[44px] rounded-md mt-[16px] cursor-pointer"
               src={room.thumbnail}
               alt=""
             />
