@@ -1,5 +1,5 @@
 import { SvgUser } from "../../elements/Icon/SvgUser";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/RoomID";
 import { useGetProjectUser } from "../../api/UserQuery";
 import { useKickRoom } from "../../api/ProjectQuery";
@@ -9,6 +9,7 @@ import { useState } from "react";
 import { MyProfile } from "../../recoil/MyProfile";
 import TeamAdmin from "../../elements/ToolMain/TeamAdmin";
 import TeamMe from "../../elements/ToolMain/TeamMe";
+import { KickBtn } from "../../recoil/AtomKickBtn";
 
 const Member = () => {
   const { pjId, projectRole } = useRecoilValue(ProjectKey);
@@ -17,7 +18,7 @@ const Member = () => {
   const AllUsers = data?.data.slice(1);
   const TeamUsers = AllUsers?.filter((t) => t.loginId !== User.loginId);
   const { mutateAsync: KickUser } = useKickRoom(pjId);
-  const [kickOpen, setKickOpen] = useState(false);
+  const [kickOpen, setKickOpen] = useRecoilState(KickBtn);
   const handleKick = () => {
     setKickOpen(!kickOpen);
   };
