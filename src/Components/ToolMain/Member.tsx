@@ -49,7 +49,7 @@ const Member = () => {
           <span className="text-lg font-bold ml-1 dark:text-white">팀원</span>
           <span className="text-sm ml-[8px]">({AllUsers && AllUsers?.length + 1})</span>
         </div>
-        {projectRole === "ADMIN" && AllUsers && AllUsers?.length > 1 && (
+        {projectRole === "ADMIN" && AllUsers && AllUsers?.length > 0 && (
           <div>
             <button
               onClick={handleKick}
@@ -84,7 +84,7 @@ const Member = () => {
               <div className="flex items-center">
                 {kickOpen && (
                   <button
-                    className="flex justify-center items-center text-2xl w-[24px] h-[24px] bg-[#DE4A06] rounded-full text-white mr-[38px] sm:mr-0"
+                    className="flex justify-center items-center text-2xl w-[24px] h-[24px] bg-[#DE4A06] rounded-full text-white"
                     onClick={() => onClick(String(teamUser.loginId), String(teamUser.nickname))}
                   >
                     -
