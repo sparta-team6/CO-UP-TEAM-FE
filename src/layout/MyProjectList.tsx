@@ -12,6 +12,7 @@ import { ProjectKey } from "../recoil/RoomID";
 import { themeState } from "../recoil/DarkMode";
 import styled from "styled-components";
 import Swal from "sweetalert2";
+import { KickBtn } from "../recoil/AtomKickBtn";
 
 const MyProjectList = () => {
   const setOpen = useSetRecoilState(HandleOpen);
@@ -19,6 +20,7 @@ const MyProjectList = () => {
   const [theme, DarkMode] = useRecoilState(themeState);
   const navigate = useNavigate();
   const { data } = useGetRoom();
+  const kickEvent = useSetRecoilState(KickBtn);
   const onClick = (roomID?: string) => {
     navigate(`/tool/${roomID}`);
     setOpen(false);
@@ -31,6 +33,7 @@ const MyProjectList = () => {
       inviteCode: String(roomData?.inviteCode),
       projectRole: String(roomData?.projectRole),
     });
+    kickEvent(false);
   };
   const { mutateAsync } = useLogOut();
   const onLogOut = () => {
