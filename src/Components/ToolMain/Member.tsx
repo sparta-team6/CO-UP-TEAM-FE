@@ -5,11 +5,11 @@ import { useGetProjectUser } from "../../api/UserQuery";
 import { useKickRoom } from "../../api/ProjectQuery";
 import Swal from "sweetalert2";
 import { queryClient } from "../..";
-import { useState } from "react";
 import { MyProfile } from "../../recoil/MyProfile";
 import TeamAdmin from "../../elements/ToolMain/TeamAdmin";
 import TeamMe from "../../elements/ToolMain/TeamMe";
 import { KickBtn } from "../../recoil/AtomKickBtn";
+import { Plus } from "../../elements/Icon/Plus";
 
 const Member = () => {
   const { pjId, projectRole } = useRecoilValue(ProjectKey);
@@ -92,7 +92,7 @@ const Member = () => {
                 )}
               </div>
             </div>
-            <div className="left-[-13%] bottom-[40px] hidden w-[280px] sm:w-[275px] min-h-[120px] z-50 bg-5 dark:bg-8 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid group-hover:flex sm:group-focus:block absolute right-[-315px] rounded-lg shadow-md">
+            <div className="left-[-13%] bottom-[36px] hidden w-[280px] sm:w-[275px] min-h-[120px] z-50 bg-5 dark:bg-8 border-[#E7EBF2] dark:border-[#666666] border-[1px] border-solid group-hover:flex sm:group-focus:block absolute right-[-315px] rounded-lg shadow-md">
               <div className="w-full h-full px-[22px] py-[12px] flex flex-col">
                 <div className="w-full h-full flex">
                   <div className="h-full flex items-center">

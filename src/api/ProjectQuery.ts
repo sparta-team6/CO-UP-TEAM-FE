@@ -70,3 +70,9 @@ export const useKickRoom = (pjId: string) => {
     await instance.delete(`api/projects/kick/${pjId}&${loginId}`);
   });
 };
+
+export const useInviteRoom = (pjId: string) => {
+  return useMutation(async (loginId: string) => {
+    await instance.patch(`api/projects/recovery/${pjId}&${loginId}`);
+  });
+};
