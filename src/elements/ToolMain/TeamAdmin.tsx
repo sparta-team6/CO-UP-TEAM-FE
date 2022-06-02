@@ -22,11 +22,20 @@ const TeamAdmin = ({ profileImage, nickname, aboutMe, url }: User) => {
   const handleClose = () => setOpen(false);
   const kickBtn = useRecoilValue(KickBtn);
   return (
-    <div className="group w-full mt-[20px] relative flex items-center space-x-2">
-      <img className="absolute -top-1 left-6" src={imgCrown} alt="" />
-      <img className="rounded-full m-0" width={36} height={36} src={profileImage} alt="" />
-      <span className="font-semibold dark:text-white">{nickname}</span>
-      {kickBtn && <span onClick={handleOpen}>+</span>}
+    <div className="group w-full mt-[20px] relative flex items-center justify-between space-x-2">
+      <div className="flex items-center space-x-2">
+        <img className="absolute -top-1 left-6" src={imgCrown} alt="" />
+        <img className="rounded-full m-0" width={36} height={36} src={profileImage} alt="" />
+        <span className="font-semibold dark:text-white">{nickname}</span>
+      </div>
+      {kickBtn && (
+        <button
+          className="flex justify-center items-center text-2xl w-[24px] h-[24px] bg-3 rounded-full text-white"
+          onClick={handleOpen}
+        >
+          +
+        </button>
+      )}
       <Modal
         open={open}
         onClose={handleClose}
