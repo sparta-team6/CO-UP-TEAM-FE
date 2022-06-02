@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import FramerHeader from "../Components/Header/FramerHeader";
 import { SvgUser } from "../elements/Icon/SvgUser";
-import { HelpCircle } from "../elements/Icon/HelpCircle";
 import HeaderLogo from "../images/Header/HeaderLogo.png";
-import JoyrideContainer from "../Components/Tutorial/JoyrideContainer";
-import { projectListSteps } from "../Components/Tutorial/Steps";
 import { themeState } from "../recoil/DarkMode";
 import { useRecoilState } from "recoil";
 import { Moon } from "../elements/Icon/Moon";

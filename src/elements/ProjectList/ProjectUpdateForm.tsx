@@ -1,7 +1,6 @@
 import { IconButton } from "@mui/material";
 import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Swal from "sweetalert2";
 import { queryClient } from "../..";
 import { useUpdateRoom } from "../../api/ProjectQuery";
 import { resizeFile } from "../../servers/resize";

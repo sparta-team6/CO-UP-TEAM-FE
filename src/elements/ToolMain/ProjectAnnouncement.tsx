@@ -1,5 +1,5 @@
 import { Box, Modal } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";

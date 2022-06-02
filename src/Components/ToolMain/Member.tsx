@@ -9,7 +9,7 @@ import { MyProfile } from "../../recoil/MyProfile";
 import TeamAdmin from "../../elements/ToolMain/TeamAdmin";
 import TeamMe from "../../elements/ToolMain/TeamMe";
 import { KickBtn } from "../../recoil/AtomKickBtn";
-import { Plus } from "../../elements/Icon/Plus";
+import { Option } from "../../elements/Icon/Option";
 
 const Member = () => {
   const { pjId, projectRole } = useRecoilValue(ProjectKey);
@@ -34,7 +34,7 @@ const Member = () => {
       cancelButtonColor: "#D7DCE5",
     }).then((result) => {
       if (result.value) {
-        KickUser(loginId).then((res) => {
+        KickUser(loginId).then(() => {
           queryClient.invalidateQueries("getUser");
         });
       }
@@ -51,11 +51,8 @@ const Member = () => {
         </div>
         {projectRole === "ADMIN" && AllUsers && AllUsers?.length > 0 && (
           <div>
-            <button
-              onClick={handleKick}
-              className="w-[62px] h-[24px] hover:bg-h2 bg-[#E7EBF2] rounded text-xs"
-            >
-              내보내기
+            <button onClick={handleKick} className="w-[21px] h-[21px] hover:bg-h2 bg-transparent">
+              <Option />
             </button>
           </div>
         )}

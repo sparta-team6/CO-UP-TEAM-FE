@@ -1,7 +1,6 @@
 import React from "react";
 import { HelpCircle } from "../elements/Icon/HelpCircle";
 import { SvgUser } from "../elements/Icon/SvgUser";
-import HeaderLogo from "../images/Header/HeaderLogo.png";
 
 const SpinnerDark = () => {
   return (

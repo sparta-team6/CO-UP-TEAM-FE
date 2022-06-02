@@ -5,22 +5,15 @@ import React, { useState } from "react";
 import { Link, useLocation, useMatch } from "react-router-dom";
 import { SvgUser } from "../../elements/Icon/SvgUser";
 import { ProjectKey } from "../../recoil/RoomID";
-import { MChat } from "../../elements/Icon/mobile/MChat";
-import { HelpCircle } from "../../elements/Icon/HelpCircle";
 import { MDChat } from "../../elements/Icon/mobile/MDChat";
 import { MyProfile } from "../../recoil/MyProfile";
 
 const FramerHeader = () => {
-  const location = useLocation();
   const { pjId } = useRecoilValue(ProjectKey);
   const { profileImage } = useRecoilValue(MyProfile);
   const mainMatch = useMatch("/tool/:id");
   const docMatch = useMatch("/tool/:id/document/*");
   const boardMatch = useMatch("/tool/:id/board");
-  const [open, setOpen] = useState(false);
-  const onClick = () => {
-    setOpen(true);
-  };
   return (
     <React.Fragment>
       <nav className="sm:hidden w-full h-16 flex justify-between items-center fixed z-[1000] shadow-md dark:bg-6 px-[23px]">

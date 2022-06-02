@@ -8,7 +8,6 @@ import FolderFixed from "../Components/ToolDocument/FolderFixed";
 import EmptyFile from "../images/Document/EmptyFile.png";
 import { FolderPlus } from "../elements/Icon/FolderPlus";
 import { SvgFolder } from "../elements/Icon/SvgFolder";
-import { Plus } from "../elements/Icon/Plus";
 import { ProjectKey } from "../recoil/RoomID";
 import styled from "styled-components";
 import { FolderOpen } from "../elements/Icon/FolderOpen";
