@@ -54,3 +54,16 @@ export const useLogOut = () => {
       });
   });
 };
+
+export const useLeaveUser = (loginId: string) => {
+  return useMutation(async () => {
+    await instance
+      .delete(`/api/users/${loginId}`)
+      .then(() => {
+        SweetAlertHook(1000, "success", "회원탈퇴 성공😊");
+      })
+      .catch(() => {
+        SweetAlertHook(1000, "error", "회원탈퇴 실패😊");
+      });
+  });
+};

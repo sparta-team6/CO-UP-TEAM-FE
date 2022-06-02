@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { useLogOut, useUpdateUser } from "../../api/UserQuery";
+import { useLeaveUser, useLogOut, useUpdateUser } from "../../api/UserQuery";
 import { SvgEdit } from "../../elements/Icon/SvgEdit";
 import { resizeFile } from "../../servers/resize";
 import { MyProfile } from "../../recoil/MyProfile";
@@ -32,6 +32,7 @@ const EditProfile = () => {
   const fileInput = useRef<HTMLInputElement>(null);
   const { register, handleSubmit } = useForm<IForm>();
   const { mutateAsync } = useUpdateUser();
+  const { mutateAsync: Leave } = useLeaveUser(user.loginId);
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<IForm> = async (data) => {
     if (fileInput?.current?.files === null) return;
@@ -94,6 +95,26 @@ const EditProfile = () => {
     }).then((result) => {
       if (result.value) {
         Logout().then(() => {
+          removeCookie("accessToken");
+          removeCookie("refreshToken");
+          navigate("/");
+        });
+      }
+    });
+  };
+
+  const onLeave = () => {
+    Swal.fire({
+      title: "회원탈퇴 하시겠습니까?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "회원탈퇴",
+      cancelButtonText: "돌아가기",
+      confirmButtonColor: "#5F99FF",
+      cancelButtonColor: "#D7DCE5",
+    }).then((result) => {
+      if (result.value) {
+        Leave().then(() => {
           removeCookie("accessToken");
           removeCookie("refreshToken");
           navigate("/");
@@ -168,13 +189,20 @@ const EditProfile = () => {
           <div className="text-center sm:pt-[10px]">
             <button
               onClick={onLogOut}
-              className="w-[160px] h-[48px] sm:w-[124px] sm:h-[40px] bg-[#D7DCE5] rounded-xl sm:rounded-[4px] mr-[27px] sm:mr-[6px] text-lg sm:text-base"
+              className="w-[138px] h-[48px] sm:w-[92px] sm:h-[40px] bg-[#D7DCE5] rounded-xl sm:rounded-[4px] text-lg sm:text-base"
               type="button"
             >
               로그아웃
             </button>
             <button
-              className="w-[160px] h-[48px] sm:w-[124px] sm:h-[40px] hover:bg-h1 bg-3 rounded-xl sm:rounded-[4px]"
+              onClick={onLeave}
+              className="w-[138px] h-[48px] sm:w-[92px] sm:h-[40px] bg-[red] rounded-xl sm:rounded-[4px] mx-[13px] sm:mx-[6px] text-lg sm:text-base"
+              type="button"
+            >
+              <span className="text-white text-lg sm:text-base">회원탈퇴</span>
+            </button>
+            <button
+              className="w-[138px] h-[48px] sm:w-[92px] sm:h-[40px] hover:bg-h1 bg-3 rounded-xl sm:rounded-[4px]"
               type="submit"
             >
               <span className="text-white text-lg sm:text-base">저장하기</span>
