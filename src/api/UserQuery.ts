@@ -58,7 +58,7 @@ export const useLogOut = () => {
 export const useLeaveUser = (loginId: string) => {
   return useMutation(async () => {
     await instance
-      .delete(`/api/users/${loginId}`)
+      .delete(`/api/users/?loginId=${loginId}`)
       .then(() => {
         SweetAlertHook(1000, "success", "회원탈퇴 성공😊");
       })
