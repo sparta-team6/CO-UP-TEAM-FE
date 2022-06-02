@@ -28,14 +28,14 @@ const ProjectList = () => {
     SetUser(user);
   }, [data]);
 
-  useEffect(() => {
-    const accessToken = getAccessTokenFromCookie();
-    const refreshToken = getFreshTokenFromCookie();
-    if ((accessToken === undefined && refreshToken === undefined) === true) {
-      SweetAlertHook(1000, "error", "로그인을 해주세요 :)");
-      navigate("/");
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const accessToken = getAccessTokenFromCookie();
+  //   const refreshToken = getFreshTokenFromCookie();
+  //   if ((accessToken === undefined && refreshToken === undefined) === true) {
+  //     SweetAlertHook(1000, "error", "로그인을 해주세요 :)");
+  //     navigate("/");
+  //   }
+  // }, [navigate]);
 
   return (
     <>
