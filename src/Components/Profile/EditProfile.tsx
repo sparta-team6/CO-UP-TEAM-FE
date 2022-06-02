@@ -32,7 +32,7 @@ const EditProfile = () => {
   const fileInput = useRef<HTMLInputElement>(null);
   const { register, handleSubmit } = useForm<IForm>();
   const { mutateAsync } = useUpdateUser();
-  const { mutateAsync: Leave } = useLeaveUser(user.loginId);
+  const { mutateAsync: Leave } = useLeaveUser(String(user.loginId));
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<IForm> = async (data) => {
     if (fileInput?.current?.files === null) return;
@@ -136,12 +136,12 @@ const EditProfile = () => {
       <div className="flex flex-col">
         <div className="flex justify-center relative">
           <img
-            className="rounded-full w-[244px] h-[244px] sm:w-[148px] sm:h-[148px]"
+            className="rounded-full w-[180px] h-[180px] sm:w-[130px] sm:h-[130px]"
             alt=""
             src={imgBase64 ? imgBase64 : user?.profileImage}
           />
           <label
-            className="flex justify-center items-center absolute w-12 h-12 sm:w-9 sm:h-9 rounded-full border bg-white right-24 bottom-0 sm:right-16"
+            className="flex justify-center items-center absolute w-12 h-12 sm:w-9 sm:h-9 rounded-full border bg-white right-[120px] bottom-0 sm:right-[70px]"
             htmlFor="icon-button-file"
           >
             <input
@@ -157,11 +157,11 @@ const EditProfile = () => {
           </label>
         </div>
         <form
-          className="flex flex-col space-y-6 mt-14 sm:mt-6 w-[440px] sm:w-[288px] relative"
+          className="flex flex-col space-y-6 sm:space-y-4 mt-[22px] sm:mt-[10px] w-[440px] sm:w-[288px] relative"
           onSubmit={handleSubmit(onSubmit)}
         >
           <img
-            className="rounded-full w-[36px] h-[36px] absolute top-8 left-4 sm:top-6"
+            className="rounded-full w-[56px] h-[56px] sm:w-[36px] sm:h-[36px] absolute top-[24px] left-4 sm:top-[16px]"
             alt=""
             src={user?.profileImage}
           />
@@ -187,25 +187,19 @@ const EditProfile = () => {
             {...register("about_me")}
           />
           <div className="text-center sm:pt-[10px]">
-            <button
-              onClick={onLogOut}
-              className="w-[138px] h-[48px] sm:w-[92px] sm:h-[40px] bg-[#D7DCE5] rounded-xl sm:rounded-[4px] text-lg sm:text-base"
-              type="button"
-            >
-              로그아웃
+            <button className="w-full h-[52px] sm:h-[48px] hover:bg-h1 bg-3 rounded" type="submit">
+              <span className="text-white text-xl sm:text-base">저장하기</span>
             </button>
-            <button
-              onClick={onLeave}
-              className="w-[138px] h-[48px] sm:w-[92px] sm:h-[40px] bg-[red] rounded-xl sm:rounded-[4px] mx-[13px] sm:mx-[6px] text-lg sm:text-base"
-              type="button"
-            >
-              <span className="text-white text-lg sm:text-base">회원탈퇴</span>
+          </div>
+          <div className="flex justify-center items-center">
+            <button onClick={onLogOut} className="mt-[5px]" type="button">
+              <span className="text-[#999] text-lg sm:text-base hover:text-3">로그아웃</span>
             </button>
-            <button
-              className="w-[138px] h-[48px] sm:w-[92px] sm:h-[40px] hover:bg-h1 bg-3 rounded-xl sm:rounded-[4px]"
-              type="submit"
-            >
-              <span className="text-white text-lg sm:text-base">저장하기</span>
+            <div className="w-[1px] h-[22px] sm:h-[20px] border-r-[1px] border-solid border-[#B0B0B0] mx-[27px] sm:mx-[24px]"></div>
+            <button onClick={onLeave} className="mt-[5px]" type="button">
+              <span className="text-[#999] text-lg sm:text-base hover:text-[#E24412]">
+                회원탈퇴
+              </span>
             </button>
           </div>
         </form>
