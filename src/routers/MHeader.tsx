@@ -37,7 +37,7 @@ const MHeader = () => {
             ) : (
               <div className="h-full flex items-center space-x-2">
                 <img width={24} height={24} className="rounded-full" src={thumbnail} alt="" />
-                <span className="mt-[1px]">{title}</span>
+                <span className="mt-[1px] font-semibold">{title}</span>
               </div>
             )}
           </div>

@@ -121,11 +121,15 @@ const MobileChatPre = ({
                     </span>
                     <div
                       className={`text-left min-w-[25px] sm:min-h-[40px] bg-[#f5f5f5] dark:bg-[#3D4853] p-[10px] rounded-md ${
-                        loginId === box.senderLoginId ? "mt-2" : ""
+                        loginId === box.senderLoginId ? "mt-2 bg-[#C5DAFF] dark:bg-[#C5DAFF]" : ""
                       }`}
                     >
                       <span
-                        className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-5 font-normal tracking-tight`}
+                        className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-[#E2E2E2] ${
+                          loginId === box.senderLoginId
+                            ? "bg-[#C5DAFF] dark:bg-[#C5DAFF] text-[#333333] dark:text-[#333333]"
+                            : ""
+                        } font-normal tracking-tight`}
                       >
                         {box.message}
                       </span>

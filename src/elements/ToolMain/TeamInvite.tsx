@@ -1,9 +1,8 @@
-import React, { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { queryClient } from "../..";
-import { useInviteRoom, usePostOpenRoom } from "../../api/ProjectQuery";
-import { ProjectInvite } from "../../recoil/AtomInvite";
+import { useInviteRoom } from "../../api/ProjectQuery";
 import { ProjectKey } from "../../recoil/RoomID";
 import { SweetAlertHook } from "../../servers/Sweet";
 

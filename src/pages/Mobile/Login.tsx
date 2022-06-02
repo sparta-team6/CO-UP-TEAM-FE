@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import GoogleLogin from "../../elements/IntroHome/GoogleLogin";
 import KakaoLogin from "../../elements/IntroHome/KakaoLogin";
 import NaverLogin from "../../elements/IntroHome/NaverLogin";

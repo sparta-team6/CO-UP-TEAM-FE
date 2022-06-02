@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
@@ -6,8 +6,6 @@ import { content } from "./Chat";
 import { useRecoilValue } from "recoil";
 import { MyProfile } from "../recoil/MyProfile";
 import EmptyChat from "../images/Main/EmptyChat.png";
-import { SweetAlertHook } from "../servers/Sweet";
-import { queryClient } from "..";
 
 interface ChatPresenterProps {
   senderLoginId: string;
@@ -27,22 +25,11 @@ interface IForm {
 
 const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
-const ChatPre = ({
-  contents,
-  senderLoginId,
-  pjId,
-  pageParams,
-  setPageParams,
-}: ChatPresenterProps) => {
+const ChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) => {
   const { nickname, profileImage, loginId } = useRecoilValue(MyProfile);
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
     if (message.trim() === "") return;
-    // if (send === true) {
-    //   SweetAlertHook(1000, "error", "😡 도배 금지 😡");
-    //   setValue("message", "");
-    //   return;
-    // }
     const newMessage = { message: message, senderLoginId, pjId, profileImage, nickname };
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
     setValue("message", "");
@@ -53,12 +40,9 @@ const ChatPre = ({
       messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
     }
   };
-  // const [send, setSend] = useState(false);
+
   useEffect(() => {
     scrollToBottom();
-    // setTimeout(() => {
-    //   setSend(false);
-    // }, 500);
   }, [contents]);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -72,13 +56,9 @@ const ChatPre = ({
     };
     if (e.key === "Enter") {
       if (!e.shiftKey) {
-        // setSend(true);
         handleonEnter(newMessage);
       }
     }
-  };
-  const onScroll = () => {
-    setPageParams(pageParams + 20);
   };
   return (
     <>
@@ -127,15 +107,13 @@ const ChatPre = ({
                   </span>
                   <div
                     className={`min-w-[25px] min-h-[40px] bg-[#f5f5f5] dark:bg-[#3D4853]  ${
-                      loginId === box.senderLoginId
-                        ? "bg-[#C5DAFF] dark:bg-[#C5DAFF]"
-                        : ""
+                      loginId === box.senderLoginId ? "bg-[#C5DAFF] dark:bg-[#C5DAFF]" : ""
                     } p-[10px] rounded-md`}
                   >
                     <span
-                      className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-5 ${
+                      className={`whitespace-pre-wrap break-all mt-2 leading-5 text-sm text-[#666666] dark:text-[#E2E2E2] ${
                         loginId === box.senderLoginId
-                          ? "bg-[#C5DAFF] dark:bg-[#C5DAFF] dark:text-6"
+                          ? "bg-[#C5DAFF] dark:bg-[#C5DAFF] text-[#333333] dark:text-[#333333]"
                           : ""
                       } font-normal tracking-tight`}
                     >
@@ -147,9 +125,6 @@ const ChatPre = ({
             </div>
           );
         })}
-        {/* <div onClick={onScroll} className="w-full h-4 bg-1">
-          더보기
-        </div> */}
       </div>
       <div className="w-full flex justify-center items-center relative bg-[#fff] dark:bg-6">
         <form

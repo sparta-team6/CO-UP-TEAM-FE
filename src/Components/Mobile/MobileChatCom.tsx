@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
@@ -24,7 +24,6 @@ const stompClient: Stomp.Client = Stomp.over(sockJS);
 stompClient.debug = () => {};
 
 const MobileChatCom = () => {
-  const [messages, setMessages] = React.useState<content[]>([]);
   const { pjId } = useRecoilValue(ProjectKey);
   const user = useRecoilValue(MyProfile);
   const senderLoginId = user.loginId;

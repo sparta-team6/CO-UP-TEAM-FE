@@ -1,18 +1,18 @@
+import styled from "styled-components";
+import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { useGetRoom } from "../api/ProjectQuery";
 import { useLogOut } from "../api/UserQuery";
 import { HandleOpen } from "../recoil/AtomsInterface";
 import { motion } from "framer-motion";
-import { Logout } from "../elements/Icon/Logout";
 import { Power } from "../elements/Icon/Power";
 import { Moon } from "../elements/Icon/Moon";
 import { Sun } from "../elements/Icon/Sun";
 import { ProjectKey } from "../recoil/RoomID";
 import { themeState } from "../recoil/DarkMode";
-import styled from "styled-components";
-import Swal from "sweetalert2";
 import { KickBtn } from "../recoil/AtomKickBtn";
+import { Door } from "../elements/Icon/Door";
 
 const MyProjectList = () => {
   const setOpen = useSetRecoilState(HandleOpen);
@@ -74,7 +74,7 @@ const MyProjectList = () => {
           {theme ? <Moon /> : <Sun />}
         </div>
         <Link className="tutorial-main10 cursor-pointer" to="/projectList">
-          <Logout />
+          <Door />
         </Link>
         <div className="tutorial-main9 cursor-pointer" onClick={onLogOut}>
           <Power />
