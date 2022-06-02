@@ -20,9 +20,10 @@ const TeamInvite = ({ setOpen }: IProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { mutateAsync } = useInviteRoom(pjId);
   const onSubmit: SubmitHandler<IForm> = (data) => {
+    console.log(data.socalId);
     mutateAsync(String(data.socalId))
       .then(() => {
-        queryClient.invalidateQueries("getProject");
+        queryClient.invalidateQueries("getUser");
         setOpen(false);
         SweetAlertHook(1000, "success", "프로젝트 참여 완료😊");
       })
@@ -33,7 +34,7 @@ const TeamInvite = ({ setOpen }: IProps) => {
   };
   return (
     <div className="w-[448px] sm:w-[320px] h-[262px] flex flex-col p-12 sm:p-8">
-      <span className="font-semibold text-2xl">{`복구 아이디를 적어주세요 :)`}</span>
+      <span className="font-semibold text-2xl">{`복구할 멤버 아이디를 적어주세요 :)`}</span>
       <form
         className="w-[352px] sm:w-[270px] h-[262px] flex flex-col items-end mt-7 space-y-8"
         onSubmit={handleSubmit(onSubmit)}
@@ -41,9 +42,9 @@ const TeamInvite = ({ setOpen }: IProps) => {
         <input
           autoFocus
           className="w-[352px] sm:w-[282px] h-10 px-2 rounded-md border-none border border-[#D1D1D1]"
-          placeholder="초대코드 입력"
+          placeholder="멤버 아이디 입력"
           maxLength={40}
-          {...register("inviteCode")}
+          {...register("socalId")}
         />
         <button
           className="w-[132px] h-[45px] rounded-md p-3 font-extrabold  bg-3 text-white"
