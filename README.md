@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+![](doc/image/main.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### > 팀 프로젝트를 보다 효율적으로 진행할 수 있는 자원 공유 협업 툴 유틸리티 서비스
 
-## Available Scripts
+## 👉[쿱(CO-UP) 서비스 페이지 바로 가기](https://www.cooperate-up.com/)
 
-In the project directory, you can run:
+👉🏻[Front-End GitHub 바로 가기](https://github.com/sparta-team6/CO-UP-TEAM-FE)
 
-### `npm start`
+👉🏻[Back-End  GitHub 바로 가기](https://github.com/sparta-team6/CO-UP-TEAM-BE)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 📌 핵심 기능 요약
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+> 프로젝트 팀 구성이 가능하며 **각 팀의 독립된 워크스페이스**를 제공합니다.
+>
+> 프로젝트 **업무 진척 파악 및 공유**가 가능합니다.
+>
+> 워크스페이스 내 **문서, 칸반보드 관리 및 공유**가 가능합니다.
+>
+> 프로젝트 멤버 간 **공통 작업 항목에 대한 동시성 제어**가 가능합니다.
+>
+> 프로젝트 멤버 간 **실시간 채팅**을 이용한 소통이 가능합니다.
+>
+> **관리자와 일반 유저 권한을 구별**하며 **권한에 따라 이용 가능한 기능을 제한**하고 있습니다.
+>
+![](doc/image/서비스GIF.gif)
 
-### `npm test`
+## 🛠 프로젝트 아키텍처
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![](doc/image/시스템구조.png)
 
-### `npm run build`
+## 🎁 ERD
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](doc/image/db.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 💣 Trouble Shooting
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### ▶ Front-End
 
-### `npm run eject`
+| 이슈                                                             | 원인 및 증상                                                                                                                                | 해결 방법                                                                                                                                   |
+|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| React CSR 동작과 이미지를 그대로 저장하는 방식을 사용한 결과, 성능이 큰 폭으로 저하되는 이슈가 발생함 | 1. 이미지 크기에 상관없이 그대로 저장하는 방법을 사용한 결과, 웹에서 이미지를 처리하는데 상당한 시간이 소요됨. 2. static의 모든 파일을 읽어 작동하는 React의 특성 상, 초기 화면에서의 로딩 속도가 느려 성능에 영향을 끼침. | Suspense, Lazy loading을 사용해 코드를 분리 시켜 페이지 별로 Load하도록 수정하였고, Resize 라이브러리를 사용해 이미지를 사전에 가공한 뒤, UI에는 가공된 이미지를 저장하도록 수정하여 위 문제를 해결할 수 있었음. |
+| 문서 목록 페이지에서 문서를 상세 조회하고자 했으나 데이터가 기대와 달리 즉각 변경되지 않는 문제 발생      | useParams의 값은 정상적으로 가져올 수 있었으나, React-Query의 Detail 정보는, 즉시 fetching이 되지 않는 상태                                                         | 동일한 API에서 Detail 정보를 가져올 때는 key를 배열 형태로 만들어 새로운 index를 만들어 줘야 한다는 것을 인지하고 수정하여 위 문제를 해결함.|
+### ▶ Back-End
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+| 이슈 | 원인 및 증상 | 해결 방법 |
+| --- | --- | --- |
+| 도메인 2개로 배포 테스트 과정 중, Browser에 Cookie가 저장되지 않는 문제 인식 | Samesite를 변경하기 위해 Secure 옵션 변경해야 했으나 옵션 변경이 불가능했음 (원인: Chrome version80 Cookie Issue) | SSL(인증서) 발급 받은 후, https를 도입했고 도메인(cooperate-up.com)을 통합하여 위 문제를 해결했음. |
+| 3중 Nested List로 구성된 Dto를 DB에서 조회하는 QueryDSL 구현 실패 | QueryDSL은 단일 List만 조회할 수 있음 | 모든 List를 한 번에 조회한 후, 그룹핑 로직을 별도 추가하여 Dto를 재구성한 뒤, 위 문제를 해결함 |
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 👨‍👨‍👦‍👦 CO-UP 팀원 Info
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## ▶ Front-End
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+| 팀원명 | Github, Blog, SNS | Phone | E-mail |
+| --- | --- | --- | --- |
+| 김지호 | https://github.com/jiho3894 | 010-8769-6527 | rlawlgh3894@naver.com |
+| 김경래 | https://github.com/mosbisu | 010-3875-4535 | mosbisu@gmail.com |
 
-## Learn More
+## ▶ Back-End
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| 팀원명 | Github, Blog, SNS | Phone | E-mail |
+| --- | --- | --- | --- |
+| 정재호 | https://github.com/pg-Parunson | 010-5221-0911 | iwogh3176@gmail.com |
+| 권기원 | https://github.com/funnykyeon | 010-2259-4885 | funnykyeon@naver.com |
+| 홍승민 | https://github.com/Hong-Seungmin | 010-6863-6397 | globalsh1@gmail.com |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## ▶ Design
+
+| 팀원명 | Github, Blog, SNS | Phone | E-mail |
+| --- | --- | --- | --- |
+| 고나빈 | https://instagram.com/2x3graphics/ | 010-5048-2972 | surani208@naver.com |
+| 허수빈 | https://www.instagram.com/soupsoup/<br/>https://www.instagram.com/design.souptory/ | 010-3911-1975 | huhsoup@naver.com |
