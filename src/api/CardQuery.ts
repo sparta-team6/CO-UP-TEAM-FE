@@ -19,12 +19,14 @@ export interface ICard {
   data: ICards;
 }
 
+// 카드 상세내용
 export const useGetCardDetail = (kbcId: string) => {
   return useQuery<ICard, AxiosError>(["getCard", kbcId], () => {
     return instance.get(`api/buckets/cards/?kbcId=${kbcId}`);
   });
 };
 
+// 카드 삭제
 export const useDeleteCards = (post: string) => {
   return useMutation(async () => {
     await instance.delete(`api/buckets/cards?kbcId=${post}`).then(() => {
@@ -43,6 +45,7 @@ export interface Cards {
   modifiedTime?: string;
 }
 
+// 카드 등록
 export const usePostCards = () => {
   return useMutation(async (post: ICards) => {
     await instance.post("api/buckets/cards/", post).then(() => {

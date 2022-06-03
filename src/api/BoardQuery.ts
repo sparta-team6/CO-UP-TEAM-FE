@@ -17,6 +17,7 @@ export interface IBoards {
   data: Board;
 }
 
+// 보드 불러오기
 export const useGetBoard = (pjId: string) => {
   return useQuery<IBoard, AxiosError>(["getBoard", pjId], async () => {
     return await instance.get(`api/buckets/?pjId=${pjId}`);

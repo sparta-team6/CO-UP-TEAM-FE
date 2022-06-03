@@ -4,6 +4,7 @@ import { instance } from "../servers/axios";
 import { IBoard } from "./BoardQuery";
 import { Cards, ICard, ICards } from "./CardQuery";
 
+// 카드 이동 낙관적 업데이트로 UI를 먼저 보여주고 api 요청 허용/롤백 결정
 export const useUpdateCards = (pjId: string) => {
   return useMutation(
     async (post: Cards) => {
