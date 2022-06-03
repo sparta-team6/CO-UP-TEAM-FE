@@ -104,23 +104,24 @@ const EditProfile = () => {
   };
 
   const onLeave = () => {
-    Swal.fire({
-      title: "회원탈퇴 하시겠습니까?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "회원탈퇴",
-      cancelButtonText: "돌아가기",
-      confirmButtonColor: "#5F99FF",
-      cancelButtonColor: "#D7DCE5",
-    }).then((result) => {
-      if (result.value) {
-        Leave().then(() => {
-          removeCookie("accessToken");
-          removeCookie("refreshToken");
-          navigate("/");
-        });
-      }
-    });
+    // Swal.fire({
+    //   title: "회원탈퇴 하시겠습니까?",
+    //   icon: "warning",
+    //   showCancelButton: true,
+    //   confirmButtonText: "회원탈퇴",
+    //   cancelButtonText: "돌아가기",
+    //   confirmButtonColor: "#5F99FF",
+    //   cancelButtonColor: "#D7DCE5",
+    // }).then((result) => {
+    //   if (result.value) {
+    // Leave().then(() => {
+    SweetAlertHook(1000, "error", "준비중 입니다😊");
+    // removeCookie("accessToken");
+    // removeCookie("refreshToken");
+    // navigate("/");
+    //   });
+    // }
+    // });
   };
   return (
     <>
