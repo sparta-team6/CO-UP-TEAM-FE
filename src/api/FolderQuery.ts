@@ -22,12 +22,14 @@ export interface Folder {
   title: string;
 }
 
+// 폴더 불러오기
 export const useGetFolders = (pjId: string) => {
   return useQuery<IFolders, AxiosError>("getFolders", () => {
     return instance.get(`api/folders/?pjId=${pjId}`);
   });
 };
 
+// 폴더 생성
 export const useAddFolder = () => {
   const setDfId = useSetRecoilState(dfId);
   return useMutation(async (Folder: Folder) => {
@@ -35,6 +37,7 @@ export const useAddFolder = () => {
   });
 };
 
+// 폴더 삭제
 export const useDelFolder = (dfId: string) => {
   return useMutation(async () => {
     await instance.delete(`api/folders/?dfId=${dfId}`).then(() => {
@@ -43,6 +46,7 @@ export const useDelFolder = (dfId: string) => {
   });
 };
 
+// 폴더 수정
 export const useUpdateFolder = (dfId: string) => {
   return useMutation(async (Folder: Folders) => {
     await instance.patch(`api/folders/?dfId=${dfId}`, Folder).then(() => {

@@ -12,6 +12,7 @@ import { docId } from "../../../recoil/AtomDocument";
 import { HandleOpen } from "../../../recoil/AtomsInterface";
 import { ProjectKey } from "../../../recoil/RoomID";
 
+// 문서페이지
 const DocList = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { data } = useGetFolders(String(pjId));

@@ -28,6 +28,7 @@ interface IForm {
   title: string;
 }
 
+// 문서 생성 컴포넌트
 const DocEditor = () => {
   const { state } = useLocation();
   const { pjId } = useRecoilValue(ProjectKey);

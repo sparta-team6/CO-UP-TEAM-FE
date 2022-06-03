@@ -5,6 +5,7 @@ import ViewDoc from "../../../Components/ToolDocument/ViewDoc";
 import { useGetOneDoc } from "../../../api/DocumentQuery";
 import { useParams } from "react-router-dom";
 
+// 문서 조회 페이지
 const DetailDocs = () => {
   const { postId } = useParams();
   const { data, isFetching } = useGetOneDoc(String(postId));
