@@ -15,16 +15,19 @@ const buttonBack = {
   fontSize: "14px",
 };
 
+// 튜토리얼 커스텀 훅
 const JoyrideContainer = ({ run, steps, setOpen }: any) => {
   const [stepIndex, setStepIndex] = useState(0);
   const handleJoyrideCallback = (data: CallBackProps) => {
     const { action, index, status, type } = data;
 
+    // 튜토리얼 index 설정
     if (([EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND] as string[]).includes(type)) {
       setTimeout(() => {
         const stepIndex = index + (action === ACTIONS.PREV ? -1 : 1);
         setStepIndex(stepIndex);
       }, 100);
+      // 튜토리얼 다보거나 스킵했을 때 초기화
     } else if (([STATUS.FINISHED, STATUS.SKIPPED] as string[]).includes(status)) {
       setOpen(false);
       setStepIndex(0);
