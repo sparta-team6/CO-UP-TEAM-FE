@@ -1,3 +1,4 @@
+// 프로젝트 튜토리얼
 export const mainSteps = [
   {
     content: (
@@ -142,6 +143,7 @@ export const mainSteps = [
   },
 ];
 
+// 프로젝트 리스트 튜토리얼
 export const projectListSteps = [
   {
     content: (

@@ -3,6 +3,7 @@ import DocEditor from "../../../Components/ToolAddDoc/DocEditor";
 import MyProjectList from "../../../layout/MyProjectList";
 import DocumentList from "../../../layout/FolderList";
 
+// 문서 생성 페이지
 const AddDocs = () => {
   return (
     <>

@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 import { useRecoilValue } from "recoil";
 import { NewDoc } from "../../recoil/AtomDocument";
 
+// 문서 내용 보여지는 컴포넌트
 const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }: Docs) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -75,6 +76,7 @@ const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }
     <>
       {!isFetchingg && (
         <div className="w-full h-full flex flex-col overflow-y-auto">
+          {/* props로 받은 제목과 내용이 있을 때 */}
           {title && contents ? (
             <>
               <div className="hidden fixed top-0 left-0 w-full sm:flex justify-between items-center pb-2 px-[16px] pt-[19px]">
@@ -142,7 +144,8 @@ const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }
                 />
               </div>
             </>
-          ) : docData ? (
+          ) : // 문서가 하나라도 있을 때 최신 문서 내용
+          docData ? (
             <>
               {!isFetching && (
                 <>
@@ -194,6 +197,7 @@ const ViewDoc = ({ title, contents, isFetchingg, docId, modifiedTime, nickname }
               )}
             </>
           ) : (
+            // 데이터가 없을 때 생성 유도 문구
             <div className=" w-full h-full flex flex-col justify-center items-center text-center px-[46px]">
               <img width={328} height={286} className="block sm:hidden" src={EmptyFolder} alt="" />
               <img width={178} height={154} className="hidden sm:block" src={EmptyFolderM} alt="" />

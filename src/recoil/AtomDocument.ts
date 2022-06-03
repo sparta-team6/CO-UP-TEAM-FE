@@ -11,6 +11,7 @@ export interface DOCID {
   docId: string;
 }
 
+// 폴더id, 문서id
 export const dfId = atom({
   key: "dfId",
   default: "",
@@ -22,6 +23,7 @@ export const docId = atom({
   default: "",
 });
 
+// 최신 문서 정보 저장
 export const NewDoc = atom<Docs>({
   key: "newDoc",
   default: {

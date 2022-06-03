@@ -53,6 +53,7 @@ const FolderList = () => {
 
   return (
     <>
+      {/* 문서가 없을 때 문서 생성 유도 문구 */}
       {data?.data.length === 0 ? (
         <Scroll className="w-72 h-full bg-[#F0F3F7] dark:bg-7 sm:w-full overflow-auto">
           <div className="flex justify-between items-center px-[20px] pt-[45px]">
@@ -107,6 +108,7 @@ const FolderList = () => {
                             onChange={onChange}
                           />
                         </form>
+                        {/* 폴더 수정관련 모달 */}
                         <FolderFixed
                           dfId={folder.dfId}
                           setEditTitle={setEditTitle}
@@ -120,6 +122,9 @@ const FolderList = () => {
                             className="flex items-center text-base cursor-pointer rounded-md p-[1px]"
                           >
                             <span
+                              // params로 받은 id와 문서id가 같거나
+                              // params로 받은 id가 없고 최신 문서id와 문서id가 같을 때
+                              // 색상 변경
                               className={`text-ellipsis overflow-hidden whitespace-nowrap hover:text-3 ${
                                 postId === doc.docId
                                   ? "text-3"

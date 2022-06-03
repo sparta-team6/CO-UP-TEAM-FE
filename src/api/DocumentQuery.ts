@@ -19,12 +19,14 @@ export interface IDocDetail {
   data: Docs;
 }
 
+// 문서 조회
 export const useGetOneDoc = (docId: string) => {
   return useQuery<AxiosResponse, AxiosError, IDocDetail>(["getOneDoc", docId], () => {
     return instance.get(`api/folders/docs/?docId=${docId}`);
   });
 };
 
+// 최신 문서 조회
 export const useGetNewDoc = (pjId: string) => {
   const setNewDoc = useSetRecoilState(NewDoc);
   return useQuery("getNewDoc", async () => {
@@ -32,6 +34,7 @@ export const useGetNewDoc = (pjId: string) => {
   });
 };
 
+// 문서 생성
 export const useAddDoc = () => {
   const setDocId = useSetRecoilState(docId);
   return useMutation(async (Doc: Docs) => {
@@ -42,6 +45,7 @@ export const useAddDoc = () => {
   });
 };
 
+// 문서 삭제
 export const useDelDoc = (docId: string) => {
   return useMutation(async () => {
     await instance.delete(`api/folders/docs/?docId=${docId}`).then(() => {
@@ -50,6 +54,7 @@ export const useDelDoc = (docId: string) => {
   });
 };
 
+// 문서 수정
 export const useUpdateDoc = (docId: string) => {
   return useMutation(async (Doc: Docs) => {
     await instance.patch(`api/folders/docs/?docId=${docId}`, Doc).then(() => {

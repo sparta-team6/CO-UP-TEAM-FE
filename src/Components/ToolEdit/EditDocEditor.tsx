@@ -25,6 +25,7 @@ interface IForm {
   title: string;
 }
 
+// 문서 수정 컴포넌트
 const DocEditor = ({ title, contents, docId }: Docs) => {
   const { id } = useParams();
   const { mutateAsync: UpdateDoc } = useUpdateDoc(String(docId));

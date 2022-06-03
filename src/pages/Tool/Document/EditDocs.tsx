@@ -10,6 +10,7 @@ interface ILocation {
   state: Docs;
 }
 
+// 문서 수정 페이지
 const EditDocs = () => {
   const location = useLocation() as ILocation;
   const result = location?.state;

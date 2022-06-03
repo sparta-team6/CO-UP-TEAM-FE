@@ -15,6 +15,7 @@ interface IProps {
   setDfId: Dispatch<SetStateAction<string>>;
 }
 
+// 폴더 수정 관련 모달
 const FolderFiexd = ({ dfId, setEditTitle, setDfId }: IProps) => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { mutateAsync: DelFolder } = useDelFolder(String(dfId));
