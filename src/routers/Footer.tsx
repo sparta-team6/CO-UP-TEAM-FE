@@ -14,6 +14,7 @@ const Footer = () => {
   const boardMatch = useMatch("/tool/:id/board");
   const ChatMatch = useMatch("/tool/:id/chat");
   const FixDoc = location.pathname.includes("document/add") || location.pathname.includes("edit");
+  // 모바일일 때 네이게이션을 footer로 이동
   return (
     <>
       {location.pathname.includes("tool") && !FixDoc && !ChatMatch && (

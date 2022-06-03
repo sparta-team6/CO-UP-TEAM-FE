@@ -4,6 +4,7 @@ import Helmet from "react-helmet";
 import { useRecoilValue } from "recoil";
 import { themeState } from "../recoil/DarkMode";
 
+// 성능 컴포넌트 분리 lazy loading
 const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
 const Header = lazy(() => import("./Header"));
 const MHeader = lazy(() => import("./MHeader"));
@@ -30,15 +31,16 @@ const Router = () => {
       <Helmet>
         <title>CO-UP</title>
       </Helmet>
+      {/* 다크모드 모든 컴포넌트에 적용 */}
       <div className={`${theme ? "dark" : ""}`}>
         <Header />
         <MHeader />
         <Routes>
           <Route path="/" element={<IntroHome />} />
+          <Route path="*" element={<NotFound />} />
           <Route path="/projectList" element={<ProjectList />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
-          <Route path="*" element={<NotFound />} />
           <Route path="/tool/:id" element={<ToolMain />} />
           <Route path="/tool/:id/chat" element={<MobileChat />} />
           <Route path="/tool/:id/document" element={<DocList />} />

@@ -14,6 +14,7 @@ const Header = () => {
   const onDarkMode = () => {
     DarkMode((prev: boolean) => !prev);
   };
+  // 프로젝트 리스트와 프로필 설정의 헤더는 다르게 해주기
   return (
     <React.Fragment>
       {location.pathname.includes("tool") ? (
