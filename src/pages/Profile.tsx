@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import EditProfile from "../Components/Profile/EditProfile";
 
+// 프로필 페이지
 const Profile = () => {
   return (
     <React.Fragment>

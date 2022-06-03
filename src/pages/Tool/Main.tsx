@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { ProjectKey } from "../../recoil/RoomID";
 
+// 메인 툴 페이지
 const ToolMain = () => {
   const setOpen = useSetRecoilState(HandleOpen);
   const { title } = useRecoilValue(ProjectKey);
@@ -18,6 +19,7 @@ const ToolMain = () => {
   }, []);
   return (
     <>
+    {/* SEO 최적화를 위해 프로젝트별 제목을 SEO로 구분함 */}
       <Helmet>
         <title>CO-UP | {title}</title>
       </Helmet>

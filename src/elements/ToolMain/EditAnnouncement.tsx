@@ -33,6 +33,7 @@ interface IForm {
   contents: string;
 }
 
+// 공지사항 수정 모달 폼
 const EditAnnouncement = ({ title, contents, noticeId, modifiedTime, edit, setEdit }: IProps) => {
   const handleClose = () => setEdit(false);
   const { pjId } = useRecoilValue(ProjectKey);

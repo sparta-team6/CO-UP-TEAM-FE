@@ -6,6 +6,7 @@ import { ChevronLeft } from "../elements/Icon/ChevronLeft";
 import { Menu } from "../elements/Icon/mobile/Menu";
 import { ProjectKey } from "../recoil/RoomID";
 
+// 모바일 헤더
 const MHeader = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useRecoilState(HandleOpen);
@@ -18,6 +19,7 @@ const MHeader = () => {
   const ChatMatch = useMatch("/tool/:id/chat");
   const HomeMatch = useMatch("/tool/:id");
   const FixDoc = location.pathname.includes("edit");
+  // 문서 관련 페이지는 헤더가 다른게 필요했음 연산자 분리
   return (
     <>
       {location.pathname.includes("tool") && !docMatch && !FixDoc ? (

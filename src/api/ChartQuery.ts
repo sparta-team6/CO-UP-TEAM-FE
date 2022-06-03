@@ -20,6 +20,7 @@ export interface IChart {
   data: buckets[];
 }
 
+// 팀 상태 개요
 export const useGetManagers = (pjId: string) => {
   return useQuery<IChart, AxiosError>(["getManager", pjId], () => {
     return instance.get(`api/buckets/cards/managers/?pjId=${pjId}`);

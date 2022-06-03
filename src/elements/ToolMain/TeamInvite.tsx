@@ -14,14 +14,15 @@ interface IProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+// 팀 초대 모달 폼
 const TeamInvite = ({ setOpen }: IProps) => {
   const { register, handleSubmit } = useForm();
   const { pjId } = useRecoilValue(ProjectKey);
   const { mutateAsync } = useInviteRoom(pjId);
   const onSubmit: SubmitHandler<IForm> = (data) => {
-    console.log(data.socalId);
     mutateAsync(String(data.socalId))
       .then(() => {
+        // 서버 통신 후 유저 정보 바로 가져오기
         queryClient.invalidateQueries("getUser");
         setOpen(false);
         SweetAlertHook(1000, "success", "프로젝트 참여 완료😊");

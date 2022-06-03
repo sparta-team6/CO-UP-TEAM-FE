@@ -34,6 +34,7 @@ const style = {
   boxShadow: 2,
 };
 
+// 카드 내용 수정 모달 폼
 const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
   const handleClose = () => setEdit(false);
   const { pjId } = useRecoilValue(ProjectKey);
@@ -42,6 +43,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
   const { data: user } = useGetProjectUser(pjId);
   const [name, setName] = useState(String(Card?.data.managerNickname));
   const { register, handleSubmit } = useForm<IForm>();
+  // select option에서 담당자 이름은 제외하기
   const result = user?.data.filter((data) => data.nickname !== Card?.data.managerNickname);
   const onSubmit: SubmitHandler<IForm> = (data) => {
     if (name === "" || name === "담당자 선택") {
@@ -56,6 +58,7 @@ const EditCard = ({ edit, setEdit, toDoText, toDoTitle, toDoId }: IPros) => {
     const post = {
       kbcId: String(Card?.data.kbcId),
       kbbId: String(Card?.data.kbbId),
+      // 배열 value 나누기
       manager: info.length === 1 ? String(Card?.data.manager) : info[0],
       managerNickname: info[1] === undefined ? String(Card?.data.managerNickname) : info[1],
       title: data.title,

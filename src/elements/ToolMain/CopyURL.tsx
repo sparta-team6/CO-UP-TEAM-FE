@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import { ProjectKey } from "../../recoil/RoomID";
 import { SweetAlertHook } from "../../servers/Sweet";
 
+// 초대코드 복사 elements
 const CopyURL = () => {
   const { inviteCode } = useRecoilValue(ProjectKey);
   const textInput = useRef<HTMLInputElement>(null);

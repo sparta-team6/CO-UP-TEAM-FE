@@ -18,11 +18,13 @@ const style = {
   boxShadow: 4,
 };
 
+
 export default function ProjectOpen() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { mutateAsync } = usePostOpenRoom();
+  // 공식 프로젝트 참여 코드
   const onClick = () => {
     mutateAsync("f01619bd-6917-4491-b7af-cb43cb8cb883")
       .then(() => {

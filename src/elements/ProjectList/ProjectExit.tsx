@@ -11,6 +11,7 @@ interface IProps {
   roomID?: string;
 }
 
+// 프로젝트 탈퇴 모달 폼
 const ProjectExit = ({ roomID }: IProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);

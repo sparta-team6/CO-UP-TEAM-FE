@@ -10,6 +10,9 @@ import { Darktheme, LightTheme } from "./styles/theme";
 import SpinnerDark from "./layout/SpinnerDark";
 import SpinnerLigth from "./layout/SpinnerLigth";
 
+// 다크모드 ThemeProvider 설정
+// Suspense 다크모드에 따른 컴포넌트 분리
+
 const App = () => {
   const theme = useRecoilValue(themeState);
   return (

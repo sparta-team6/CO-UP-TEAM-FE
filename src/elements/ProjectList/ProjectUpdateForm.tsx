@@ -23,12 +23,14 @@ interface IProps {
   roomSummary: string;
 }
 
+// 프로젝트 수정 모달 폼
 const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary }: IProps) => {
   const [imgBase64, setImgBase64] = useState<string>(roomImg);
   const fileInput = useRef<HTMLInputElement>(null);
   const { mutateAsync } = useUpdateRoom(String(roomID));
   const { register, handleSubmit } = useForm<IForm>();
   const onSubmit: SubmitHandler<IForm> = async (data) => {
+    // file이 null일 경우 return
     if (fileInput?.current?.files === null) return;
     const size = fileInput?.current?.files[0];
     const project = {
@@ -43,7 +45,9 @@ const ProjectUpdateForm = ({ setUpOpen, roomID, roomImg, roomTitle, roomSummary 
         SweetAlertHook(1000, "success", "프로젝트 수정 완료😊");
         setUpOpen(false);
       });
-    } else {
+    }
+    // 이미지 수정이 발생했을 때 리사이징
+    else {
       const image = await resizeFile(size, 100, 100, "base64");
       const project = {
         title: data.title,

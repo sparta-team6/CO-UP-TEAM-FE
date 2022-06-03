@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 
+// SweetAlert CustomHook
 export const SweetAlertHook = (timer: any, icon: any, title: any) => {
   Swal.mixin({
     toast: true,

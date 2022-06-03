@@ -1,5 +1,6 @@
 import { User } from "../../api/UserQuery";
 
+// 프로젝트 본인 프로필
 const TeamMe = ({ profileImage, nickname, aboutMe, url }: User) => {
   return (
     <div className="group w-full mt-[12px] relative flex items-center space-x-2">

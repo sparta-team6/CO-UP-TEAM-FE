@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import { ChartLength } from "../../recoil/AtomChart";
 import { themeState } from "../../recoil/DarkMode";
 
+// ApexChart
 const Chart = () => {
   const Dark = useRecoilValue(themeState);
   const chartLength = useRecoilValue(ChartLength);

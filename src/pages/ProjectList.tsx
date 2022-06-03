@@ -28,6 +28,7 @@ const ProjectList = () => {
     SetUser(user);
   }, [data]);
 
+  // 쿠키가 없을때 소개페이지로 이동
   useEffect(() => {
     const accessToken = getAccessTokenFromCookie();
     const refreshToken = getFreshTokenFromCookie();

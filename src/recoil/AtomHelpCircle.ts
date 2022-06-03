@@ -3,6 +3,7 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
+// 튜토리얼 버튼 관련 boolean
 export const HelpProjectList = atom({
   key: "helpProjectList",
   default: false,

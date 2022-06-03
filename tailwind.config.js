@@ -23,5 +23,6 @@ module.exports = {
     },
   },
   plugins: [],
+  // 다크모드
   darkMode: "class",
 };

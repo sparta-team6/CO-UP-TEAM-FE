@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import LoadingPage from "../layout/LoadingPage";
 import { instance } from "./axios";
 
+// 카카오 로그인 인가코드
 const Kakao = () => {
   const navigate = useNavigate();
   const code = new URL(window.location.href).searchParams.get("code");

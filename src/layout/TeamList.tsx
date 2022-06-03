@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Chart from "../Components/ToolMain/Chart";
 import Member from "../Components/ToolMain/Member";
 
+// 프로젝트 팀 정보 레이아웃
 const TeamList = () => {
   return (
     <React.Fragment>

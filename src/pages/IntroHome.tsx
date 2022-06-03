@@ -4,8 +4,11 @@ import { useNavigate } from "react-router-dom";
 import LoginModal from "../Components/IntroHome/LoginModal";
 import IntroSlider from "../Components/IntroHome/Slider";
 import { getAccessTokenFromCookie, getFreshTokenFromCookie } from "../servers/Cookie";
+
+// 소개 페이지
 const IntroHome = () => {
   const navigate = useNavigate();
+  // 쿠키 여부에 따른 페이지 관리
   useEffect(() => {
     const accessToken = getAccessTokenFromCookie();
     const refreshToken = getFreshTokenFromCookie();

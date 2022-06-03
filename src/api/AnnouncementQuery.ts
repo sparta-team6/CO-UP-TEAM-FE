@@ -19,18 +19,21 @@ export interface IAnnouncement {
   data: Announcement[];
 }
 
+// 공지사항 불러오기
 export const useGetAnnouncement = (pjId: string) => {
   return useQuery<IAnnouncement, AxiosError>(["getAnnouncement", pjId], () => {
     return instance.get(`api/notices/all?pjId=${pjId}`);
   });
 };
 
+// 공지사항 상세내용
 export const useGetOneAnnouncement = (noticeId: string) => {
   return useQuery("getOneAnnouncement", () => {
     return instance.get(`api/notices/?noticeId=${noticeId}`);
   });
 };
 
+// 공지사항 생성
 export const usePostAnnouncement = () => {
   return useMutation(async (post: Announcement) => {
     await instance.post("api/notices/", post).then(() => {
@@ -39,6 +42,7 @@ export const usePostAnnouncement = () => {
   });
 };
 
+// 공지사항 수정
 export const useUpdateAnnouncement = () => {
   return useMutation(async (post: Announcement) => {
     await instance.patch("api/notices/", post).then(() => {
@@ -47,6 +51,7 @@ export const useUpdateAnnouncement = () => {
   });
 };
 
+// 공지사항 삭제
 export const useDelAnnouncement = () => {
   return useMutation(async (post: IAnnouncements) => {
     await instance.delete("api/notices/", post).then(() => {

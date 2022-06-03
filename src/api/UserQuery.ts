@@ -18,12 +18,14 @@ export interface IUser {
   data: User[];
 }
 
+// 유저 프로젝트 정보
 export const useGetProjectUser = (pjId: string) => {
   return useQuery<IUser, AxiosError>(["getUser", pjId], () => {
     return instance.get(`api/users/projects?pjId=${pjId}`);
   });
 };
 
+// 프로필 수정
 export const useUpdateUser = () => {
   return useMutation(async (post: User) => {
     await instance.put("api/users/update", post).then(() => {
@@ -32,12 +34,14 @@ export const useUpdateUser = () => {
   });
 };
 
+// 프로필 정보
 export const useMyInfo = () => {
   return useQuery<IUser, AxiosError>("getMyInfo", () => {
     return instance.get("api/users/myInfo/");
   });
 };
 
+// 로그아웃
 export const useLogOut = () => {
   const setHelpProject = useSetRecoilState(HelpProjectList);
   const setHelpToolMain = useSetRecoilState(HelpToolMain);
@@ -55,6 +59,7 @@ export const useLogOut = () => {
   });
 };
 
+// 회원탈퇴
 export const useLeaveUser = (loginId: string) => {
   return useMutation(async () => {
     await instance
