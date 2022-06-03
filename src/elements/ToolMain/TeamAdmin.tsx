@@ -16,6 +16,7 @@ const style = {
   boxShadow: 4,
 };
 
+// 해당 프로젝트 방장
 const TeamAdmin = ({ profileImage, nickname, aboutMe, url }: User) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);

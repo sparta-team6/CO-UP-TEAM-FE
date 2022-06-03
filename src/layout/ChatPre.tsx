@@ -22,13 +22,15 @@ interface IForm {
   profileImage: string;
   nickname: string;
 }
-
+// Stomp 통신
 const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
+
 const ChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) => {
   const { nickname, profileImage, loginId } = useRecoilValue(MyProfile);
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
+    // 공백일시 채팅 return
     if (message.trim() === "") return;
     const newMessage = { message: message, senderLoginId, pjId, profileImage, nickname };
     stompClient.send("/pub/chatting/project", {}, JSON.stringify(newMessage));
@@ -54,6 +56,7 @@ const ChatPre = ({ contents, senderLoginId, pjId }: ChatPresenterProps) => {
       profileImage: String(profileImage),
       nickname: String(nickname),
     };
+    // shift + enter = 줄바꿈
     if (e.key === "Enter") {
       if (!e.shiftKey) {
         handleonEnter(newMessage);

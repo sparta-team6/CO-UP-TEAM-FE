@@ -28,11 +28,13 @@ interface IAnnouncementProps {
   index: number;
 }
 
+// 공지사항 Detail 모달 폼
 const DetailAnnouncement = ({ noticeId, title, contents, modifiedTime }: IAnnouncementProps) => {
   const { pjId, projectRole } = useRecoilValue(ProjectKey);
   const { mutateAsync: DELAN } = useDelAnnouncement();
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
+  // 해당 이벤트가 캡처링/버블링 단계에서 이상 전파 방지
   const handleOpen = (e: React.MouseEvent) => {
     e.stopPropagation();
     setOpen(true);

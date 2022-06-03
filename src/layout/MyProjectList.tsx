@@ -25,6 +25,7 @@ const MyProjectList = () => {
     navigate(`/tool/${roomID}`);
     setOpen(false);
     const roomData = data?.data.find((r) => r.pjId === roomID);
+    // 해당 정보 리코일에 저장해 프로젝트 내부 동작할 때 꺼내 사용하기 쉬움
     setProject({
       pjId: String(roomData?.pjId),
       thumbnail: String(roomData?.thumbnail),
