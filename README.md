@@ -34,7 +34,7 @@
     <td align="center"><a href="https://github.com/Hon-Seungmin" target='_blank'><img src="https://user-images.githubusercontent.com/79081800/171410845-e5eec2fa-a305-4849-bb24-e3e210fae8a1.png" width="120px" /></a></td>
     <td align="center"><a href="https://github.com/jiho3894" target='_blank'><img src="https://user-images.githubusercontent.com/79081800/171411042-b0022191-74fa-41ab-ba41-6d1c5f1eb8c6.png" width="120px" /></a></td>
        <td align="center"><a href="https://github.com/mosbisu" target='_blank'><img src="https://user-images.githubusercontent.com/79081800/171411148-efad3a73-0e98-4283-aa69-075f7b0b6523.png" width="120px" /></a></td>
-    <td align="center"><a href="https://github.com/mosbisu" target='_blank'><img src="https://user-images.githubusercontent.com/79081800/171411148-efad3a73-0e98-4283-aa69-075f7b0b6523.png" width="120px" /></a></td>
+    <td align="center"><a href="https://github.com/mosbisu" target='_blank'><img src="https://velog.velcdn.com/images/jiho3894/post/671ad295-33f5-4c10-9ab9-92ff94e8ff15/image.jpg" width="120px" /></a></td>
     <td align="center"><a href="https://github.com/mosbisu" target='_blank'><img src="https://velog.velcdn.com/images/jiho3894/post/f2feb694-e15c-42b5-9788-340640e8af4f/image.jpg" width="120px" /></a></td>
 
   <tr>
