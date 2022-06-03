@@ -6,6 +6,7 @@ import { ProjectKey } from "../../recoil/RoomID";
 import { HelpToolMain } from "../../recoil/AtomHelpCircle";
 import { HelpCircle } from "../Icon/HelpCircle";
 
+// 해당 프로젝트 제목 내용
 const ProjectSummary = () => {
   const Project = useRecoilValue(ProjectKey);
   const [open, setOpen] = useState(false);

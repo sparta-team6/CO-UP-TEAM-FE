@@ -26,6 +26,7 @@ interface IForm {
   content: string;
 }
 
+// 공지사항 elements
 const ProjectAnnouncement = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -34,7 +35,7 @@ const ProjectAnnouncement = () => {
   const { data: Ann } = useGetAnnouncement(pjId);
   const { mutateAsync: postAn } = usePostAnnouncement();
   const { register, handleSubmit, setValue } = useForm<IForm>();
-
+  // Date
   const today = new Date();
   const year = today.getFullYear();
   const month = ("0" + (today.getMonth() + 1)).slice(-2);

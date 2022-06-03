@@ -23,6 +23,7 @@ interface IProp {
   open: Dispatch<SetStateAction<boolean>>;
 }
 
+// 프로젝트 생성 모달 폼
 const ProjectMakeForm = ({ open }: IProp) => {
   const RandomImg = [DefaultImg1, DefaultImg2, DefaultImg3, DefaultImg4, DefaultImg5];
   const DefaultImg = Math.floor(Math.random() * RandomImg.length);
@@ -31,6 +32,7 @@ const ProjectMakeForm = ({ open }: IProp) => {
   const { mutateAsync } = usePostRoom();
   const { register, handleSubmit } = useForm<IForm>();
   const onSubmit: SubmitHandler<IForm> = async (data) => {
+    // file이 null일 경우 return
     if (fileInput.current?.files === null) return;
     if (data.title.trim() === "" || data.summary.trim() === "") {
       const Toast = Swal.mixin({
@@ -62,7 +64,9 @@ const ProjectMakeForm = ({ open }: IProp) => {
         SweetAlertHook(1000, "success", "프로젝트 생성 완료😊");
         open(false);
       });
-    } else {
+    }
+    // 이미지 수정이 발생했을 때 리사이징
+    else {
       const image = await resizeFile(size, 100, 100, "base64");
       mutateAsync({
         title: data.title,

@@ -1,4 +1,4 @@
-import  { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { queryClient } from "../..";
 import { usePostOpenRoom } from "../../api/ProjectQuery";
@@ -12,6 +12,7 @@ interface IProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+// 프로젝트 초대코드 입장 모달 폼
 const ProjectOpenForm = ({ setOpen }: IProps) => {
   const { register, handleSubmit } = useForm();
   const { mutateAsync } = usePostOpenRoom();
