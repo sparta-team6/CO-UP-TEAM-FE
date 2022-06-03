@@ -14,6 +14,7 @@ const BoardList = () => {
   const { data: board, isFetching } = useGetBoard(String(pjId));
   const [open, setOpen] = useState<boolean>(false);
   const { mutateAsync } = useUpdateCards(pjId);
+  // 카드가 없을시 캐릭터 사진
   useEffect(() => {
     resetServerContext();
     let sum = 0;
@@ -22,11 +23,13 @@ const BoardList = () => {
     }
     sum === 0 ? setOpen(true) : setOpen(false);
   }, [board]);
+  // End Drop function
   const onDragEnd = ({ destination, source }: DropResult) => {
     if (!destination) return;
     if (destination.index === source.index && destination.droppableId === source.droppableId) {
       return;
     }
+    // 같은 보드에서 드래그 이벤트
     if (destination?.droppableId === source.droppableId) {
       const boardCopy = [...board?.data[Number(source.droppableId)].cards];
       const taskObj = boardCopy[source.index];
@@ -43,6 +46,7 @@ const BoardList = () => {
       };
       mutateAsync(post);
     }
+    // 다른 보드에서 드래그 이벤트
     if (destination.droppableId !== source.droppableId) {
       const sourceBoard = [...board?.data[Number(source.droppableId)].cards];
       const taskObj = sourceBoard[source.index];

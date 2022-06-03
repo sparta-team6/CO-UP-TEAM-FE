@@ -30,6 +30,7 @@ interface IDragabbleCardProps {
   index: number;
 }
 
+// 카드
 const DraggableCard = ({
   bucketId,
   toDoName,
