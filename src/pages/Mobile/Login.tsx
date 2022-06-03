@@ -2,6 +2,7 @@ import GoogleLogin from "../../elements/IntroHome/GoogleLogin";
 import KakaoLogin from "../../elements/IntroHome/KakaoLogin";
 import NaverLogin from "../../elements/IntroHome/NaverLogin";
 
+// 로그인 페이지
 const Login = () => {
   return (
     <div className="w-full h-screen bg-[#ffffff] dark:bg-8">

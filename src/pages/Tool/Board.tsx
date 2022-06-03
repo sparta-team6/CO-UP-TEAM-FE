@@ -7,6 +7,7 @@ import Chat from "../../layout/Chat";
 import MyProjectList from "../../layout/MyProjectList";
 import { HandleOpen } from "../../recoil/AtomsInterface";
 
+// 보드페이지
 const ToolBoard = () => {
   const [open, setOpen] = useRecoilState(HandleOpen);
   const onClick = () => {

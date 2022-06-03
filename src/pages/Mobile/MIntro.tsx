@@ -10,6 +10,7 @@ import MIntro6 from "../../images/Intro/Mobile/mintro6.png";
 import { useRecoilValue } from "recoil";
 import { themeState } from "../../recoil/DarkMode";
 
+// 모바일 소개페이지
 const MIntro = () => {
   const Dark = useRecoilValue(themeState);
   const navigate = useNavigate();

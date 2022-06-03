@@ -6,7 +6,6 @@ import Stomp from "stompjs";
 import { content } from "../../Components/Mobile/MobileChatCom";
 import { MyProfile } from "../../recoil/MyProfile";
 import EmptyChat from "../../images/Main/EmptyChat.png";
-import { SweetAlertHook } from "../../servers/Sweet";
 
 interface ChatPresenterProps {
   senderLoginId: string;
@@ -22,6 +21,7 @@ interface IForm {
   pjId: string;
 }
 
+// Stomp 통신
 const sockJS = new SockJS(`${process.env.REACT_APP_API_URL}ws`);
 const stompClient: Stomp.Client = Stomp.over(sockJS);
 
@@ -35,6 +35,7 @@ const MobileChatPre = ({
   const { nickname, profileImage, loginId } = useRecoilValue(MyProfile);
   const { register, handleSubmit, setValue } = useForm<IForm>();
   const handleonEnter: SubmitHandler<IForm> = ({ message }) => {
+    // 공백일시 채팅 전송 return
     if (message.trim() === "") return;
     // if (send === true) {
     //   SweetAlertHook(1000, "error", "😡 도배 금지 😡");
@@ -46,6 +47,7 @@ const MobileChatPre = ({
     setValue("message", "");
   };
   const messageBoxRef = useRef<HTMLDivElement>(null);
+  // 채팅창은 항상 아래로
   const scrollToBottom = () => {
     if (messageBoxRef.current) {
       messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
@@ -67,15 +69,13 @@ const MobileChatPre = ({
       profileImage: String(profileImage),
       nickname: String(nickname),
     };
+    // shift + enter = 줄바꿈처리
     if (e.key === "Enter") {
       if (!e.shiftKey) {
         // setSend(true);
         handleonEnter(newMessage);
       }
     }
-  };
-  const onScroll = () => {
-    setPageParams(pageParams + 20);
   };
   return (
     <>

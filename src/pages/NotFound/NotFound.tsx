@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import x from "../../images/Lazy/x.png";
 import { motion } from "framer-motion";
 
+// URL이 정상적인 경로가 아닐경우 나오는 페이지
 const NotFound = () => {
   const navigation = useNavigate();
   return (
