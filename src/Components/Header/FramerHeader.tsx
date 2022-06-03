@@ -8,6 +8,7 @@ import { ProjectKey } from "../../recoil/RoomID";
 import { MDChat } from "../../elements/Icon/mobile/MDChat";
 import { MyProfile } from "../../recoil/MyProfile";
 
+// 메인 프로젝트 헤더
 const FramerHeader = () => {
   const { pjId } = useRecoilValue(ProjectKey);
   const { profileImage } = useRecoilValue(MyProfile);

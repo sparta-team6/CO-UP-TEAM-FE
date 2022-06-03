@@ -35,6 +35,7 @@ interface IForm {
   toDoComment: string;
 }
 
+// 보드 레이아웃 모달
 const Bucket = ({ toDos, bucketId, kbbId, index, boardOpen, isFetching }: IBoardProps) => {
   console.log(toDos.length);
   const { pjId } = useRecoilValue(ProjectKey);

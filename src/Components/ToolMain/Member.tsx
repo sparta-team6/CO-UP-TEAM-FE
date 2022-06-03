@@ -16,6 +16,7 @@ const Member = () => {
   const { data } = useGetProjectUser(pjId);
   const User = useRecoilValue(MyProfile);
   const AllUsers = data?.data.slice(1);
+  // 본인을 제외한 나머지 멤버
   const TeamUsers = AllUsers?.filter((t) => t.loginId !== User.loginId);
   const { mutateAsync: KickUser } = useKickRoom(pjId);
   const [kickOpen, setKickOpen] = useRecoilState(KickBtn);
