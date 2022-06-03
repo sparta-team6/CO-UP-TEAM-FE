@@ -28,6 +28,7 @@ const style = {
   p: 4,
 };
 
+// 프로젝트 수정 모달 폼
 const ProjectFixed = ({ roomID, roomImg, roomTitle, roomSummary }: IProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
