@@ -86,8 +86,6 @@
   <img src="https://img.shields.io/badge/AWS%20Route%2053-232F3E?style=for-the-badge&logo=AmazonAWS&logoColor=FF9A00"/>
   <img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=PWA&logoColor=white"/>
 </div>
-
-#### Backend
 <div align='left'>
   
 </div>
